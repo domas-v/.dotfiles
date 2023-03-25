@@ -146,7 +146,7 @@ alias n="nvim -c \"lcd%:p:h\""
 alias src="source ~/.zshrc"
 alias zshrc="nvim ~/Dotfiles/.zshrc"
 alias nrc="nvim ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
-alias kitrc="nvim ~/.config/kitty/kitty.conf -c \"lcd%:p:h\""
+alias kitrc="nvim ~/Dotfiles/kitty/kitty.conf -c \"lcd%:p:h\""
 
 # kitty
 alias icat="kitty +kitten icat"
