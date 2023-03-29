@@ -163,9 +163,9 @@ alias ll="exa -la --git"
 alias l="exa -l --git"
 alias lg="exa -G --git"
 alias lG="exa -aG --git"
-alias lt="exa -lT --git"
-alias lT="exa -laT --git"
-alias lD="exa -laD --git"
+alias lt="exa -lT --level=2 --git"
+alias lT="exa -laT --level=2  --git"
+alias lD="exa -laD --level=2 --git"
 
 # python
 alias py="python"

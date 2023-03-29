@@ -164,12 +164,5 @@ return {
                 },
             })
         end,
-    },
-    {
-        "dpayne/CodeGPT.nvim",
-        commit = "52b28017c0498b1fb6433493e2fb5dfa87f9f0d9",
-        dependencies = {
-            "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim"
-        }
     }
 }
