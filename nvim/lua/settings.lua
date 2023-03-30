@@ -54,10 +54,3 @@ o.completeopt = "menuone,noselect" -- completion type
 o.updatetime = 100
 o.timeoutlen = 600
 o.lazyredraw = false
-
--- bufferline
-g.bufferline = {
-    icon_pinned = '車',
-    insert_at_end = true,
-    icons = 'both'
-}

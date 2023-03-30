@@ -42,6 +42,10 @@ return {
         'romgrk/barbar.nvim',
         lazy = false,
         dependencies = 'kyazdani42/nvim-web-devicons',
+        opts = {
+            icons = { pinned = { button = "車" }},
+            insert_at_end = true,
+        },
         keys ={
             { "<leader>*",  "<cmd>BufferPin<cr>" },
             { "<leader>n",  "<cmd>BufferNext<cr>"},
