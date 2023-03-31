@@ -1,7 +1,5 @@
 local o  = vim.o  -- global options
 local wo = vim.wo -- window local options
--- local cmd = vim.cmd -- vim commands
-local g = vim.g -- vim variables, like g:variable = something
 
 -- line numbers
 wo.linebreak = true
