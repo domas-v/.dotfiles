@@ -88,13 +88,6 @@ return {
         dependencies = { 'junegunn/fzf', build = function() vim.fn['fzf#install']() end }
     },
     {
-        "tamton-aquib/duck.nvim",
-        keys = {
-            { "<leader>dh", "<cmd>lua require('duck').hatch()<cr>", desc = "Hatch Duck" },
-            { "<leader>dc", "<cmd>lua require('duck').cook()<cr>", desc = "Cook Duck" },
-        }
-    },
-    {
         "SmiteshP/nvim-navic",
         dependencies = { "neovim/nvim-lspconfig" },
         config = function ()

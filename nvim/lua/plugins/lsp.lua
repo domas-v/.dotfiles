@@ -1,9 +1,9 @@
 return {
     {
-        'github/copilot.vim', lazy = false,
+        "github/copilot.vim", lazy = false,
         init = function ()
             vim.g.copilot_no_tab_map = true
-            vim.api.nvim_set_keymap("i", "<S-CR>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+            vim.api.nvim_set_keymap("i", "<S-CR>", "copilot#Accept('<CR>')", { silent = true, expr = true })
             vim.g.copilot_assume_mapped = true
             vim.g.copilot_filetypes = {
                 TelescopePrompt = false,
@@ -20,49 +20,49 @@ return {
         end
     },
     {
-        'VonHeikemen/lsp-zero.nvim',
+        "VonHeikemen/lsp-zero.nvim",
         dependencies = {
             -- LSP Support
-            'neovim/nvim-lspconfig' ,
-            'williamboman/mason.nvim' ,
-            'williamboman/mason-lspconfig.nvim' ,
-            'jose-elias-alvarez/null-ls.nvim' ,
+            "neovim/nvim-lspconfig" ,
+            "williamboman/mason.nvim" ,
+            "williamboman/mason-lspconfig.nvim" ,
+            "jose-elias-alvarez/null-ls.nvim" ,
 
             -- Autocompletion
-            'hrsh7th/nvim-cmp' ,
-            'hrsh7th/cmp-buffer' ,
-            'hrsh7th/cmp-cmdline' ,
-            'hrsh7th/cmp-path' ,
-            'saadparwaiz1/cmp_luasnip' ,
-            'hrsh7th/cmp-nvim-lsp' ,
-            'hrsh7th/cmp-nvim-lua' ,
-            'rcarriga/cmp-dap',
+            "hrsh7th/nvim-cmp" ,
+            "hrsh7th/cmp-buffer" ,
+            "hrsh7th/cmp-cmdline" ,
+            "hrsh7th/cmp-path" ,
+            "saadparwaiz1/cmp_luasnip" ,
+            "hrsh7th/cmp-nvim-lsp" ,
+            "hrsh7th/cmp-nvim-lua" ,
+            "rcarriga/cmp-dap",
 
             -- Snippets
-            'L3MON4D3/LuaSnip'
+            "L3MON4D3/LuaSnip"
         },
         config = function ()
-            local lsp = require('lsp-zero').preset({
-                name = 'minimal',
+            local lsp = require("lsp-zero").preset({
+                name = "minimal",
                 set_lsp_keymaps = true,
                 manage_nvim_cmp = true,
                 suggest_lsp_servers = true,
             })
 
             lsp.ensure_installed({
-                'pyright',
-                'lua_ls',
-                'jsonls',
-                'bashls',
-                'marksman',
+                "pyright",
+                "lua_ls",
+                "jsonls",
+                "bashls",
+                "marksman",
             })
 
-            local cmp = require('cmp')
+            local cmp = require("cmp")
             local cmp_select = { behavior = cmp.SelectBehavior.Select }
-            local null_ls = require('null-ls')
+            local null_ls = require("null-ls")
 
             --- LSP SETUP ---
-            lsp.configure('pyright', {
+            lsp.configure("pyright", {
                 settings = {
                     python = {
                         analysis = {
@@ -74,19 +74,19 @@ return {
 
             lsp.setup_nvim_cmp({
                 sources = {
-                    { name = 'path' },
-                    { name = 'nvim_lsp', keyword_length = 1 },
-                    { name = 'buffer', keyword_length = 1 },
+                    { name = "path" },
+                    { name = "nvim_lsp", keyword_length = 1 },
+                    { name = "buffer", keyword_length = 1 },
                 },
                 mapping = lsp.defaults.cmp_mappings({
-                    ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
-                    ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
-                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                    ["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
+                    ["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
                     ["<C-Space>"] = cmp.mapping.complete(),
                 })
             })
 
-            local navic = require('nvim-navic') -- statusline
+            local navic = require("nvim-navic") -- statusline
 
             lsp.on_attach(function(client, bufnr)
                 local opts = {buffer = bufnr, remap = false}
@@ -127,27 +127,27 @@ return {
             vim.diagnostic.config({ virtual_text = true })
 
             ------- COMPLETION -----
-            cmp.setup.cmdline({ '/', '?' }, {
+            cmp.setup.cmdline({ "/", "?" }, {
                 mapping = {
-                    ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-                    ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-                    ['<CR>'] = cmp.mapping.confirm({ select = true })
+                    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+                    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true })
                 },
                 sources = {
-                    { name = 'buffer' }
+                    { name = "buffer" }
                 }
             })
 
-            cmp.setup.cmdline(':', {
+            cmp.setup.cmdline(":", {
                 mapping = {
-                    ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-                    ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-                    ['<CR>'] = cmp.mapping.confirm({ select = true })
+                    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+                    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true })
                 },
                 sources = cmp.config.sources({
-                    { name = 'path' }
+                    { name = "path" }
                 }, {
-                    { name = 'cmdline' }
+                    { name = "cmdline" }
                 })
             })
 

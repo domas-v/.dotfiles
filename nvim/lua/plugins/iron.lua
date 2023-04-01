@@ -1,6 +1,6 @@
 return {
     {
-        'hkupty/iron.nvim',
+        "hkupty/iron.nvim",
         config = function()
             local iron = require("iron.core")
             local view = require("iron.view")

@@ -1,6 +1,6 @@
 return {
     {
-        'akinsho/toggleterm.nvim',
+        "akinsho/toggleterm.nvim",
         config = function ()
             require("toggleterm").setup({
                 -- size can be a number or function which is passed the current terminal
@@ -12,7 +12,7 @@ return {
                     end
                 end,
                 -- size = 50,
-                direction = 'vertical',
+                direction = "vertical",
                 open_mapping = [[<c-\>]],
                 hide_numbers = true,
                 shade_terminals = true,
@@ -21,7 +21,7 @@ return {
                 persist_size = true,
                 close_on_exit = true,
                 float_opts = {
-                    border = 'curved',
+                    border = "curved",
                 }
             })
         end,

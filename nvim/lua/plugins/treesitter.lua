@@ -1,10 +1,10 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
     dependencies = {
-        -- 'p00f/nvim-ts-rainbow',
-        'nvim-treesitter/playground',
-        'nvim-treesitter/nvim-treesitter-textobjects'
+        -- "p00f/nvim-ts-rainbow",
+        "nvim-treesitter/playground",
+        "nvim-treesitter/nvim-treesitter-textobjects"
     },
     config = function ()
         require("nvim-treesitter.configs").setup {
@@ -25,10 +25,10 @@ return {
             incremental_selection = {
                 enable = true,
                 keymaps = {
-                    init_selection = '<CR>',
-                    node_incremental = '<CR>',
-                    scope_incremental = '<TAB>',
-                    node_decremental = '<S-Tab>',
+                    init_selection = "<CR>",
+                    node_incremental = "<CR>",
+                    scope_incremental = "<TAB>",
+                    node_decremental = "<S-Tab>",
                 },
             },
             indent = {
@@ -65,33 +65,33 @@ return {
                         enable = true,
                         set_jumps = true,
                         goto_next_start = {
-                            [']f'] = '@function.outer',
-                            [']c'] = '@class.outer',
-                            [']b'] = '@block.outer',
-                            [']s'] = '@statement.outer'
+                            ["]f"] = "@function.outer",
+                            ["]c"] = "@class.outer",
+                            ["]b"] = "@block.outer",
+                            ["]s"] = "@statement.outer"
                         },
                         goto_next_end = {
-                            [']F'] = '@function.outer',
-                            [']C'] = '@class.outer',
-                            [']B'] = '@block.outer',
-                            [']S'] = '@statement.outer'
+                            ["]F"] = "@function.outer",
+                            ["]C"] = "@class.outer",
+                            ["]B"] = "@block.outer",
+                            ["]S"] = "@statement.outer"
                         },
                         goto_previous_start = {
-                            ['[f'] = '@function.outer',
-                            ['[c'] = '@class.outer',
-                            ['[b'] = '@block.outer',
-                            ['[s'] = '@statement.outer'
+                            ["[f"] = "@function.outer",
+                            ["[c"] = "@class.outer",
+                            ["[b"] = "@block.outer",
+                            ["[s"] = "@statement.outer"
                         },
                         goto_previous_end = {
-                            ['[F'] = '@function.outer',
-                            ['[C'] = '@class.outer',
-                            ['[B'] = '@block.outer',
-                            ['[S'] = '@statement.outer'
+                            ["[F"] = "@function.outer",
+                            ["[C"] = "@class.outer",
+                            ["[B"] = "@block.outer",
+                            ["[S"] = "@statement.outer"
                         }
                     },
                     lsp_interop = {
                         enable = true,
-                        border = 'none',
+                        border = "none",
                         floating_preview_opts = {},
                         peek_definition_code = {
                             ["gp"] = "@function.outer",

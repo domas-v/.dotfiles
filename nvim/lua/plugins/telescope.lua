@@ -1,12 +1,12 @@
 return {
     {
-        'nvim-telescope/telescope.nvim',
+        "nvim-telescope/telescope.nvim",
         dependencies = {
-            'nvim-lua/plenary.nvim',
-            'MunifTanjim/nui.nvim',
-            'kyazdani42/nvim-web-devicons',
-            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', },
-            { "AckslD/nvim-neoclip.lua", config = function() require('neoclip').setup() end, },
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "kyazdani42/nvim-web-devicons",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
+            { "AckslD/nvim-neoclip.lua", config = function() require("neoclip").setup() end, },
             { "nvim-telescope/telescope-live-grep-args.nvim" },
         },
         config = function ()
@@ -85,25 +85,24 @@ return {
             require("telescope").load_extension("live_grep_args")
         end,
         keys = {
-            { '<leader>ff', "<cmd>Telescope find_files<cr>", desc = "Find files" },
-            { '<leader>fg', "<cmd>Telescope git_files<cr>", desc = "Git files" },
-            { '<leader>fo', "<cmd>Telescope oldfiles<cr>", desc = "Old files" },
-            { '<leader>fh', "<cmd>Telescope help_tags<cr>", desc = "Help" },
-            { '<leader>fk', "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
-            { '<leader>fc', "<cmd>Telescope commands<cr>", desc = "Commands" },
+            { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+            { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git files" },
+            { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Old files" },
+            { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+            { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+            { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
 
-            { '<leader>ft', "<cmd>TodoTelescope<cr>", desc = "Todo" },
-            { '<leader>fd', "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+            { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+            { "<leader>fd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
             { "<leader>l",  "<cmd>Telescope lsp_document_symbols<cr>", desc = "LSP symbols" },
             { "<leader>L",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
             { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "LSP references" },
 
-            { '<leader>fy', "<cmd>Telescope neoclip<cr>", desc = "Clipboard" },
-            { '<leader>fj', "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
-            { '<leader>b',  "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-            { '<leader>s',  "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Current buffer" },
-            -- { '<leader>S',  "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
-            { '<leader>S',  "<cmd>Telescope live_grep_args<cr>", desc = "Live grep" },
+            { "<leader>fy", "<cmd>Telescope neoclip<cr>", desc = "Clipboard" },
+            { "<leader>fj", "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
+            { "<leader>b",  "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+            { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Current buffer" },
+            { "<leader>S",  "<cmd>Telescope live_grep_args<cr>", desc = "Live grep" },
         }
     },
 }

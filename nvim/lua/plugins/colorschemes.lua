@@ -1,6 +1,6 @@
 return {
     {
-        'catppuccin/nvim',
+        "catppuccin/nvim",
         config = function ()
             require("catppuccin").setup({
                 flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -66,7 +66,7 @@ return {
     },
     {
         "rebelot/kanagawa.nvim",
-        config = function () require('kanagawa').setup({
+        config = function () require("kanagawa").setup({
             colors = {
                 theme = {
                     all = {
