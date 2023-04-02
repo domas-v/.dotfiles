@@ -141,7 +141,7 @@ return {
         config = function()
             require("noice").setup({
                 messages = {
-                    enabled = false
+                    enabled = true
                 },
                 lsp = {
                     override = {
