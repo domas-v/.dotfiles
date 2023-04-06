@@ -143,7 +143,7 @@ alias nt="~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 alias v="nvim -c \"lcd%:p:h\""
 alias n="nvim -c \"lcd%:p:h\""
 alias src="source ~/.zshrc"
-alias zshrc="nvim ~/Dotfiles/.zshrc"
+alias zrc="nvim ~/Dotfiles/.zshrc"
 alias nrc="nvim ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
 alias wrc="nvim ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
 
