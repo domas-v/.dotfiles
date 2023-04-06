@@ -22,6 +22,8 @@ local act = wezterm.action
 config.leader = { key = 'a', mods = 'CMD' }
 config.keys = {
     -- utils
+    { key = 'q', mods = 'CTRL', action = act.DisableDefaultAssignment},
+    { key = 'Q', mods = 'CTRL', action = act.DisableDefaultAssignment},
     { key = ':', mods = 'CMD', action = act.ActivateCommandPalette},
     { key = 'N', mods = 'CMD', action = act.SpawnWindow },
     -- tab navigation
