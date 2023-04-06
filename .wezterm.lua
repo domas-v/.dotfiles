@@ -32,6 +32,10 @@ config.keys = {
     { key = 'X', mods = 'CMD', action = act.ActivateCopyMode },
     { key = 'N', mods = 'CMD', action = act.SpawnWindow },
 
+    -- scrolling
+    { key = 'u', mods = 'CMD|CTRL', action = act.ScrollByPage(-0.5) },
+    { key = 'd', mods = 'CMD|CTRL', action = act.ScrollByPage(0.5) },
+
     -- text navigation
     { key="F", mods="CTRL", action=wezterm.action{ SendString="\x1bf" } },
     { key="B", mods="CTRL", action=wezterm.action{ SendString="\x1bb" } },
