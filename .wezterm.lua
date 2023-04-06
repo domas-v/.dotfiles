@@ -17,6 +17,10 @@ config.font = wezterm.font{
 }
 config.font_size = 13.0
 
+config.window_frame = {
+ font = wezterm.font { family = 'JetBrains Mono'},
+}
+
 -- keybindings
 local act = wezterm.action
 config.leader = { key = 'a', mods = 'CMD' }
@@ -25,10 +29,19 @@ config.keys = {
     { key = 'q', mods = 'CTRL', action = act.DisableDefaultAssignment},
     { key = 'Q', mods = 'CTRL', action = act.DisableDefaultAssignment},
     { key = ':', mods = 'CMD', action = act.ActivateCommandPalette},
+    { key = 'X', mods = 'CMD', action = act.ActivateCopyMode },
     { key = 'N', mods = 'CMD', action = act.SpawnWindow },
-    -- word navigation
+    -- text navigation
     { key="F", mods="CTRL", action=wezterm.action{ SendString="\x1bf" } },
     { key="B", mods="CTRL", action=wezterm.action{ SendString="\x1bb" } },
+    { key = 'E', mods = 'CMD', action = act.QuickSelectArgs {
+        label = 'open url',
+        patterns = { 'https?://\\S+' },
+        action = wezterm.action_callback(function(window, pane)
+            local url = window:get_selection_text_for_pane(pane)
+            wezterm.open_with(url)
+        end)}
+    },
     -- tab navigation
     { key = 'T', mods = 'CMD', action = act.SpawnCommandInNewTab { cwd = "~", } },
     { key = 'n', mods = 'CMD', action = act.ActivateTabRelative(1) },
