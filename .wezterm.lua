@@ -17,9 +17,6 @@ config.font = wezterm.font{
 }
 config.font_size = 13.0
 
--- tabbar
-config.tab_bar_at_bottom = true
-
 -- keybindings
 local act = wezterm.action
 config.leader = { key = 'a', mods = 'CMD' }
@@ -51,15 +48,5 @@ config.keys = {
     { key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = false } },
     { key = 'm', mods = 'CMD', action = act.TogglePaneZoomState },
 }
-
-for i = 1, 8 do
-  -- CTRL+ALT + number to move to that position
-  table.insert(config.keys, {
-    key = tostring(i),
-    mods = "SHIFT|CMD",
-    action = act.MoveTab(i - 1),
-  })
-end
-
 
 return config
