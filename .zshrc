@@ -131,14 +131,13 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias cat="bat"
-alias wrk="cd ~/Work/"
+alias t="touch"
 alias conf="cd ~/.config"
 alias dot="cd ~/Dotfiles"
+alias wrk="cd ~/Work/"
 alias lmda="cd ~/Work/tenspeed-lambda/"
 alias pr="cd ~/Personal/"
-alias scratch="cd ~/Personal/scratch/"
 alias nt="~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
-alias t="touch"
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
@@ -146,13 +145,7 @@ alias n="nvim -c \"lcd%:p:h\""
 alias src="source ~/.zshrc"
 alias zshrc="nvim ~/Dotfiles/.zshrc"
 alias nrc="nvim ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
-alias kitrc="nvim ~/Dotfiles/kitty/kitty.conf -c \"lcd%:p:h\""
-
-# kitty
-alias icat="kitty +kitten icat"
-alias iclip="kitty +kitten clipboard"
-alias diff="kitty +kitten diff"
-alias themes="kitty +kitten themes"
+alias wrc="nvim ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
 
 # git & github
 alias ghst="gh status"
