@@ -154,8 +154,9 @@ alias iclip="kitty +kitten clipboard"
 alias diff="kitty +kitten diff"
 alias themes="kitty +kitten themes"
 
-# github
+# git & github
 alias ghst="gh status"
+alias gmm="git merge master"
 
 # exa
 alias ls="exa --git"
