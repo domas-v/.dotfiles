@@ -2,10 +2,12 @@ return {
     {
         "windwp/nvim-autopairs",
         config = function () require("nvim-autopairs").setup() end,
+        event = "InsertEnter",
     },
     {
         "kylechui/nvim-surround",
-        config = function () require("nvim-surround").setup({ move_cursor = false }) end
+        config = function () require("nvim-surround").setup({ move_cursor = false }) end,
+        event = "InsertEnter",
     },
     {
         "numToStr/Comment.nvim",

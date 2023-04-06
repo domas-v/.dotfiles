@@ -47,6 +47,7 @@ o.incsearch = true
 o.mouse = "a"
 o.hidden = true -- allow unsaved buffers
 o.completeopt = "menuone,noselect" -- completion type
+o.fixendofline = false -- don't add new line at end of file
 
 -- performance
 o.updatetime = 100
