@@ -26,6 +26,9 @@ config.keys = {
     { key = 'Q', mods = 'CTRL', action = act.DisableDefaultAssignment},
     { key = ':', mods = 'CMD', action = act.ActivateCommandPalette},
     { key = 'N', mods = 'CMD', action = act.SpawnWindow },
+    -- word navigation
+    { key="F", mods="CTRL", action=wezterm.action{ SendString="\x1bf" } },
+    { key="B", mods="CTRL", action=wezterm.action{ SendString="\x1bb" } },
     -- tab navigation
     { key = 'T', mods = 'CMD', action = act.SpawnCommandInNewTab { cwd = "~", } },
     { key = 'n', mods = 'CMD', action = act.ActivateTabRelative(1) },
