@@ -137,7 +137,6 @@ alias dot="cd ~/Dotfiles"
 alias wrk="cd ~/Work/"
 alias lmda="cd ~/Work/tenspeed-lambda/"
 alias pr="cd ~/Personal/"
-alias nt="~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""

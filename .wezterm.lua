@@ -12,14 +12,12 @@ config.enable_scroll_bar = true
 
 -- appearance
 config.color_scheme = "kanagawabones"
-config.font = wezterm.font{
-    family = "JetBrains Mono"
-}
-config.font_size = 13.0
-
 config.window_frame = {
- font = wezterm.font { family = 'JetBrains Mono'},
+    active_titlebar_bg = "#1f1f28",
+    inactive_titlebar_bg = "#1f1f28",
 }
+config.font = wezterm.font{ family = "JetBrains Mono", }
+config.font_size = 14.0
 
 -- keybindings
 local act = wezterm.action
