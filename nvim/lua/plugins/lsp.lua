@@ -1,7 +1,8 @@
 return {
     {
-        "github/copilot.vim", lazy = false,
-        init = function ()
+        "github/copilot.vim",
+        lazy = false,
+        init = function()
             vim.g.copilot_no_tab_map = true
             vim.api.nvim_set_keymap("i", "<S-CR>", "copilot#Accept('<CR>')", { silent = true, expr = true })
             vim.g.copilot_assume_mapped = true
@@ -13,7 +14,7 @@ return {
     },
     {
         "folke/neodev.nvim",
-        config = function ()
+        config = function()
             require("neodev").setup({
                 library = { plugins = { "nvim-dap-ui" }, types = true },
             })
@@ -23,25 +24,25 @@ return {
         "VonHeikemen/lsp-zero.nvim",
         dependencies = {
             -- LSP Support
-            "neovim/nvim-lspconfig" ,
-            "williamboman/mason.nvim" ,
-            "williamboman/mason-lspconfig.nvim" ,
-            "jose-elias-alvarez/null-ls.nvim" ,
+            "neovim/nvim-lspconfig",
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "jose-elias-alvarez/null-ls.nvim",
 
             -- Autocompletion
-            "hrsh7th/nvim-cmp" ,
-            "hrsh7th/cmp-buffer" ,
-            "hrsh7th/cmp-cmdline" ,
-            "hrsh7th/cmp-path" ,
-            "saadparwaiz1/cmp_luasnip" ,
-            "hrsh7th/cmp-nvim-lsp" ,
-            "hrsh7th/cmp-nvim-lua" ,
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lua",
             "rcarriga/cmp-dap",
 
             -- Snippets
             "L3MON4D3/LuaSnip"
         },
-        config = function ()
+        config = function()
             local lsp = require("lsp-zero").preset({
                 name = "minimal",
                 set_lsp_keymaps = true,
@@ -76,7 +77,7 @@ return {
                 sources = {
                     { name = "path" },
                     { name = "nvim_lsp", keyword_length = 1 },
-                    { name = "buffer", keyword_length = 1 },
+                    { name = "buffer",   keyword_length = 1 },
                 },
                 mapping = lsp.defaults.cmp_mappings({
                     ["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -86,8 +87,8 @@ return {
                 })
             })
 
-            lsp.on_attach(function(client, bufnr)
-                local opts = {buffer = bufnr, remap = false}
+            lsp.on_attach(function(_, bufnr)
+                local opts = { buffer = bufnr, remap = false }
 
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -96,9 +97,6 @@ return {
                 vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, opts)
                 vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts)
                 vim.keymap.set("v", "<leader>cf", vim.lsp.buf.range_formatting, opts)
-                vim.keymap.set("n", "<leader>dv", vim.diagnostic.open_float, opts)
-                vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, opts)
-                vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, opts)
                 vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
             end)
 
@@ -122,6 +120,10 @@ return {
             })
 
             vim.diagnostic.config({ virtual_text = true })
+            vim.keymap.set("n", "<leader>dv", vim.diagnostic.open_float, {})
+            vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, {})
+            vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, {})
+
 
             ------- COMPLETION -----
             cmp.setup.cmdline({ "/", "?" }, {
@@ -151,7 +153,7 @@ return {
             require("cmp").setup({
                 enabled = function()
                     return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
-                    or require("cmp_dap").is_dap_buffer()
+                        or require("cmp_dap").is_dap_buffer()
                 end
             })
 
