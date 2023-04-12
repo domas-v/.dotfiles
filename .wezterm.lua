@@ -11,7 +11,7 @@ end
 config.enable_scroll_bar = true
 
 -- appearance
-config.color_scheme = "kanagawabones"
+config.color_scheme = "Kanagawa (Gogh)"
 config.window_frame = {
     active_titlebar_bg = "#1f1f28",
     inactive_titlebar_bg = "#1f1f28",
