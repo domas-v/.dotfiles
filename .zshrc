@@ -149,6 +149,7 @@ alias wrc="nvim ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
 # git & github
 alias ghst="gh status"
 alias gmm="git merge master"
+alias gupdate="git add . && git commit -m 'Update' && git push"
 
 # exa
 alias ls="exa --git"
