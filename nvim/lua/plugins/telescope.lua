@@ -88,7 +88,8 @@ return {
         keys = {
             { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
             { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git files" },
-            { "<leader>fo", "<cmd>Telescope vim_options<cr>", desc = "Old files" },
+            { "<leader>fo", "<cmd>Telescope old_files<cr>", desc = "Old files" },
+            { "<leader>f,", "<cmd>Telescope vim_options<cr>", desc = "Options" },
             { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
             { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
             { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
