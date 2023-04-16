@@ -39,8 +39,4 @@ return {
         keys = { { "<C-n>" } }
     },
     "RRethy/vim-illuminate",
-    {
-        "natecraddock/sessions.nvim",
-        config = function() require("sessions").setup() end,
-    }
 }

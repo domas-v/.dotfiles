@@ -65,12 +65,6 @@ return {
             { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>", desc = "Step out" },
             { "<leader>dr", "<cmd>lua require('dap').repl.toggle()<cr>", desc = "Toggle DAP Repl" },
             { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", desc = "Test python method" },
-            { "<F5>",  "<cmd>lua require'dap'.continue()<cr>", desc = "Start DAP" },
-            { "<F6>",  "<cmd>lua require'dap'.terminate()<cr>", desc = "Stop DAP" },
-            { "<F9>",  "<cmd>lua require'dap'.toggle_breakpoint()<cr>", desc = "Breakpoint" },
-            { "<F10>", "<cmd>lua require'dap'.step_over()<cr>", desc = "Step over" },
-            { "<F11>", "<cmd>lua require'dap'.step_into()<cr>", desc = "Step into" },
-            { "<F12>", "<cmd>lua require'dap'.step_out()<cr>", desc = "Step out" },
 
             -- ui
             { "<leader>dR", "<cmd>DapVirtualTextForceRefresh<cr>", desc = "DAP Refresh virtual text" },
