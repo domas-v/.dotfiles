@@ -12,13 +12,13 @@ return {
                 },
                 repl_definition = {
                     scheme = {
-                        command = {"racket", "-i"}
+                        command = { "racket", "-i" }
                     },
                     racket = {
-                        command = {"racket", "-i"}
+                        command = { "racket", "-i" }
                     },
                     guile = {
-                        command = {"racket", "-i"}
+                        command = { "racket", "-i" }
                     },
                 },
                 keymaps = {

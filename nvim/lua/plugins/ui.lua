@@ -1,8 +1,10 @@
 return {
     {
         'nvim-tree/nvim-tree.lua',
-        config = function () require("nvim-tree").setup({
-            view = { mappings = { list = {{ key = "s", action = "" }}}}}) end,
+        config = function()
+            require("nvim-tree").setup({
+                view = { mappings = { list = { { key = "s", action = "" } } } } })
+        end,
         keys = {
             { "<leader><", "<cmd>NvimTreeFindFileToggle<cr>", desc = "NvimTree" },
             { "<leader>,", "<cmd>NvimTreeFindFileToggle<cr>", desc = "NvimTree" },
@@ -10,36 +12,36 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
-        config = function ()
+        config = function()
             require('lualine').setup {
                 options = {
                     icons_enabled = true,
                     globalstatusline = true,
                     theme = "auto",
-                    component_separators = {"", ""},
-                    section_separators = {"", ""},
+                    component_separators = { "", "" },
+                    section_separators = { "", "" },
                     disabled_filetypes = {}
                 },
                 sections = {
-                    lualine_a = {"mode"},
-                    lualine_b = {"branch"},
-                    lualine_c = {"filename"},
-                    lualine_x = {"filetype"},
-                    lualine_z = {"location"}
+                    lualine_a = { "mode" },
+                    lualine_b = { "branch" },
+                    lualine_c = { "filename" },
+                    lualine_x = { "filetype" },
+                    lualine_z = { "location" }
                 },
                 inactive_sections = {
                     lualine_a = {},
-                    lualine_b = {"branch"},
-                    lualine_c = {"filename"},
-                    lualine_x = {"filetype"},
-                    lualine_z = {"location"}
+                    lualine_b = { "branch" },
+                    lualine_c = { "filename" },
+                    lualine_x = { "filetype" },
+                    lualine_z = { "location" }
                 }
             }
         end
     },
     {
         'simrat39/symbols-outline.nvim',
-        config = function () require('symbols-outline').setup() end,
+        config = function() require('symbols-outline').setup() end,
         keys = {
             { "<leader>>", "<cmd>SymbolsOutline<cr>", desc = "SymbolsOutline" },
             { "<leader>.", "<cmd>SymbolsOutline<cr>", desc = "SymbolsOutline" },
@@ -58,7 +60,7 @@ return {
     },
     {
         'lukas-reineke/indent-blankline.nvim',
-        config = function ()
+        config = function()
             require('indent_blankline').setup({
                 space_char_blankline = ' ',
                 show_current_context = true,
@@ -72,13 +74,13 @@ return {
         lazy = false,
         dependencies = 'kyazdani42/nvim-web-devicons',
         opts = {
-            icons = { pinned = { button = "車" }},
+            icons = { pinned = { button = "車" } },
             insert_at_end = true,
         },
-        keys ={
+        keys = {
             { "<leader>*",  "<cmd>BufferPin<cr>" },
-            { "<leader>n",  "<cmd>BufferNext<cr>"},
-            { "<leader>p",  "<cmd>BufferPrevious<cr>"},
+            { "<leader>n",  "<cmd>BufferNext<cr>" },
+            { "<leader>p",  "<cmd>BufferPrevious<cr>" },
             { "<leader>]",  "<cmd>BufferMoveNext<cr>" },
             { "<leader>[",  "<cmd>BufferMovePrevious<cr>" },
             { "<leader>1",  "<cmd>BufferGoto 1<cr>" },
@@ -98,10 +100,10 @@ return {
         'sindrets/winshift.nvim',
         config = function() require('winshift').setup() end,
         keys = {
-            { "<leader>wm", "<cmd>WinShift<cr>", desc = "WinShift mode" },
-            { "<leader>wh", "<cmd>WinShift left<cr>", desc = "Winshift left" },
-            { "<leader>wk", "<cmd>WinShift up<cr>", desc = "WinShift up" },
-            { "<leader>wj", "<cmd>WinShift down<cr>", desc = "WinShift down" },
+            { "<leader>wm", "<cmd>WinShift<cr>",       desc = "WinShift mode" },
+            { "<leader>wh", "<cmd>WinShift left<cr>",  desc = "Winshift left" },
+            { "<leader>wk", "<cmd>WinShift up<cr>",    desc = "WinShift up" },
+            { "<leader>wj", "<cmd>WinShift down<cr>",  desc = "WinShift down" },
             { "<leader>wl", "<cmd>WinShift right<cr>", desc = "WinShift right" },
         }
     },
