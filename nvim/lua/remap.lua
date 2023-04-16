@@ -8,12 +8,6 @@ map("v", "K", ":m '<-2<CR>gv=gv", {desc = 'Move visual line up'})
 map("v", "<", "<gv", {desc = 'Move visual line left'})
 map("v", ">", ">gv", {desc = 'Move visual line right'})
 
---terminal 
--- map('t', '<C-w>h', '<C-\\><C-n><C-w>h', { noremap = true })
--- map('t', '<C-w>j', '<C-\\><C-n><C-w>j', { noremap = true })
--- map('t', '<C-w>k', '<C-\\><C-n><C-w>k', { noremap = true })
--- map('t', '<C-w>l', '<C-\\><C-n><C-w>l', { noremap = true })
-
  -- wrapped line movement
 map("n", "k", "gk")
 map("n", "j", "gj")
