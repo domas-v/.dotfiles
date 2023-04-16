@@ -41,10 +41,10 @@ map('i', '<C-j>', 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', {expr = true, noremap 
 map('i', '<C-k>', 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', {expr = true, noremap = true})
 map('c', '<C-k>', '<LEFT>', { noremap = true })
 map('c', '<C-j>', '<RIGHT>', { noremap = true })
-map('t', '<C-x>', '<C-\\><C-N>', { noremap = true })
 
 -- search & replace
--- map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- word under cursor
+map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- word under cursor
+-- map("v", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) TODO: make it work
 map("v", "<leader>rr" , ":s/", { desc = "Search & Replace" })  -- in visual selection
 map("n", "<leader>rr", ":%s/", { desc = "Search & Replace" }) -- in whole buffer
 map("n", "<C-s>", "/")
