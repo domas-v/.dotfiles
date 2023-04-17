@@ -22,16 +22,22 @@ return {
                     section_separators = { "", "" },
                     disabled_filetypes = {}
                 },
+                extensions = {
+                    "quickfix",
+                    "nvim-tree",
+                    "nvim-dap-ui",
+                    "symbols-outline",
+                    "trouble" },
                 sections = {
                     lualine_a = { "mode" },
-                    lualine_b = { "branch" },
+                    lualine_b = { "branch", "diagnostics" },
                     lualine_c = { "filename" },
                     lualine_x = { "filetype" },
                     lualine_z = { "location" }
                 },
                 inactive_sections = {
                     lualine_a = {},
-                    lualine_b = { "branch" },
+                    lualine_b = { "branch", "diagnostics" },
                     lualine_c = { "filename" },
                     lualine_x = { "filetype" },
                     lualine_z = { "location" }
@@ -149,7 +155,7 @@ return {
                 views = {
                     cmdline_popup = {
                         position = {
-                            row = "45%",
+                            row = "35%",
                             col = "50%"
                         },
                     }
