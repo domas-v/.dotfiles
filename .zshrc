@@ -166,13 +166,14 @@ alias py="python"
 alias e="exit"
 alias dd="deactivate"
 alias ipy="ipython"
+alias i="ipython"
 alias pv="python --version"
 alias pw="which python"
 
 ## python virtualenvs
 a() {
     if [[ -d ".venv" ]]; then
-        poetry shell
+        source .venv/bin/activate
     elif [[ -d "venv" ]]; then
         source venv/bin/activate
     else
@@ -183,7 +184,7 @@ a() {
 cd() {
     builtin cd $1
     if [[ -d ".venv" ]]; then
-        poetry shell
+        source .venv/bin/activate
     elif [[ -d "venv" ]]; then
         source venv/bin/activate
     fi
