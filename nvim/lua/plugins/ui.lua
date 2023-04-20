@@ -163,5 +163,13 @@ return {
             })
         end,
         dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
+    },
+    {
+        'anuvyklack/pretty-fold.nvim',
+        config = function()
+            require('pretty-fold').setup({
+                fill_char = " ",
+            })
+        end
     }
 }
