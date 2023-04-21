@@ -17,6 +17,7 @@ map("n", "Y", "y$")
 
 -- handy remaps
 map("n", "!", ":!", { desc = 'Run shell command' })
+map("n", "<C-;>", ":lua ", { desc = 'Enter lua command' })
 map("n", "J", "mzJ`z", { desc = 'Join lines' })
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")

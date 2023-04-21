@@ -1,10 +1,10 @@
 return {
     {
-        'mfussenegger/nvim-dap',
+        "mfussenegger/nvim-dap",
         dependencies = {
-            'mfussenegger/nvim-dap-python',
-            'rcarriga/nvim-dap-ui',
-            'theHamsta/nvim-dap-virtual-text',
+            "mfussenegger/nvim-dap-python",
+            "rcarriga/nvim-dap-ui",
+            "theHamsta/nvim-dap-virtual-text",
         },
         config = function()
             local dap = require('dap')
@@ -56,37 +56,43 @@ return {
         end,
         keys = {
             -- debug controls
-            { "<leader>ds",  "<cmd>lua require'dap'.continue()<cr>",                       desc = "Start DAP" },
-            { "<leader>dx",  "<cmd>lua require'dap'.terminate()<cr>",                      desc = "Stop DAP" },
-            { "<leader>dd",  "<cmd>lua require'dap'.toggle_breakpoint()<cr>",              desc = "Breakpoint" },
-            { "<leader>dn",  "<cmd>lua require'dap'.step_over()<cr>",                      desc = "Step over" },
-            { "<leader>di",  "<cmd>lua require'dap'.step_into()<cr>",                      desc = "Step into" },
-            { "<leader>do",  "<cmd>lua require'dap'.step_out()<cr>",                       desc = "Step out" },
-            { "<leader>dr",  "<cmd>lua require('dap').repl.toggle()<cr>",                  desc = "Toggle DAP Repl" },
-            { '<leader>dm',  "<cmd>lua require('dap-python').test_method()<cr>",           desc = "Test python method" },
+            { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",             desc = "Start DAP" },
+            { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>",            desc = "Stop DAP" },
+            { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>",            desc = "Step over" },
+            { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>",            desc = "Step into" },
+            { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>",             desc = "Step out" },
+            { "<leader>dr", "<cmd>lua require('dap').repl.toggle()<cr>",        desc = "Toggle DAP Repl" },
+            { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", desc = "Test python method" },
 
             -- ui
-            { "<leader>dR",  "<cmd>DapVirtualTextForceRefresh<cr>",                        desc =
-            "DAP Refresh virtual text" },
-            { "<leader>dt",  "<cmd>DapVirtualTextToggle<cr>",                              desc =
-            "Toggle DAP Virtual text" },
-            { "<leader>du",  "<cmd>lua require('dapui').toggle()<cr>",                     desc = "Toggle DAP UI" },
-            { "<leader>de",  "<cmd>lua require('dapui').eval()<cr>",                       desc = "DAP Eval" },
+            { "<leader>dR", "<cmd>DapVirtualTextForceRefresh<cr>", desc = "DAP Refresh virtual text" },
+            { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>", desc = "Toggle DAP Virtual text" },
+            { "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", desc = "Toggle DAP UI" },
+            { "<leader>de", "<cmd>lua require('dapui').eval()<cr>",   desc = "DAP Eval" },
 
             -- floats
-            { "<leader>db",  "<cmd>lua require('dapui').float_element('breakpoints')<cr>",
-                                                                                               desc =
-                "Toggle DAP Breakpoints" },
-            { "<leader>dff", "<cmd>lua require('dapui').float_element()<cr>",              desc =
-            "Toggle DAP Float element" },
-            { "<leader>dfb", "<cmd>lua require('dapui').float_element('breakpoints')<cr>",
-                                                                                               desc =
-                "Toggle DAP Breakpoints" },
-            { "<leader>dfs", "<cmd>lua require('dapui').float_element('scopes')<cr>",      desc = "Toggle DAP Scopes" },
-            { "<leader>dfc", "<cmd>lua require('dapui').float_element('console')<cr>",     desc = "Toggle DAP Console" },
-            { "<leader>dfr", "<cmd>lua require('dapui').float_element('repl')<cr>",        desc = "Toggle DAP Repl" },
-            { "<leader>dft", "<cmd>lua require('dapui').float_element('stacks')<cr>",      desc = "Toggle DAP Stacks" },
-            { "<leader>dfw", "<cmd>lua require('dapui').float_element('watches')<cr>",     desc = "Toggle DAP Watches" },
+            { "<leader>db", "<cmd>lua require('dapui').float_element('breakpoints')<cr>", desc = "Toggle DAP Breakpoints" },
+            { "<leader>dff", "<cmd>lua require('dapui').float_element()<cr>", desc = "Toggle DAP Float element" },
+            { "<leader>dfb", "<cmd>lua require('dapui').float_element('breakpoints')<cr>", desc = "Toggle DAP Breakpoints" },
+            { "<leader>dfs", "<cmd>lua require('dapui').float_element('scopes')<cr>",  desc = "Toggle DAP Scopes" },
+            { "<leader>dfc", "<cmd>lua require('dapui').float_element('console')<cr>", desc = "Toggle DAP Console" },
+            { "<leader>dfr", "<cmd>lua require('dapui').float_element('repl')<cr>",    desc = "Toggle DAP Repl" },
+            { "<leader>dft", "<cmd>lua require('dapui').float_element('stacks')<cr>",  desc = "Toggle DAP Stacks" },
+            { "<leader>dfw", "<cmd>lua require('dapui').float_element('watches')<cr>", desc = "Toggle DAP Watches" },
         }
+    },
+    {
+        "Weissle/persistent-breakpoints.nvim",
+        config = function()
+            require('persistent-breakpoints').setup {
+                load_breakpoints_event = { "BufReadPost" }
+            }
+
+            local opts = { noremap = true, silent = true }
+            local keymap = vim.api.nvim_set_keymap
+            keymap("n", "<leader>dd", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", opts)
+            keymap("n", "<leader>dc", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
+            -- keymap("n", "<YourKey2>", "<cmd>lua require('persistent-breakpoints.api').set_conditional_breakpoint()<cr>", opts)
+        end,
     }
 }
