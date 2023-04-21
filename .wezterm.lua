@@ -17,7 +17,7 @@ config.window_frame = {
     inactive_titlebar_bg = "#1f1f28",
 }
 config.font = wezterm.font { family = "JetBrains Mono", }
-config.font_size = 13.0
+config.font_size = 12.0
 
 -- keybindings
 local act = wezterm.action
