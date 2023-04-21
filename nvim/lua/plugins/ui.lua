@@ -33,6 +33,7 @@ return {
                     lualine_b = { "branch", "diagnostics" },
                     lualine_c = { "filename" },
                     lualine_x = { "filetype" },
+                    lualine_y = { require('auto-session-library').current_session_name },
                     lualine_z = { "location" }
                 },
                 inactive_sections = {
@@ -40,6 +41,7 @@ return {
                     lualine_b = { "branch", "diagnostics" },
                     lualine_c = { "filename" },
                     lualine_x = { "filetype" },
+                    lualine_y = { require('auto-session-library').current_session_name },
                     lualine_z = { "location" }
                 }
             }
