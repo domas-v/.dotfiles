@@ -140,7 +140,7 @@ alias pr="cd ~/Personal/"
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
-alias n="nvim -c \"lcd%:p:h\""
+alias n="nvim"
 alias src="source ~/.zshrc"
 alias zrc="nvim ~/Dotfiles/.zshrc"
 alias nrc="nvim ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
