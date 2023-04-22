@@ -8,6 +8,9 @@ map("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move visual line up' })
 map("v", "<", "<gv", { desc = 'Move visual line left' })
 map("v", ">", ">gv", { desc = 'Move visual line right' })
 
+-- escape terminal
+map("t", "<C-x>", "<C-\\><C-n>", { desc = 'Escape terminal' })
+
 -- wrapped line movement
 map("n", "k", "gk")
 map("n", "j", "gj")
