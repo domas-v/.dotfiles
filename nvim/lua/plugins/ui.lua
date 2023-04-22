@@ -64,7 +64,19 @@ return {
     {
         'folke/todo-comments.nvim',
         dependencies = 'nvim-lua/plenary.nvim',
-        config = function() require('todo-comments').setup() end,
+        config = function()
+            require('todo-comments').setup({
+                signs = false,
+                keywords = {
+                    FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },
+                    TODO = { icon = " ", color = "info", alt = { "STYLE" } },
+                    HACK = { icon = " ", color = "warning", alt = { "TEMP", "TEMPORARY" } },
+                    WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+                    PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+                    NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+                },
+            })
+        end,
     },
     {
         'lukas-reineke/indent-blankline.nvim',
