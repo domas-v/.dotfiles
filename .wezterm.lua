@@ -11,11 +11,23 @@ end
 config.enable_scroll_bar = true
 
 -- appearance
-config.color_scheme = "Kanagawa (Gogh)"
-config.window_frame = {
-    active_titlebar_bg = "#1f1f28",
-    inactive_titlebar_bg = "#1f1f28",
-}
+local function get_appearance()
+    if wezterm.gui then
+        return wezterm.gui.get_appearance()
+    end
+    return 'Dark'
+end
+
+local function scheme_for_appearance(appearance)
+    if appearance:find 'Dark' then
+        return "kanagawabones"
+    else
+        return "Catppuccin Latte"
+    end
+end
+
+config.color_scheme = scheme_for_appearance(get_appearance())
+
 config.font = wezterm.font { family = "JetBrains Mono", }
 config.font_size = 12.0
 

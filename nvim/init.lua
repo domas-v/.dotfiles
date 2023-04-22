@@ -20,7 +20,5 @@ require("lazy").setup("plugins", {
     },
 })
 
--- colors
--- one of: ["kanagawa", "catppuccin"]
-vim.cmd.colorscheme("kanagawa")
+-- fix for leap.nvim
 vim.cmd [[highlight LeapBackdrop guifg=#777777]]
