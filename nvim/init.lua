@@ -21,4 +21,5 @@ require("lazy").setup("plugins", {
 })
 
 -- fix for leap.nvim
+vim.cmd [[colorscheme kanagawa-wave]]
 vim.cmd [[highlight LeapBackdrop guifg=#777777]]
