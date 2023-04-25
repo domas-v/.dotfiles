@@ -21,4 +21,5 @@ require("lazy").setup("plugins", {
 })
 
 -- fix for leap.nvim
-vim.cmd [[highlight LeapBackdrop guifg=#777777]]
+-- vim.cmd [[colorscheme catppuccin]]
+-- vim.cmd [[highlight LeapBackdrop guifg=#777777]]
