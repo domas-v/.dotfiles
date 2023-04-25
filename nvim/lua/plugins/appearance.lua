@@ -29,8 +29,8 @@ return {
         config = function()
             require("dark_notify").run({
                 schemes = {
-                    dark  = "kanagawa-wave",
-                    light = "kanagawa-lotus"
+                    dark  = "tokyonight-night",
+                    light = "tokyonight-day"
                 }
             })
         end

@@ -70,7 +70,7 @@ return {
             require('session-lens').setup()
         end
     },
-    {
-        -- TODO: harpoon.nvim
-    }
+    -- {
+    --     TODO: harpoon.nvim
+    -- }
 }
