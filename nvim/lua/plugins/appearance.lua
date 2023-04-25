@@ -28,33 +28,28 @@ return {
                         enabled = true,
                         enable_ui = true,
                     },
-                    gitsigns = true,
-                    illuminate = true,
-                    barbar = true,
-                    leap = true,
+                    mason = true,
                     lsp_trouble = true,
                     symbols_outline = true,
                     treesitter = true,
                     neogit = true,
-                    mason = true,
-                    markdown = true,
+                    gitsigns = true,
+                    barbar = true,
+                    leap = true,
+                    illuminate = true,
                     indent_blankline = {
                         enabled = true,
                         colored_indent_levels = false,
                     },
+                    markdown = true,
+                    headlines = true
                 }
             })
         end,
     },
-    -- {
-    --     "cormacrelf/dark-notify",
-    --     config = function()
-    --         require("dark_notify").run({
-    --             schemes = {
-    --                 dark  = "catppuccin-mocha",
-    --                 light = "catppuccin-frappe"
-    --             }
-    --         })
-    --     end
-    -- },
+    {
+        "lukas-reineke/headlines.nvim",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = true
+    }
 }
