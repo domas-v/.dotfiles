@@ -147,6 +147,7 @@ alias src="source ~/.zshrc"
 alias zrc="nvim ~/Dotfiles/.zshrc"
 alias nrc="nvim ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
 alias wrc="nvim ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
+alias notes="nvim ~/Desktop/Notes/ -c \"lcd%:p:h\""
 
 # git & github
 alias ghst="gh status"
