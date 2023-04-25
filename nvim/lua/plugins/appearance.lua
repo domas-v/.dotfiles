@@ -1,20 +1,7 @@
 return {
-    { "catppuccin/nvim", name = "catppuccin" },
     {
-        "rebelot/kanagawa.nvim",
-        config = function()
-            require("kanagawa").setup({
-                colors = {
-                    theme = {
-                        all = {
-                            ui = {
-                                bg_gutter = "none"
-                            }
-                        }
-                    }
-                }
-            })
-        end
+        "catppuccin/nvim",
+        name = "catppuccin"
     },
     {
         "folke/tokyonight.nvim",
@@ -29,15 +16,10 @@ return {
         config = function()
             require("dark_notify").run({
                 schemes = {
-                    dark  = "tokyonight-night",
-                    light = "tokyonight-day"
+                    dark  = "catppuccin-mocha",
+                    light = "catppuccin-frappe"
                 }
             })
         end
     },
-    -- {
-    --     'lukas-reineke/headlines.nvim',
-    --     dependencies = "nvim-treesitter/nvim-treesitter",
-    --     config = true
-    -- }
 }
