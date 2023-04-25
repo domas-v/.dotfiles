@@ -2,7 +2,7 @@ return {
     {
         "catppuccin/nvim",
         name = "catppuccin",
-        init = function()
+        config = function()
             require("catppuccin").setup({
                 integrations = {
                     notify = true,
@@ -17,12 +17,12 @@ return {
                             warnings = { "italic" },
                             information = { "italic" },
                         },
-                        -- underlines = {
-                        --     errors = { "undercurl" },
-                        --     hints = { "undercurl" },
-                        --     warnings = { "undercurl" },
-                        --     information = { "undercurl" },
-                        -- }
+                        underlines = {
+                            errors = { "undercurl" },
+                            hints = { "undercurl" },
+                            warnings = { "undercurl" },
+                            information = { "undercurl" },
+                        }
                     },
                     dap = {
                         enabled = true,
@@ -45,9 +45,6 @@ return {
                 }
             })
         end,
-        config = function ()
-            vim.cmd [[colorscheme catppuccin]]
-        end
     },
     -- {
     --     "cormacrelf/dark-notify",
