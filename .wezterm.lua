@@ -22,7 +22,7 @@ local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
         return "kanagawabones"
     else
-        return "Catppuccin Latte"
+        return "tokyonight_day"
     end
 end
 
