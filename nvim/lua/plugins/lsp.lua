@@ -116,7 +116,7 @@ return {
                     }),
                     null_ls.builtins.diagnostics.shellcheck,
                     null_ls.builtins.diagnostics.markdownlint.with({
-                        args = { "--stdin", "--disable", "MD013", "MD034" },
+                        args = { "--stdin", "--disable", "MD013", "MD034", "MD007" },
                     }),
                 },
             })
