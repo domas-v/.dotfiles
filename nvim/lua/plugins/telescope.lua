@@ -62,12 +62,15 @@ return {
                     sort_lastused = true,
                     sorting_strategy = "ascending",
                 },
+                pickers = {
+                    find_files = { theme = "ivy" },
+                },
                 extensions = {
                     fzf = {
                         fuzzy = true,
                         override_generic_sorter = true,
                         override_file_sorter = true,
-                        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+                        case_mode = "smart_case",
                     },
                     live_grep_args = {
                         auto_quoting = true,
@@ -89,7 +92,7 @@ return {
             require("telescope").load_extension("fzf")
             require("telescope").load_extension("neoclip")
             require("telescope").load_extension("live_grep_args")
-            require("telescope").load_extension("session-lens")
+            -- require("telescope").load_extension("session-lens")
             require("telescope").load_extension("file_browser")
         end,
         keys = {

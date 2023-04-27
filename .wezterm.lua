@@ -20,7 +20,7 @@ end
 
 local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
-        return "Catppuccin Mocha"
+        return "Catppuccin Frappe"
     else
         return "Catppuccin Frappe"
     end
