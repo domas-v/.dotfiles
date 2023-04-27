@@ -5,9 +5,10 @@ return {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             "kyazdani42/nvim-web-devicons",
-            { "nvim-telescope/telescope-fzf-native.nvim",    build = "make", },
-            { "AckslD/nvim-neoclip.lua",                     config = function() require("neoclip").setup() end, },
-            { "nvim-telescope/telescope-live-grep-args.nvim" },
+            "nvim-telescope/telescope-live-grep-args.nvim",
+            "nvim-telescope/telescope-file-browser.nvim",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
+            { "AckslD/nvim-neoclip.lua",                  config = function() require("neoclip").setup() end, },
         },
         config = function()
             local actions = require("telescope.actions")
@@ -77,6 +78,10 @@ return {
                                 ["<C-h>"] = lga_actions.quote_prompt({ postfix = " --hidden " }),
                             },
                         },
+                    },
+                    file_browser = {
+                        theme = "ivy",
+                        hijack_netrw = true,
                     }
                 }
             })
@@ -85,6 +90,7 @@ return {
             require("telescope").load_extension("neoclip")
             require("telescope").load_extension("live_grep_args")
             require("telescope").load_extension("session-lens")
+            require("telescope").load_extension("file_browser")
         end,
         keys = {
             { "<leader>ff", "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
@@ -105,6 +111,7 @@ return {
             { "<leader>b",  "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
             { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
             { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
+            { "<leader>F",  "<cmd>Telescope file_browser<cr>",                  desc = "Live grep" },
         },
         cmd = { "Telescope" },
     }

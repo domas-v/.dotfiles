@@ -1,16 +1,5 @@
 return {
     {
-        'nvim-tree/nvim-tree.lua',
-        config = function()
-            require("nvim-tree").setup({
-                view = { mappings = { list = { { key = "s", action = "" } } } } })
-        end,
-        keys = {
-            { "<leader><", "<cmd>NvimTreeFindFileToggle<cr>", desc = "NvimTree" },
-            { "<leader>,", "<cmd>NvimTreeFindFileToggle<cr>", desc = "NvimTree" },
-        },
-    },
-    {
         "nvim-lualine/lualine.nvim",
         config = function()
             require('lualine').setup {
