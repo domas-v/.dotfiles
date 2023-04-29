@@ -139,6 +139,7 @@ alias dot="cd ~/Dotfiles"
 alias wrk="cd ~/Work/"
 alias lmda="cd ~/Work/tenspeed-lambda/"
 alias pr="cd ~/Personal/"
+alias notes="cd ~/Desktop/Notes/"
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
@@ -150,7 +151,6 @@ alias wrc="n ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
 alias notes="cd ~/Desktop/Notes/"
 
 # git & github
-alias ghst="gh status"
 alias gmm="git merge master"
 alias gupdate="git add . && git commit -m 'Update' && git push"
 
@@ -192,6 +192,3 @@ cd() {
         source venv/bin/activate
     fi
 }
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
