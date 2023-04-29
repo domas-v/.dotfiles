@@ -88,10 +88,5 @@ return {
             })
             auto_dark_mode.init()
         end
-    },
-    {
-        "lukas-reineke/headlines.nvim",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = true
     }
 }
