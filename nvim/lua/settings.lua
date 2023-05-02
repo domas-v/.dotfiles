@@ -1,5 +1,7 @@
 local o          = vim.o  -- global options
 local wo         = vim.wo -- window local options
+local g          = vim.g  -- global variables
+local api        = vim.api
 
 -- line numbers
 wo.linebreak     = true
@@ -31,13 +33,13 @@ o.signcolumn     = "yes"
 o.termguicolors  = true
 
 -- folds
-vim.api.nvim_create_autocmd(
+api.nvim_create_autocmd(
     { "BufEnter" },
     { pattern = { "*" }, command = "normal zx zR" }
 ) -- because of https://github.com/nvim-telescope/telescope.nvim/issues/699
-vim.opt.foldlevel  = 1
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
+o.foldlevel  = 1
+o.foldmethod = "expr"
+o.foldexpr   = "nvim_treesitter#foldexpr()"
 
 -- search
 o.ignorecase       = true
@@ -55,3 +57,8 @@ o.fixendofline     = false              -- don't add new line at end of file
 o.updatetime       = 100
 o.timeoutlen       = 600
 o.lazyredraw       = false
+
+-- providers
+g.loaded_ruby_provider = 0
+g.loaded_perl_provider = 0
+g.python3_host_prog = "~/.pyenv/shims/python"
