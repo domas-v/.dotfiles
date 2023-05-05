@@ -47,14 +47,6 @@ return {
         }
     },
     {
-        "rest-nvim/rest.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require("rest-nvim").setup()
-        end,
-        ft = { "http" },
-    },
-    {
         'rmagatti/auto-session',
         config = function()
             require("auto-session").setup {

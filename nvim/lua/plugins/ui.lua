@@ -66,17 +66,6 @@ return {
         end,
     },
     {
-        'lukas-reineke/indent-blankline.nvim',
-        config = function()
-            require('indent_blankline').setup({
-                space_char_blankline = ' ',
-                show_current_context = true,
-                show_current_context_start = false,
-                filetype_exclude = { 'startup' },
-            })
-        end
-    },
-    {
         'romgrk/barbar.nvim',
         lazy = false,
         dependencies = 'kyazdani42/nvim-web-devicons',
@@ -164,13 +153,5 @@ return {
             })
         end,
         dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
-    },
-    {
-        'anuvyklack/pretty-fold.nvim',
-        config = function()
-            require('pretty-fold').setup({
-                fill_char = " ",
-            })
-        end
     }
 }
