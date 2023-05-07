@@ -140,6 +140,7 @@ alias wrk="cd ~/Work/"
 alias lmda="cd ~/Work/tenspeed-lambda/"
 alias pr="cd ~/Personal/"
 alias notes="cd ~/Desktop/Notes/"
+alias desktop="cd ~/Desktop/"
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
