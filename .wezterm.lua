@@ -20,13 +20,14 @@ end
 
 local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
-        return "Kanagawa (Gogh)"
+        return "Catppuccin Mocha"
     else
         return "Catppuccin Latte"
     end
 end
 
 config.color_scheme = scheme_for_appearance(get_appearance())
+config.colors = { background = 'black' }
 
 config.font = wezterm.font { family = "JetBrains Mono", }
 config.font_size = 12.0

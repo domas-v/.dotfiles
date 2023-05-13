@@ -9,6 +9,11 @@ export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 export VISUAL="nvim"
 export EDITOR="$VISUAL"
 
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Work
+source ~/.pyenv/versions/3.11.2/bin/virtualenvwrapper.sh
+
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -174,22 +179,3 @@ alias i="ipython"
 alias pv="python --version"
 alias pw="which python"
 
-## python virtualenvs
-a() {
-    if [[ -d ".venv" ]]; then
-        source .venv/bin/activate
-    elif [[ -d "venv" ]]; then
-        source venv/bin/activate
-    else
-        echo "No venv"
-    fi
-}
-
-cd() {
-    builtin cd $1
-    if [[ -d ".venv" ]]; then
-        source .venv/bin/activate
-    elif [[ -d "venv" ]]; then
-        source venv/bin/activate
-    fi
-}
