@@ -70,7 +70,7 @@ return {
         lazy = false,
         dependencies = 'kyazdani42/nvim-web-devicons',
         opts = {
-            icons = { pinned = { button = "車" } },
+            icons = { pinned = { button = "📌" } },
             insert_at_end = true,
         },
         keys = {
@@ -84,7 +84,10 @@ return {
             { "<leader>3",  "<cmd>BufferGoto 3<cr>" },
             { "<leader>4",  "<cmd>BufferGoto 4<cr>" },
             { "<leader>5",  "<cmd>BufferGoto 5<cr>" },
-            { "<leader>0",  "<cmd>BufferLast<cr>" },
+            { "<leader>6",  "<cmd>BufferGoto 5<cr>" },
+            { "<leader>7",  "<cmd>BufferGoto 5<cr>" },
+            { "<leader>8",  "<cmd>BufferGoto 5<cr>" },
+            { "<leader>9",  "<cmd>BufferLast<cr>" },
             { "<leader>xx", "<cmd>BufferClose<cr>" },
             { "<leader>xo", "<cmd>BufferCloseAllButCurrent<cr>" },
             { "<leader>xj", "<cmd>BufferCloseBuffersLeft<cr>" },

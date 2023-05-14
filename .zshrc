@@ -183,6 +183,6 @@ alias pw="which python"
 function cd() {
   builtin cd "$@" && \
   if [[ -n $(ls -aD ~/.virtualenvs | grep $(basename $(pwd))) ]]; then
-    source ~/.virtualenvs/$(basename $(pwd))/bin/activate
+    workon $(basename $(pwd))
   fi
 }
