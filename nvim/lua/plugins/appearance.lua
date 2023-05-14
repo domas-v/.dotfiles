@@ -36,22 +36,37 @@ return {
         name = "catppuccin",
         config =
         function()
-            -- local telescopeBorderless = function(flavor)
-            --     local cp = require("catppuccin.palettes").get_palette(flavor)
-            --     return {
-            --         TelescopeBorder = { fg = cp.surface0, bg = cp.surface0 },
-            --         TelescopeSelectionCaret = { fg = cp.flamingo, bg = cp.surface1 },
-            --         TelescopeMatching = { fg = cp.peach },
-            --         TelescopeNormal = { bg = cp.surface0 },
-            --         TelescopeSelection = { fg = cp.text, bg = cp.surface1 },
-            --         TelescopeMultiSelection = { fg = cp.text, bg = cp.surface2 },
-            --         TelescopeTitle = { fg = cp.crust, bg = cp.green },
-            --         TelescopePreviewTitle = { fg = cp.crust, bg = cp.red },
-            --         TelescopePromptTitle = { fg = cp.crust, bg = cp.mauve },
-            --         TelescopePromptNormal = { fg = cp.flamingo, bg = cp.crust },
-            --         TelescopePromptBorder = { fg = cp.crust, bg = cp.crust },
-            --     }
-            -- end
+            local telescopeBorderless = function(flavor)
+                local cp = require("catppuccin.palettes").get_palette(flavor)
+                if flavor == "mocha" then
+                    return {
+                        TelescopeBorder = { fg = cp.surface0, bg = "#000000" },
+                        TelescopeSelectionCaret = { fg = cp.flamingo, bg = "#000000" },
+                        TelescopeMatching = { fg = cp.peach },
+                        TelescopeNormal = { bg = "#000000" },
+                        TelescopeSelection = { fg = cp.text, bg = cp.surface1 },
+                        TelescopeMultiSelection = { fg = cp.text, bg = cp.surface2 },
+                        TelescopeTitle = { fg = "#000000", bg = cp.green },
+                        TelescopePreviewTitle = { fg = "#000000", bg = cp.red },
+                        TelescopePromptTitle = { fg = "#000000", bg = cp.mauve },
+                        TelescopePromptNormal = { fg = cp.flamingo, bg = "#000000" },
+                        TelescopePromptBorder = { fg = "#000000", bg = "#000000" },
+                    }
+                end
+                return {
+                    TelescopeBorder = { fg = cp.surface0, bg = cp.surface0 },
+                    TelescopeSelectionCaret = { fg = cp.flamingo, bg = cp.surface1 },
+                    TelescopeMatching = { fg = cp.peach },
+                    TelescopeNormal = { bg = cp.surface0 },
+                    TelescopeSelection = { fg = cp.text, bg = cp.surface1 },
+                    TelescopeMultiSelection = { fg = cp.text, bg = cp.surface2 },
+                    TelescopeTitle = { fg = cp.crust, bg = cp.green },
+                    TelescopePreviewTitle = { fg = cp.crust, bg = cp.red },
+                    TelescopePromptTitle = { fg = cp.crust, bg = cp.mauve },
+                    TelescopePromptNormal = { fg = cp.flamingo, bg = cp.crust },
+                    TelescopePromptBorder = { fg = cp.crust, bg = cp.crust },
+                }
+            end
             require("catppuccin").setup({
                 color_overrides = {
                     mocha = {
@@ -61,18 +76,10 @@ return {
                     },
                 },
                 highlight_overrides = {
-                    mocha = function(C)
-                        return {
-                            TabLineSel = { bg = C.pink },
-                            CmpBorder = { fg = C.surface2 },
-                            Pmenu = { bg = C.none },
-                            TelescopeBorder = { link = "FloatBorder" },
-                        }
-                    end,
-                    -- latte = telescopeBorderless('latte'),
-                    -- frappe = telescopeBorderless('frappe'),
-                    -- macchiato = telescopeBorderless('macchiato'),
-                    -- mocha = telescopeBorderless('mocha'),
+                    latte = telescopeBorderless('latte'),
+                    frappe = telescopeBorderless('frappe'),
+                    macchiato = telescopeBorderless('macchiato'),
+                    mocha = telescopeBorderless('mocha'),
                 },
                 integrations = {
                     notify = true,
