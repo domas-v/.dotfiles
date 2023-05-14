@@ -179,3 +179,10 @@ alias i="ipython"
 alias pv="python --version"
 alias pw="which python"
 
+# virtualenvs
+function cd() {
+  builtin cd "$@" && \
+  if [[ -n $(ls -aD ~/.virtualenvs | grep $(basename $(pwd))) ]]; then
+    source ~/.virtualenvs/$(basename $(pwd))/bin/activate
+  fi
+}
