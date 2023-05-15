@@ -31,7 +31,7 @@ end
 config.color_scheme = scheme_for_appearance(get_appearance())
 
 config.font = wezterm.font { family = "JetBrains Mono", }
-config.font_size = 12.0
+config.font_size = 13.0
 
 -- keybindings
 local act = wezterm.action
