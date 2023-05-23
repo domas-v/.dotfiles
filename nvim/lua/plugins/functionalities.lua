@@ -20,16 +20,19 @@ return {
                     guile = {
                         command = { "racket", "-i" }
                     },
+                    python = {
+                        command = { "ipython" }
+                    },
                 },
                 keymaps = {
-                    send_motion = "<space>ic",
-                    visual_send = "<space>ic",
                     send_file = "<space>if",
+                    send_motion = "<space>im",
+                    visual_send = "<space><cr>",
                     send_line = "<space><cr>",
-                    clear = "<space>iL",
-                    -- cr = "<space><cr>",
+                    clear = "<space>il",
                     interrupt = "<space>ix",
                     exit = "<space>iq",
+                    -- cr = "<space><cr>",
                 },
                 highlight = {
                     italic = true
