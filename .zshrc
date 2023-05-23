@@ -154,6 +154,7 @@ alias src="source ~/.zshrc"
 alias zrc="n ~/Dotfiles/.zshrc"
 alias nrc="n ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
 alias wrc="n ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
+alias krc="n ~/Dotfiles/kitty/kitty.conf -c \"lcd%:p:h\""
 alias notes="cd ~/Desktop/Notes/"
 
 # git & github
