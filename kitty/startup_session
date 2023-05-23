@@ -1,0 +1,13 @@
+layout splits
+cd ~
+launch --title "Home" zsh
+
+new_tab Dotfiles
+layout splits
+cd ~/Dotfiles/
+launch zsh
+
+new_tab tenspeed-lambda
+layout splits
+cd ~/Work/tenspeed-lambda/
+launch zsh
