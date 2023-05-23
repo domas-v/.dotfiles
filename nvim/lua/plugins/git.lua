@@ -42,6 +42,10 @@ return {
             'nvim-telescope/telescope.nvim',
             'kyazdani42/nvim-web-devicons',
         },
-        config = function() require "octo".setup() end
+        config = function() require "octo".setup() end,
+        keys = {
+            { "<leader>gh", "<cmd>Octo pr list<cr>", desc = "Octo list pr" },
+            { "<leader>gH", "<cmd>Octo pr create<cr>",   desc = "Octo create pr" },
+        }
     }
 }
