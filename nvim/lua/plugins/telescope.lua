@@ -103,7 +103,7 @@ return {
             { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",                  desc = "Current buffer" },
             { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                             desc = "Live grep" },
             { "<leader>F",  "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser" },
-            { "<leader>f.", "<cmd>Telescope file_browser", desc = "File browser" },
+            { "<leader>f.", "<cmd>Telescope file_browser<cr>",                               desc = "File browser" },
 
             -- utils
             { "<leader>f,", "<cmd>Telescope vim_options<cr>",                                desc = "Options" },
