@@ -61,8 +61,8 @@ map("n", "<leader>O", "<cmd>only<cr>")
 -- tabs
 map("n", "<C-w>t", "<cmd>tab split<cr>")
 map("n", "<C-w>x", "<cmd>tabclose<cr>")
-map("n", "<leader>tt", "<cmd>tab split<cr>")
-map("n", "<leader>tx", "<cmd>tabclose<cr>")
+-- map("n", "<leader>tt", "<cmd>tab split<cr>")
+-- map("n", "<leader>tx", "<cmd>tabclose<cr>")
 
 -- HTTP:
 map("n", "<leader>hh", "<cmd>lua require('rest-nvim').run()<CR>", { desc = "Run request" })
