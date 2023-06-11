@@ -62,9 +62,6 @@ return {
                     sort_lastused = true,
                     sorting_strategy = "ascending",
                 },
-                pickers = {
-                    find_files = { theme = "ivy" },
-                },
                 extensions = {
                     fzf = {
                         fuzzy = true,
@@ -123,6 +120,7 @@ return {
             { "<leader>fy", "<cmd>Telescope neoclip<cr>",                                    desc = "Clipboard" },
             { "<leader>fj", "<cmd>Telescope jumplist<cr>",                                   desc = "Jumplist" },
             { "<leader>b",  "<cmd>Telescope buffers<cr>",                                    desc = "Buffers" },
+            { "<leader>,",  "<cmd>Telescope buffers<cr>",                                    desc = "Buffers" },
         },
         cmd = { "Telescope" },
     }
