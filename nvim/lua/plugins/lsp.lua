@@ -126,7 +126,6 @@ return {
             vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, {})
             vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, {})
 
-
             ------- COMPLETION -----
             cmp.setup.cmdline({ "/", "?" }, {
                 mapping = {
