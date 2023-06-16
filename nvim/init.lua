@@ -24,7 +24,7 @@ require("lazy").setup("plugins", {
 local current_theme = vim.fn.system('defaults read -g AppleInterfaceStyle')
 current_theme = string.gsub(current_theme, "\n", "")
 if (current_theme == "Dark") then
-    vim.cmd('colorscheme catppuccin-mocha')
+    vim.cmd('colorscheme kanagawa')
 else
     vim.cmd('colorscheme kanagawa-lotus')
 end
