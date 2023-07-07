@@ -74,7 +74,7 @@ config.keys = {
 
     -- pane navigation
     { key = 'S',     mods = 'CMD',       action = act.PaneSelect },
-    { key = 'm',     mods = 'CMD',       action = act.TogglePaneZoomState },
+    { key = 'm',     mods = 'CMD|SHIFT',       action = act.TogglePaneZoomState },
     { key = 'w',     mods = 'CMD',       action = act.CloseCurrentPane { confirm = false } },
     { key = 'Enter', mods = 'CMD',       action = act.SplitHorizontal },
     { key = 'Enter', mods = 'CMD|SHIFT', action = act.SplitHorizontal { cwd = "~" } },
