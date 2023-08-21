@@ -179,6 +179,7 @@ alias ipy="ipython"
 alias i="ipython"
 alias pv="python --version"
 alias pw="which python"
+alias pua="pip uninstall -y -r <(pip freeze)"
 
 # virtualenvs
 function cd() {
