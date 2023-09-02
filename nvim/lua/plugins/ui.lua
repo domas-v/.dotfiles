@@ -34,27 +34,18 @@ return {
             }
         end
     },
-    -- {
-    --     "nvim-neo-tree/neo-tree.nvim",
-    --     branch = "v2.x",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "MunifTanjim/nui.nvim",
-    --     },
-    --     config = function()
-    --         vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-    --     end,
-    --     keys = {
-    --         { "<leader>,",  "<cmd>Neotree buffers<cr>", desc = "Buffer list" },
-    --         { "<leader>tt", "<cmd>Neotree<cr>",         desc = "Neotree" }
-    --     }
-    -- },
     {
-        'simrat39/symbols-outline.nvim',
-        config = function() require('symbols-outline').setup() end,
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+        end,
         keys = {
-            { "<leader>>", "<cmd>SymbolsOutline<cr>", desc = "SymbolsOutline" },
-            { "<leader>.", "<cmd>SymbolsOutline<cr>", desc = "SymbolsOutline" },
+            { "<leader><TAB>", "<cmd>Neotree<cr>",         desc = "Neotree" }
         }
     },
     {
@@ -132,44 +123,4 @@ return {
         ft = 'qf',
         dependencies = { 'junegunn/fzf', build = function() vim.fn['fzf#install']() end }
     },
-    {
-        "folke/zen-mode.nvim",
-        config = function() require("zen-mode").setup() end,
-        keys = {
-            { "<leader><leader>z", "<cmd>ZenMode<cr>", desc = "Zen mode" }
-        }
-    },
-    {
-        "folke/noice.nvim",
-        config = function()
-            require("noice").setup({
-                messages = {
-                    enabled = false
-                },
-                lsp = {
-                    override = {
-                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                        ["vim.lsp.util.stylize_markdown"] = true,
-                        ["cmp.entry.get_documentation"] = true,
-                    },
-                },
-                presets = {
-                    bottom_search = true,
-                    -- command_palette = false,
-                    long_message_to_split = true,
-                    inc_rename = true,
-                    lsp_doc_border = true,
-                },
-                views = {
-                    cmdline_popup = {
-                        position = {
-                            row = "35%",
-                            col = "50%"
-                        },
-                    }
-                }
-            })
-        end,
-        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
-    }
 }

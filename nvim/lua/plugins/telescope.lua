@@ -79,18 +79,12 @@ return {
                             },
                         },
                     },
-                    file_browser = {
-                        theme = "ivy",
-                        hijack_netrw = true,
-                    }
                 }
             })
 
             require("telescope").load_extension("fzf")
             require("telescope").load_extension("neoclip")
             require("telescope").load_extension("live_grep_args")
-            require("telescope").load_extension("session-lens")
-            require("telescope").load_extension("file_browser")
         end,
         keys = {
             -- file searching
@@ -99,8 +93,6 @@ return {
             { "<leader>fo", "<cmd>Telescope old_files<cr>",                                  desc = "Old files" },
             { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",                  desc = "Current buffer" },
             { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                             desc = "Live grep" },
-            { "<leader>F",  "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser" },
-            { "<leader>f.", "<cmd>Telescope file_browser<cr>",                               desc = "File browser" },
 
             -- utils
             { "<leader>f,", "<cmd>Telescope vim_options<cr>",                                desc = "Options" },
@@ -116,7 +108,6 @@ return {
             { "<leader>ft", "<cmd>TodoTelescope<cr>",                                        desc = "Todo" },
 
             -- misc
-            { "<leader>fs", "<cmd>Telescope session-lens search_session<cr>",                desc = "Sessions" },
             { "<leader>fy", "<cmd>Telescope neoclip<cr>",                                    desc = "Clipboard" },
             { "<leader>fj", "<cmd>Telescope jumplist<cr>",                                   desc = "Jumplist" },
             { "<leader>b",  "<cmd>Telescope buffers<cr>",                                    desc = "Buffers" },
