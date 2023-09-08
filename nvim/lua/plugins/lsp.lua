@@ -61,6 +61,7 @@ return {
             local cmp = require("cmp")
             local cmp_select = { behavior = cmp.SelectBehavior.Select }
             local null_ls = require("null-ls")
+            local navic = require("nvim-navic")
 
             --- LSP SETUP ---
             lsp.configure("pyright", {
@@ -87,7 +88,7 @@ return {
                 })
             })
 
-            lsp.on_attach(function(_, bufnr)
+            lsp.on_attach(function(client, bufnr)
                 local opts = { buffer = bufnr, remap = false }
 
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -98,6 +99,10 @@ return {
                 vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts)
                 vim.keymap.set("v", "<leader>cf", vim.lsp.buf.range_formatting, opts)
                 vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+
+                if client.server_capabilities.documentSymbolProvider then
+                    navic.attach(client, bufnr)
+                end
             end)
 
             lsp.nvim_workspace() -- Configure lua language server for neovim

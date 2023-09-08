@@ -35,6 +35,10 @@ return {
         end
     },
     {
+        "SmiteshP/nvim-navic",
+        dependencies = "neovim/nvim-lspconfig"
+    },
+    {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
         dependencies = {
@@ -45,7 +49,7 @@ return {
             vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
         end,
         keys = {
-            { "<leader><TAB>", "<cmd>Neotree<cr>",         desc = "Neotree" }
+            { "<leader><TAB>", "<cmd>Neotree<cr>", desc = "Neotree" }
         }
     },
     {
