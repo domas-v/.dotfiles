@@ -58,7 +58,4 @@ return {
             }
         end
     },
-    -- {
-    --     TODO: harpoon.nvim
-    -- }
 }

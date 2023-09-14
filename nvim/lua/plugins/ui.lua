@@ -122,9 +122,9 @@ return {
             { "<leader>wr", "<cmd>WinResizerStartResize<cr>", desc = "Win resize mode" }
         }
     },
-    {
-        'kevinhwang91/nvim-bqf',
-        ft = 'qf',
-        dependencies = { 'junegunn/fzf', build = function() vim.fn['fzf#install']() end }
-    },
+    -- {
+    --     'kevinhwang91/nvim-bqf',
+    --     ft = 'qf',
+    --     dependencies = { 'junegunn/fzf', build = function() vim.fn['fzf#install']() end }
+    -- },
 }
