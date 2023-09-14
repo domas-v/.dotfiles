@@ -47,6 +47,42 @@ return {
         end,
     },
     {
+        "loctvl842/breadcrumb.nvim",
+    },
+    {
+        "folke/noice.nvim",
+        config = function()
+            require("noice").setup({
+                messages = {
+                    enabled = false
+                },
+                lsp = {
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        ["cmp.entry.get_documentation"] = true,
+                    },
+                },
+                presets = {
+                    bottom_search = true,
+                    -- command_palette = false,
+                    long_message_to_split = true,
+                    inc_rename = true,
+                    lsp_doc_border = true,
+                },
+                views = {
+                    cmdline_popup = {
+                        position = {
+                            row = "35%",
+                            col = "50%"
+                        },
+                    }
+                }
+            })
+        end,
+        dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
+    },
+    {
         'folke/trouble.nvim',
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function() require('trouble').setup() end,
