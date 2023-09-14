@@ -35,6 +35,18 @@ return {
         end
     },
     {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        keys = {
+            { "<leader>tt", "<cmd>NvimTreeToggle<cr>", desc = "NvimTreeToggle" },
+            { "<leader>tr", "<cmd>NvimTreeRefresh<cr>", desc = "NvimTreeRefresh" },
+        },
+        config = function()
+            require("nvim-tree").setup {}
+        end,
+    },
+    {
         'folke/trouble.nvim',
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function() require('trouble').setup() end,
