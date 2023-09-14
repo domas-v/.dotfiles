@@ -35,24 +35,6 @@ return {
         end
     },
     {
-        "SmiteshP/nvim-navic",
-        dependencies = "neovim/nvim-lspconfig"
-    },
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-        end,
-        keys = {
-            { "<leader><TAB>", "<cmd>Neotree<cr>", desc = "Neotree" }
-        }
-    },
-    {
         'folke/trouble.nvim',
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function() require('trouble').setup() end,
@@ -69,7 +51,6 @@ return {
                     TODO = { icon = " ", color = "info", alt = { "STYLE" } },
                     HACK = { icon = " ", color = "warning", alt = { "TEMP", "TEMPORARY" } },
                     WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-                    PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
                     NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
                 },
             })
@@ -87,8 +68,6 @@ return {
             { "<leader>*",  "<cmd>BufferPin<cr>" },
             { "<leader>n",  "<cmd>BufferNext<cr>" },
             { "<leader>p",  "<cmd>BufferPrevious<cr>" },
-            { "<leader>]",  "<cmd>BufferMoveNext<cr>" },
-            { "<leader>[",  "<cmd>BufferMovePrevious<cr>" },
             { "<leader>1",  "<cmd>BufferGoto 1<cr>" },
             { "<leader>2",  "<cmd>BufferGoto 2<cr>" },
             { "<leader>3",  "<cmd>BufferGoto 3<cr>" },
@@ -98,11 +77,17 @@ return {
             { "<leader>7",  "<cmd>BufferGoto 5<cr>" },
             { "<leader>8",  "<cmd>BufferGoto 5<cr>" },
             { "<leader>9",  "<cmd>BufferLast<cr>" },
+
             { "<leader>xx", "<cmd>BufferClose<cr>" },
             { "<leader>xo", "<cmd>BufferCloseAllButCurrent<cr>" },
             { "<leader>xj", "<cmd>BufferCloseBuffersLeft<cr>" },
             { "<leader>xk", "<cmd>BufferCloseBuffersRight<cr>" },
             { "<leader>x*", "<cmd>BufferCloseAllButPinned<cr>" },
+
+            { "<leader>]",  "<cmd>BufferMoveNext<cr>" },
+            { "<leader>[",  "<cmd>BufferMovePrevious<cr>" },
+            -- TODO: move to start { "<leader>[",  "<cmd>BufferMoveStart<cr>" },
+            -- TODO: group by *something* { "<leader>[",  "<cmd>Buffer<cr>" },
         }
     },
     {
@@ -121,10 +106,5 @@ return {
         keys = {
             { "<leader>wr", "<cmd>WinResizerStartResize<cr>", desc = "Win resize mode" }
         }
-    },
-    -- {
-    --     'kevinhwang91/nvim-bqf',
-    --     ft = 'qf',
-    --     dependencies = { 'junegunn/fzf', build = function() vim.fn['fzf#install']() end }
-    -- },
+    }
 }
