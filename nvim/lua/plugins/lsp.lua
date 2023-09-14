@@ -27,7 +27,7 @@ return {
             "neovim/nvim-lspconfig",
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            "jose-elias-alvarez/null-ls.nvim",
+            "mfussenegger/nvim-lint",
 
             -- Autocompletion
             "hrsh7th/nvim-cmp",
@@ -52,15 +52,10 @@ return {
 
             lsp.ensure_installed({
                 "pyright",
-                "lua_ls",
-                "jsonls",
-                "bashls",
-                "marksman",
             })
 
             local cmp = require("cmp")
             local cmp_select = { behavior = cmp.SelectBehavior.Select }
-            local null_ls = require("null-ls")
 
             --- LSP SETUP ---
             lsp.configure("pyright", {
@@ -98,26 +93,23 @@ return {
                 vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts)
                 vim.keymap.set("v", "<leader>cf", vim.lsp.buf.range_formatting, opts)
                 vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-
             end)
 
             lsp.nvim_workspace() -- Configure lua language server for neovim
             lsp.setup()
 
-            ----- DIAGNOSTICS -----
-            null_ls.setup({
-                sources = {
-                    -- python
-                    null_ls.builtins.formatting.black,
-                    null_ls.builtins.diagnostics.flake8,
+            ----- LINTING -----
+            require('lint').linters_by_ft = {
+                python = {'flake8'}
+            }
 
-                    -- other
-                    null_ls.builtins.diagnostics.luacheck.with({
-                        args = { "--globals", "vim" },
-                    }),
-                },
+            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+                callback = function()
+                    require("lint").try_lint()
+                end,
             })
 
+            ----- DIAGNOSTICS -----
             vim.diagnostic.config({ virtual_text = true })
             vim.keymap.set("n", "<leader>dv", vim.diagnostic.open_float, {})
             vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, {})
