@@ -115,10 +115,6 @@ return {
                     null_ls.builtins.diagnostics.luacheck.with({
                         args = { "--globals", "vim" },
                     }),
-                    null_ls.builtins.diagnostics.shellcheck,
-                    null_ls.builtins.diagnostics.markdownlint.with({
-                        args = { "--stdin", "--disable", "MD013", "MD034", "MD007" },
-                    }),
                 },
             })
 
