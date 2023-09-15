@@ -90,8 +90,8 @@ return {
                 vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
                 vim.keymap.set("n", "<leader>cn", vim.lsp.buf.rename, opts)
-                vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts)
-                vim.keymap.set("v", "<leader>cf", vim.lsp.buf.range_formatting, opts)
+                -- vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts)
+                -- vim.keymap.set("v", "<leader>cf", vim.lsp.buf.range_formatting, opts)
                 vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
             end)
 
@@ -153,5 +153,33 @@ return {
                 },
             })
         end,
+    },
+    {
+        'stevearc/conform.nvim',
+        opts = {},
+        lazy = false,
+        config = function()
+            require("conform").setup({
+                formatters_by_ft = {
+                    python = { "black", "isort" },
+                },
+            })
+
+            vim.api.nvim_create_user_command("Format", function(args)
+                local range = nil
+                if args.count ~= -1 then
+                    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+                    range = {
+                        start = { args.line1, 0 },
+                        ["end"] = { args.line2, end_line:len() },
+                    }
+                end
+                require("conform").format({ async = true, lsp_fallback = true, range = range })
+            end, { range = true })
+        end,
+        keys = {
+            { "<leader>cf", ":Format<CR>", desc = "Format the current buffer", silent = true },
+            { "<leader>cf", ":Format<CR>", desc = "Format selection", mode = "v", silent = true},
+        },
     }
 }
