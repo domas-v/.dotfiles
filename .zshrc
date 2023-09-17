@@ -138,15 +138,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# config shortcuts
 alias cat="bat"
 alias t="touch"
 alias conf="cd ~/.config"
 alias dot="cd ~/Dotfiles"
-alias wrk="cd ~/Work/"
 alias lmda="cd ~/Work/tenspeed-lambda/"
-alias pr="cd ~/Personal/"
-alias notes="cd ~/Desktop/Notes/"
-alias desktop="cd ~/Desktop/"
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
@@ -156,7 +153,8 @@ alias zrc="n ~/Dotfiles/.zshrc"
 alias nrc="n ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
 alias wrc="n ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
 alias krc="n ~/Dotfiles/kitty/kitty.conf -c \"lcd%:p:h\""
-alias notes="cd ~/Desktop/Notes/"
+alias ybrc="n ~/.config/yabai/yabairc -c \"lcd%:p:h\""
+alias skrc="n ~/.config/skhd/skhdrc -c \"lcd%:p:h\""
 
 # git & github
 alias gmm="git merge master"
@@ -174,12 +172,9 @@ alias lD="exa -laD --level=2 --git"
 
 # python
 alias py="python"
-alias e="exit"
 alias dd="deactivate"
 alias ipy="ipython"
 alias i="ipython"
-alias pv="python --version"
-alias pw="which python"
 alias pua="pip uninstall -y -r <(pip freeze)"
 
 # virtualenvs
