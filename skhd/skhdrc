@@ -1,14 +1,14 @@
 
 # --- APP KEYBINDINGS
-alt - e : open -a kitty.app
-alt - d : open -a Safari.app
+alt - r : open -a kitty.app
+alt - e : open -a Safari.app
 alt - f : open -a Finder.app
-alt - a : open -a Reminders.app
+alt - t : open -a Reminders.app
 alt - v : open -a Mail.app
 alt - b : open -a Calendar.app
-alt - z : open -a Messages.app
-alt - x : open -a Messenger.app
-alt - c : open -a Slack.app
+alt - x : open -a Slack.app
+alt - q : open -a Messages.app
+shift + alt - q : open -a Messenger.app
 
 # --- WINDOWS WITHIN SPACE 
 # change window focus within space
@@ -16,6 +16,11 @@ alt - j : yabai -m window --focus south
 alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
+
+alt - s : yabai -m window --focus south
+alt - w : yabai -m window --focus north
+alt - a : yabai -m window --focus west
+alt - d : yabai -m window --focus east
 
 # alt - n : yabai -m window --focus next
 # alt - p : yabai -m window --focus prev
@@ -25,6 +30,11 @@ shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
 shift + alt - h : yabai -m window --swap west
 shift + alt - l : yabai -m window --swap east
+
+shift + alt - s : yabai -m window --swap south
+shift + alt - w : yabai -m window --swap north
+shift + alt - a : yabai -m window --swap west
+shift + alt - d : yabai -m window --swap east
 
 # move window and split
 # shift + alt - j : yabai -m window --warp south
@@ -38,10 +48,15 @@ ctrl + alt - j : yabai -m window --resize bottom:0:40 2> /dev/null || yabai -m w
 ctrl + alt - k : yabai -m window --resize bottom:0:-40 2> /dev/null || yabai -m window --resize top:0:-40 2> /dev/null
 ctrl + alt - l : yabai -m window --resize right:40:0 2> /dev/null || yabai -m window --resize left:40:0 2> /dev/null
 
+ctrl + alt - a : yabai -m window --resize right:-40:0 2> /dev/null || yabai -m window --resize left:-40:0 2> /dev/null
+ctrl + alt - s : yabai -m window --resize bottom:0:40 2> /dev/null || yabai -m window --resize top:0:40 2> /dev/null
+ctrl + alt - w : yabai -m window --resize bottom:0:-40 2> /dev/null || yabai -m window --resize top:0:-40 2> /dev/null
+ctrl + alt - d : yabai -m window --resize right:40:0 2> /dev/null || yabai -m window --resize left:40:0 2> /dev/null
+
 # --- DISPLAYS
 # change focus between external displays (left and right)
-cmd + ctrl - z: yabai -m display --focus west
-cmd + ctrl - c: yabai -m display --focus east
+alt - z: yabai -m display --focus west
+alt - c: yabai -m display --focus east
 
 # move window to display left and right
 shift + alt - z : yabai -m window --display west; yabai -m display --focus west;
