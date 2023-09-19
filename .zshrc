@@ -153,8 +153,8 @@ alias zrc="n ~/Dotfiles/.zshrc"
 alias nrc="n ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
 alias wrc="n ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
 alias krc="n ~/Dotfiles/kitty/kitty.conf -c \"lcd%:p:h\""
-alias ybrc="n ~/.config/yabai/yabairc -c \"lcd%:p:h\""
-alias skrc="n ~/.config/skhd/skhdrc -c \"lcd%:p:h\""
+alias ybrc="n ~/Dotfiles/yabai/yabairc -c \"lcd%:p:h\""
+alias skrc="n ~/Dotfiles/skhd/skhdrc -c \"lcd%:p:h\""
 
 # git & github
 alias gmm="git merge master"
