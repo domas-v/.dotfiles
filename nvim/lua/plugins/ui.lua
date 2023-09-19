@@ -114,6 +114,10 @@ return {
         }
     },
     {
+        'kevinhwang91/nvim-bqf',
+        ft = 'qf'
+    },
+    {
         'simeji/winresizer',
         keys = {
             { "<leader>wr", "<cmd>WinResizerStartResize<cr>", desc = "Win resize mode" }
