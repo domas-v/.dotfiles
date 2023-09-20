@@ -1,7 +1,8 @@
 
 # --- APP KEYBINDINGS
-alt - r : open -a kitty.app
-alt - e : open -a Safari.app
+alt - e : open -a kitty.app
+shift + alt - e : open -a Logseq.app
+alt - r : open -a Safari.app
 alt - f : open -a Finder.app
 alt - t : open -a Reminders.app
 alt - v : open -a Mail.app
@@ -81,11 +82,10 @@ shift + alt - r : yabai -m space --rotate 270
 
 # window layouts
 shift+ alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
-shift + alt - g : yabai -m space --balance
 
 # toggle space layouts
-shift + alt - s : yabai -m space --layout stack
-shift + alt - b : yabai -m space --layout bsp
+shift + alt - v : yabai -m space --layout stack
+shift + alt - g : yabai -m space --layout bsp
 shift + alt - f : yabai -m window --toggle zoom-fullscreen
 
 # --- UTILS
