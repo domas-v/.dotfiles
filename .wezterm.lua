@@ -30,7 +30,7 @@ config.font = wezterm.font { family = "JetBrains Mono", }
 config.font_size = 13.0
 
 -- window appearance
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000
@@ -124,17 +124,61 @@ config.keys = {
             end) }
     },
 
+    -- tab navigation
+    { key = 'a',     mods = 'CMD|SHIFT',       action = act.ShowTabNavigator },
+    { key = 't',     mods = 'CMD|SHIFT',       action = act.SpawnCommandInNewTab { cwd = "~", } },
+    { key = 'w',     mods = 'CMD|SHIFT',       action = act.CloseCurrentTab { confirm = true } },
+    { key = 'n',     mods = 'CMD',       action = act.ActivateTabRelative(1) },
+    { key = 'p',     mods = 'CMD',       action = act.ActivateTabRelative(-1) },
+    { key = '[',     mods = 'CMD',       action = act.MoveTabRelative(-1) },
+    { key = ']',     mods = 'CMD',       action = act.MoveTabRelative(1) },
+
+    -- pane navigation
+    { key = 's',     mods = 'CMD|SHIFT',       action = act.PaneSelect },
+    { key = 'm',     mods = 'CMD|SHIFT',       action = act.TogglePaneZoomState },
+    { key = 'w',     mods = 'CMD',       action = act.CloseCurrentPane { confirm = false } },
+    { key = 'Enter', mods = 'CMD',       action = act.SplitHorizontal },
+    { key = 'Enter', mods = 'CMD|SHIFT', action = act.SplitHorizontal { cwd = "~" } },
+    {
+        key = 'v',
+        mods = 'CMD|SHIFT',
+        action = act.SplitPane {
+            direction = 'Right',
+            size = { Percent = 50 }, }
+    },
+
+    { key = 'Enter', mods = 'CMD|CTRL',  action = act.SplitVertical },
+    {
+        key = 's',
+        mods = 'CMD|SHIFT',
+        action = act.SplitPane {
+            direction = 'Down',
+            size = { Percent = 30 }, }
+    },
+
+    { key = 'h',     mods = 'CMD',       action = act.ActivatePaneDirection 'Left' },
+    { key = 'j',     mods = 'CMD',       action = act.ActivatePaneDirection 'Down' },
+    { key = 'k',     mods = 'CMD',       action = act.ActivatePaneDirection 'Up' },
+    { key = 'l',     mods = 'CMD',       action = act.ActivatePaneDirection 'Right' },
+    { key = 'h',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Left', 5 } },
+    { key = 'j',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Down', 5 } },
+    { key = 'k',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Up', 5 } },
+    { key = 'l',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Right', 5 } },
+    { key = 'h',     mods = 'CMD|SHIFT', action = act.RotatePanes 'Clockwise' },
+    { key = 'l',     mods = 'CMD|SHIFT', action = act.RotatePanes 'CounterClockwise', },
+
+
     -- workspaces
     {
         key = 'u',
-        mods = 'CMD|SHIFT',
+        mods = 'CMD|CTRL',
         action = act.ShowLauncherArgs {
             flags = 'FUZZY|WORKSPACES',
         }
     },
     {
         key = 'u',
-        mods = 'CMD|CTRL',
+        mods = 'CMD|OPT',
         action = act.PromptInputLine {
             description = wezterm.format {
                 { Attribute = { Intensity = 'Bold' } },
@@ -156,49 +200,9 @@ config.keys = {
             end),
         },
     },
+    { key = 'n', mods = 'CMD|CTRL', action = act.SwitchWorkspaceRelative(1) },
+    { key = 'p', mods = 'CMD|CTRL', action = act.SwitchWorkspaceRelative(-1) },
 
-    -- tab navigation
-    { key = 'a',     mods = 'CMD|SHIFT',       action = act.ShowTabNavigator },
-    { key = 't',     mods = 'CMD|SHIFT',       action = act.SpawnCommandInNewTab { cwd = "~", } },
-    { key = 'w',     mods = 'CMD|SHIFT',       action = act.CloseCurrentTab { confirm = true } },
-    { key = 'n',     mods = 'CMD',       action = act.ActivateTabRelative(1) },
-    { key = 'p',     mods = 'CMD',       action = act.ActivateTabRelative(-1) },
-    { key = '[',     mods = 'CMD',       action = act.MoveTabRelative(-1) },
-    { key = ']',     mods = 'CMD',       action = act.MoveTabRelative(1) },
-
-    -- pane navigation
-    { key = 's',     mods = 'CMD|SHIFT',       action = act.PaneSelect },
-    { key = 'm',     mods = 'CMD|SHIFT',       action = act.TogglePaneZoomState },
-    { key = 'w',     mods = 'CMD',       action = act.CloseCurrentPane { confirm = false } },
-    { key = 'Enter', mods = 'CMD',       action = act.SplitHorizontal },
-    { key = 'Enter', mods = 'CMD|SHIFT', action = act.SplitHorizontal { cwd = "~" } },
-    {
-        key = 'v',
-        mods = 'CMD|CTRL',
-        action = act.SplitPane {
-            direction = 'Right',
-            size = { Percent = 50 }, }
-    },
-
-    { key = 'Enter', mods = 'CMD|CTRL',  action = act.SplitVertical },
-    {
-        key = 's',
-        mods = 'CMD|CTRL',
-        action = act.SplitPane {
-            direction = 'Down',
-            size = { Percent = 30 }, }
-    },
-
-    { key = 'h',     mods = 'CMD',       action = act.ActivatePaneDirection 'Left' },
-    { key = 'j',     mods = 'CMD',       action = act.ActivatePaneDirection 'Down' },
-    { key = 'k',     mods = 'CMD',       action = act.ActivatePaneDirection 'Up' },
-    { key = 'l',     mods = 'CMD',       action = act.ActivatePaneDirection 'Right' },
-    { key = 'h',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Left', 5 } },
-    { key = 'j',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Down', 5 } },
-    { key = 'k',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Up', 5 } },
-    { key = 'l',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Right', 5 } },
-    { key = 'h',     mods = 'CMD|SHIFT', action = act.RotatePanes 'Clockwise' },
-    { key = 'l',     mods = 'CMD|SHIFT', action = act.RotatePanes 'CounterClockwise', },
 }
 
 return config
