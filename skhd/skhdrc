@@ -1,6 +1,6 @@
 
 # --- APP KEYBINDINGS
-alt - e : open -a kitty.app
+alt - e : open -a WezTerm.app
 shift + alt - e : open -a Logseq.app
 alt - r : open -a Safari.app
 alt - f : open -a Finder.app
