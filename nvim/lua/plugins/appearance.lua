@@ -3,7 +3,7 @@ return {
         "rebelot/kanagawa.nvim",
         config = function()
             require("kanagawa").setup({
-                transparent = false,
+                transparent = true,
                 colors = {
                     theme = {
                         all = {
