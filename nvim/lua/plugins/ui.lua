@@ -35,6 +35,16 @@ return {
         end
     },
     {
+        "utilyre/barbecue.nvim",
+        version = "*",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+        },
+        config = function()
+            require("barbecue").setup()
+        end,
+    },
+    {
         "nvim-tree/nvim-tree.lua",
         version = "*",
         lazy = false,
