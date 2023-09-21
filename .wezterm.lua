@@ -6,62 +6,97 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
+-- colorscheme
+-- switch theme based on system appearance
+-- local function get_appearance()
+--     if wezterm.gui then
+--         return wezterm.gui.get_appearance()
+--     end
+--     return 'Dark'
+-- end
+-- local function scheme_for_appearance(appearance)
+--     if appearance:find 'Dark' then
+--         -- config.colors = { background = 'black' }
+--         return "kanagawabones"
+--     else
+--         -- config.colors = { background = '#F2ECBC' }
+--         return "Catppuccin Latte"
+--     end
+-- end
+config.color_scheme = "kanagawabones" -- scheme_for_appearance(get_appearance())
 
--- functionality
-config.enable_scroll_bar = true
-
--- appearance
-local function get_appearance()
-    if wezterm.gui then
-        return wezterm.gui.get_appearance()
-    end
-    return 'Dark'
-end
-
-local function scheme_for_appearance(appearance)
-    if appearance:find 'Dark' then
-        -- config.colors = { background = 'black' }
-        return "kanagawabones"
-    else
-        -- config.colors = { background = '#F2ECBC' }
-        return "Catppuccin Latte"
-    end
-end
-
-config.color_scheme = scheme_for_appearance(get_appearance())
-
+-- font
 config.font = wezterm.font { family = "JetBrains Mono", }
 config.font_size = 13.0
-config.window_decorations = "RESIZE"  -- remove title bar
 
-config.use_fancy_tab_bar = true
+-- window appearance
+config.window_background_opacity = 0.9
+config.window_decorations = "RESIZE"
+config.window_close_confirmation = "AlwaysPrompt"
+config.scrollback_lines = 3000
+config.default_workspace = "main"
+
+-- tab bar
+config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
-config.window_frame = {
-  font = wezterm.font { family = 'JetBrains Mono', weight = 'Bold' },
+config.status_update_interval = 1000
+wezterm.on("update-status", function(window, pane)
+    local stat = window:active_workspace()
+    local stat_color = "#f7768e"
 
-  -- The size of the font in the tab bar.
-  -- Default to 10.0 on Windows but 12.0 on other systems
-  font_size = 11.0,
+    if window:active_key_table() then
+        stat = window:active_key_table()
+        stat_color = "#7dcfff"
+    end
+    if window:leader_is_active() then
+        stat = "LDR"
+        stat_color = "#bb9af7"
+    end
 
-  -- The overall background color of the tab bar when
-  -- the window is focused
-  active_titlebar_bg = '#1F1F2A',
+    -- Current working directory
+    local basename = function(s)
+        -- Nothing a little regex can't fix
+        return string.gsub(s, "(.*[/\\])(.*)", "%2")
+    end
+    -- CWD and CMD could be nil (e.g. viewing log using Ctrl-Alt-l). Not a big deal, but check in case
+    local cwd = pane:get_current_working_dir()
+    cwd = cwd and basename(cwd) or ""
+    -- Current command
+    local cmd = pane:get_foreground_process_name()
+    cmd = cmd and basename(cmd) or ""
 
-  -- The overall background color of the tab bar when
-  -- the window is not focused
-  inactive_titlebar_bg = '#333333',
-}
+      -- Left status (left of the tab line)
+      window:set_left_status(wezterm.format({
+          { Foreground = { Color = stat_color } },
+          { Text = "  " },
+          { Text = wezterm.nerdfonts.oct_table .. "  " .. stat },
+          { Text = " |" },
+      }))
+       -- Right status
+       window:set_right_status(wezterm.format({
+           -- Wezterm has a built-in nerd fonts
+           -- https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
+           { Text = wezterm.nerdfonts.md_folder .. "  " .. cwd },
+           { Text = " | " },
+           { Foreground = { Color = "#e0af68" } },
+           { Text = wezterm.nerdfonts.fa_code .. "  " .. cmd },
+           "ResetAttributes",
+           { Text = "  " },
+       }))
+end)
 
-config.colors = {
-  tab_bar = {
-    -- The color of the inactive tab bar edge/divider
-    inactive_tab_edge = '#000000',
+---------- keybindings ----------
+local act = wezterm.action
+config.leader = { key = 'a', mods = 'CMD' }
+
+config.mouse_bindings = {
+    {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'CTRL',
+    action = act.OpenLinkAtMouseCursor,
   },
 }
 
--- keybindings
-local act = wezterm.action
-config.leader = { key = 'a', mods = 'CMD' }
 config.keys = {
     -- utils
     { key = 'q', mods = 'CTRL',     action = act.DisableDefaultAssignment },
@@ -78,7 +113,7 @@ config.keys = {
     { key = "f", mods = "CTRL|SHIFT",     action = wezterm.action { SendString = "\x1bf" } },
     { key = "b", mods = "CTRL|SHIFT",     action = wezterm.action { SendString = "\x1bb" } },
     {
-        key = 'E',
+        key = 'e',
         mods = 'CMD',
         action = act.QuickSelectArgs {
             label = 'open url',
@@ -87,6 +122,39 @@ config.keys = {
                 local url = window:get_selection_text_for_pane(pane)
                 wezterm.open_with(url)
             end) }
+    },
+
+    -- workspaces
+    {
+        key = 'u',
+        mods = 'CMD|SHIFT',
+        action = act.ShowLauncherArgs {
+            flags = 'FUZZY|WORKSPACES',
+        }
+    },
+    {
+        key = 'u',
+        mods = 'CMD|CTRL',
+        action = act.PromptInputLine {
+            description = wezterm.format {
+                { Attribute = { Intensity = 'Bold' } },
+                { Foreground = { AnsiColor = 'Fuchsia' } },
+                { Text = 'Enter name for new workspace' },
+            },
+            action = wezterm.action_callback(function(window, pane, line)
+                -- line will be `nil` if they hit escape without entering anything
+                -- An empty string if they just hit enter
+                -- Or the actual line of text they wrote
+                if line then
+                    window:perform_action(
+                    act.SwitchToWorkspace {
+                        name = line,
+                    },
+                    pane
+                    )
+                end
+            end),
+        },
     },
 
     -- tab navigation
