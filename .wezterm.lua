@@ -34,6 +34,31 @@ config.font = wezterm.font { family = "JetBrains Mono", }
 config.font_size = 13.0
 config.window_decorations = "RESIZE"  -- remove title bar
 
+config.use_fancy_tab_bar = true
+config.tab_bar_at_bottom = true
+config.window_frame = {
+  font = wezterm.font { family = 'JetBrains Mono', weight = 'Bold' },
+
+  -- The size of the font in the tab bar.
+  -- Default to 10.0 on Windows but 12.0 on other systems
+  font_size = 11.0,
+
+  -- The overall background color of the tab bar when
+  -- the window is focused
+  active_titlebar_bg = '#1F1F2A',
+
+  -- The overall background color of the tab bar when
+  -- the window is not focused
+  inactive_titlebar_bg = '#333333',
+}
+
+config.colors = {
+  tab_bar = {
+    -- The color of the inactive tab bar edge/divider
+    inactive_tab_edge = '#000000',
+  },
+}
+
 -- keybindings
 local act = wezterm.action
 config.leader = { key = 'a', mods = 'CMD' }
@@ -42,7 +67,7 @@ config.keys = {
     { key = 'q', mods = 'CTRL',     action = act.DisableDefaultAssignment },
     { key = 'Q', mods = 'CTRL',     action = act.DisableDefaultAssignment },
     { key = ':', mods = 'CMD',      action = act.ActivateCommandPalette },
-    { key = 'x', mods = 'CMD|SHIFT',      action = act.ActivateCopyMode },
+    { key = 'x', mods = 'CMD',      action = act.ActivateCopyMode },
     { key = 'n', mods = 'CMD|SHIFT',      action = act.SpawnWindow },
 
     -- scrolling
