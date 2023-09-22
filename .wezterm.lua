@@ -30,7 +30,7 @@ config.font = wezterm.font { family = "JetBrains Mono", }
 config.font_size = 13.0
 
 -- window appearance
-config.window_background_opacity = 0.95
+-- config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000

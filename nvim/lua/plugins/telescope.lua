@@ -93,6 +93,7 @@ return {
             { "<leader>l",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
             { "<leader>L",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
             { "<leader>j",  "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
+            { "<leader>J",  "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
 
             -- file searching
             { "<leader>ff", "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
