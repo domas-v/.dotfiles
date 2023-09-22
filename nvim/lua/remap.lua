@@ -41,9 +41,11 @@ map('c', '<C-k>', '<LEFT>', { noremap = true })
 map('c', '<C-j>', '<RIGHT>', { noremap = true })
 
 -- search & replace
-map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- word under cursor
-map("v", "<leader>rr", ":s/", { desc = "Search & Replace" })                  -- in visual selection
-map("n", "<leader>rr", ":%s/", { desc = "Search & Replace" })                 -- in whole buffer
+map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])                                                                        -- word under cursor
+map("v", "<leader>rr", ":s/", { desc = "Search & Replace" })                                                                                         -- in visual selection
+map("n", "<leader>rr", ":%s/", { desc = "Search & Replace" })                                                                                        -- in whole buffer
+map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
+    { desc = "Search & Replace" })                                                                                                                   -- in quickfix list
 map("n", "<C-s>", "/")
 map("n", "<C-a>", "?")
 map("i", "<C-s>", "<esc>/")
@@ -60,10 +62,3 @@ map("n", "<leader>O", "<cmd>only<cr>")
 -- tabs
 map("n", "<C-w>t", "<cmd>tab split<cr>")
 map("n", "<C-w>x", "<cmd>tabclose<cr>")
--- map("n", "<leader>tt", "<cmd>tab split<cr>")
--- map("n", "<leader>tx", "<cmd>tabclose<cr>")
-
--- HTTP:
-map("n", "<leader>hh", "<cmd>lua require('rest-nvim').run()<CR>", { desc = "Run request" })
-map("n", "<leader>hv", "<cmd>lua require('rest-nvim').run(true)<CR>", { desc = "Show request in CURL" })
-map("n", "<leader>hl", "<cmd>lua require('rest-nvim').last()<CR>", { desc = "Run last request" })
