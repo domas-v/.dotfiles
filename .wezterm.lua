@@ -8,22 +8,22 @@ end
 
 -- colorscheme
 -- switch theme based on system appearance
--- local function get_appearance()
---     if wezterm.gui then
---         return wezterm.gui.get_appearance()
---     end
---     return 'Dark'
--- end
--- local function scheme_for_appearance(appearance)
---     if appearance:find 'Dark' then
---         -- config.colors = { background = 'black' }
---         return "kanagawabones"
---     else
---         -- config.colors = { background = '#F2ECBC' }
---         return "Catppuccin Latte"
---     end
--- end
-config.color_scheme = "kanagawabones" -- scheme_for_appearance(get_appearance())
+local function get_appearance()
+    if wezterm.gui then
+        return wezterm.gui.get_appearance()
+    end
+    return 'Dark'
+end
+local function scheme_for_appearance(appearance)
+    if appearance:find 'Dark' then
+        -- config.colors = { background = 'black' }
+        return "kanagawabones"
+    else
+        config.colors = { background = '#F2ECBC' }
+        return "Catppuccin Latte"
+    end
+end
+config.color_scheme = scheme_for_appearance(get_appearance())
 
 -- font
 config.font = wezterm.font { family = "JetBrains Mono", }
