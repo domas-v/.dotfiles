@@ -87,31 +87,37 @@ return {
             require("telescope").load_extension("live_grep_args")
         end,
         keys = {
+            -- shortcuts
+            { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
+            { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
+            { "<leader>l",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
+            { "<leader>L",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
+            { "<leader>j",  "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
+
             -- file searching
-            { "<leader>ff", "<cmd>Telescope find_files<cr>",                                 desc = "Find files" },
-            { "<leader>fg", "<cmd>Telescope git_files<cr>",                                  desc = "Git files" },
-            { "<leader>fo", "<cmd>Telescope old_files<cr>",                                  desc = "Old files" },
-            { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",                  desc = "Current buffer" },
-            { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                             desc = "Live grep" },
+            { "<leader>ff", "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
+            { "<leader>fg", "<cmd>Telescope git_files<cr>",                     desc = "Git files" },
+            { "<leader>fo", "<cmd>Telescope oldfiles<cr>",                      desc = "Old files" },
+            { "<leader>fs", "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
+            { "<leader>fS", "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
 
             -- utils
-            { "<leader>f,", "<cmd>Telescope vim_options<cr>",                                desc = "Options" },
-            { "<leader>fh", "<cmd>Telescope help_tags<cr>",                                  desc = "Help" },
-            { "<leader>fk", "<cmd>Telescope keymaps<cr>",                                    desc = "Keymaps" },
-            { "<leader>fc", "<cmd>Telescope commands<cr>",                                   desc = "Commands" },
+            { "<leader>f,", "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
+            { "<leader>fh", "<cmd>Telescope help_tags<cr>",                     desc = "Help" },
+            { "<leader>fk", "<cmd>Telescope keymaps<cr>",                       desc = "Keymaps" },
+            { "<leader>fc", "<cmd>Telescope commands<cr>",                      desc = "Commands" },
 
             -- lsp
-            { "<leader>l",  "<cmd>Telescope lsp_document_symbols<cr>",                       desc = "LSP symbols" },
-            { "<leader>L",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",              desc = "LSP workspace symbols" },
-            { "<leader>fr", "<cmd>Telescope lsp_references<cr>",                             desc = "LSP references" },
-            { "<leader>fd", "<cmd>Telescope diagnostics<cr>",                                desc = "Diagnostics" },
-            { "<leader>ft", "<cmd>TodoTelescope<cr>",                                        desc = "Todo" },
+            { "<leader>fl", "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
+            { "<leader>fL", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
+            { "<leader>fr", "<cmd>Telescope lsp_references<cr>",                desc = "LSP references" },
+            { "<leader>fd", "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
+            { "<leader>ft", "<cmd>TodoTelescope<cr>",                           desc = "Todo" },
 
             -- misc
-            { "<leader>fy", "<cmd>Telescope neoclip<cr>",                                    desc = "Clipboard" },
-            { "<leader>fj", "<cmd>Telescope jumplist<cr>",                                   desc = "Jumplist" },
-            { "<leader>b",  "<cmd>Telescope buffers<cr>",                                    desc = "Buffers" },
-            { "<leader>,",  "<cmd>Telescope buffers<cr>",                                    desc = "Buffers" },
+            { "<leader>fy", "<cmd>Telescope neoclip<cr>",                       desc = "Clipboard" },
+            { "<leader>fj", "<cmd>Telescope jumplist<cr>",                      desc = "Jumplist" },
+            { "<leader>fb", "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
         },
         cmd = { "Telescope" },
     }
