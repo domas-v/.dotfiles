@@ -104,6 +104,7 @@ config.keys = {
     { key = ':', mods = 'CMD',      action = act.ActivateCommandPalette },
     { key = 'x', mods = 'CMD',      action = act.ActivateCopyMode },
     { key = 'n', mods = 'CMD|SHIFT',      action = act.SpawnWindow },
+    { key = 'c', mods = 'CMD|SHIFT', action = act.SpawnCommandInNewTab { cwd = "/Users/domev/Dotfiles/" } },
 
     -- scrolling
     { key = 'u', mods = 'CMD|CTRL', action = act.ScrollByPage(-0.5) },
@@ -135,7 +136,7 @@ config.keys = {
 
     -- pane navigation
     { key = 's',     mods = 'CMD|SHIFT',       action = act.PaneSelect },
-    { key = 'm',     mods = 'CMD|SHIFT',       action = act.TogglePaneZoomState },
+    { key = 'f',     mods = 'CMD|SHIFT',       action = act.TogglePaneZoomState },
     { key = 'w',     mods = 'CMD',       action = act.CloseCurrentPane { confirm = false } },
     { key = 'Enter', mods = 'CMD',       action = act.SplitHorizontal },
     { key = 'Enter', mods = 'CMD|SHIFT', action = act.SplitHorizontal { cwd = "~" } },
