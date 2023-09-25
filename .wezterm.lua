@@ -38,8 +38,16 @@ config.default_workspace = "main"
 
 -- tab bar
 config.use_fancy_tab_bar = false
+config.tab_max_width = 64
 config.tab_bar_at_bottom = true
 config.status_update_interval = 1000
+config.show_tab_index_in_tab_bar = true
+
+local basename = function(s)
+    -- Current working directory
+    return string.gsub(s, "(.*[/\\])(.*)", "%2")
+end
+
 wezterm.on("update-status", function(window, pane)
     local stat = window:active_workspace()
     local stat_color = "#f7768e"
@@ -53,11 +61,6 @@ wezterm.on("update-status", function(window, pane)
         stat_color = "#bb9af7"
     end
 
-    -- Current working directory
-    local basename = function(s)
-        -- Nothing a little regex can't fix
-        return string.gsub(s, "(.*[/\\])(.*)", "%2")
-    end
     -- CWD and CMD could be nil (e.g. viewing log using Ctrl-Alt-l). Not a big deal, but check in case
     local cwd = pane:get_current_working_dir()
     cwd = cwd and basename(cwd) or ""
@@ -65,25 +68,48 @@ wezterm.on("update-status", function(window, pane)
     local cmd = pane:get_foreground_process_name()
     cmd = cmd and basename(cmd) or ""
 
-      -- Left status (left of the tab line)
-      window:set_left_status(wezterm.format({
-          { Foreground = { Color = stat_color } },
-          { Text = "  " },
-          { Text = wezterm.nerdfonts.oct_table .. "  " .. stat },
-          { Text = " |" },
-      }))
-       -- Right status
-       window:set_right_status(wezterm.format({
-           -- Wezterm has a built-in nerd fonts
-           -- https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
-           { Text = wezterm.nerdfonts.md_folder .. "  " .. cwd },
-           { Text = " | " },
-           { Foreground = { Color = "#e0af68" } },
-           { Text = wezterm.nerdfonts.fa_code .. "  " .. cmd },
-           "ResetAttributes",
-           { Text = "  " },
-       }))
+    -- window:set_left_status(wezterm.format({
+    --     { Foreground = { Color = stat_color } },
+    --     { Text = "  " },
+    --     { Text = wezterm.nerdfonts.oct_table .. "  " .. stat },
+    --     { Text = " |" },
+    -- }))
+    -- window:set_right_status(wezterm.format({
+    --     { Foreground = { Color = stat_color } },
+    --     { Text = wezterm.nerdfonts.md_folder .. "  " .. cwd },
+    --     { Text = " | " },
+    --     { Foreground = { Color = "#e0af68" } },
+    --     { Text = wezterm.nerdfonts.fa_code .. "  " .. cmd },
+    --     "ResetAttributes",
+    --     { Text = "  " },
+    -- }))
 end)
+
+wezterm.on(
+    'format-tab-title',
+    function(tab, tabs, panes, config, hover, max_width)
+        local cmd = basename(tab.active_pane.foreground_process_name)
+        local cwd = basename(tab.active_pane.current_working_dir)
+
+        local cmd_table = {
+            nvim = wezterm.nerdfonts.fa_code .. " ",
+            zsh = wezterm.nerdfonts.fa_terminal .. " ",
+        }
+
+        cmd = cmd_table[cmd]
+
+        if cwd == basename(wezterm.home_dir) then
+            cwd = wezterm.nerdfonts.md_home
+        end
+
+        local title = " " .. cmd .. " " .. cwd .. " "
+
+        return {
+            { Foreground = { Color = "#e0af68" } },
+            { Text = title },
+        }
+    end
+)
 
 ---------- keybindings ----------
 local act = wezterm.action
@@ -91,28 +117,28 @@ config.leader = { key = 'a', mods = 'CMD' }
 
 config.mouse_bindings = {
     {
-    event = { Up = { streak = 1, button = 'Left' } },
-    mods = 'CTRL',
-    action = act.OpenLinkAtMouseCursor,
-  },
+        event = { Up = { streak = 1, button = 'Left' } },
+        mods = 'CTRL',
+        action = act.OpenLinkAtMouseCursor,
+    },
 }
 
 config.keys = {
     -- utils
-    { key = 'q', mods = 'CTRL',     action = act.DisableDefaultAssignment },
-    { key = 'Q', mods = 'CTRL',     action = act.DisableDefaultAssignment },
-    { key = ':', mods = 'CMD',      action = act.ActivateCommandPalette },
-    { key = 'x', mods = 'CMD',      action = act.ActivateCopyMode },
-    { key = 'n', mods = 'CMD|SHIFT',      action = act.SpawnWindow },
-    { key = 'c', mods = 'CMD|SHIFT', action = act.SpawnCommandInNewTab { cwd = "/Users/domev/Dotfiles/" } },
+    { key = 'q', mods = 'CTRL',       action = act.DisableDefaultAssignment },
+    { key = 'Q', mods = 'CTRL',       action = act.DisableDefaultAssignment },
+    { key = ':', mods = 'CMD',        action = act.ActivateCommandPalette },
+    { key = 'x', mods = 'CMD',        action = act.ActivateCopyMode },
+    { key = 'n', mods = 'CMD|SHIFT',  action = act.SpawnWindow },
+    { key = 'c', mods = 'CMD|SHIFT',  action = act.SpawnCommandInNewTab { cwd = "/Users/domev/Dotfiles/" } },
 
     -- scrolling
-    { key = 'u', mods = 'CMD|CTRL', action = act.ScrollByPage(-0.5) },
-    { key = 'd', mods = 'CMD|CTRL', action = act.ScrollByPage(0.5) },
+    { key = 'u', mods = 'CMD|CTRL',   action = act.ScrollByPage(-0.5) },
+    { key = 'd', mods = 'CMD|CTRL',   action = act.ScrollByPage(0.5) },
 
     -- text navigation
-    { key = "f", mods = "CTRL|SHIFT",     action = wezterm.action { SendString = "\x1bf" } },
-    { key = "b", mods = "CTRL|SHIFT",     action = wezterm.action { SendString = "\x1bb" } },
+    { key = "f", mods = "CTRL|SHIFT", action = wezterm.action { SendString = "\x1bf" } },
+    { key = "b", mods = "CTRL|SHIFT", action = wezterm.action { SendString = "\x1bb" } },
     {
         key = 'e',
         mods = 'CMD',
@@ -126,17 +152,17 @@ config.keys = {
     },
 
     -- tab navigation
-    { key = 'a',     mods = 'CMD|SHIFT',       action = act.ShowTabNavigator },
-    { key = 't',     mods = 'CMD|SHIFT',       action = act.SpawnCommandInNewTab { cwd = "~", } },
-    { key = 'w',     mods = 'CMD|SHIFT',       action = act.CloseCurrentTab { confirm = true } },
+    { key = 'a',     mods = 'CMD|SHIFT', action = act.ShowTabNavigator },
+    { key = 't',     mods = 'CMD|SHIFT', action = act.SpawnCommandInNewTab { cwd = "~", } },
+    { key = 'w',     mods = 'CMD|SHIFT', action = act.CloseCurrentTab { confirm = true } },
     { key = 'n',     mods = 'CMD',       action = act.ActivateTabRelative(1) },
     { key = 'p',     mods = 'CMD',       action = act.ActivateTabRelative(-1) },
     { key = '[',     mods = 'CMD',       action = act.MoveTabRelative(-1) },
     { key = ']',     mods = 'CMD',       action = act.MoveTabRelative(1) },
 
     -- pane navigation
-    { key = 's',     mods = 'CMD|SHIFT',       action = act.PaneSelect },
-    { key = 'f',     mods = 'CMD|SHIFT',       action = act.TogglePaneZoomState },
+    { key = 's',     mods = 'CMD|SHIFT', action = act.PaneSelect },
+    { key = 'f',     mods = 'CMD|SHIFT', action = act.TogglePaneZoomState },
     { key = 'w',     mods = 'CMD',       action = act.CloseCurrentPane { confirm = false } },
     { key = 'Enter', mods = 'CMD',       action = act.SplitHorizontal },
     { key = 'Enter', mods = 'CMD|SHIFT', action = act.SplitHorizontal { cwd = "~" } },
@@ -192,10 +218,10 @@ config.keys = {
                 -- Or the actual line of text they wrote
                 if line then
                     window:perform_action(
-                    act.SwitchToWorkspace {
-                        name = line,
-                    },
-                    pane
+                        act.SwitchToWorkspace {
+                            name = line,
+                        },
+                        pane
                     )
                 end
             end),
