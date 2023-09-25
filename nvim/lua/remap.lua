@@ -41,11 +41,11 @@ map('c', '<C-k>', '<LEFT>', { noremap = true })
 map('c', '<C-j>', '<RIGHT>', { noremap = true })
 
 -- search & replace
-map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])                                                                        -- word under cursor
-map("v", "<leader>rr", ":s/", { desc = "Search & Replace" })                                                                                         -- in visual selection
-map("n", "<leader>rr", ":%s/", { desc = "Search & Replace" })                                                                                        -- in whole buffer
+map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])  -- word under cursor
+map("v", "<leader>rr", ":s/", { desc = "Search & Replace" })   -- in visual selection
+map("n", "<leader>rr", ":%s/", { desc = "Search & Replace" })  -- in whole buffer
 map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
-    { desc = "Search & Replace" })                                                                                                                   -- in quickfix list
+    { desc = "Search & Replace" })  -- in quickfix list
 map("n", "<C-s>", "/")
 map("n", "<C-a>", "?")
 map("i", "<C-s>", "<esc>/")
