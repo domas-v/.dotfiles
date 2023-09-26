@@ -1,8 +1,8 @@
 
 # --- APP KEYBINDINGS
-alt - e : open -a WezTerm.app
+alt - e : open -a kitty.app
 shift + alt - e : open -a Logseq.app
-alt - r : open -a Safari.app
+alt - r : open -a "Brave Browser.app"
 alt - f : open -a Finder.app
 alt - t : open -a Reminders.app
 alt - v : open -a Mail.app
@@ -51,9 +51,9 @@ ctrl + alt - d : yabai -m window --resize right:40:0 2> /dev/null || yabai -m wi
 alt - n:  yabai -m space --focus next;
 alt - p:  yabai -m space --focus prev;
 
-# move window to prev and next space
-shift + alt - p : yabai -m window --space prev;
-shift + alt - n : yabai -m window --space next;
+# move space next/prev
+shift + alt - p : yabai -m space --move prev
+shift + alt - n : yabai -m space --move next
 
 # move window to space
 shift + alt - 1 : yabai -m window --space 1;
