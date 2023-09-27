@@ -56,3 +56,4 @@ yabai -m rule --add app="^Notes$" manage=off
 yabai -m rule --add app="^Bitwarden$" manage=off
 yabai -m rule --add app="^Transmission$" manage=off
 yabai -m rule --add app="^Authy Desktop$" manage=off
+yabai -m rule --add app="^NordPass$" manage=off
