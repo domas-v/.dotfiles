@@ -49,7 +49,7 @@ return {
         version = "*",
         lazy = false,
         keys = {
-            { "<leader>tt", "<cmd>NvimTreeToggle<cr>", desc = "NvimTreeToggle" },
+            { "<leader>tt", "<cmd>NvimTreeToggle<cr>",  desc = "NvimTreeToggle" },
             { "<leader>tr", "<cmd>NvimTreeRefresh<cr>", desc = "NvimTreeRefresh" },
         },
         config = function()
@@ -82,10 +82,11 @@ return {
         'romgrk/barbar.nvim',
         lazy = false,
         dependencies = 'kyazdani42/nvim-web-devicons',
-        opts = {
-            icons = { pinned = { button = "📌" } },
-            insert_at_end = true,
-        },
+        config = function()
+            require("barbar").setup({
+                animation = false,
+            })
+        end,
         keys = {
             { "<leader>*",  "<cmd>BufferPin<cr>" },
             { "<leader>n",  "<cmd>BufferNext<cr>" },
@@ -102,14 +103,17 @@ return {
 
             { "<leader>xx", "<cmd>BufferClose<cr>" },
             { "<leader>xo", "<cmd>BufferCloseAllButCurrent<cr>" },
+            { "<leader>xf", "<cmd>BufferPickDelete<cr>" },
             { "<leader>xj", "<cmd>BufferCloseBuffersLeft<cr>" },
             { "<leader>xk", "<cmd>BufferCloseBuffersRight<cr>" },
             { "<leader>x*", "<cmd>BufferCloseAllButPinned<cr>" },
 
             { "<leader>]",  "<cmd>BufferMoveNext<cr>" },
             { "<leader>[",  "<cmd>BufferMovePrevious<cr>" },
-            -- TODO: move to start { "<leader>[",  "<cmd>BufferMoveStart<cr>" },
-            -- TODO: group by *something* { "<leader>[",  "<cmd>Buffer<cr>" },
+
+            { "<leader>bs", "<cmd>BufferMoveStart<cr>" },
+            { "<leader>bw", "<cmd>BufferOrderByWindowNumber<cr>" },
+            { "<leader>bb", "<cmd>BufferPick<cr>" },
         }
     },
     {
