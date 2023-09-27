@@ -59,8 +59,7 @@ return {
     {
         'folke/trouble.nvim',
         dependencies = 'kyazdani42/nvim-web-devicons',
-        config = function() require('trouble').setup() end,
-        keys = { { "<leader>dl", "<cmd>TroubleToggle<cr>", desc = "TroubleToggle" } }
+        config = function() require('trouble').setup() end
     },
     {
         'folke/todo-comments.nvim',
@@ -129,7 +128,7 @@ return {
             { "<leader>bs", "<cmd>BufferMoveStart<cr>" },
             { "<leader>bw", "<cmd>BufferOrderByWindowNumber<cr>" },
             { "<leader>bf", "<cmd>BufferPick<cr>" },
-            { "<C-e>",      "<cmd>BufferPick<cr>" },
+            { "<C-f>",      "<cmd>BufferPick<cr>" },
         }
     },
     {
