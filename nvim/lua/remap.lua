@@ -24,8 +24,9 @@ map("n", "<C-;>", ":lua ", { desc = 'Enter lua command' })
 map("n", "J", "mzJ`z", { desc = 'Join lines' })
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
-map("n", "<C-e>", "<C-u>zz")
+
 map("n", "<leader>q", "<cmd>close<cr>")
+map("n", "<C-q>", "<cmd>close<cr>")
 map("n", "<leader>Q", "<cmd>qa<cr>")
 map("n", "<esc>", "<cmd>nohl<cr>")
 map("n", "<leader><leader>w", "<cmd>set wrap!<cr>")
@@ -46,19 +47,24 @@ map("v", "<leader>rr", ":s/", { desc = "Search & Replace" })   -- in visual sele
 map("n", "<leader>rr", ":%s/", { desc = "Search & Replace" })  -- in whole buffer
 map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
     { desc = "Search & Replace" })  -- in quickfix list
-map("n", "<C-s>", "/")
-map("n", "<C-a>", "?")
-map("i", "<C-s>", "<esc>/")
-map("i", "<C-a>", "<esc>?")
 
 -- windows/buffers
-map("i", "<C-s>", "<esc>/")
 map("n", "<leader>wv", ":vert sb ")
 map("n", "<leader>ws", ":sbuffer ")
 map("n", "<leader>wo", "<cmd>only<cr>")
 map("n", "<leader>X", "<cmd>bd! %<cr>")
 map("n", "<leader>O", "<cmd>only<cr>")
 
+-- TODO: think of use cases for <C-f>, <C-b>, <C-g>
+
+-- splits
+map({'n', 'i'}, "<C-h>", "<C-w>h")
+map({'n', 'i'}, "<C-j>", "<C-w>j")
+map({'n', 'i'}, "<C-k>", "<C-w>k")
+map({'n', 'i'}, "<C-l>", "<C-w>l")
+
 -- tabs
-map("n", "<C-w>t", "<cmd>tab split<cr>")
+map("n", "<C-t>", "<cmd>tab split<cr>")
+map("n", "<C-w><C-t>", "<cmd>tab split<cr>")
 map("n", "<C-w>x", "<cmd>tabclose<cr>")
+map("n", "<C-w><C-x>", "<cmd>tabclose<cr>")

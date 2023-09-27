@@ -35,8 +35,12 @@ return {
     },
     {
         "mg979/vim-visual-multi",
+        init = function()
+            vim.g.VM_maps = {
+                ["Find Under"] = "<C-a>"
+            }
+        end,
         lazy = false,
-        keys = { { "<C-n>" } }
     },
     {
         'lukas-reineke/indent-blankline.nvim',
