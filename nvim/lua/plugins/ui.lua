@@ -90,8 +90,8 @@ return {
             { "<leader>*",  "<cmd>BufferPin<cr>" },
             { "<leader>n",  "<cmd>BufferNext<cr>" },
             { "<leader>p",  "<cmd>BufferPrevious<cr>" },
-            { "<C-n>",      "<cmd>BufferNext<cr>" },
-            { "<C-p>",      "<cmd>BufferPrevious<cr>" },
+            { "<C-f>",      "<cmd>BufferNext<cr>" },
+            { "<C-b>",      "<cmd>BufferPrevious<cr>" },
 
             { "<leader>1",  "<cmd>BufferGoto 1<cr>" },
             { "<leader>2",  "<cmd>BufferGoto 2<cr>" },
@@ -128,7 +128,7 @@ return {
             { "<leader>bs", "<cmd>BufferMoveStart<cr>" },
             { "<leader>bw", "<cmd>BufferOrderByWindowNumber<cr>" },
             { "<leader>bf", "<cmd>BufferPick<cr>" },
-            { "<C-f>",      "<cmd>BufferPick<cr>" },
+            { "<C-e>",      "<cmd>BufferPick<cr>" },
         }
     },
     {
