@@ -64,7 +64,8 @@ map({'n', 'i'}, "<C-k>", "<C-w>k")
 map({'n', 'i'}, "<C-l>", "<C-w>l")
 
 -- tabs
-map("n", "<C-t>", "<cmd>tab split<cr>")
+map("n", "<C-w>t", "<cmd>tab split<cr>")
 map("n", "<C-w><C-t>", "<cmd>tab split<cr>")
+
 map("n", "<C-w>x", "<cmd>tabclose<cr>")
 map("n", "<C-w><C-x>", "<cmd>tabclose<cr>")

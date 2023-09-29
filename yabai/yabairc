@@ -20,13 +20,7 @@ yabai -m config window_zoom_persist on
 # window border
 yabai -m config window_border on
 yabai -m config window_border_blur off
-
-# padding set to 12px
-yabai -m config top_padding 15
-yabai -m config bottom_padding 15
-yabai -m config left_padding 15
-yabai -m config right_padding 15
-yabai -m config window_gap 15
+yabai -m config window_gap 5
 
 # --- MOUSE
 # center mouse on window with focus

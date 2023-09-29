@@ -6,7 +6,6 @@ return {
             "MunifTanjim/nui.nvim",
             "kyazdani42/nvim-web-devicons",
             "nvim-telescope/telescope-live-grep-args.nvim",
-            "nvim-telescope/telescope-file-browser.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
             { "AckslD/nvim-neoclip.lua",                  config = function() require("neoclip").setup() end, },
         },
