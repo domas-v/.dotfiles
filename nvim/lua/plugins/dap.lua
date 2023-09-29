@@ -71,7 +71,7 @@ return {
             { "<leader>de", "<cmd>lua require('dapui').eval()<cr>",   desc = "DAP Eval" },
 
             -- floats
-            { "<leader>db", "<cmd>lua require('dapui').float_element('breakpoints')<cr>", desc = "Toggle DAP Breakpoints" },
+            { "<leader>db",  "<cmd>lua require('dapui').float_element('breakpoints')<cr>", desc = "Toggle DAP Breakpoints" },
             { "<leader>dff", "<cmd>lua require('dapui').float_element()<cr>", desc = "Toggle DAP Float element" },
             { "<leader>dfb", "<cmd>lua require('dapui').float_element('breakpoints')<cr>", desc = "Toggle DAP Breakpoints" },
             { "<leader>dfs", "<cmd>lua require('dapui').float_element('scopes')<cr>",  desc = "Toggle DAP Scopes" },
