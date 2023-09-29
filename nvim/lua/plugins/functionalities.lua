@@ -58,4 +58,7 @@ return {
             }
         end
     },
+    {
+        "knubie/vim-kitty-navigator"
+    }
 }

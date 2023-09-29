@@ -55,13 +55,7 @@ map("n", "<leader>wo", "<cmd>only<cr>")
 map("n", "<leader>X", "<cmd>bd! %<cr>")
 map("n", "<leader>O", "<cmd>only<cr>")
 
--- TODO: think of use cases for <C-f>, <C-b>, <C-g>
-
--- splits
-map({'n', 'i'}, "<C-h>", "<C-w>h")
-map({'n', 'i'}, "<C-j>", "<C-w>j")
-map({'n', 'i'}, "<C-k>", "<C-w>k")
-map({'n', 'i'}, "<C-l>", "<C-w>l")
+-- TODO: think of use cases for <C-b>, <C-g>
 
 -- tabs
 map("n", "<C-w>t", "<cmd>tab split<cr>")
