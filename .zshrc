@@ -148,6 +148,7 @@ nnn_cd()
 
 trap nnn_cd EXIT
 
+export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG='f:fzopen;v:preview-tui'
 
 # config shortcuts
