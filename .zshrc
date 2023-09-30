@@ -147,14 +147,13 @@ alias lmda="cd ~/Work/tenspeed-lambda/"
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
-alias n="env TERM=wezterm nvim"
 alias src="source ~/.zshrc"
-alias zrc="n ~/Dotfiles/.zshrc"
-alias nrc="n ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
-alias wrc="n ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
-alias krc="n ~/Dotfiles/kitty/kitty.conf -c \"lcd%:p:h\""
-alias ybrc="n ~/Dotfiles/yabai/yabairc -c \"lcd%:p:h\""
-alias skrc="n ~/Dotfiles/skhd/skhdrc -c \"lcd%:p:h\""
+alias zrc="v ~/Dotfiles/.zshrc"
+alias nrc="v~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
+alias wrc="v~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
+alias krc="v~/Dotfiles/kitty/kitty.conf -c \"lcd%:p:h\""
+alias ybrc="v~/Dotfiles/yabai/yabairc -c \"lcd%:p:h\""
+alias skrc="v~/Dotfiles/skhd/skhdrc -c \"lcd%:p:h\""
 
 # git & github
 alias gmm="git merge master"
