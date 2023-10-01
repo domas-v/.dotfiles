@@ -148,14 +148,34 @@ trap nnn_cd EXIT
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG='f:fzopen;v:preview-tui'
 
-
 # fzf config
+# TODO: config fzf to use fd instead of find
 export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=1 --git --icons {} | head -200'"
-bindkey "^o" "fzf-cd-widget"
 bindkey "^q" "fzf-cd-widget"
+bindkey -s "^o" "fzf -m | xargs -o nvim\r"
+alias f="fzf"
+alias fv="fzf -m | xargs -o nvim"
+
+# viewing files and directories
+z() {
+    # Check if the file is an image (you can add more image file extensions if needed)
+    if [[ "$1" =~ \.(png|jpg|jpeg|gif|bmp|ico|webp)$ ]]; then
+        kitty +kitten icat "$1"
+    # Check if the file is a video or audio file
+    elif [[ "$1" =~ \.(mp4|mkv|webm|mov|mp3|wav|flac|ogg|avi|wmv|mpg|mpeg|3gp)$ ]]; then
+        mpv "$1"
+    # Check if the file is a pdf
+    elif [[ "$1" =~ \.(pdf)$ ]]; then
+        ~/Dotfiles/termpdf.py/termpdf.py "$1"
+    # Check if it's a directory
+    elif [[ -d "$1" ]]; then
+        exa -lT --level=1 --git
+    else
+        bat "$1"
+    fi
+}
 
 # config shortcuts
-alias cat="bat"
 alias t="touch"
 alias conf="cd ~/.config"
 alias dot="cd ~/Dotfiles"
@@ -165,11 +185,11 @@ alias lmda="cd ~/Work/tenspeed-lambda/"
 alias v="nvim -c \"lcd%:p:h\""
 alias src="source ~/.zshrc"
 alias zrc="v ~/Dotfiles/.zshrc"
-alias nrc="v~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
-alias wrc="v~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
-alias krc="v~/Dotfiles/kitty/kitty.conf -c \"lcd%:p:h\""
-alias ybrc="v~/Dotfiles/yabai/yabairc -c \"lcd%:p:h\""
-alias skrc="v~/Dotfiles/skhd/skhdrc -c \"lcd%:p:h\""
+alias nrc="v ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
+alias wrc="v ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
+alias krc="v ~/Dotfiles/kitty/kitty.conf -c \"lcd%:p:h\""
+alias ybrc="v ~/Dotfiles/yabai/yabairc -c \"lcd%:p:h\""
+alias skrc="v ~/Dotfiles/skhd/skhdrc -c \"lcd%:p:h\""
 
 # git & github
 alias gmm="git merge master"
@@ -189,7 +209,6 @@ alias lD="exa -laD --level=2 --git"
 alias py="python"
 alias dd="deactivate"
 alias ipy="ipython"
-alias i="ipython"
 alias pua="pip uninstall -y -r <(pip freeze)"
 
 # virtualenvs
