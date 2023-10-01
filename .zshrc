@@ -104,9 +104,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
 # nnn config
 n ()
 {
@@ -150,6 +147,12 @@ trap nnn_cd EXIT
 
 export NNN_FIFO="/tmp/nnn.fifo"
 export NNN_PLUG='f:fzopen;v:preview-tui'
+
+
+# fzf config
+export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=1 --git --icons {} | head -200'"
+bindkey "^o" "fzf-cd-widget"
+bindkey "^q" "fzf-cd-widget"
 
 # config shortcuts
 alias cat="bat"
