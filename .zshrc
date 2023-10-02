@@ -157,19 +157,29 @@ alias f="fzf"
 alias fv="fzf -m | xargs -o nvim"
 
 # viewing files and directories
-z() {
+e() {
+    # Check if no arguments passed
+    if [[ $# -eq 0 ]]; then
+        # Open the current directory if no arguments passed
+        exa -la --git
     # Check if the file is an image (you can add more image file extensions if needed)
-    if [[ "$1" =~ \.(png|jpg|jpeg|gif|bmp|ico|webp)$ ]]; then
+    elif [[ "$1" =~ \.(png|jpg|jpeg|gif|bmp|ico|webp)$ ]]; then
         kitty +kitten icat "$1"
     # Check if the file is a video or audio file
     elif [[ "$1" =~ \.(mp4|mkv|webm|mov|mp3|wav|flac|ogg|avi|wmv|mpg|mpeg|3gp)$ ]]; then
         mpv "$1"
+    # Check if the file is an epub
+    elif [[ "$1" =~ \.(epub)$ ]]; then
+        zathura "$1"
     # Check if the file is a pdf
     elif [[ "$1" =~ \.(pdf)$ ]]; then
-        ~/Dotfiles/termpdf.py/termpdf.py "$1"
+        sioyek "$1"
     # Check if it's a directory
     elif [[ -d "$1" ]]; then
-        exa -lT --level=1 --git
+        exa -la --git
+    # Check if it's markdown
+    elif [[ "$1" =~ \.(md)$ ]]; then
+        glow "$1"
     else
         bat "$1"
     fi
