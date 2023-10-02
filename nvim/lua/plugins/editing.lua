@@ -46,9 +46,7 @@ return {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
             require('ibl').setup({
-                space_char_blankline = ' ',
                 scope = { enabled = true },
-                filetype_exclude = { 'startup' },
             })
         end
     },
