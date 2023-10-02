@@ -52,6 +52,7 @@ return {
 
             lsp.ensure_installed({
                 "pyright",
+                "marksman"
             })
 
             local cmp = require("cmp")

@@ -31,6 +31,7 @@ o.showmatch      = true -- show bracket macthing
 o.scrolloff      = 8
 o.signcolumn     = "yes"
 o.termguicolors  = true
+o.conceallevel   = 2
 
 -- folds
 api.nvim_create_autocmd(
