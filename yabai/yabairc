@@ -1,4 +1,4 @@
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+@REM yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 # debug
@@ -46,8 +46,11 @@ yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Reminders$" manage=off
-yabai -m rule --add app="^Notes$" manage=off
 yabai -m rule --add app="^Bitwarden$" manage=off
 yabai -m rule --add app="^Transmission$" manage=off
 yabai -m rule --add app="^Authy Desktop$" manage=off
+yabai -m rule --add app="^iTerm$" manage=off
 yabai -m rule --add app="^NordPass$" manage=off
+
+# Clean up empty spaces with no windows on them.
+# yabai -m signal --add event=space_changed action="sh ~/Dotfiles/yabai/clean_empty_spaces.sh"
