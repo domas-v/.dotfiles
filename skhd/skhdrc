@@ -6,6 +6,7 @@ alt - r : open -a "Brave Browser.app"
 alt - f : open -a Finder.app
 alt - q : open -a Reminders.app
 alt - v : open -a Slack.app
+alt - b : open -a Messages.app
 
 # --- WINDOWS WITHIN SPACE 
 # change window focus within space
