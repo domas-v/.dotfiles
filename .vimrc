@@ -10,7 +10,6 @@ set autoread
 
 " auto-reload vimrc
 autocmd! bufwritepost vimrc source ~/.vim/vimrc
-"autocmd! bufwritepost gvimrc source ~/.vim/gvimrc
 
 " show the filename in the window titlebar
 set title
@@ -58,6 +57,12 @@ set ofu=syntaxcomplete#Complete
 " make laggy connections work faster
 set ttyfast
 
+" set system clipboard
+set clipboard=unnamed
+
+" quickly remove search highlights
+nmap <ESC> :nohl<CR>
+
 " let vim open up to 100 tabs at once
 set tabpagemax=100
 
@@ -97,17 +102,7 @@ set smartindent
 
 colorscheme slate
 syntax enable
-"set background=dark "uncomment this if your terminal has a dark background
-
-""""""""
-" GVim "
-""""""""
-
-"disable cursor blinking
-set gcr=n:blinkon0
-
-"remove menu bar
-set guioptions-=m
+set background=dark
 
 """""""""""""""""""""
 " Language-Specific "
@@ -115,10 +110,6 @@ set guioptions-=m
 
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
-
-" Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
-au BufRead,BufNewFile *.html.erb set ft=eruby
 
 " Add json syntax highlighting
 au BufNewFile,BufRead *.json set ft=json syntax=javascript
