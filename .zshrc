@@ -6,8 +6,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="/Users/domev/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
-export VISUAL="nvim"
-export EDITOR="nvim"
+export VISUAL="code"
+export EDITOR="vim"
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
