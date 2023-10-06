@@ -1,10 +1,9 @@
 
 # --- APP KEYBINDINGS
 alt - e : open -a "Visual Studio Code.app"
-shift + alt - e : open -a Logseq.app
+shift + alt - e : open -a Obsidian.app
 alt - r : open -a "Brave Browser.app"
 alt - f : open -a Finder.app
-alt - q : open -a Reminders.app
 alt - v : open -a Slack.app
 alt - b : open -a Messages.app
 
