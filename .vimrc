@@ -96,6 +96,12 @@ set autoindent
 " for C-like files
 set smartindent
 
+" spaces instead of tabs
+set tabstop     =4
+set softtabstop =4
+set shiftwidth  =4
+set expandtab
+
 """""""""
 " Theme "
 """""""""
