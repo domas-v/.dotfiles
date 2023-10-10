@@ -8,17 +8,7 @@ export PATH="/Users/domev/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 export VISUAL="code"
 export EDITOR="vim"
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
-
-# virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Work
-source ~/.pyenv/versions/3.11.2/bin/virtualenvwrapper.sh
 
 if type brew &>/dev/null
 then
@@ -112,44 +102,18 @@ bindkey -s "^o" "fzf -m | xargs -o nvim\r"
 alias f="fzf"
 alias fv="fzf -m | xargs -o nvim"
 
-# viewing files and directories
-e() {
-    # Check if no arguments passed
-    if [[ $# -eq 0 ]]; then
-        # Open the current directory if no arguments passed
-        exa -la --git
-    # Check if the file is an image (you can add more image file extensions if needed)
-    elif [[ "$1" =~ \.(png|jpg|jpeg|gif|bmp|ico|webp)$ ]]; then
-        kitty +kitten icat "$1"
-    # Check if the file is a video or audio file
-    elif [[ "$1" =~ \.(mp4|mkv|webm|mov|mp3|wav|flac|ogg|avi|wmv|mpg|mpeg|3gp)$ ]]; then
-        mpv "$1"
-    # Check if the file is an epub
-    elif [[ "$1" =~ \.(epub)$ ]]; then
-        zathura "$1"
-    # Check if the file is a pdf
-    elif [[ "$1" =~ \.(pdf)$ ]]; then
-        sioyek "$1"
-    # Check if it's a directory
-    elif [[ -d "$1" ]]; then
-        exa -la --git
-    # Check if it's markdown
-    elif [[ "$1" =~ \.(md)$ ]]; then
-        glow "$1"
-    else
-        bat "$1"
-    fi
-}
-
 # config shortcuts
 alias t="touch"
+alias cat="bat"
 alias conf="cd ~/.config"
 alias dot="cd ~/Dotfiles"
 alias lmda="cd ~/Work/tenspeed-lambda/"
 
 # neovim
-alias v="nvim -c \"lcd%:p:h\""
+alias v="vim -c \"lcd%:p:h\""
 alias src="source ~/.zshrc"
+alias notes="v ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
+alias vrc="v ~/Dotfiles/.vimrc"
 alias zrc="v ~/Dotfiles/.zshrc"
 alias nrc="v ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
 alias wrc="v ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
@@ -173,14 +137,15 @@ alias lD="exa -laD --level=2 --git"
 
 # python
 alias py="python"
-alias dd="deactivate"
 alias ipy="ipython"
+alias a="source venv/bin/activate"
+alias dd="deactivate"
 alias pua="pip uninstall -y -r <(pip freeze)"
 
 # virtualenvs
 function cd() {
   builtin cd "$@" && \
-  if [[ -n $(ls -aD ~/.virtualenvs | grep $(basename $(pwd))) ]]; then
-    workon $(basename $(pwd))
+  if [[ -e "venv/bin/activate" ]]; then
+  	source venv/bin/activate
   fi
 }
