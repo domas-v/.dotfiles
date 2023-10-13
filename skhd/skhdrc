@@ -1,10 +1,9 @@
 
 # --- APP KEYBINDINGS
 alt - e : open -a "Visual Studio Code.app"
-alt - d : open -a Safari.app
+alt - d : open -a "Brave Browser.app"
 alt - r : open -a Obsidian.app
 alt - a : open -a Reminders.app
-alt - t : open -a Terminal.app
 alt - f : open -a Finder.app
 alt - z : open -a Messages.app
 alt - x : open -a Messenger.app
@@ -37,10 +36,10 @@ shift + alt - r : yabai -m space --rotate 270
 # --- SPACES
 alt - n:  yabai -m space --focus next;
 alt - p:  yabai -m space --focus prev;
-shift + alt - n: yabai -m space --create && \
-                  index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                  yabai -m window --space "${index}" && \
-                  yabai -m space --focus "${index}"
+# shift + alt - n: yabai -m space --create && \
+#                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+#                   yabai -m window --space "${index}" && \
+#                   yabai -m space --focus "${index}"
 
 alt - 1:  yabai -m space --focus 1;
 alt - 2:  yabai -m space --focus 2;
@@ -81,12 +80,12 @@ ctrl + alt - 8 : yabai -m space --swap 8
 
 # --- DISPLAYS
 # change focus between external displays (left and right)
-alt - [ : yabai -m display --focus north
-alt - ] : yabai -m display --focus south
+fn - c : yabai -m display --focus next
+fn - z : yabai -m display --focus prev
 
 # move window to display left and right
-shift + alt - [ : yabai -m window --display north; yabai -m display --focus north;
-shift + alt - ] : yabai -m window --display south; yabai -m display --focus south;
+shift + fn - z : yabai -m window --display next; yabai -m display --focus next;
+shift + fn - c : yabai -m window --display prev; yabai -m display --focus prev;
 
 # toggle space layouts
 shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
