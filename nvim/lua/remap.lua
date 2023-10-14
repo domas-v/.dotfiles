@@ -42,11 +42,12 @@ map('c', '<C-k>', '<LEFT>', { noremap = true })
 map('c', '<C-j>', '<RIGHT>', { noremap = true })
 
 -- search & replace
-map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])  -- word under cursor
-map("v", "<leader>rr", ":s/", { desc = "Search & Replace" })   -- in visual selection
-map("n", "<leader>rr", ":%s/", { desc = "Search & Replace" })  -- in whole buffer
+map("n", "<C-s>", "/") -- word under cursor
+map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- word under cursor
+map("v", "<leader>rr", ":s/", { desc = "Search & Replace" })                  -- in visual selection
+map("n", "<leader>rr", ":%s/", { desc = "Search & Replace" })                 -- in whole buffer
 map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
-    { desc = "Search & Replace" })  -- in quickfix list
+    { desc = "Search & Replace" })                                            -- in quickfix list
 
 -- windows/buffers
 map("n", "<leader>wv", ":vert sb ")
@@ -54,12 +55,14 @@ map("n", "<leader>ws", ":sbuffer ")
 map("n", "<leader>wo", "<cmd>only<cr>")
 map("n", "<leader>X", "<cmd>bd! %<cr>")
 map("n", "<leader>O", "<cmd>only<cr>")
-
--- TODO: think of use cases for <C-b>, <C-g>
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-l>", "<C-w>l")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
 
 -- tabs
-map("n", "<C-w>t", "<cmd>tab split<cr>")
-map("n", "<C-w><C-t>", "<cmd>tab split<cr>")
+map("n", "<C-t>t", "<cmd>tab split<cr>")
+map("n", "<C-t><C-t>", "<cmd>tab split<cr>")
 
-map("n", "<C-w>x", "<cmd>tabclose<cr>")
-map("n", "<C-w><C-x>", "<cmd>tabclose<cr>")
+map("n", "<C-t>x", "<cmd>tabclose<cr>")
+map("n", "<C-t><C-x>", "<cmd>tabclose<cr>")

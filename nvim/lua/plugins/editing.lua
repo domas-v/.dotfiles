@@ -27,13 +27,6 @@ return {
         config = function() require("auto-save").setup({ execution_message = { message = "" } }) end,
     },
     {
-        "smjonas/inc-rename.nvim",
-        config = function() require("inc_rename").setup() end,
-        keys = {
-            { "<leader>rn", ":IncRename ", desc = "Incremental rename" }
-        }
-    },
-    {
         "mg979/vim-visual-multi",
         init = function()
             vim.g.VM_maps = {

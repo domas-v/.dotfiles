@@ -110,7 +110,7 @@ alias dot="cd ~/Dotfiles"
 alias lmda="cd ~/Work/tenspeed-lambda/"
 
 # neovim
-alias v="vim -c \"lcd%:p:h\""
+alias v="nvim -c \"lcd%:p:h\""
 alias src="source ~/.zshrc"
 alias notes="v ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 alias vrc="v ~/Dotfiles/.vimrc"

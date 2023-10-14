@@ -28,6 +28,3 @@ if (current_theme == "Dark") then
 else
     vim.cmd('colorscheme kanagawa-lotus')
 end
-
--- fix for leap.nvim
--- vim.cmd [[highlight LeapBackdrop guifg=#777777]]

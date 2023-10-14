@@ -7,7 +7,6 @@ return {
             "kyazdani42/nvim-web-devicons",
             "nvim-telescope/telescope-live-grep-args.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
-            { "AckslD/nvim-neoclip.lua",                  config = function() require("neoclip").setup() end, },
         },
         config = function()
             local actions = require("telescope.actions")
@@ -82,7 +81,6 @@ return {
             })
 
             require("telescope").load_extension("fzf")
-            require("telescope").load_extension("neoclip")
             require("telescope").load_extension("live_grep_args")
         end,
         keys = {
@@ -93,6 +91,8 @@ return {
             { "<leader>L",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
             { "<leader>j",  "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
             { "<leader>J",  "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
+            { "<C-f>",      "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
+            { "<C-e>",      "<cmd>Telescope buffers<cr>",                       desc = "Find files" },
 
             -- file searching
             { "<leader>ff", "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
@@ -112,12 +112,6 @@ return {
             { "<leader>fL", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
             { "<leader>fr", "<cmd>Telescope lsp_references<cr>",                desc = "LSP references" },
             { "<leader>fd", "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
-            { "<leader>ft", "<cmd>TodoTelescope<cr>",                           desc = "Todo" },
-
-            -- misc
-            { "<leader>fy", "<cmd>Telescope neoclip<cr>",                       desc = "Clipboard" },
-            { "<leader>fj", "<cmd>Telescope jumplist<cr>",                      desc = "Jumplist" },
-            { "<leader>fb", "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
         },
         cmd = { "Telescope" },
     }
