@@ -21,13 +21,15 @@ return {
         end
     },
     {
-        "VonHeikemen/lsp-zero.nvim",
+        "VonHeikemen/lsp-zero.nvim", -- TODO: remove
         dependencies = {
             -- LSP Support
             "neovim/nvim-lspconfig",
+            "mfussenegger/nvim-lint",
+
+            -- TODO: remove
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            "mfussenegger/nvim-lint",
 
             -- Autocompletion
             "hrsh7th/nvim-cmp",

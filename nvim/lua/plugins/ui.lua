@@ -28,11 +28,12 @@ return {
             { "<C-8>",      "<cmd>BufferGoto 8<cr>" },
             { "<C-9>",      "<cmd>BufferLast<cr>" },
 
-            { "<C-x><C-o>", "<cmd>BufferCloseAllButCurrent<cr>" },
-            { "<C-x><C-h>", "<cmd>BufferCloseBuffersLeft<cr>" },
-            { "<C-x><C-l>", "<cmd>BufferCloseBuffersRight<cr>" },
-            { "<C-x><C-x>", "<cmd>BufferClose<cr>" },
-            { "<C-x><C-p>", "<cmd>BufferPickDelete<cr>" },
+            { "<C-x>",      "<cmd>BufferClose<cr>" },
+            { "<leader>xx", "<cmd>BufferClose<cr>" },
+            { "<leader>xo", "<cmd>BufferCloseAllButCurrent<cr>" },
+            { "<leader>xh", "<cmd>BufferCloseBuffersLeft<cr>" },
+            { "<leader>xl", "<cmd>BufferCloseBuffersRight<cr>" },
+            { "<leader>xp", "<cmd>BufferPickDelete<cr>" },
 
             { "<C-]>",      "<cmd>BufferMoveNext<cr>" },
             { "<C-[>",      "<cmd>BufferMovePrevious<cr>" },

@@ -98,9 +98,9 @@ source $ZSH/oh-my-zsh.sh
 # TODO: config fzf to use fd instead of find
 export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=1 --git --icons {} | head -200'"
 bindkey "^q" "fzf-cd-widget"
-bindkey -s "^o" "fzf -m | xargs -o nvim\r"
+bindkey -s "^o" "fzf -m | xargs -o vim\r"
 alias f="fzf"
-alias fv="fzf -m | xargs -o nvim"
+alias fv="fzf -m | xargs -o vim"
 
 # config shortcuts
 alias t="touch"
@@ -108,11 +108,11 @@ alias cat="bat"
 alias conf="cd ~/.config"
 alias dot="cd ~/Dotfiles"
 alias lmda="cd ~/Work/tenspeed-lambda/"
+alias notes="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
 alias src="source ~/.zshrc"
-alias notes="v ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 alias vrc="v ~/Dotfiles/.vimrc"
 alias zrc="v ~/Dotfiles/.zshrc"
 alias nrc="v ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""

@@ -1,5 +1,6 @@
 require("settings")
 
+-- TODO: remove
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -14,17 +15,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("remap")
+
+-- TODO: remove
 require("lazy").setup("plugins", {
     change_detection = {
         notify = false,
     },
 })
 
--- initial colorscheme check
-local current_theme = vim.fn.system('defaults read -g AppleInterfaceStyle')
-current_theme = string.gsub(current_theme, "\n", "")
-if (current_theme == "Dark") then
-    vim.cmd('colorscheme kanagawa')
-else
-    vim.cmd('colorscheme kanagawa-lotus')
-end
+vim.cmd('colorscheme kanagawa')

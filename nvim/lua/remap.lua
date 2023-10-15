@@ -8,9 +8,6 @@ map("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move visual line up' })
 map("v", "<", "<gv", { desc = 'Move visual line left' })
 map("v", ">", ">gv", { desc = 'Move visual line right' })
 
--- escape terminal
-map("t", "<C-x>", "<C-\\><C-n>", { desc = 'Escape terminal' })
-
 -- wrapped line movement
 map("n", "k", "gk")
 map("n", "j", "gj")
@@ -27,7 +24,7 @@ map("n", "<C-u>", "<C-u>zz")
 
 map("n", "<leader>q", "<cmd>close<cr>")
 map("n", "<C-q>", "<cmd>close<cr>")
-map("n", "<leader>Q", "<cmd>qa<cr>")
+map("n", "zq", "<cmd>wqa!<cr>")
 map("n", "<esc>", "<cmd>nohl<cr>")
 map("n", "<leader><leader>w", "<cmd>set wrap!<cr>")
 
@@ -50,19 +47,12 @@ map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><
     { desc = "Search & Replace" })                                            -- in quickfix list
 
 -- windows/buffers
-map("n", "<leader>wv", ":vert sb ")
-map("n", "<leader>ws", ":sbuffer ")
-map("n", "<leader>wo", "<cmd>only<cr>")
-map("n", "<leader>X", "<cmd>bd! %<cr>")
-map("n", "<leader>O", "<cmd>only<cr>")
+map("n", "<C-w><C-x>", "<cmd>bd! %<cr>")
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-l>", "<C-w>l")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 
 -- tabs
-map("n", "<C-t>t", "<cmd>tab split<cr>")
 map("n", "<C-t><C-t>", "<cmd>tab split<cr>")
-
-map("n", "<C-t>x", "<cmd>tabclose<cr>")
 map("n", "<C-t><C-x>", "<cmd>tabclose<cr>")

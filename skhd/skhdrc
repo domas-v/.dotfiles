@@ -1,6 +1,7 @@
 
 # --- APP KEYBINDINGS
 alt - e : open -a "Visual Studio Code.app"
+# alt - e : open -a kitty.app
 alt - d : open -a "Brave Browser.app"
 alt - r : open -a Obsidian.app
 alt - a : open -a Reminders.app
