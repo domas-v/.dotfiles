@@ -95,12 +95,13 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # fzf config
-# TODO: config fzf to use fd instead of find
+export FZF_DEFAULT_COMMAND='fd . --hidden --exclude ".git"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=1 --git --icons {} | head -200'"
 bindkey "^q" "fzf-cd-widget"
-bindkey -s "^o" "fzf -m | xargs -o vim\r"
+bindkey -s "^o" "fzf -m | xargs -o nvim\r"
 alias f="fzf"
-alias fv="fzf -m | xargs -o vim"
+alias fv="fzf -m | xargs -o nvim"
 
 # config shortcuts
 alias t="touch"
