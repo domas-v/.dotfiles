@@ -84,22 +84,18 @@ return {
             require("telescope").load_extension("live_grep_args")
         end,
         keys = {
-            -- shortcuts
-            { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
-            { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
-            { "<leader>l",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
-            { "<leader>L",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
-            { "<leader>j",  "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
-            { "<leader>J",  "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
-            { "<C-f>",      "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
+            -- buffers
             { "<C-e>",      "<cmd>Telescope buffers<cr>",                       desc = "Find files" },
+            { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
+            { "<leader>j",  "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
 
             -- file searching
+            { "<C-f>",      "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
+            { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
+            { "<leader>J",  "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
             { "<leader>ff", "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
             { "<leader>fg", "<cmd>Telescope git_files<cr>",                     desc = "Git files" },
             { "<leader>fo", "<cmd>Telescope oldfiles<cr>",                      desc = "Old files" },
-            { "<leader>fs", "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
-            { "<leader>fS", "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
 
             -- utils
             { "<leader>f,", "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
@@ -108,8 +104,8 @@ return {
             { "<leader>fc", "<cmd>Telescope commands<cr>",                      desc = "Commands" },
 
             -- lsp
-            { "<leader>fl", "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
-            { "<leader>fL", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
+            { "<leader>l",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
+            { "<leader>L",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
             { "<leader>fr", "<cmd>Telescope lsp_references<cr>",                desc = "LSP references" },
             { "<leader>fd", "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
         },
