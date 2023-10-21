@@ -85,9 +85,10 @@ return {
         end,
         keys = {
             -- buffers
-            { "<C-e>",      "<cmd>Telescope buffers<cr>",                       desc = "Find files" },
-            { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
+            { "<C-e>",      "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
+            { "<leader>e",  "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
             { "<leader>j",  "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
+            { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
             { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
 
             -- file searching

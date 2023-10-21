@@ -13,14 +13,6 @@ return {
         end
     },
     {
-        "folke/neodev.nvim",
-        config = function()
-            require("neodev").setup({
-                library = { plugins = { "nvim-dap-ui" }, types = true },
-            })
-        end
-    },
-    {
         "VonHeikemen/lsp-zero.nvim", -- TODO: remove
         dependencies = {
             -- LSP Support
@@ -114,9 +106,9 @@ return {
 
             ----- DIAGNOSTICS -----
             vim.diagnostic.config({ virtual_text = true })
-            vim.keymap.set("n", "<leader>dv", vim.diagnostic.open_float, {})
-            vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, {})
-            vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, {})
+            vim.keymap.set("n", "<leader>zv", vim.diagnostic.open_float, {})
+            vim.keymap.set("n", "<leader>zj", vim.diagnostic.goto_next, {})
+            vim.keymap.set("n", "<leader>zk", vim.diagnostic.goto_prev, {})
 
             ------- COMPLETION -----
             cmp.setup.cmdline({ "/", "?" }, {

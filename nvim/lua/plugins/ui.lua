@@ -2,7 +2,10 @@ return {
     {
         'folke/trouble.nvim',
         dependencies = 'kyazdani42/nvim-web-devicons',
-        config = function() require('trouble').setup() end
+        config = function() require('trouble').setup() end,
+        keys = {
+            { "<leader>zt", "<cmd>Trouble<cr>" }
+        }
     },
     {
         'romgrk/barbar.nvim',
@@ -27,6 +30,7 @@ return {
             { "<C-7>",      "<cmd>BufferGoto 7<cr>" },
             { "<C-8>",      "<cmd>BufferGoto 8<cr>" },
             { "<C-9>",      "<cmd>BufferLast<cr>" },
+            { "<leader>b",  "<cmd>BufferPick<cr>" },
 
             { "<C-x>",      "<cmd>BufferClose<cr>" },
             { "<leader>xx", "<cmd>BufferClose<cr>" },

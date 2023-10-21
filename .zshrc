@@ -108,6 +108,7 @@ alias conf="cd ~/.config"
 alias dot="cd ~/Dotfiles"
 alias lmda="cd ~/Work/tenspeed-lambda/"
 alias notes="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
+alias qn="nvim ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/Quick\ Note.md"
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""

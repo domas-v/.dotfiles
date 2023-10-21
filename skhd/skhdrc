@@ -1,6 +1,6 @@
 
 # --- APP KEYBINDINGS
-# alt - e : open -a "Visual Studio Code.app"
+shift + alt - e : open -a "Visual Studio Code.app"
 alt - e : open -a WezTerm.app
 alt - d : open -a Safari.app
 alt - r : open -a Obsidian.app
