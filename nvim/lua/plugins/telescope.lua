@@ -88,12 +88,12 @@ return {
             { "<C-e>",      "<cmd>Telescope buffers<cr>",                       desc = "Find files" },
             { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
             { "<leader>j",  "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
+            { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
 
             -- file searching
             { "<C-f>",      "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
-            { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
             { "<leader>J",  "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
-            { "<leader>ff", "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
+            { "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '-t', 'f', '-H', '-E', '.git', '-E', 'venv' }})<cr>", desc = "Find files" },
             { "<leader>fg", "<cmd>Telescope git_files<cr>",                     desc = "Git files" },
             { "<leader>fo", "<cmd>Telescope oldfiles<cr>",                      desc = "Old files" },
 

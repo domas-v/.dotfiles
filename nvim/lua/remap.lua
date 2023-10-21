@@ -39,7 +39,7 @@ map('c', '<C-k>', '<LEFT>', { noremap = true })
 map('c', '<C-j>', '<RIGHT>', { noremap = true })
 
 -- search & replace
-map("n", "<C-s>", "/") -- word under cursor
+map("n", "<C-s>", "/")                                                        -- word under cursor
 map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- word under cursor
 map("v", "<leader>rr", ":s/", { desc = "Search & Replace" })                  -- in visual selection
 map("n", "<leader>rr", ":%s/", { desc = "Search & Replace" })                 -- in whole buffer
