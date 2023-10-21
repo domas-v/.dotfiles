@@ -40,10 +40,10 @@ return {
                             ["<c-h>"] = actions.preview_scrolling_up,
                         }
                     },
-                    layout_strategy = "vertical",
+                    layout_strategy = "flex",
                     layout_config = {
                         flex = {
-                            flip_columns = 200,
+                            flip_columns = 179,
                         },
                         horizontal = {
                             height = 0.8,
