@@ -21,6 +21,7 @@ map("n", "<C-;>", ":lua ", { desc = 'Enter lua command' })
 map("n", "J", "mzJ`z", { desc = 'Join lines' })
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
+map("n", "g|", "g_")
 
 map("n", "<leader>q", "<cmd>close<cr>")
 map("n", "<C-q>", "<cmd>close<cr>")
@@ -46,11 +47,17 @@ map("n", "<leader>rr", ":%s/", { desc = "Search & Replace" })                 --
 map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
     { desc = "Search & Replace" })                                            -- in quickfix list
 
--- windows/buffers
+-- split movement
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-l>", "<C-w>l")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
+
+-- resize splits
+map("n", "=", [[<cmd>vertical resize +15<cr>]])
+map("n", "-", [[<cmd>vertical resize -15<cr>]])
+map("n", "+", [[<cmd>horizontal resize +5<cr>]])
+map("n", "_", [[<cmd>horizontal resize -5<cr>]])
 
 -- tabs
 map("n", "<C-t><C-t>", "<cmd>tab split<cr>")

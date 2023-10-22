@@ -55,12 +55,6 @@ return {
         }
     },
     {
-        'simeji/winresizer',
-        keys = {
-            { "<leader>wr", "<cmd>WinResizerStartResize<cr>", desc = "Win resize mode" }
-        }
-    },
-    {
         'kevinhwang91/nvim-bqf',
         ft = 'qf',
         dependencies = 'junegunn/fzf',
