@@ -95,7 +95,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # fzf config
-export FZF_DEFAULT_COMMAND='fd . -t f'
+export FZF_DEFAULT_COMMAND='fd . -t f -H -E .git -E venv'
 export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=1 --git --icons {} | head -200'"
 bindkey "^q" "fzf-cd-widget"
 bindkey -s "^o" "fzf -m | xargs -o nvim\r"

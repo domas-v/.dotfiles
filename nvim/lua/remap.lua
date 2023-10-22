@@ -47,7 +47,6 @@ map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><
     { desc = "Search & Replace" })                                            -- in quickfix list
 
 -- windows/buffers
-map("n", "<C-w><C-x>", "<cmd>bd! %<cr>")
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-l>", "<C-w>l")
 map("n", "<C-j>", "<C-w>j")
