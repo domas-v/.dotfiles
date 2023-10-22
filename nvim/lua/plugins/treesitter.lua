@@ -1,50 +1,45 @@
 return {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    dependencies = {
-        -- "p00f/nvim-ts-rainbow",
-        "nvim-treesitter/playground",
-        "nvim-treesitter/nvim-treesitter-textobjects"
-    },
-    config = function ()
-        require("nvim-treesitter.configs").setup {
-            ensure_installed = {
-                "help",
-                "python",
-                "lua",
-                "vim",
-                "json",
-                "http"
-            },
-            sync_install = false,
-            auto_install = false,
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "<CR>",
-                    node_incremental = "<CR>",
-                    scope_incremental = "<TAB>",
-                    node_decremental = "<S-Tab>",
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        dependencies = {
+            -- "p00f/nvim-ts-rainbow",
+            "nvim-treesitter/playground",
+            "nvim-treesitter/nvim-treesitter-textobjects"
+        },
+        config = function ()
+            require("nvim-treesitter.configs").setup {
+                ensure_installed = {
+                    "help",
+                    "python",
+                    "lua",
+                    "vim",
+                    "json",
+                    "http"
                 },
-            },
-            indent = {
-                enable = false,
-            },
-            -- rainbow = {
-                --     enable = true,
-                --     extended_mode = true
-                -- },
+                sync_install = false,
+                auto_install = false,
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
+                incremental_selection = {
+                    enable = true,
+                    keymaps = {
+                        init_selection = "<CR>",
+                        node_incremental = "<CR>",
+                        scope_incremental = "<TAB>",
+                        node_decremental = "<S-Tab>",
+                    },
+                },
+                indent = {
+                    enable = false,
+                },
                 textobjects = {
                     select = {
                         enable = true,
-                        -- Automatically jump forward to textobj, similar to targets.vim 
                         lookahead = true,
                         keymaps = {
-                            -- You can use the capture groups defined in textobjects.scm
                             ["if"] = "@function.inner",
                             ["af"] = "@function.outer",
                             ["ic"] = "@class.inner",
@@ -100,5 +95,14 @@ return {
                     },
                 }
             }
-    end,
+        end,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function ()
+            vim.keymap.set("n", "<C-y>", function()
+                require("treesitter-context").go_to_context()
+            end, { silent = true })
+        end
+    }
 }
