@@ -109,6 +109,29 @@ alias lmda="cd ~/Work/tenspeed-lambda/"
 alias notes="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 alias qn="nvim ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/Quick\ Note.md"
 
+# universal preview command
+function e() {
+    # for images
+    if [[ "$1" =~ \.(png|jpg|jpeg|gif|bmp|tiff|tif|webp)$ ]]; then
+        wezterm imgcat "$1"
+    # for videos
+    elif [[ "$1" =~ \.(mp4|mov|mkv|avi|webm)$ ]]; then
+        mpv --no-terminal "$1"
+    # for directories
+    elif [[ -d "$1" ]]; then
+        exa -lT --level=1 --git
+    # for json
+    elif [[ "$1" =~ \.(json)$ ]]; then
+        jless "$1"
+    # for markdown
+    elif [[ "$1" =~ \.(md)$ ]]; then
+        glow "$1"
+    # for everything else
+    else
+        bat "$1"
+    fi
+}
+
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
 alias src="source ~/.zshrc"

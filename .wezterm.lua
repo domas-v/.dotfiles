@@ -39,7 +39,7 @@ config.default_workspace = "main"
 
 -- tab bar
 config.use_fancy_tab_bar = false
-config.tab_max_width = 64
+config.tab_max_width = 30
 config.tab_bar_at_bottom = true
 config.status_update_interval = 1000
 config.show_tab_index_in_tab_bar = false
