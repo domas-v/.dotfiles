@@ -55,14 +55,18 @@ wezterm.on(
         local cwd = basename(tab.active_pane.current_working_dir)
 
         local cmd_table = {
-            nvim = wezterm.nerdfonts.fa_code .. " ",
-            zsh = wezterm.nerdfonts.fa_terminal .. " ",
+            nvim = wezterm.nerdfonts.custom_vim .. " ",
+            zsh = wezterm.nerdfonts.dev_terminal_badge .. " ",
         }
 
         cmd = cmd_table[cmd]
 
         if cwd == basename(wezterm.home_dir) then
-            cwd = wezterm.nerdfonts.md_home
+            cwd = wezterm.nerdfonts.dev_apple
+        end
+
+        if cwd == basename("tenspeed-lambda") then
+            cwd = wezterm.nerdfonts.md_lambda
         end
 
         local title = " " .. cmd .. " " .. cwd .. " "
