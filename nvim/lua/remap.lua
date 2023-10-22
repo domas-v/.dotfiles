@@ -22,6 +22,7 @@ map("n", "J", "mzJ`z", { desc = 'Join lines' })
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 map("n", "g|", "g_")
+map("n", "0", "_")
 
 map("n", "<leader>q", "<cmd>close<cr>")
 map("n", "<C-q>", "<cmd>close<cr>")

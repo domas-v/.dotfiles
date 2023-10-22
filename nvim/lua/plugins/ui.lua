@@ -14,6 +14,11 @@ return {
         config = function()
             require("barbar").setup({
                 animation = false,
+                focus_on_close = 'previous',
+                icons = {
+                    button = '𝒳',
+                    pinned = {button = ' ' , filename = true},
+                },
             })
         end,
         keys = {
