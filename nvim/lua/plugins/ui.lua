@@ -30,7 +30,7 @@ return {
             { "<C-7>",      "<cmd>BufferGoto 7<cr>" },
             { "<C-8>",      "<cmd>BufferGoto 8<cr>" },
             { "<C-9>",      "<cmd>BufferLast<cr>" },
-            { "<leader>b",  "<cmd>BufferPick<cr>" },
+            { "<leader>p",  "<cmd>BufferPick<cr>" },
 
             { "<C-x>",      "<cmd>BufferClose<cr>" },
             { "<leader>xx", "<cmd>BufferClose<cr>" },
