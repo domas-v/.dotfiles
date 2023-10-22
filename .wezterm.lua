@@ -99,21 +99,18 @@ config.keys = {
     -- utils
     { key = 'q', mods = 'CTRL',       action = act.DisableDefaultAssignment },
     { key = 'Q', mods = 'CTRL',       action = act.DisableDefaultAssignment },
-    { key = ':', mods = 'CMD',        action = act.ActivateCommandPalette },
-    { key = 'x', mods = 'CMD',        action = act.ActivateCopyMode },
+    { key = ';', mods = 'CMD',        action = act.ActivateCommandPalette },
     { key = 'n', mods = 'CMD|SHIFT',  action = act.SpawnWindow },
-    { key = 'c', mods = 'CMD|SHIFT',  action = act.SpawnCommandInNewTab { cwd = "/Users/domev/Dotfiles/" } },
 
     -- scrolling
-    { key = 'u', mods = 'CMD|CTRL',   action = act.ScrollByPage(-0.5) },
-    { key = 'd', mods = 'CMD|CTRL',   action = act.ScrollByPage(0.5) },
+    { key = 'u', mods = 'CMD|SHIFT',   action = act.ScrollByPage(-0.5) },
+    { key = 'd', mods = 'CMD|SHIFT',   action = act.ScrollByPage(0.5) },
 
     -- text navigation
-    { key = "f", mods = "CTRL|SHIFT", action = wezterm.action { SendString = "\x1bf" } },
-    { key = "b", mods = "CTRL|SHIFT", action = wezterm.action { SendString = "\x1bb" } },
-    {
-        key = 'e',
-        mods = 'CMD',
+    { key = 'c', mods = "CMD|SHIFT",  action = act.ActivateCopyMode },
+    { key = "f", mods = "CTRL|SHIFT", action = act { SendString = "\x1bf" } },
+    { key = "b", mods = "CTRL|SHIFT", action = act { SendString = "\x1bb" } },
+    { key = 'e', mods = 'CMD|SHIFT',
         action = act.QuickSelectArgs {
             label = 'open url',
             patterns = { 'https?://\\S+' },
@@ -132,29 +129,23 @@ config.keys = {
     { key = '[',     mods = 'CMD',       action = act.MoveTabRelative(-1) },
     { key = ']',     mods = 'CMD',       action = act.MoveTabRelative(1) },
 
-    -- pane navigation
-    { key = 's',     mods = 'CMD|SHIFT', action = act.PaneSelect },
+    -- splits
     { key = 'f',     mods = 'CMD|SHIFT', action = act.TogglePaneZoomState },
     { key = 'w',     mods = 'CMD',       action = act.CloseCurrentPane { confirm = false } },
-    { key = 'Enter', mods = 'CMD',       action = act.SplitHorizontal },
     { key = 'Enter', mods = 'CMD|SHIFT', action = act.SplitHorizontal { cwd = "~" } },
-    {
-        key = 'v',
-        mods = 'CMD|SHIFT',
+    { key = 'Enter', mods = 'CMD',       action = act.SplitHorizontal },
+    { key = 'v',     mods = 'CMD|SHIFT',
         action = act.SplitPane {
             direction = 'Right',
             size = { Percent = 50 }, }
     },
-
-    { key = 'Enter', mods = 'CMD|CTRL',  action = act.SplitVertical },
-    {
-        key = 's',
-        mods = 'CMD|SHIFT',
+    { key = 's'    , mods = 'CMD|SHIFT',
         action = act.SplitPane {
             direction = 'Down',
             size = { Percent = 30 }, }
     },
 
+    -- pane navigation
     { key = 'h',     mods = 'CMD',       action = act.ActivatePaneDirection 'Left' },
     { key = 'j',     mods = 'CMD',       action = act.ActivatePaneDirection 'Down' },
     { key = 'k',     mods = 'CMD',       action = act.ActivatePaneDirection 'Up' },
@@ -165,43 +156,6 @@ config.keys = {
     { key = 'l',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Right', 5 } },
     { key = 'h',     mods = 'CMD|SHIFT', action = act.RotatePanes 'Clockwise' },
     { key = 'l',     mods = 'CMD|SHIFT', action = act.RotatePanes 'CounterClockwise', },
-
-
-    -- workspaces
-    {
-        key = 'u',
-        mods = 'CMD|CTRL',
-        action = act.ShowLauncherArgs {
-            flags = 'FUZZY|WORKSPACES',
-        }
-    },
-    {
-        key = 'u',
-        mods = 'CMD|OPT',
-        action = act.PromptInputLine {
-            description = wezterm.format {
-                { Attribute = { Intensity = 'Bold' } },
-                { Foreground = { AnsiColor = 'Fuchsia' } },
-                { Text = 'Enter name for new workspace' },
-            },
-            action = wezterm.action_callback(function(window, pane, line)
-                -- line will be `nil` if they hit escape without entering anything
-                -- An empty string if they just hit enter
-                -- Or the actual line of text they wrote
-                if line then
-                    window:perform_action(
-                        act.SwitchToWorkspace {
-                            name = line,
-                        },
-                        pane
-                    )
-                end
-            end),
-        },
-    },
-    { key = 'n', mods = 'CMD|CTRL', action = act.SwitchWorkspaceRelative(1) },
-    { key = 'p', mods = 'CMD|CTRL', action = act.SwitchWorkspaceRelative(-1) },
-
 }
 
 return config
