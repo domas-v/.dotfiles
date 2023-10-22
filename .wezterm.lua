@@ -14,6 +14,7 @@ local function get_appearance()
     end
     return 'Dark'
 end
+
 local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
         -- config.colors = { background = 'black' }
@@ -41,7 +42,7 @@ config.use_fancy_tab_bar = false
 config.tab_max_width = 64
 config.tab_bar_at_bottom = true
 config.status_update_interval = 1000
-config.show_tab_index_in_tab_bar = true
+config.show_tab_index_in_tab_bar = false
 
 local basename = function(s)
     -- Current working directory
@@ -65,8 +66,12 @@ wezterm.on(
             cwd = wezterm.nerdfonts.dev_apple .. " "
         end
 
-        if cwd == basename("tenspeed-lambda") then
-            cwd = wezterm.nerdfonts.md_lambda .. " "
+        if #tab.panes > 1 then
+            cmd = cmd .. " " .. wezterm.nerdfonts.cod_split_horizontal .. " "
+        end
+
+        if tab.active_pane.is_zoomed then
+            cmd = cmd .. " " .. wezterm.nerdfonts.cod_zoom_in .. " "
         end
 
         local title = " " .. cmd .. " " .. cwd .. " |"
