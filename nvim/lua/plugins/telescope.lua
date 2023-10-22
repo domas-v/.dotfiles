@@ -92,7 +92,7 @@ return {
             { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
 
             -- file searching
-            { "<C-f>",      "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
+            { "<C-f>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '-t', 'f', '-H', '-E', '.git', '-E', 'venv' }})<cr>", desc = "Find files" },
             { "<leader>J",  "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
             { "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '-t', 'f', '-H', '-E', '.git', '-E', 'venv' }})<cr>", desc = "Find files" },
             { "<leader>fg", "<cmd>Telescope git_files<cr>",                     desc = "Git files" },
