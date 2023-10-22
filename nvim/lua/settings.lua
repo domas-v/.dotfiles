@@ -3,6 +3,13 @@ local wo         = vim.wo -- window local options
 local g          = vim.g  -- global variables
 local api        = vim.api
 
+-- restore cursor position
+api.nvim_create_autocmd(
+    { "BufEnter" },
+    { pattern = { "*" }, command = 'silent! silent! normal! g`"' }
+)
+-- api.nvim_exec([[ :autocmd BufEnter * silent! normal! g`" ]], false)
+
 -- line numbers
 wo.linebreak     = true
 o.nu             = true
