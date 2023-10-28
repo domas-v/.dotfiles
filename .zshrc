@@ -111,22 +111,28 @@ alias qn="nvim ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/Qu
 
 # universal preview command
 function e() {
-    # for images
-    if [[ "$1" =~ \.(png|jpg|jpeg|gif|bmp|tiff|tif|webp)$ ]]; then
-        wezterm imgcat "$1"
-    # for videos
+    if [[ -z "$1" ]]; then
+        exa -lT --level=1 --git
+    elif [[ "$1" =~ \.(png|jpg|jpeg|gif|bmp|tiff|tif|webp)$ ]]; then
+        wezterm imgcat "$1" "${@:2}"
     elif [[ "$1" =~ \.(mp4|mov|mkv|avi|webm)$ ]]; then
         mpv --no-terminal "$1"
-    # for directories
     elif [[ -d "$1" ]]; then
-        exa -lT --level=1 --git
-    # for json
+        exa -lT --level=1 --git "$1"
     elif [[ "$1" =~ \.(json)$ ]]; then
         jless "$1"
-    # for markdown
     elif [[ "$1" =~ \.(md)$ ]]; then
         glow "$1"
-    # for everything else
+    else
+        bat "$1"
+    fi
+}
+
+function ee() {
+    if [[ -z "$1" ]]; then
+        exa -lT --level=2 --git
+    elif [[ -d "$1" ]]; then
+        exa -lT --level=2 --git "$1"
     else
         bat "$1"
     fi
@@ -149,13 +155,9 @@ alias gupdate="git add . && git commit -m 'Update' && git push"
 
 # exa
 alias ls="exa --git"
-alias ll="exa -la --git"
-alias l="exa -l --git"
-alias lg="exa -G --git"
-alias lG="exa -aG --git"
-alias lt="exa -lT --level=2 --git"
-alias lT="exa -laT --level=2  --git"
-alias lD="exa -laD --level=2 --git"
+alias l="exa -lT --level=1 --git"
+alias ll="exa -laT --level=1 --git"
+alias lll="exa -laT --level=2 --git"
 
 # python
 alias py="python"

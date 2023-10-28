@@ -17,7 +17,7 @@ end
 
 local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
-        -- config.colors = { background = 'black' }
+        config.colors = { background = 'black' }
         return "kanagawabones"
     else
         config.colors = { background = '#F2ECBC' }
@@ -38,7 +38,7 @@ config.scrollback_lines = 3000
 config.default_workspace = "main"
 
 -- tab bar
-config.use_fancy_tab_bar = false
+config.use_fancy_tab_bar = true
 config.tab_max_width = 30
 config.tab_bar_at_bottom = true
 config.status_update_interval = 1000
@@ -74,7 +74,7 @@ wezterm.on(
             cmd = cmd .. " " .. wezterm.nerdfonts.cod_zoom_in .. " "
         end
 
-        local title = " " .. cmd .. " " .. cwd .. " |"
+        local title = " " .. cmd .. " " .. cwd
 
         return {
             { Foreground = { Color = "#e0af68" } },
