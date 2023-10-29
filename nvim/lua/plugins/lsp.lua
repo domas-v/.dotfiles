@@ -26,7 +26,11 @@ return {
                 },
             }
             lspconfig.racket_langserver.setup{}
-            lspconfig.clangd.setup{}
+            lspconfig.clangd.setup {
+                capabilities = require('cmp_nvim_lsp').default_capabilities(),
+                cmd = { "clangd",
+                "--offset-encoding=utf-16" }
+            }
 
             vim.keymap.set('n', 'zv', vim.diagnostic.open_float)
             vim.keymap.set('n', 'zk', vim.diagnostic.goto_prev)
@@ -52,7 +56,16 @@ return {
         config = function() 
             linting = require("lint")
             linting.linters_by_ft = {
-                python = {'flake8'}
+                python = {'flake8'},
+                c = {'cppcheck'},
+            }
+            local cppcheck = require('lint').linters.cppcheck
+            cppcheck.args = {
+                '--enable=warning,style,performance,information',
+                '--language=c',
+                '--inline-suppr',
+                '--cppcheck-build-dir=~/.builds/',
+                '--template={file}:{line}:{column}: [{id}] {severity}: {message}'
             }
 
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
