@@ -11,7 +11,7 @@ return {
     {
         "jpalardy/vim-slime",
         init = function()
-            vim.g.slime_target = "wezterm"
+            vim.g.slime_target = "kitty"
             vim.cmd [[ let g:slime_default_config = {"pane_direction": "right"} ]]
         end,
         keys = {

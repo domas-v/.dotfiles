@@ -17,7 +17,7 @@ end
 
 local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
-        config.colors = { background = 'black' }
+        -- config.colors = { background = 'black' }
         return "kanagawabones"
     else
         config.colors = { background = '#F2ECBC' }

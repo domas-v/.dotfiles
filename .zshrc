@@ -112,17 +112,17 @@ alias qn="nvim ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/Qu
 # universal preview command
 function e() {
     if [[ -z "$1" ]]; then
-        exa -lT --level=1 --git
+        exa -la --git --icons
     elif [[ "$1" =~ \.(png|jpg|jpeg|gif|bmp|tiff|tif|webp)$ ]]; then
         wezterm imgcat "$1" "${@:2}"
     elif [[ "$1" =~ \.(mp4|mov|mkv|avi|webm)$ ]]; then
         mpv --no-terminal "$1"
     elif [[ -d "$1" ]]; then
-        exa -lT --level=1 --git "$1"
+        exa -la --git --icons "$1"
     elif [[ "$1" =~ \.(json)$ ]]; then
         jless "$1"
-    elif [[ "$1" =~ \.(md)$ ]]; then
-        glow "$1"
+    # elif [[ "$1" =~ \.(md)$ ]]; then
+    #     glow "$1"
     else
         bat "$1"
     fi
@@ -130,9 +130,9 @@ function e() {
 
 function ee() {
     if [[ -z "$1" ]]; then
-        exa -lT --level=2 --git
+        exa -lT --level=2 --git --icons
     elif [[ -d "$1" ]]; then
-        exa -lT --level=2 --git "$1"
+        exa -lT --level=2 --git --icons "$1"
     else
         bat "$1"
     fi
@@ -154,10 +154,8 @@ alias gmm="git merge master"
 alias gupdate="git add . && git commit -m 'Update' && git push"
 
 # exa
-alias ls="exa --git"
-alias l="exa -lT --level=1 --git"
-alias ll="exa -laT --level=1 --git"
-alias lll="exa -laT --level=2 --git"
+alias l="exa -l --git --icons"
+alias ll="exa -la --git --icons"
 
 # python
 alias py="python"
