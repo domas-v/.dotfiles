@@ -27,7 +27,6 @@ return {
             }
             lspconfig.racket_langserver.setup{}
             lspconfig.clangd.setup {
-                capabilities = require('cmp_nvim_lsp').default_capabilities(),
                 cmd = { "clangd",
                 "--offset-encoding=utf-16" }
             }
@@ -59,7 +58,7 @@ return {
                 python = {'flake8'},
                 c = {'cppcheck'},
             }
-            local cppcheck = require('lint').linters.cppcheck
+            local cppcheck = linting.linters.cppcheck
             cppcheck.args = {
                 '--enable=warning,style,performance,information',
                 '--language=c',
