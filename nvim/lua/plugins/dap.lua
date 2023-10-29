@@ -62,7 +62,7 @@ return {
                         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
                     end,
                     MIMode = 'lldb',
-                    miDebuggerPath = '/usr/bin/lldb',
+                    MIDebuggerPath = '/usr/bin/lldb',
                     cwd = '${workspaceFolder}',
                     stopAtEntry = true,
                 },
