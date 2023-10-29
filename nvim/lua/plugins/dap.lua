@@ -47,6 +47,26 @@ return {
             require("dap-python").test_runner = "pytest"
             require('dap.ext.vscode').load_launchjs()
 
+            --- c
+            dap.adapters.cppdbg = {
+                id = 'cppdbg',
+                type = 'executable',
+                command = '/Users/domev/.vscode/extensions/ms-vscode.cpptools-1.17.5-darwin-arm64/debugAdapters/bin/OpenDebugAD7',
+            }
+            dap.configurations.c = {
+                {
+                    name = "Launch file",
+                    type = "cppdbg",
+                    request = "launch",
+                    program = function()
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                    end,
+                    MIMode = 'lldb',
+                    miDebuggerPath = '/usr/bin/lldb',
+                    cwd = '${workspaceFolder}',
+                    stopAtEntry = true,
+                },
+            }
 
             ---
             local sign = vim.fn.sign_define

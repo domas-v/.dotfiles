@@ -112,14 +112,14 @@ alias qn="nvim ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/Qu
 # universal preview command
 function e() {
     if [[ -z "$1" ]]; then
-        exa -la --git --icons
+        exa -la --git
     elif [[ "$1" =~ \.(png|jpg|jpeg|gif|bmp|tiff|tif|webp)$ ]]; then
         # wezterm imgcat "$1" "${@:2}"
         kitten icat "$1" "${@:2}"
     elif [[ "$1" =~ \.(mp4|mov|mkv|avi|webm)$ ]]; then
         mpv --no-terminal "$1"
     elif [[ -d "$1" ]]; then
-        exa -la --git --icons "$1"
+        exa -la --git "$1"
     elif [[ "$1" =~ \.(json)$ ]]; then
         jless "$1"
     # elif [[ "$1" =~ \.(md)$ ]]; then
@@ -131,9 +131,9 @@ function e() {
 
 function ee() {
     if [[ -z "$1" ]]; then
-        exa -lT --level=2 --git --icons
+        exa -lT --level=2 --git
     elif [[ -d "$1" ]]; then
-        exa -lT --level=2 --git --icons "$1"
+        exa -lT --level=2 --git "$1"
     else
         bat "$1"
     fi
@@ -155,8 +155,8 @@ alias gmm="git merge master"
 alias gupdate="git add . && git commit -m 'Update' && git push"
 
 # exa
-alias l="exa -l --git --icons"
-alias ll="exa -la --git --icons"
+alias l="exa -l --git"
+alias ll="exa -la --git"
 
 # python
 alias py="python"
