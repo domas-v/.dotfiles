@@ -43,7 +43,7 @@ return {
                     layout_strategy = "flex",
                     layout_config = {
                         flex = {
-                            flip_columns = 179,
+                            flip_columns = 181,
                         },
                         horizontal = {
                             height = 0.8,

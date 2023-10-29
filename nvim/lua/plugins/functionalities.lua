@@ -12,7 +12,7 @@ return {
         "jpalardy/vim-slime",
         init = function()
             vim.g.slime_target = "kitty"
-            vim.cmd [[ let g:slime_default_config = {"pane_direction": "right"} ]]
+            -- vim.cmd [[ let g:slime_default_config = {"pane_direction": "right"} ]]
         end,
         keys = {
             { "<C-c><C-f>", "<cmd>%SlimeSend<cr>", "Slime send file" },

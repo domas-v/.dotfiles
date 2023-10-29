@@ -103,6 +103,8 @@ return {
             vim.keymap.set("n", "<C-y>", function()
                 require("treesitter-context").go_to_context()
             end, { silent = true })
+            vim.keymap.set("n", "<C-c><C-t>", "<cmd>TSContextToggle<cr>", { silent = true })
+            vim.keymap.set("n", "<leader>ct", "<cmd>TSContextToggle<cr>", { silent = true })
         end
     }
 }
