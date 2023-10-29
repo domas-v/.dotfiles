@@ -114,7 +114,8 @@ function e() {
     if [[ -z "$1" ]]; then
         exa -la --git --icons
     elif [[ "$1" =~ \.(png|jpg|jpeg|gif|bmp|tiff|tif|webp)$ ]]; then
-        wezterm imgcat "$1" "${@:2}"
+        # wezterm imgcat "$1" "${@:2}"
+        kitten icat "$1" "${@:2}"
     elif [[ "$1" =~ \.(mp4|mov|mkv|avi|webm)$ ]]; then
         mpv --no-terminal "$1"
     elif [[ -d "$1" ]]; then
