@@ -110,6 +110,22 @@ colorscheme slate
 syntax enable
 set background=dark
 
+"""""""""
+" Keymaps "
+"""""""""
+
+vnoremap > >gv
+vnoremap < <gv
+
+nnoremap k gk
+nnoremap j gj
+nnoremap 0 g0
+nnoremap $ g$
+nnoremap Y y$
+
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
 """""""""""""""""""""
 " Language-Specific "
 """""""""""""""""""""

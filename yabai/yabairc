@@ -45,7 +45,7 @@ yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Reminders$" manage=off
-yabai -m rule --add app="^Notes$" manage=off
+@REM yabai -m rule --add app="^Notes$" manage=off
 yabai -m rule --add app="^Bitwarden$" manage=off
 yabai -m rule --add app="^Transmission$" manage=off
 yabai -m rule --add app="^Authy Desktop$" manage=off
