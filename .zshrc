@@ -106,8 +106,7 @@ alias cat="bat"
 alias conf="cd ~/.config"
 alias dot="cd ~/Dotfiles"
 alias lmda="cd ~/Work/tenspeed-lambda/"
-alias notes="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
-alias qn="nvim ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/Quick\ Note.md"
+alias notes="cd ~/Personal/Notes/"
 
 # universal preview command
 function e() {

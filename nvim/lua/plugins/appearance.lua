@@ -18,5 +18,9 @@ return {
     },
     {
         "Shatur/neovim-ayu",
+    },
+    {
+         "catppuccin/nvim",
+         name = "catppuccin"
     }
 }

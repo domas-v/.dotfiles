@@ -163,12 +163,6 @@ return {
                     { name = 'cmdline' }
                 })
             })
-
-            -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            -- local lspconfig = require("lspconfig")
-            -- lspconfig['pyright'].setup {
-            --     capabilities = require('cmp_nvim_lsp').default_capabilities()
-            -- }
         end
     },
     {
@@ -197,5 +191,15 @@ return {
             { "<leader>cf", ":Format<CR>", desc = "Format the current buffer", silent = true },
             { "<leader>cf", ":Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
         }
+    },
+    {
+        "simrat39/symbols-outline.nvim",
+        keys = {
+            { "<leader>oo", "<cmd>SymbolsOutline<cr>", desc = "Open symbols outline", silent = true },
+        },
+        cmd = { "SymbolsOutline" },
+        config = function()
+            require("symbols-outline").setup()
+        end
     }
 }

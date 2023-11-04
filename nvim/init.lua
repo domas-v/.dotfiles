@@ -21,4 +21,4 @@ require("lazy").setup("plugins", {
     },
 })
 
-vim.cmd('colorscheme kanagawa')
+vim.cmd('colorscheme catppuccin-mocha')

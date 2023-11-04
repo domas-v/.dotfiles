@@ -55,8 +55,8 @@ map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 
 -- resize splits
-map("n", "=", [[<cmd>vertical resize +15<cr>]])
-map("n", "-", [[<cmd>vertical resize -15<cr>]])
+map("n", "<C-=>", [[<cmd>vertical resize +15<cr>]])
+map("n", "<C-->", [[<cmd>vertical resize -15<cr>]])
 map("n", "+", [[<cmd>horizontal resize +5<cr>]])
 map("n", "_", [[<cmd>horizontal resize -5<cr>]])
 
