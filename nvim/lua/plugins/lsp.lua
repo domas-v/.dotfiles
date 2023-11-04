@@ -30,6 +30,7 @@ return {
                 cmd = { "clangd",
                 "--offset-encoding=utf-16" }
             }
+            lspconfig.marksman.setup{}
 
             vim.keymap.set('n', 'zv', vim.diagnostic.open_float)
             vim.keymap.set('n', 'zk', vim.diagnostic.goto_prev)
