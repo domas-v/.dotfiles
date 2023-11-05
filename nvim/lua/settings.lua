@@ -6,9 +6,8 @@ local api        = vim.api
 -- restore cursor position
 api.nvim_create_autocmd(
     { "BufEnter" },
-    { pattern = { "*" }, command = 'silent! silent! normal! g`"' }
+    { pattern = { "*" }, command = 'silent! silent! normal! g`"zz' }
 )
--- api.nvim_exec([[ :autocmd BufEnter * silent! normal! g`" ]], false)
 
 -- line numbers
 wo.linebreak     = true

@@ -1,9 +1,10 @@
 
 # --- APP KEYBINDINGS
-alt - e : open -a kitty.app
-shift + alt - e : open -a "Visual Studio Code.app"
+alt - t : open -a kitty.app
+alt - e : open -a "Visual Studio Code.app"
 alt - d : open -a "Brave Browser.app"
-alt - a : open -a Reminders.app
+alt - a : open -a Logseq.app
+alt - r : open -a Reminders.app
 alt - f : open -a Finder.app
 alt - z : open -a Messages.app
 alt - x : open -a Messenger.app
