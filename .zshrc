@@ -6,8 +6,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="/Users/domev/.local/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
-export VISUAL="code"
-export EDITOR="vim"
+export VISUAL="nvim"
+export EDITOR="nvim"
 
 
 if type brew &>/dev/null
@@ -148,6 +148,9 @@ alias wrc="v ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
 alias krc="v ~/Dotfiles/kitty/kitty.conf -c \"lcd%:p:h\""
 alias ybrc="v ~/Dotfiles/yabai/yabairc -c \"lcd%:p:h\""
 alias skrc="v ~/Dotfiles/skhd/skhdrc -c \"lcd%:p:h\""
+
+# kitty
+alias i="kitty +kitten icat"
 
 # git & github
 alias gmm="git merge master"
