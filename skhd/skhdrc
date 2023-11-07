@@ -1,6 +1,5 @@
 
 # --- APP KEYBINDINGS
-alt - s : open -a kitty.app
 alt - e : open -a "Visual Studio Code.app"
 alt - d : open -a "Brave Browser.app"
 alt - a : open -a Logseq.app
