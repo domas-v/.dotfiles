@@ -43,22 +43,27 @@ return {
                     layout_strategy = "flex",
                     layout_config = {
                         flex = {
-                            flip_columns = 193,
+                            flip_columns = 150,
                         },
                         horizontal = {
-                            height = 0.8,
-                            width = 0.8,
+                            height = 0.99,
+                            width = 0.99,
                             preview_width = 0.65,
                         },
                         vertical = {
-                            height = 0.8,
-                            width = 0.6,
+                            height = 0.9,
+                            width = 0.8,
                             preview_height = 0.4,
                             preview_cutoff = 34 -- cutoff if not full mac screen
                         }
                     },
                     sort_lastused = true,
                     sorting_strategy = "ascending",
+                },
+                pickers = {
+                    current_buffer_fuzzy_find = {
+                        theme = "ivy"
+                    }
                 },
                 extensions = {
                     fzf = {
