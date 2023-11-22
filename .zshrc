@@ -106,7 +106,7 @@ alias cat="bat"
 alias conf="cd ~/.config"
 alias dot="cd ~/Dotfiles"
 alias lmda="cd ~/Work/tenspeed-lambda/"
-alias notes="cd ~/Personal/Notes/"
+alias notes="cd ~/Library/Mobile\ Documents/iCloud~com~logseq~logseq/Documents/pages"
 
 # universal preview command
 function e() {
