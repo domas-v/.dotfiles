@@ -7,8 +7,8 @@ return {
         config = function()
             require("neogit").setup({
                 kind = "vsplit",
-                integrations = {
-                    diffview = true
+                commit_editor = {
+                    kind = "split",
                 },
                 disable_commit_confirmation = true
             })
