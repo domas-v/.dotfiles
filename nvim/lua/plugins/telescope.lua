@@ -43,11 +43,11 @@ return {
                     layout_strategy = "flex",
                     layout_config = {
                         flex = {
-                            flip_columns = 150,
+                            flip_columns = 190,
                         },
                         horizontal = {
-                            height = 0.99,
-                            width = 0.99,
+                            height = 0.9,
+                            width = 0.8,
                             preview_width = 0.65,
                         },
                         vertical = {

@@ -105,8 +105,9 @@ alias t="touch"
 alias cat="bat"
 alias conf="cd ~/.config"
 alias dot="cd ~/Dotfiles"
-alias lmda="cd ~/Work/tenspeed-lambda/"
-alias notes="cd ~/Library/Mobile\ Documents/iCloud~com~logseq~logseq/Documents/pages"
+alias lmda="cd ~/Projects/tenspeed-lambda/"
+alias scratch="cd ~/Library/Mobile\ Documents/iCloud~com~logseq~logseq/Documents/scratch"
+alias pr="cd ~/Projects/"
 
 # universal preview command
 function e() {

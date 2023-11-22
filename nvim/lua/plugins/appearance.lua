@@ -17,10 +17,8 @@ return {
         end
     },
     {
-        "Shatur/neovim-ayu",
-    },
-    {
          "catppuccin/nvim",
-         name = "catppuccin"
+         name = "catppuccin",
+         opts = { transparent_background = true }
     }
 }

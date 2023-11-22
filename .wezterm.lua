@@ -18,7 +18,7 @@ end
 local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
         -- config.colors = { background = 'black' }
-        return "kanagawabones"
+        return "Catppuccin Mocha"
     else
         config.colors = { background = '#F2ECBC' }
         return "Catppuccin Latte"
@@ -27,7 +27,7 @@ end
 config.color_scheme = scheme_for_appearance(get_appearance())
 
 -- font
-config.font = wezterm.font { family = "Cascadia Code", }
+config.font = wezterm.font { family = "Monaspace Neon", }
 config.font_size = 14.0
 
 -- window appearance
