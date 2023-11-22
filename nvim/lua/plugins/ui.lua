@@ -1,5 +1,15 @@
 return {
     {
+        "nvim-tree/nvim-tree.lua",
+        cmd = "NvimTreeToggle",
+        config = function() require('nvim-tree').setup() end,
+        keys = {
+            { "<leader>tt", "<cmd>NvimTreeToggle<cr>" },
+            { "<leader>tf", "<cmd>NvimTreeFindFile<cr>" },
+            { "<leader>tc", "<cmd>NvimTreeCollapse<cr>" },
+        }
+    },
+    {
         'folke/trouble.nvim',
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function() require('trouble').setup() end,
