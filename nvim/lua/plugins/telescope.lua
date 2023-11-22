@@ -52,8 +52,8 @@ return {
                         },
                         vertical = {
                             height = 0.9,
-                            width = 0.8,
-                            preview_height = 0.4,
+                            width = 0.75,
+                            preview_height = 0.45,
                             preview_cutoff = 34 -- cutoff if not full mac screen
                         }
                     },
