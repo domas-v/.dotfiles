@@ -26,7 +26,7 @@ return {
                 animation = false,
                 focus_on_close = 'previous',
                 icons = {
-                    button = '𝒳',
+                    button = 'Ｘ',
                     pinned = {button = ' ' , filename = true},
                 },
             })
