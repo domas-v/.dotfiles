@@ -158,8 +158,8 @@ alias gmm="git merge master"
 alias gupdate="git add . && git commit -m 'Update' && git push"
 
 # exa
-alias l="exa -l --git"
-alias ll="exa -la --git"
+alias l="exa -l --git --icons"
+alias ll="exa -la --git --icons"
 
 # python
 alias py="python"
