@@ -70,6 +70,15 @@ return {
         }
     },
     {
+          'nvim-lualine/lualine.nvim',
+          dependencies = 'nvim-tree/nvim-web-devicons' ,
+          config = function()
+              require('lualine').setup {
+                  show_filename_only = false,
+              }
+          end,
+    },
+    {
         'kevinhwang91/nvim-bqf',
         ft = 'qf',
         dependencies = 'junegunn/fzf',
