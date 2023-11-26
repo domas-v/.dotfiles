@@ -17,8 +17,8 @@ end
 
 local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
-        -- return "Catppuccin Mocha"
-        return "kanagawabones"
+        return "Catppuccin Mocha"
+        -- return "kanagawabones"
     else
         config.colors = { background = '#F2ECBC' }
         return "Catppuccin Latte"

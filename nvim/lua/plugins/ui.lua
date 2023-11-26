@@ -75,6 +75,9 @@ return {
           config = function()
               require('lualine').setup {
                   show_filename_only = false,
+                  sections = {
+                      lualine_x = {'filetype'}
+                  }
               }
           end,
     },
