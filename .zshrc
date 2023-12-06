@@ -79,7 +79,7 @@ plugins=(
     zsh-interactive-cd
     python
     pyenv
-    poetry
+    # poetry
     pip
     gh
     aws
@@ -140,21 +140,21 @@ function ee() {
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
+alias c="code"
 alias src="source ~/.zshrc"
-alias vrc="v ~/Dotfiles/.vimrc"
-alias zrc="v ~/Dotfiles/.zshrc"
-alias nrc="v ~/Dotfiles/nvim/init.lua -c \"lcd%:p:h\""
-alias wrc="v ~/Dotfiles/.wezterm.lua -c \"lcd%:p:h\""
-alias krc="v ~/Dotfiles/kitty/kitty.conf -c \"lcd%:p:h\""
-alias ybrc="v ~/Dotfiles/yabai/yabairc -c \"lcd%:p:h\""
-alias skrc="v ~/Dotfiles/skhd/skhdrc -c \"lcd%:p:h\""
-
-# kitty
-alias i="kitty +kitten icat"
+alias vrc="c ~/Dotfiles/.vimrc"
+alias zrc="c ~/Dotfiles/.zshrc"
+alias nrc="c ~/Dotfiles/nvim/init.lua"
+alias wrc="c ~/Dotfiles/.wezterm.lua"
+alias krc="c ~/Dotfiles/kitty/kitty.conf"
+alias ybrc="c ~/Dotfiles/yabai/yabairc"
+alias skrc="c ~/Dotfiles/skhd/skhdrc"
+alias skrc="c ~/Dotfiles/skhd/skhdrc"
+alias nt="c ~/Projects/notes.md"
 
 # git & github
 alias gmm="git merge master"
-alias gupdate="git add . && git commit -m 'Update' && git push"
+alias gsync="git pull && git add . && git commit -m 'Update' && git push"
 
 # exa
 alias l="exa -l --git"

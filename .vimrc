@@ -116,6 +116,9 @@ set background=dark
 
 vnoremap > >gv
 vnoremap < <gv
+vnoremap Y y$
+vnoremap J <nop>
+vnoremap K <nop>
 
 nnoremap k gk
 nnoremap j gj
