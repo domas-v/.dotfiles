@@ -1,11 +1,9 @@
 
 # --- APP KEYBINDINGS
-shift + alt - e : open -a "Visual Studio Code.app"
-alt - e : open -a WezTerm.app
-alt - d : open -a Firefox.app
-alt - a : open -a Logseq.app
+alt - e : open -a "Visual Studio Code.app"
+alt - d : open -a "Brave Browser.app"
 alt - r : open -a Reminders.app
-alt - f : open -a Finder.app
+alt - s : open -a Finder.app
 alt - z : open -a Messages.app
 alt - x : open -a Messenger.app
 alt - c : open -a Slack.app
@@ -32,7 +30,7 @@ ctrl + alt - k : yabai -m window --resize bottom:0:-40 2> /dev/null || yabai -m 
 ctrl + alt - l : yabai -m window --resize right:40:0 2> /dev/null || yabai -m window --resize left:40:0 2> /dev/null
 
 # rotate layout clockwise
-shift + alt - r : yabai -m space --rotate 270
+fn - r : yabai -m space --rotate 270
 
 # --- SPACES
 alt - n:  yabai -m space --focus next;
@@ -89,6 +87,6 @@ shift + fn - z : yabai -m window --display next; yabai -m display --focus next;
 shift + fn - c : yabai -m window --display prev; yabai -m display --focus prev;
 
 # toggle space layouts
-shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
-shift + alt - f : yabai -m space --layout stack
-shift + alt - g : yabai -m space --layout bsp
+fn - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+fn - f : yabai -m space --layout stack
+fn - g : yabai -m space --layout bsp

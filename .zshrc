@@ -106,7 +106,6 @@ alias cat="bat"
 alias conf="cd ~/.config"
 alias dot="cd ~/Dotfiles"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
-alias scratch="cd ~/Library/Mobile\ Documents/iCloud~com~logseq~logseq/Documents/scratch"
 alias pr="cd ~/Projects/"
 
 # universal preview command
@@ -158,8 +157,8 @@ alias gmm="git merge master"
 alias gupdate="git add . && git commit -m 'Update' && git push"
 
 # exa
-alias l="exa -l --git --icons"
-alias ll="exa -la --git --icons"
+alias l="exa -l --git"
+alias ll="exa -la --git"
 
 # python
 alias py="python"
