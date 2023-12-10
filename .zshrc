@@ -139,7 +139,7 @@ function ee() {
 }
 
 # neovim
-alias v="nvim -c \"lcd%:p:h\""
+alias v="vim -c \"lcd%:p:h\""
 alias c="code"
 alias src="source ~/.zshrc"
 alias vrc="c ~/Dotfiles/.vimrc"
@@ -150,7 +150,7 @@ alias krc="c ~/Dotfiles/kitty/kitty.conf"
 alias ybrc="c ~/Dotfiles/yabai/yabairc"
 alias skrc="c ~/Dotfiles/skhd/skhdrc"
 alias skrc="c ~/Dotfiles/skhd/skhdrc"
-alias nt="c ~/Projects/notes.md"
+alias nt="c ~/Desktop/Notes/quick-note.md"
 
 # git & github
 alias gmm="git merge master"
