@@ -122,7 +122,7 @@ vnoremap K <nop>
 
 nnoremap k gk
 nnoremap j gj
-nnoremap 0 g0
+nnoremap 0 _
 nnoremap $ g$
 nnoremap Y y$
 
