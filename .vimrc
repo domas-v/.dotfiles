@@ -129,9 +129,6 @@ nnoremap Y y$
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
-nnoremap x vip
-nnoremap X vap
-
 """""""""""""""""""""
 " Language-Specific "
 """""""""""""""""""""
