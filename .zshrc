@@ -103,10 +103,12 @@ bindkey -s "^o" "fzf -m | xargs -o nvim\r"
 # config shortcuts
 alias t="touch"
 alias cat="bat"
-alias conf="cd ~/.config"
+
+# navivgation shortcuts
 alias dot="cd ~/Dotfiles"
-alias lmda="cd ~/Projects/tenspeed-lambda/"
 alias pr="cd ~/Projects/"
+alias lmda="cd ~/Projects/tenspeed-lambda/"
+alias sicp="cd ~/Projects/sicp/"
 
 # universal preview command
 function e() {
@@ -139,18 +141,18 @@ function ee() {
 }
 
 # neovim
-alias v="vim -c \"lcd%:p:h\""
+alias v="nvim -c \"lcd%:p:h\""
 alias c="code"
 alias src="source ~/.zshrc"
-alias vrc="c ~/Dotfiles/.vimrc"
-alias zrc="c ~/Dotfiles/.zshrc"
-alias nrc="c ~/Dotfiles/nvim/init.lua"
-alias wrc="c ~/Dotfiles/.wezterm.lua"
-alias krc="c ~/Dotfiles/kitty/kitty.conf"
-alias ybrc="c ~/Dotfiles/yabai/yabairc"
-alias skrc="c ~/Dotfiles/skhd/skhdrc"
-alias skrc="c ~/Dotfiles/skhd/skhdrc"
-alias nt="c ~/Desktop/Notes/quick-note.md"
+alias vrc="v ~/Dotfiles/.vimrc"
+alias zrc="v ~/Dotfiles/.zshrc"
+alias nrc="v ~/Dotfiles/nvim/init.lua"
+alias wrc="v ~/Dotfiles/.wezterm.lua"
+alias krc="v ~/Dotfiles/kitty/kitty.conf"
+alias ybrc="v ~/Dotfiles/yabai/yabairc"
+alias skrc="v ~/Dotfiles/skhd/skhdrc"
+alias skrc="v ~/Dotfiles/skhd/skhdrc"
+alias nt="v ~/Desktop/Notes/quick-note.md"
 
 # git & github
 alias gmm="git merge master"
