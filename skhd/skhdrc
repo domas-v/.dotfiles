@@ -11,8 +11,8 @@
 
 # --- WINDOWS WITHIN SPACE 
 # change window focus within space
-fn - j : yabai -m window --focus south
-fn - k : yabai -m window --focus north
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
 
 # stack or horizontal direction movement
 fn - l : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.next || yabai -m window --focus stack.first); else yabai -m window --focus next || yabai -m window --focus first; fi
@@ -31,24 +31,24 @@ ctrl + fn - k : yabai -m window --resize bottom:0:-40 2> /dev/null || yabai -m w
 ctrl + fn - l : yabai -m window --resize right:40:0 2> /dev/null || yabai -m window --resize left:40:0 2> /dev/null
 
 # rotate layout clockwise
-fn - r : yabai -m space --rotate 270
+shift + alt - r : yabai -m space --rotate 270
 
 # --- SPACES
-fn - n:  yabai -m space --focus next;
-fn - p:  yabai -m space --focus prev;
+r fn - n:  yabai -m space --focus next;
+# fn - p:  yabai -m space --focus prev;
 # shift + alt - n: yabai -m space --create && \
 #                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
 #                   yabai -m window --space "${index}" && \
 #                   yabai -m space --focus "${index}"
 
-fn - 1:  yabai -m space --focus 1;
-fn - 2:  yabai -m space --focus 2;
-fn - 3:  yabai -m space --focus 3;
-fn - 4:  yabai -m space --focus 4;
-fn - 5:  yabai -m space --focus 5;
-fn - 6:  yabai -m space --focus 6;
-fn - 7:  yabai -m space --focus 7;
-fn - 8:  yabai -m space --focus 8;
+# fn - 1:  yabai -m space --focus 1;
+# fn - 2:  yabai -m space --focus 2;
+# fn - 3:  yabai -m space --focus 3;
+# fn - 4:  yabai -m space --focus 4;
+# fn - 5:  yabai -m space --focus 5;
+# fn - 6:  yabai -m space --focus 6;
+# fn - 7:  yabai -m space --focus 7;
+# fn - 8:  yabai -m space --focus 8;
 
 # create/destroy
 ctrl + fn - c : yabai -m space --create
@@ -88,6 +88,6 @@ shift + fn - z : yabai -m window --display next; yabai -m display --focus next;
 shift + fn - c : yabai -m window --display prev; yabai -m display --focus prev;
 
 # toggle space layouts
-fn - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 fn - f : yabai -m space --layout stack
 fn - g : yabai -m space --layout bsp
