@@ -4,10 +4,10 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="/Users/domev/.local/bin:$PATH"
-export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
-export VISUAL="code"
-export EDITOR="nvim"
+# export PATH="/Users/domev/.local/bin:$PATH"
+# export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+# export VISUAL="code"
+# export EDITOR="nvim"
 
 
 if type brew &>/dev/null
@@ -95,8 +95,8 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # fzf config
-export FZF_DEFAULT_COMMAND='fd . -t f -H -E .git -E venv'
-export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=1 --git --icons {} | head -200'"
+# export FZF_DEFAULT_COMMAND='fd . -t f -H -E .git -E venv'
+# export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=1 --git --icons {} | head -200'"
 bindkey "^q" "fzf-cd-widget"
 bindkey -s "^o" "fzf -m | xargs -o nvim\r"
 
