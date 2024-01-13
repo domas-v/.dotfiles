@@ -26,19 +26,12 @@ return {
         end,
         keys = {
             { "<leader>*",  "<cmd>BufferPin<cr>" },
+            { "<leader>p",  "<cmd>BufferPick<cr>" },
+
             { "<C-n>",      "<cmd>BufferNext<cr>" },
             { "<C-p>",      "<cmd>BufferPrevious<cr>" },
-
-            -- { "<leader-1>",      "<cmd>BufferGoto 1<cr>" },
-            -- { "<leader-2>",      "<cmd>BufferGoto 2<cr>" },
-            -- { "<leader-3>",      "<cmd>BufferGoto 3<cr>" },
-            -- { "<leader-4>",      "<cmd>BufferGoto 4<cr>" },
-            -- { "<leader-5>",      "<cmd>BufferGoto 5<cr>" },
-            -- { "<leader-6>",      "<cmd>BufferGoto 6<cr>" },
-            -- { "<leader-7>",      "<cmd>BufferGoto 7<cr>" },
-            -- { "<leader-8>",      "<cmd>BufferGoto 8<cr>" },
-            -- { "<leader-9>",      "<cmd>BufferLast<cr>" },
-            -- { "<leader>p",  "<cmd>BufferPick<cr>" },
+            { "<C-]>",      "<cmd>BufferMoveNext<cr>" },
+            { "<C-[>",      "<cmd>BufferMovePrevious<cr>" },
 
             { "<C-1>",      "<cmd>BufferGoto 1<cr>" },
             { "<C-2>",      "<cmd>BufferGoto 2<cr>" },
@@ -49,6 +42,15 @@ return {
             { "<C-7>",      "<cmd>BufferGoto 7<cr>" },
             { "<C-8>",      "<cmd>BufferGoto 8<cr>" },
             { "<C-9>",      "<cmd>BufferLast<cr>" },
+            { "<leader>1",  "<cmd>BufferGoto 1<cr>" },
+            { "<leader>2",  "<cmd>BufferGoto 2<cr>" },
+            { "<leader>3",  "<cmd>BufferGoto 3<cr>" },
+            { "<leader>4",  "<cmd>BufferGoto 4<cr>" },
+            { "<leader>5",  "<cmd>BufferGoto 5<cr>" },
+            { "<leader>6",  "<cmd>BufferGoto 6<cr>" },
+            { "<leader>7",  "<cmd>BufferGoto 7<cr>" },
+            { "<leader>8",  "<cmd>BufferGoto 8<cr>" },
+            { "<leader>9",  "<cmd>BufferLast<cr>" },
 
             { "<C-x>",      "<cmd>BufferClose<cr>" },
             { "<leader>xx", "<cmd>BufferClose<cr>" },
@@ -56,9 +58,6 @@ return {
             { "<leader>xh", "<cmd>BufferCloseBuffersLeft<cr>" },
             { "<leader>xl", "<cmd>BufferCloseBuffersRight<cr>" },
             { "<leader>xp", "<cmd>BufferPickDelete<cr>" },
-
-            { "<C-]>",      "<cmd>BufferMoveNext<cr>" },
-            { "<C-[>",      "<cmd>BufferMovePrevious<cr>" },
         }
     },
     {
