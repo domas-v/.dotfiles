@@ -52,24 +52,12 @@ map('c', '<C-k>', '<LEFT>', { noremap = true })
 map('c', '<C-j>', '<RIGHT>', { noremap = true })
 
 -- search & replace
-map("n", "<C-s>", "/")                                                        -- word under cursor
+map("n", "<C-s>", "/")
 map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- word under cursor
 map("v", "<leader>rr", ":s/", { desc = "Search & Replace" })                  -- in visual selection
 map("n", "<leader>rr", ":%s/", { desc = "Search & Replace" })                 -- in whole buffer
 map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
     { desc = "Search & Replace" })                                            -- in quickfix list
-
--- split movement
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-l>", "<C-w>l")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-
--- resize splits
-map("n", "<C-=>", [[<cmd>vertical resize +15<cr>]])
-map("n", "<C-_>", [[<cmd>vertical resize -15<cr>]])
-map("n", "+", [[<cmd>horizontal resize +5<cr>]])
-map("n", "_", [[<cmd>horizontal resize -5<cr>]])
 
 -- tabs
 map("n", "<C-t><C-t>", "<cmd>tab split<cr>")
