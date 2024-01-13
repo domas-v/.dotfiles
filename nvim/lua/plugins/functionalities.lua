@@ -14,9 +14,9 @@ return {
     },
     {
         'mrjones2014/smart-splits.nvim',
-        build = './kitty/install-kittens.bash',
+        build = './kitty/install-kittens.bash', -- works with kitty
         config = function() require('smart-splits').setup({
-            default_amount = 10,
+            default_amount = 15,
             at_edge = 'stop', -- default is wrap, but doesn't work in kitty
             resize_mode = { silent = true }})
         end,

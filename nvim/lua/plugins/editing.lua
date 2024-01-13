@@ -20,9 +20,13 @@ return {
     },
     {
         "ggandor/flit.nvim",
-        config = function() require("flit").setup() end
+        config = function()
+            require("flit").setup({
+                keys = { f = 'f', F = 'F', t = 't', T = '-' },
+            })
+        end
     },
-    
+
     {
         "mg979/vim-visual-multi",
         init = function()

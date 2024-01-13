@@ -60,14 +60,6 @@ return {
                     sort_lastused = true,
                     sorting_strategy = "ascending",
                 },
-                pickers = {
-                    current_buffer_fuzzy_find = {
-                        theme = "ivy"
-                    },
-                    lsp_document_symbols = {
-                        theme = "ivy"
-                    },
-                },
                 extensions = {
                     fzf = {
                         fuzzy = true,
@@ -80,7 +72,7 @@ return {
                         mappings = {
                             i = {
                                 ["<C-e>"] = lga_actions.quote_prompt(),
-                                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                                ["<C-f>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
                                 ["<C-h>"] = lga_actions.quote_prompt({ postfix = " --hidden " }),
                             },
                         },
@@ -104,8 +96,6 @@ return {
             { "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '-t', 'f', '-H', '-E', '.git', '-E', 'venv' }})<cr>", desc = "Find files" },
             { "<leader>fg", "<cmd>Telescope git_files<cr>",                     desc = "Git files" },
             { "<leader>fo", "<cmd>Telescope oldfiles<cr>",                      desc = "Old files" },
-            { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>",          desc = "symbols" },
-            { "<leader>fS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "workspace symbols" },
 
             -- utils
             { "<leader>f,", "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
