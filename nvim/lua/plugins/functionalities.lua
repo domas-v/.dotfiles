@@ -9,6 +9,10 @@ return {
         end
     },
     {
+        "Pocco81/auto-save.nvim",
+        config = function() require("auto-save").setup({ execution_message = { message = "" } }) end,
+    },
+    {
         "jpalardy/vim-slime",
         init = function()
             vim.g.slime_target = "kitty"
@@ -18,16 +22,5 @@ return {
             { "<C-c><C-f>", "<cmd>%SlimeSend<cr>", "Slime send file" },
             { "<C-c><C-c>", "<cmd>%SlimeSendCurrentLine<cr>", "Slime send file" },
         }
-    },
-    {
-        "rest-nvim/rest.nvim",
-        dependencies = { { "nvim-lua/plenary.nvim" } },
-        commit = "8b62563",
-        config = function()
-            require("rest-nvim").setup({
-                result_split_in_place = true,
-                result_split_horizontal = true
-            })
-        end
     }
 }

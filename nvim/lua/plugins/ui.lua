@@ -10,14 +10,14 @@ return {
             { "<leader>tc", "<cmd>NvimTreeCollapse<cr>" },
         }
     },
-    {
-        'folke/trouble.nvim',
-        dependencies = 'kyazdani42/nvim-web-devicons',
-        config = function() require('trouble').setup() end,
-        keys = {
-            { "<leader>zt", "<cmd>Trouble<cr>" }
-        }
-    },
+    -- {
+    --     'folke/trouble.nvim',
+    --     dependencies = 'kyazdani42/nvim-web-devicons',
+    --     config = function() require('trouble').setup() end,
+    --     keys = {
+    --         { "<leader>zt", "<cmd>Trouble<cr>" }
+    --     }
+    -- },
     {
         'romgrk/barbar.nvim',
         lazy = false,

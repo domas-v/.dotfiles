@@ -22,10 +22,7 @@ return {
         "ggandor/flit.nvim",
         config = function() require("flit").setup() end
     },
-    {
-        "Pocco81/auto-save.nvim",
-        config = function() require("auto-save").setup({ execution_message = { message = "" } }) end,
-    },
+    
     {
         "mg979/vim-visual-multi",
         init = function()
@@ -36,9 +33,9 @@ return {
         lazy = false,
     },
     {
-        'lukas-reineke/indent-blankline.nvim',
+        "lukas-reineke/indent-blankline.nvim",
         config = function()
-            require('ibl').setup({
+            require("ibl").setup({
                 scope = { enabled = true },
             })
         end
