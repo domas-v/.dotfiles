@@ -102,9 +102,10 @@ return {
             -- file searching
             { "<C-f>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '-t', 'f', '-H', '-E', '.git', '-E', 'venv' }})<cr>", desc = "Find files" },
             { "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '-t', 'f', '-H', '-E', '.git', '-E', 'venv' }})<cr>", desc = "Find files" },
-            { "<leader>J",  "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
             { "<leader>fg", "<cmd>Telescope git_files<cr>",                     desc = "Git files" },
             { "<leader>fo", "<cmd>Telescope oldfiles<cr>",                      desc = "Old files" },
+            { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>",          desc = "symbols" },
+            { "<leader>fS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "workspace symbols" },
 
             -- utils
             { "<leader>f,", "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
