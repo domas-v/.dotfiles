@@ -94,8 +94,14 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# vi mode
+source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+function zvm_after_init() {
+    zvm_bindkey viins '^R' fzf-history-widget
+}
+
 # fzf config
-# export FZF_DEFAULT_COMMAND='fd . -t f -H -E .git -E venv'
+export FZF_DEFAULT_COMMAND='fd . -t f -H -E .git -E venv'
 # export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=1 --git --icons {} | head -200'"
 bindkey "^q" "fzf-cd-widget"
 bindkey -s "^o" "fzf -m | xargs -o nvim\r"
@@ -177,26 +183,3 @@ function cd() {
   fi
 }
 
-# vterm
-vterm_printf() {
-    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
-        # Tell tmux to pass the escape sequences through
-        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-    elif [ "${TERM%%-*}" = "screen" ]; then
-        # GNU screen (screen, screen-256color, screen-256color-bce)
-        printf "\eP\e]%s\007\e\\" "$1"
-    else
-        printf "\e]%s\e\\" "$1"
-    fi
-}
-
-vterm_prompt_end() {
-    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
-}
-setopt PROMPT_SUBST
-PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
-
-
-# eat term
-[ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
-  source "$EAT_SHELL_INTEGRATION_DIR/zsh"
