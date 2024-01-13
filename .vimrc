@@ -128,9 +128,13 @@ nnoremap Y y$
 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
+" nnoremap <C-e> <C-u>zz
 
 nnoremap <C-s> /
 nnoremap <C-a> ?
+
+inoremap <C-d> <DEL>
+inoremap <C-e> <ESC>A "move to end of line
 
 """""""""""""""""""""
 " Language-Specific "

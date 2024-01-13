@@ -4,6 +4,7 @@ return {
         cmd = "NvimTreeToggle",
         config = function() require('nvim-tree').setup() end,
         keys = {
+            { "<leader><TAB>", "<cmd>NvimTreeToggle<cr>" },
             { "<leader>tt", "<cmd>NvimTreeToggle<cr>" },
             { "<leader>tf", "<cmd>NvimTreeFindFile<cr>" },
             { "<leader>tc", "<cmd>NvimTreeCollapse<cr>" },
@@ -36,6 +37,17 @@ return {
             { "<C-n>",      "<cmd>BufferNext<cr>" },
             { "<C-p>",      "<cmd>BufferPrevious<cr>" },
 
+            -- { "<leader-1>",      "<cmd>BufferGoto 1<cr>" },
+            -- { "<leader-2>",      "<cmd>BufferGoto 2<cr>" },
+            -- { "<leader-3>",      "<cmd>BufferGoto 3<cr>" },
+            -- { "<leader-4>",      "<cmd>BufferGoto 4<cr>" },
+            -- { "<leader-5>",      "<cmd>BufferGoto 5<cr>" },
+            -- { "<leader-6>",      "<cmd>BufferGoto 6<cr>" },
+            -- { "<leader-7>",      "<cmd>BufferGoto 7<cr>" },
+            -- { "<leader-8>",      "<cmd>BufferGoto 8<cr>" },
+            -- { "<leader-9>",      "<cmd>BufferLast<cr>" },
+            -- { "<leader>p",  "<cmd>BufferPick<cr>" },
+
             { "<C-1>",      "<cmd>BufferGoto 1<cr>" },
             { "<C-2>",      "<cmd>BufferGoto 2<cr>" },
             { "<C-3>",      "<cmd>BufferGoto 3<cr>" },
@@ -45,7 +57,6 @@ return {
             { "<C-7>",      "<cmd>BufferGoto 7<cr>" },
             { "<C-8>",      "<cmd>BufferGoto 8<cr>" },
             { "<C-9>",      "<cmd>BufferLast<cr>" },
-            { "<leader>p",  "<cmd>BufferPick<cr>" },
 
             { "<C-x>",      "<cmd>BufferClose<cr>" },
             { "<leader>xx", "<cmd>BufferClose<cr>" },

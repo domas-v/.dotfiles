@@ -3,11 +3,17 @@ local wo         = vim.wo -- window local options
 local g          = vim.g  -- global variables
 local api        = vim.api
 
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- restore cursor position
 api.nvim_create_autocmd(
     { "BufEnter" },
     { pattern = { "*" }, command = 'silent! silent! normal! g`"' }
 )
+
+-- g.startofline = false
 
 -- line numbers
 wo.linebreak     = true

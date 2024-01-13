@@ -47,12 +47,12 @@ return {
                         },
                         horizontal = {
                             height = 0.9,
-                            width = 0.8,
+                            width = 0.65,
                             preview_width = 0.65,
                         },
                         vertical = {
                             height = 0.9,
-                            width = 0.75,
+                            width = 0.65,
                             preview_height = 0.45,
                             preview_cutoff = 34 -- cutoff if not full mac screen
                         }
@@ -101,8 +101,8 @@ return {
 
             -- file searching
             { "<C-f>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '-t', 'f', '-H', '-E', '.git', '-E', 'venv' }})<cr>", desc = "Find files" },
-            { "<leader>J",  "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
             { "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '-t', 'f', '-H', '-E', '.git', '-E', 'venv' }})<cr>", desc = "Find files" },
+            { "<leader>J",  "<cmd>Telescope find_files<cr>",                    desc = "Find files" },
             { "<leader>fg", "<cmd>Telescope git_files<cr>",                     desc = "Git files" },
             { "<leader>fo", "<cmd>Telescope oldfiles<cr>",                      desc = "Old files" },
 

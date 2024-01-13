@@ -5,8 +5,9 @@ local map = vim.keymap.set
 -- move visual selection
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move visual line down' })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move visual line up' })
-map("v", "<", "<gv", { desc = 'Move visual line left' })
-map("v", ">", ">gv", { desc = 'Move visual line right' })
+map("v", "H", "<gv", { desc = 'Move visual line left' })
+map("v", "L", ">gv", { desc = 'Move visual line right' })
+map("n", "J", "mzJ`z", { desc = 'Join lines' })
 
 -- wrapped line movement
 map("n", "k", "gk")
@@ -15,19 +16,29 @@ map("n", "0", "g0")
 map("n", "$", "g$")
 map("n", "Y", "y$")
 
--- handy remaps
+-- commands
 map("n", "!", ":!", { desc = 'Run shell command' })
 map("n", "<C-;>", ":lua ", { desc = 'Enter lua command' })
-map("n", "J", "mzJ`z", { desc = 'Join lines' })
+
+-- scrolling
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
-map("n", "g|", "g_")
-map("n", "0", "_")
 
+-- move to first/last non-blank character
+map("n", "L", "g$")
+map("n", "H", "_")
+
+-- move to first/last character
+map("n", "gL", "$")
+map("n", "gH", "|")
+
+-- closing vim
 map("n", "<leader>q", "<cmd>close<cr>")
 map("n", "<C-q>", "<cmd>close<cr>")
 map("n", "zq", "<cmd>wqa!<cr>")
 map("n", "<esc>", "<cmd>nohl<cr>")
+
+-- word wrap
 map("n", "<leader><leader>w", "<cmd>set wrap!<cr>")
 
 -- yank to system clipboard
@@ -56,7 +67,7 @@ map("n", "<C-k>", "<C-w>k")
 
 -- resize splits
 map("n", "<C-=>", [[<cmd>vertical resize +15<cr>]])
-map("n", "<C-->", [[<cmd>vertical resize -15<cr>]])
+map("n", "<C-_>", [[<cmd>vertical resize -15<cr>]])
 map("n", "+", [[<cmd>horizontal resize +5<cr>]])
 map("n", "_", [[<cmd>horizontal resize -5<cr>]])
 

@@ -52,8 +52,8 @@ return {
                             ["ai"] = "@conditional.outer",
                             ["il"] = "@loop.inner",
                             ["al"] = "@loop.outer",
-                            ["ib"] = "@block.inner",
-                            ["ab"] = "@block.outer",
+                            -- ["ib"] = "@block.inner",
+                            -- ["ab"] = "@block.outer",
                         }
                     },
                     move = {
