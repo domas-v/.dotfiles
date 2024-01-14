@@ -8,7 +8,6 @@ return {
             -- extensions
             "nvim-telescope/telescope-live-grep-args.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
-            "nvim-telescope/telescope-file-browser.nvim",
         },
         config = function()
             local actions = require("telescope.actions")
@@ -90,15 +89,11 @@ return {
                             },
                         },
                     },
-                    -- file_browser = {
-                    --     initial_mode = "normal",
-                    -- },
                 }
             })
 
             require("telescope").load_extension("fzf")
             require("telescope").load_extension("live_grep_args")
-            -- require("telescope").load_extension("file_browser")
         end,
         keys = {
             -- buffers
@@ -111,8 +106,6 @@ return {
             -- file searching
             { "<C-f>",      "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '--type', 'file', '--hidden', '--exclude', '.git', '--exclude', 'venv' }})<cr>", desc = "Find files" },
             { "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '--type', 'file', '--hidden', '--exclude', '.git', '--exclude', 'venv' }})<cr>", desc = "Find files" },
-            { "<C-.>",      "<cmd>Telescope file_browser<cr>",                  desc = "File browser" },
-            { "<leader>.",  "<cmd>Telescope file_browser<cr>",                  desc = "File browser" },
             { "<leader>fg", "<cmd>Telescope git_files<cr>",                     desc = "Git files" },
 
             -- utils
