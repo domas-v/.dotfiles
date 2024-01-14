@@ -167,7 +167,6 @@ return {
     },
     {
         'stevearc/conform.nvim',
-        opts = {},
         config = function()
             require("conform").setup({
                 formatters_by_ft = {
@@ -191,15 +190,5 @@ return {
             { "<leader>cf", ":Format<CR>", desc = "Format the current buffer", silent = true },
             { "<leader>cf", ":Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
         }
-    },
-    {
-        "simrat39/symbols-outline.nvim",
-        keys = {
-            { "<leader>oo", "<cmd>SymbolsOutline<cr>", desc = "Open symbols outline", silent = true },
-        },
-        cmd = { "SymbolsOutline" },
-        config = function()
-            require("symbols-outline").setup()
-        end
     }
 }

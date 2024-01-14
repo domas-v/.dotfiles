@@ -5,11 +5,14 @@ return {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             "kyazdani42/nvim-web-devicons",
+            -- extensions
             "nvim-telescope/telescope-live-grep-args.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
+            "nvim-telescope/telescope-file-browser.nvim",
         },
         config = function()
             local actions = require("telescope.actions")
+            local action_layout = require("telescope.actions.layout")
             local lga_actions = require("telescope-live-grep-args.actions")
 
             require("telescope").setup({
@@ -31,13 +34,17 @@ return {
                             ["<c-d>"] = actions.delete_buffer,
                             ["<c-l>"] = actions.preview_scrolling_down,
                             ["<c-h>"] = actions.preview_scrolling_up,
+                            ["<c-p>"] = action_layout.toggle_preview
                         },
                         n = {
                             ["<j>"] = actions.move_selection_next,
                             ["<k>"] = actions.move_selection_previous,
+                            ["<K>"] = actions.results_scrolling_up,
+                            ["<J>"] = actions.results_scrolling_down,
                             ["<c-d>"] = actions.delete_buffer,
                             ["<c-l>"] = actions.preview_scrolling_down,
                             ["<c-h>"] = actions.preview_scrolling_up,
+                            ["<c-p>"] = action_layout.toggle_preview
                         }
                     },
                     layout_strategy = "flex",
@@ -60,6 +67,12 @@ return {
                     sort_lastused = true,
                     sorting_strategy = "ascending",
                 },
+                pickers = {
+                    find_files = {
+                        follow = true,
+                        previewer = false,
+                    },
+                },
                 extensions = {
                     fzf = {
                         fuzzy = true,
@@ -71,34 +84,39 @@ return {
                         auto_quoting = true,
                         mappings = {
                             i = {
-                                ["<C-e>"] = lga_actions.quote_prompt(),
-                                ["<C-f>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-                                ["<C-h>"] = lga_actions.quote_prompt({ postfix = " --hidden " }),
+                                ["<C-r>"] = lga_actions.quote_prompt(),
+                                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                                ["<C-o>"] = lga_actions.quote_prompt({ postfix = " --hidden " }),
                             },
                         },
                     },
+                    -- file_browser = {
+                    --     initial_mode = "normal",
+                    -- },
                 }
             })
 
             require("telescope").load_extension("fzf")
             require("telescope").load_extension("live_grep_args")
+            -- require("telescope").load_extension("file_browser")
         end,
         keys = {
             -- buffers
             { "<C-e>",      "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
             { "<leader>e",  "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
-            { "<leader>j",  "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
+            { "<leader>j",  "<cmd>Telescope jumplist<cr>",                      desc = "Buffers" },
             { "<leader>s",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
             { "<leader>S",  "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
 
             -- file searching
-            { "<C-f>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '-t', 'f', '-H', '-E', '.git', '-E', 'venv' }})<cr>", desc = "Find files" },
-            { "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '-t', 'f', '-H', '-E', '.git', '-E', 'venv' }})<cr>", desc = "Find files" },
+            { "<C-f>",      "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '--type', 'file', '--hidden', '--exclude', '.git', '--exclude', 'venv' }})<cr>", desc = "Find files" },
+            { "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '--type', 'file', '--hidden', '--exclude', '.git', '--exclude', 'venv' }})<cr>", desc = "Find files" },
+            { "<C-.>",      "<cmd>Telescope file_browser<cr>",                  desc = "File browser" },
+            { "<leader>.",  "<cmd>Telescope file_browser<cr>",                  desc = "File browser" },
             { "<leader>fg", "<cmd>Telescope git_files<cr>",                     desc = "Git files" },
-            { "<leader>fo", "<cmd>Telescope oldfiles<cr>",                      desc = "Old files" },
 
             -- utils
-            { "<leader>f,", "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
+            { "<leader>fo", "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
             { "<leader>fh", "<cmd>Telescope help_tags<cr>",                     desc = "Help" },
             { "<leader>fk", "<cmd>Telescope keymaps<cr>",                       desc = "Keymaps" },
             { "<leader>fc", "<cmd>Telescope commands<cr>",                      desc = "Commands" },
@@ -106,8 +124,7 @@ return {
             -- lsp
             { "<leader>l",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
             { "<leader>L",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
-            { "<leader>fr", "<cmd>Telescope lsp_references<cr>",                desc = "LSP references" },
-            { "<leader>fd", "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
+            { "<leader>d",  "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
         },
         cmd = { "Telescope" },
     }
