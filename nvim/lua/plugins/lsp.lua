@@ -32,9 +32,9 @@ return {
             }
             lspconfig.marksman.setup{}
 
-            vim.keymap.set('n', 'zv', vim.diagnostic.open_float)
-            vim.keymap.set('n', 'zk', vim.diagnostic.goto_prev)
-            vim.keymap.set('n', 'zj', vim.diagnostic.goto_next)
+            vim.keymap.set('n', 'xx', vim.diagnostic.open_float)
+            vim.keymap.set('n', 'xk', vim.diagnostic.goto_prev)
+            vim.keymap.set('n', 'xj', vim.diagnostic.goto_next)
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
                 callback = function(ev)

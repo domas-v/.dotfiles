@@ -1,6 +1,27 @@
+local map = vim.keymap.set
+
+-- unamp leader and localleader
+map("n", "<Space>", "<Nop>", { noremap=true, silent=true })
+map("n", ";", "<Nop>", { noremap=true, silent=true })
+map("n", "Q", "<Nop>", { noremap=true, silent=true })
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = ";"
-local map = vim.keymap.set
+
+-- some keybindings to think about
+-- <TAB>
+-- <C-SPACE>
+-- z-commands
+-- x-commands
+
+
+-- insert mode keybindings
+map("i", "<C-a>", "<Home>",  { noremap = true, silent = true })
+map("i", "<C-f>", "<Right>", { noremap = true, silent = true })
+map("i", "<C-b>", "<Left>",  { noremap = true, silent = true })
+map("i", "<C-e>", "<End>",   { noremap = true, silent = true })
+map("i", "<C-d>", "<Del>",   { noremap = true, silent = true })
+map("i", "<C-u>", "<C-G>u<C-U>", { noremap = true, silent = true })
 
 -- move visual selection
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move visual line down', noremap=true })
@@ -36,15 +57,21 @@ map("n", "gH", "|", { noremap=true })
 -- closing vim
 map("n", "<leader>q", "<cmd>close<cr>", { noremap=true })
 map("n", "<C-q>", "<cmd>close<cr>", { noremap=true })
-map("n", "zq", "<cmd>wqa!<cr>", { noremap=true })
-map("n", "<esc>", "<cmd>nohl<cr>", { noremap=true })
+map("n", "zc", "<cmd>wqa!<cr>", { noremap=true })
+map("n", "zq", "<cmd>qa!<cr>", { noremap=true })
 
 -- word wrap
 map("n", "<leader><leader>w", "<cmd>set wrap!<cr>", { noremap=true })
 
+-- undo/redo
+map("n", "U", "<C-r>", { noremap=true })
+
 -- yank to system clipboard
 map({ "n", "v" }, "<leader>y", [["+y]], { noremap=true })
 map("n", "<leader>Y", [["+Y]], { noremap=true })
+
+-- paste over visual selection (if doesn't work as expected, rebind to leader-p)
+map("x", "p", [["_dP]]) 
 
 -- pop up movement
 map('i', '<C-j>', 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
@@ -54,6 +81,7 @@ map('c', '<C-j>', '<RIGHT>', { noremap = true })
 
 -- search & replace
 map("n", "<C-s>", "/", { noremap=true })
+map("n", "<esc>", "<cmd>nohl<cr>", { noremap=true })
 map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap=true }) -- word under cursor
 map("v", "<leader>rr", ":s/", { desc = "Search & Replace" , noremap=true })                  -- in visual selection
 map("n", "<leader>rr", ":%s/", { desc = "Search & Replace", noremap=true })                 -- in whole buffer
@@ -64,7 +92,3 @@ map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><
 map("n", "<C-t><C-t>", "<cmd>tab split<cr>", { noremap=true })
 map("n", "<C-t><C-x>", "<cmd>tabclose<cr>", { noremap=true })
 
--- windows
-map("n", "<leader>wv", "<C-w>v", { noremap=true })
-map("n", "<leader>ws", "<C-w>s", { noremap=true })
-map("n", "<leader>wo", "<C-w>o", { noremap=true })
