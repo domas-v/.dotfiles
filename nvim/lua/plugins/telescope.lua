@@ -13,8 +13,15 @@ return {
             local actions = require("telescope.actions")
             local action_layout = require("telescope.actions.layout")
             local lga_actions = require("telescope-live-grep-args.actions")
+            local telescope = require("telescope")
+            local fzf_opts = {
+                fuzzy = true,
+                override_generic_sorter = true,
+                override_file_sorter = true,
+                case_mode = "smart_case",
+            }
 
-            require("telescope").setup({
+            telescope.setup({
                 defaults = {
                     vimgrep_arguments = {
                         "rg",
@@ -71,14 +78,12 @@ return {
                         follow = true,
                         previewer = false,
                     },
+                    lsp_dynamic_workspace_symbols = {
+                        sorter = telescope.extensions.fzf.native_fzf_sorter(fzf_opts)
+                    },
                 },
                 extensions = {
-                    fzf = {
-                        fuzzy = true,
-                        override_generic_sorter = true,
-                        override_file_sorter = true,
-                        case_mode = "smart_case",
-                    },
+                    fzf = fzf_opts,
                     live_grep_args = {
                         auto_quoting = true,
                         mappings = {
@@ -92,8 +97,8 @@ return {
                 }
             })
 
-            require("telescope").load_extension("fzf")
-            require("telescope").load_extension("live_grep_args")
+            telescope.load_extension("fzf")
+            telescope.load_extension("live_grep_args")
         end,
         keys = {
             -- buffers

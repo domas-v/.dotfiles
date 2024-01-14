@@ -190,5 +190,15 @@ return {
             { "<leader>cf", ":Format<CR>", desc = "Format the current buffer", silent = true },
             { "<leader>cf", ":Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
         }
+    },
+    {
+        "utilyre/barbecue.nvim",
+        name = "barbecue",
+        version = "*",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons",
+        },
+        opts = {},
     }
 }

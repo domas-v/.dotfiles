@@ -33,9 +33,14 @@ map("n", "J", "mzJ`z", { desc = 'Join lines', noremap=true })
 -- wrapped line movement
 map("n", "k", "gk", { noremap=true })
 map("n", "j", "gj", { noremap=true })
-map("n", "0", "g0", { noremap=true })
-map("n", "$", "g$", { noremap=true })
-map("n", "Y", "y$", { noremap=true })
+
+-- move to first/last non-blank character
+map("n", "L", "g$", { noremap=true })
+map("n", "H", "_", { noremap=true })
+
+-- move to first/last character
+map("n", "gL", "$", { noremap=true })
+map("n", "gH", "|", { noremap=true })
 
 -- commands
 map("n", "!", ":!", { desc = 'Run shell command', noremap=true })
@@ -45,14 +50,6 @@ map("n", "<C-;>", ":lua ", { desc = 'Enter lua command', noremap=true })
 map("n", "<C-d>", "<C-d>zz", { desc = 'Scroll down', noremap=true })
 map("n", "<C-u>", "<C-u>zz", { desc = 'Scroll up', noremap=true })
 map("n", "T", "gg", { noremap=true })
-
--- move to first/last non-blank character
-map("n", "L", "g$", { noremap=true })
-map("n", "H", "_", { noremap=true })
-
--- move to first/last character
-map("n", "gL", "$", { noremap=true })
-map("n", "gH", "|", { noremap=true })
 
 -- closing vim
 map("n", "<leader>q", "<cmd>close<cr>", { noremap=true })
@@ -66,9 +63,14 @@ map("n", "<leader><leader>w", "<cmd>set wrap!<cr>", { noremap=true })
 -- undo/redo
 map("n", "U", "<C-r>", { noremap=true })
 
--- yank to system clipboard
+-- yanking
 map({ "n", "v" }, "<leader>y", [["+y]], { noremap=true })
 map("n", "<leader>Y", [["+Y]], { noremap=true })
+map("n", "Y", "y$", { noremap=true })
+
+-- folding
+map("n", "zf", "za", { noremap=true })
+map("n", "zF", "zA", { noremap=true })
 
 -- paste over visual selection (if doesn't work as expected, rebind to leader-p)
 map("x", "p", [["_dP]]) 
