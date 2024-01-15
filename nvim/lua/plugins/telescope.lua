@@ -40,7 +40,8 @@ return {
                             ["<c-d>"] = actions.delete_buffer,
                             ["<c-l>"] = actions.preview_scrolling_down,
                             ["<c-h>"] = actions.preview_scrolling_up,
-                            ["<c-p>"] = action_layout.toggle_preview
+                            ["<c-p>"] = action_layout.toggle_preview,
+                            ["<c-u>"] = false
                         },
                         n = {
                             ["<j>"] = actions.move_selection_next,
@@ -50,7 +51,7 @@ return {
                             ["<c-d>"] = actions.delete_buffer,
                             ["<c-l>"] = actions.preview_scrolling_down,
                             ["<c-h>"] = actions.preview_scrolling_up,
-                            ["<c-p>"] = action_layout.toggle_preview
+                            ["<c-p>"] = action_layout.toggle_preview,
                         }
                     },
                     layout_strategy = "flex",

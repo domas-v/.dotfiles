@@ -54,7 +54,7 @@ map("n", "T", "gg", { noremap=true })
 -- closing vim
 map("n", "<leader>q", "<cmd>close<cr>", { noremap=true })
 map("n", "<C-q>", "<cmd>close<cr>", { noremap=true })
-map("n", "zc", "<cmd>wqa!<cr>", { noremap=true })
+-- map("n", "zc", "<cmd>wqa!<cr>", { noremap=true })
 map("n", "zq", "<cmd>qa!<cr>", { noremap=true })
 
 -- word wrap

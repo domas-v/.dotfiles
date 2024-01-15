@@ -109,6 +109,7 @@ bindkey -s "^o" "fzf -m | xargs -o nvim\r"
 # config shortcuts
 alias t="touch"
 alias cat="bat"
+alias c="clear"
 
 # navivgation shortcuts
 alias dot="cd ~/Dotfiles"
@@ -148,7 +149,7 @@ function ee() {
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
-alias c="code"
+# alias c="code"
 alias src="source ~/.zshrc"
 alias vrc="v ~/Dotfiles/.vimrc"
 alias zrc="v ~/Dotfiles/.zshrc"
