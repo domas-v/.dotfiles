@@ -2,11 +2,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        dependencies = {
-            -- "p00f/nvim-ts-rainbow",
-            "nvim-treesitter/playground",
-            "nvim-treesitter/nvim-treesitter-textobjects"
-        },
+        dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
         config = function ()
             require("nvim-treesitter.configs").setup {
                 ensure_installed = {
@@ -46,8 +42,8 @@ return {
                             ["ac"] = "@class.outer",
                             ["i#"] = "@comment.inner",
                             ["a#"] = "@comment.outer",
-                            ["is"] = "@statement.inner",
-                            ["as"] = "@statement.outer",
+                            -- ["is"] = "@statement.inner",
+                            -- ["as"] = "@statement.outer",
                             ["ii"] = "@conditional.inner",
                             ["ai"] = "@conditional.outer",
                             ["il"] = "@loop.inner",
@@ -96,15 +92,5 @@ return {
                 }
             }
         end,
-    },
-    -- {
-    --     "nvim-treesitter/nvim-treesitter-context",
-    --     config = function ()
-    --         vim.keymap.set("n", "<C-y>", function()
-    --             require("treesitter-context").go_to_context()
-    --         end, { silent = true })
-    --         vim.keymap.set("n", "<C-c><C-t>", "<cmd>TSContextToggle<cr>", { silent = true })
-    --         vim.keymap.set("n", "<leader>ct", "<cmd>TSContextToggle<cr>", { silent = true })
-    --     end
-    -- }
+    }
 }
