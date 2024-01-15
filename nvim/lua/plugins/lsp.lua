@@ -43,9 +43,9 @@ return {
                     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
                     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
                     vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
-                    vim.keymap.set('n', '<space>n', vim.lsp.buf.type_definition, opts)
-                    vim.keymap.set('n', '<space>cn', vim.lsp.buf.rename, opts)
-                    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+                    -- vim.keymap.set('n', '<space>n', vim.lsp.buf.type_definition, opts)
+                    vim.keymap.set('n', '<C-c><C-n>', vim.lsp.buf.rename, opts)
+                    vim.keymap.set({ 'n', 'v' }, '<C-c><C-a>', vim.lsp.buf.code_action, opts)
                     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
                 end,
             })
@@ -187,8 +187,8 @@ return {
             end, { range = true })
         end,
         keys = {
-            { "<leader>cf", ":Format<CR>", desc = "Format the current buffer", silent = true },
-            { "<leader>cf", ":Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
+            { "<C-c><C-f>", ":Format<CR>", desc = "Format the current buffer", silent = true },
+            { "<C-c><C-f>", ":Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
         }
     },
     {

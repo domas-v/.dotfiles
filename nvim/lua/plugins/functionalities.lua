@@ -31,7 +31,6 @@ return {
             { "<A-k>", "<cmd>lua require('smart-splits').resize_up()<cr>", "Resize top" },
             { "<A-l>", "<cmd>lua require('smart-splits').resize_right()<cr>", "Resize right" },
 
-            { "<leader>wr", "<cmd>lua require('smart-splits').start_resize_mode()<cr>", "Start resize mode" },
             { "<C-w>r", "<cmd>lua require('smart-splits').start_resize_mode()<cr>", "Start resize mode" },
             { "<C-w><C-r>", "<cmd>lua require('smart-splits').start_resize_mode()<cr>", "Start resize mode" },
         }
@@ -42,8 +41,8 @@ return {
             vim.g.slime_target = "kitty"
         end,
         keys = {
-            { "<C-c><C-f>", "<cmd>%SlimeSend<cr>", "Slime send file" },
-            { "<C-c><C-c>", "<cmd>%SlimeSendCurrentLine<cr>", "Slime send file" },
+            { "<C-c><C-e>", "<cmd>%SlimeSend<cr>", "Slime send file" },
+            { "<C-c><C-c>", "<cmd>%SlimeSendCurrentLine<cr>", "Slime send current line" },
         }
     }
 }
