@@ -114,27 +114,77 @@ set background=dark
 " Keymaps "
 """""""""
 
-vnoremap > >gv
-vnoremap < <gv
-vnoremap Y y$
-vnoremap J <nop>
-vnoremap K <nop>
+" insert mode
+inoremap <C-a> <Home>
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+inoremap <C-e> <End>
+inoremap <C-d> <Del>
+inoremap <C-u> <C-G>u<C-U>
 
+" move visual selection
+vnoremap J :m '>+1<CR>gv=gv 
+vnoremap K :m '<-2<CR>gv=gv 
+vnoremap H <gv
+vnoremap L >gv
+
+" join lines
+nnoremap J mzJ`z
+
+" wrapped line movement
 nnoremap k gk
 nnoremap j gj
-nnoremap 0 _
-nnoremap $ g$
-nnoremap Y y$
 
+" move to first/last characters
+nnoremap L g$
+nnoremap H _
+nnoremap gl $
+nnoremap gh \|
+
+" scrolling
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
-" nnoremap <C-e> <C-u>zz
+nnoremap T gg
 
+" execute bash command
+nnoremap ! :!
+
+" closing vim
+nnoremap <C-q> :close<CR>
+nnoremap zq :wqa!<CR>
+
+" word wrap
+nnoremap <C-w><C-w> :set wrap!<CR>
+
+" undo/redo
+nnoremap U <C-r>
+
+" yanking & pasting
+vnoremap <C-y><C-y> "+y
+nnoremap <C-y><C-y> "+y
+nnoremap <C-y><C-a> "+Y
+nnoremap Y y$
+xnoremap p "_dP
+
+" folding
+nnoremap zf za
+nnoremap zF zA
+
+" pop up movement
+inoremap <expr> <C-k> pumvisible() ? "<up>" : "<C-k>"
+inoremap <expr> <C-j> pumvisible() ? "<down>" : "<C-j>"
+
+" search and replace
+nnoremap <RETURN> :nohlsearch<CR>
 nnoremap <C-s> /
-nnoremap <C-a> ?
+nnoremap <C-r><C-w> :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+vnoremap <C-r><C-r> :s/
+nnoremap <C-r><C-r> :%s/
+" nnoremap n <C-r><C-q> :cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
 
-inoremap <C-d> <DEL>
-inoremap <C-e> <ESC>A "move to end of line
+" tabs
+nnoremap <C-t><C-t> :tab split<CR>
+nnoremap <C-t><C-x> :tabclose<CR>
 
 """""""""""""""""""""
 " Language-Specific "
