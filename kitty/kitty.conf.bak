@@ -20,7 +20,7 @@
 #: many weight variants like Book, Medium, Thick, etc. For example::
 
 # font_family      JetBrains Mono
-font_family      JetBrains Mono
+font_family        JetBrains Mono
 # bold_font        JetBrains Mono Bold
 # italic_font      JetBrains Mono Italic
 # bold_italic_font JetBrains Mono Bold Italic
@@ -741,7 +741,7 @@ mouse_map kitty_mod+left release grabbed,ungrabbed mouse_handle_click link
 #: suffix of "c" on the width/height values to have them interpreted
 #: as number of cells instead of pixels.
 
-enabled_layouts splits, stack
+enabled_layouts splits, stack, fat:bias=70
 
 #: The enabled window layouts. A comma separated list of layout names.
 #: The special value all means all layouts. The first listed layout
@@ -916,8 +916,7 @@ tab_bar_edge bottom
 #: The second number is the margin between the tab bar and the
 #: contents of the current tab.
 
-tab_bar_style powerline
-tab_powerline_style angled
+tab_bar_style fade
 
 #: The tab bar style, can be one of:
 
@@ -943,7 +942,7 @@ tab_powerline_style angled
 #:     a mapping for the select_tab action which presents you with a list of
 #:     tabs and allows for easy switching to a tab.
 
-tab_bar_align left
+tab_bar_align center
 
 #: The horizontal alignment of the tab bar, can be one of: left,
 #: center, right.
@@ -961,7 +960,7 @@ tab_bar_min_tabs 1
 #: closed tab. A value of right will switch to the tab to the right of
 #: the closed tab. A value of last will switch to the right-most tab.
 
-# tab_fade 0.25 0.5 0.75 1
+tab_fade 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1
 
 #: Control how each tab fades into the background when using fade for
 #: the tab_bar_style. Each number is an alpha (between zero and one)
@@ -1758,30 +1757,16 @@ map kitty_mod+v paste_from_clipboard
 #: Scrolling {{{
 
 #: Scroll line up
-
-# map kitty_mod+up    scroll_line_up
 map kitty_mod+u     scroll_line_up
-# map opt+cmd+page_up scroll_line_up
-# map cmd+up          scroll_line_up
 
 #: Scroll line down
-
-# map kitty_mod+down    scroll_line_down
 map kitty_mod+d       scroll_line_down
-# map opt+cmd+page_down scroll_line_down
-# map cmd+down          scroll_line_down
 
 #: Scroll page up
-
 map kitty_mod+shift+u scroll_page_up
-map kitty_mod+b scroll_page_up
-# map cmd+page_up       scroll_page_up
 
 #: Scroll page down
-
 map kitty_mod+shift+d scroll_page_down
-map kitty_mod+f scroll_page_down
-# map cmd+page_down       scroll_page_down
 
 #: Scroll to top
 
@@ -1806,7 +1791,7 @@ map kitty_mod+f scroll_page_down
 
 #: Browse scrollback buffer in pager
 
-map kitty_mod+shift+b show_scrollback
+map kitty_mod+shift+z show_scrollback
 
 #::  You can pipe the contents of the current screen and history
 #::  buffer as STDIN to an arbitrary program using launch --stdin-
@@ -1820,7 +1805,7 @@ map kitty_mod+shift+b show_scrollback
 
 #: Browse output of the last shell command in pager
 
-map kitty_mod+b show_last_command_output
+map kitty_mod+z show_last_command_output
 
 #::  You can also define additional shortcuts to get the command
 #::  output. For example, to get the first command output on screen::
@@ -1854,8 +1839,8 @@ map kitty_mod+b show_last_command_output
 map kitty_mod+shift+enter new_window
 
 map kitty_mod+enter launch --location=vsplit --cwd=current
+map ctrl+enter launch --location=vsplit --cwd=current
 map kitty_mod+shift+v launch --location=vsplit --cwd=current
-map kitty_mod+shift+x launch --location=hsplit --cwd=current
 map kitty_mod+shift+s launch --location=hsplit --cwd=current
 
 map kitty_mod+shift+h move_window left
@@ -1865,28 +1850,28 @@ map kitty_mod+shift+j move_window down
 
 map kitty_mod+ctrl+backspace resize_window reset
 
-map alt+j kitten pass_keys.py relative_resize down  10 alt+j
-map alt+k kitten pass_keys.py relative_resize up    10 alt+k
-map alt+h kitten pass_keys.py relative_resize left  10 alt+h
-map alt+l kitten pass_keys.py relative_resize right 10 alt+l
+map alt+j kitten pass_keys.py relative_resize down  8 alt+j
+map alt+k kitten pass_keys.py relative_resize up    8 alt+k
+map alt+h kitten pass_keys.py relative_resize left  8 alt+h
+map alt+l kitten pass_keys.py relative_resize right 8 alt+l
 
-map kitty_mod+ctrl+j kitten pass_keys.py relative_resize down  10 alt+j
-map kitty_mod+ctrl+k kitten pass_keys.py relative_resize up    10 alt+k
-map kitty_mod+ctrl+h kitten pass_keys.py relative_resize left  10 alt+h
-map kitty_mod+ctrl+l kitten pass_keys.py relative_resize right 10 alt+l
+map kitty_mod+ctrl+j kitten pass_keys.py relative_resize down  8 alt+j
+map kitty_mod+ctrl+k kitten pass_keys.py relative_resize up    8 alt+k
+map kitty_mod+ctrl+h kitten pass_keys.py relative_resize left  8 alt+h
+map kitty_mod+ctrl+l kitten pass_keys.py relative_resize right 8 alt+l
 
 map ctrl+j kitten pass_keys.py neighboring_window bottom ctrl+j
 map ctrl+k kitten pass_keys.py neighboring_window top    ctrl+k
 map ctrl+h kitten pass_keys.py neighboring_window left   ctrl+h
 map ctrl+l kitten pass_keys.py neighboring_window right  ctrl+l
 
-map kitty_mod+j kitten pass_keys.py neighboring_window down ctrl+j
-map kitty_mod+k kitten pass_keys.py neighboring_window up ctrl+k
+map kitty_mod+j kitten pass_keys.py neighboring_window bottom ctrl+j
+map kitty_mod+k kitten pass_keys.py neighboring_window top ctrl+k
 map kitty_mod+h kitten pass_keys.py neighboring_window left ctrl+h
 map kitty_mod+l kitten pass_keys.py neighboring_window right ctrl+l
 
 # clear screen (C-l)
-map kitty_mod+ctrl+l send_text all \x0c
+# map alt+l send_text all \x0c
 
 #::  You can open a new window that is allowed to control kitty via
 #::  the kitty remote control facility with launch --allow-remote-
@@ -2075,13 +2060,16 @@ map kitty_mod+9 goto_tab 9
 #: Layout management {{{
 
 #: Next layout
-
-map kitty_mod+shift+r layout_action rotate
+map kitty_mod+shift+space next_layout
 
 #: You can also create shortcuts to switch to specific layouts::
 
 map kitty_mod+shift+g toggle_layout splits
 map kitty_mod+shift+f toggle_layout stack
+map kitty_mod+shift+b toggle_layout fat:bias=70
+
+
+map kitty_mod+shift+r layout_action rotate
 
 #: Similarly, to switch back to the previous layout::
 
@@ -2376,6 +2364,6 @@ map kitty_mod+q quit
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Mocha
+# Tokyo Night Day
 include current-theme.conf
 # END_KITTY_THEME

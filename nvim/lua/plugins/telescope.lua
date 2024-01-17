@@ -123,7 +123,7 @@ return {
             -- lsp
             { "<leader>l",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
             { "<leader>L",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
-            { "<leader>d",  "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
+            { "<leader>D",  "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
         },
         cmd = { "Telescope" },
     }

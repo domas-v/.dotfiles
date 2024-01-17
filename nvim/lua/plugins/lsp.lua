@@ -32,9 +32,9 @@ return {
             }
             lspconfig.marksman.setup{}
 
-            vim.keymap.set('n', 'xx', vim.diagnostic.open_float)
-            vim.keymap.set('n', 'xk', vim.diagnostic.goto_prev)
-            vim.keymap.set('n', 'xj', vim.diagnostic.goto_next)
+            vim.keymap.set('n', '<leader>dv', vim.diagnostic.open_float)
+            vim.keymap.set('n', '<leader>dk', vim.diagnostic.goto_prev)
+            vim.keymap.set('n', '<leader>dj', vim.diagnostic.goto_next)
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
                 callback = function(ev)
@@ -46,7 +46,9 @@ return {
                     -- vim.keymap.set('n', '<space>n', vim.lsp.buf.type_definition, opts)
                     vim.keymap.set('n', '<C-c><C-n>', vim.lsp.buf.rename, opts)
                     vim.keymap.set({ 'n', 'v' }, '<C-c><C-a>', vim.lsp.buf.code_action, opts)
-                    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+                    -- using telescope for references
+                    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
+                    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
                 end,
             })
         end
@@ -200,5 +202,6 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {},
+        config = {}
     }
 }
