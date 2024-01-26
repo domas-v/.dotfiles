@@ -54,8 +54,8 @@ map("n", "<C-w><C-w>", "<cmd>set wrap!<cr>", { noremap=true })
 map("n", "U", "<C-r>", { noremap=true })
 
 -- yanking & pasting
-map({ "n", "v" }, "<C-y><C-y>", [["+y]], { noremap=true })
-map("n", "<C-y><C-a>", [["+Y]], { noremap=true })
+map({ "n", "v" }, "<leader>y", [["+y]], { noremap=true })
+map("n", "<leader>Y", [["+Y]], { noremap=true })
 map("n", "Y", "y$", { noremap=true })
 map("x", "p", [["_dP]])  -- paste over visual selection (if doesn't work as expected, rebind to leader-p)
 
@@ -81,4 +81,10 @@ map("n", "<C-r><C-q>", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><
 -- tabs
 map("n", "<C-t><C-t>", "<cmd>tab split<cr>", { noremap=true })
 map("n", "<C-t><C-x>", "<cmd>tabclose<cr>", { noremap=true })
+
+-- windows
+map("n", "<C-h>", "<C-w>h", { noremap=true })
+map("n", "<C-j>", "<C-w>j", { noremap=true })
+map("n", "<C-k>", "<C-w>k", { noremap=true })
+map("n", "<C-l>", "<C-w>l", { noremap=true })
 
