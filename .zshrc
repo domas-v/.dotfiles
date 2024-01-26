@@ -94,12 +94,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# vi mode
-source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-function zvm_after_init() {
-    zvm_bindkey viins '^R' fzf-history-widget
-}
-
 # fzf config
 export FZF_DEFAULT_COMMAND='fd . -t f -H -E .git -E venv'
 # export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=1 --git --icons {} | head -200'"
@@ -115,51 +109,21 @@ alias c="clear"
 alias dot="cd ~/Dotfiles"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
-alias sicp="cd ~/Projects/sicp/"
+alias lg="cd ~/Library/Mobile\ Documents/iCloud~com~logseq~logseq/Documents"
 
-# universal preview command
-function e() {
-    if [[ -z "$1" ]]; then
-        exa -la --git
-    elif [[ "$1" =~ \.(png|jpg|jpeg|gif|bmp|tiff|tif|webp)$ ]]; then
-        # wezterm imgcat "$1" "${@:2}"
-        kitten icat "$1" "${@:2}"
-    elif [[ "$1" =~ \.(mp4|mov|mkv|avi|webm)$ ]]; then
-        mpv --no-terminal "$1"
-    elif [[ -d "$1" ]]; then
-        exa -la --git "$1"
-    elif [[ "$1" =~ \.(json)$ ]]; then
-        jless "$1"
-    # elif [[ "$1" =~ \.(md)$ ]]; then
-    #     glow "$1"
-    else
-        bat "$1"
-    fi
-}
-
-function ee() {
-    if [[ -z "$1" ]]; then
-        exa -lT --level=2 --git
-    elif [[ -d "$1" ]]; then
-        exa -lT --level=2 --git "$1"
-    else
-        bat "$1"
-    fi
-}
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
-# alias c="code"
+alias c="code"
 alias src="source ~/.zshrc"
 alias vrc="v ~/Dotfiles/.vimrc"
 alias zrc="v ~/Dotfiles/.zshrc"
 alias nrc="v ~/Dotfiles/nvim/init.lua"
-alias wrc="v ~/Dotfiles/.wezterm.lua"
-alias krc="v ~/Dotfiles/kitty/kitty.conf"
-alias ybrc="v ~/Dotfiles/yabai/yabairc"
-alias skrc="v ~/Dotfiles/skhd/skhdrc"
-alias skrc="v ~/Dotfiles/skhd/skhdrc"
-alias nt="v ~/Desktop/Notes/quick-note.md"
+# -- UNUSED --
+# alias wrc="v ~/Dotfiles/.wezterm.lua"
+# alias krc="v ~/Dotfiles/kitty/kitty.conf"
+# alias ybrc="v ~/Dotfiles/yabai/yabairc"
+# alias skrc="v ~/Dotfiles/skhd/skhdrc"
 
 # git & github
 alias gmm="git merge master"

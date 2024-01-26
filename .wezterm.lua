@@ -7,27 +7,70 @@ if wezterm.config_builder then
 end
 
 -- colorscheme
--- switch theme based on system appearance
-local function get_appearance()
-    if wezterm.gui then
-        return wezterm.gui.get_appearance()
-    end
-    return 'Dark'
-end
+local kanagawa_dragon_colors = {
+    foreground = "#c5c9c5",
+    background = "#181616",
 
-local function scheme_for_appearance(appearance)
-    if appearance:find 'Dark' then
-        return "Catppuccin Mocha"
-        -- return "kanagawabones"
-    else
-        config.colors = { background = '#F2ECBC' }
-        return "Catppuccin Latte"
-    end
-end
-config.color_scheme = scheme_for_appearance(get_appearance())
+    cursor_bg = "#C8C093",
+    cursor_fg = "#C8C093",
+    cursor_border = "#C8C093",
+
+    selection_fg = "#C8C093",
+    selection_bg = "#2D4F67",
+
+    scrollbar_thumb = "#16161D",
+    split = "#16161D",
+
+    ansi = {
+        "#0D0C0C",
+        "#C4746E",
+        "#8A9A7B",
+        "#C4B28A",
+        "#8BA4B0",
+        "#A292A3",
+        "#8EA4A2",
+        "#C8C093",
+    },
+    brights = {
+        "#A6A69C",
+        "#E46876",
+        "#87A987",
+        "#E6C384",
+        "#7FB4CA",
+        "#938AA9",
+        "#7AA89F",
+        "#C5C9C5",
+    },
+    indexed = { [16] = "#B6927B", [17] = "#B98D7B" },
+}
+
+config.colors = kanagawa_dragon_colors
+
+
+---------- TEMPORARY ----------
+-- switch theme based on system appearance
+
+-- local function get_appearance()
+--     if wezterm.gui then
+--         return wezterm.gui.get_appearance()
+--     end
+--     return 'Dark'
+-- end
+
+-- local function scheme_for_appearance(appearance)
+--     if appearance:find 'Dark' then
+--         -- return "kanagawabones"
+--     else
+--         config.colors = { background = '#F2ECBC' }
+--         return "tokyonight-day"
+--     end
+-- end
+-- config.color_scheme = scheme_for_appearance(get_appearance())
+---------- TEMPORARY ----------
+
 
 -- font
-config.font = wezterm.font { family = "Monaspace Neon", }
+config.font = wezterm.font { family = "JetBrains Mono" }
 config.font_size = 14.0
 
 -- window appearance
@@ -63,7 +106,7 @@ wezterm.on(
         cmd = cmd_table[cmd]
 
         if cwd == basename(wezterm.home_dir) then
-            cwd = wezterm.nerdfonts.dev_apple .. " "
+            cwd = wezterm.nerdfonts.custom_home .. " "
         end
 
         if #tab.panes > 1 then
@@ -99,7 +142,7 @@ config.keys = {
     -- utils
     { key = 'q', mods = 'CTRL',       action = act.DisableDefaultAssignment },
     { key = 'Q', mods = 'CTRL',       action = act.DisableDefaultAssignment },
-    { key = ';', mods = 'CMD',        action = act.ActivateCommandPalette },
+    { key = ';', mods = 'CMD|SHIFT',        action = act.ActivateCommandPalette },
     { key = 'n', mods = 'CMD|SHIFT',  action = act.SpawnWindow },
 
     -- scrolling
@@ -150,10 +193,10 @@ config.keys = {
     { key = 'j',     mods = 'CMD',       action = act.ActivatePaneDirection 'Down' },
     { key = 'k',     mods = 'CMD',       action = act.ActivatePaneDirection 'Up' },
     { key = 'l',     mods = 'CMD',       action = act.ActivatePaneDirection 'Right' },
-    { key = 'h',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Left', 5 } },
-    { key = 'j',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Down', 5 } },
-    { key = 'k',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Up', 5 } },
-    { key = 'l',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Right', 5 } },
+    { key = 'h',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Left', 7 } },
+    { key = 'j',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Down', 7 } },
+    { key = 'k',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Up', 7 } },
+    { key = 'l',     mods = 'CMD|CTRL',  action = act.AdjustPaneSize { 'Right', 7 } },
     { key = 'h',     mods = 'CMD|SHIFT', action = act.RotatePanes 'Clockwise' },
     { key = 'l',     mods = 'CMD|SHIFT', action = act.RotatePanes 'CounterClockwise', },
 }

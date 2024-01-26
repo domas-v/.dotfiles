@@ -58,17 +58,7 @@ return {
             { "<leader>xp", "<cmd>BufferPickDelete<cr>" },
         }
     },
-    {
-        'sindrets/winshift.nvim',
-        config = function() require('winshift').setup() end,
-        keys = {
-            { "<leader>wm", "<cmd>WinShift<cr>",       desc = "WinShift mode" },
-            { "<leader>wh", "<cmd>WinShift left<cr>",  desc = "Winshift left" },
-            { "<leader>wk", "<cmd>WinShift up<cr>",    desc = "WinShift up" },
-            { "<leader>wj", "<cmd>WinShift down<cr>",  desc = "WinShift down" },
-            { "<leader>wl", "<cmd>WinShift right<cr>", desc = "WinShift right" },
-        }
-    },
+    
     {
           'nvim-lualine/lualine.nvim',
           dependencies = 'nvim-tree/nvim-web-devicons' ,
