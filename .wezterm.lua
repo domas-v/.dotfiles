@@ -6,82 +6,38 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
+
 -- colorscheme
-local kanagawa_dragon_colors = {
-    foreground = "#c5c9c5",
-    background = "#181616",
-
-    cursor_bg = "#C8C093",
-    cursor_fg = "#C8C093",
-    cursor_border = "#C8C093",
-
-    selection_fg = "#C8C093",
-    selection_bg = "#2D4F67",
-
-    scrollbar_thumb = "#16161D",
-    split = "#16161D",
-
-    ansi = {
-        "#0D0C0C",
-        "#C4746E",
-        "#8A9A7B",
-        "#C4B28A",
-        "#8BA4B0",
-        "#A292A3",
-        "#8EA4A2",
-        "#C8C093",
-    },
-    brights = {
-        "#A6A69C",
-        "#E46876",
-        "#87A987",
-        "#E6C384",
-        "#7FB4CA",
-        "#938AA9",
-        "#7AA89F",
-        "#C5C9C5",
-    },
-    indexed = { [16] = "#B6927B", [17] = "#B98D7B" },
-}
-
-config.colors = kanagawa_dragon_colors
-
-
----------- TEMPORARY ----------
--- switch theme based on system appearance
-
--- local function get_appearance()
---     if wezterm.gui then
---         return wezterm.gui.get_appearance()
---     end
---     return 'Dark'
--- end
-
--- local function scheme_for_appearance(appearance)
---     if appearance:find 'Dark' then
---         -- return "kanagawabones"
---     else
---         config.colors = { background = '#F2ECBC' }
---         return "tokyonight-day"
---     end
--- end
--- config.color_scheme = scheme_for_appearance(get_appearance())
----------- TEMPORARY ----------
-
+config.color_scheme = "kanagawabones"
 
 -- font
 config.font = wezterm.font { family = "JetBrains Mono" }
 config.font_size = 14.0
 
 -- window appearance
-config.window_background_opacity = 0.95
+config.window_background_opacity = 1.0
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000
 config.default_workspace = "main"
 
 -- tab bar
-config.use_fancy_tab_bar = true
+config.colors = {
+    tab_bar = {
+        background = '#2A2A37',
+        active_tab = {
+            bg_color = '#2A2A37',
+        },
+        inactive_tab = {
+            bg_color = '#16161D',
+        },
+        new_tab = {
+            bg_color = '#16161D',
+        }
+    },
+}
+
+config.use_fancy_tab_bar = false
 config.tab_max_width = 30
 config.tab_bar_at_bottom = true
 config.status_update_interval = 1000
@@ -106,7 +62,7 @@ wezterm.on(
         cmd = cmd_table[cmd]
 
         if cwd == basename(wezterm.home_dir) then
-            cwd = wezterm.nerdfonts.custom_home .. " "
+            cwd = wezterm.nerdfonts.custom_home .. "  "
         end
 
         if #tab.panes > 1 then

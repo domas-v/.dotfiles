@@ -48,11 +48,12 @@ return {
     {
         "jpalardy/vim-slime",
         init = function()
-            vim.g.slime_target = "kitty"
+            vim.g.slime_target = "wezterm"
         end,
         keys = {
             { "<C-c><C-e>", "<cmd>%SlimeSend<cr>", "Slime send file" },
             { "<C-c><C-c>", "<cmd>%SlimeSendCurrentLine<cr>", "Slime send current line" },
         }
     }
+    -- https://github.com/nvim-pack/nvim-spectre
 }

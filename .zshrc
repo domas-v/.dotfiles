@@ -119,8 +119,10 @@ alias src="source ~/.zshrc"
 alias vrc="v ~/Dotfiles/.vimrc"
 alias zrc="v ~/Dotfiles/.zshrc"
 alias nrc="v ~/Dotfiles/nvim/init.lua"
+alias n="v -c \"lcd%:p:h\" ~/Desktop/Notes/notes.md"
+alias wrc="v ~/Dotfiles/.wezterm.lua"
+
 # -- UNUSED --
-# alias wrc="v ~/Dotfiles/.wezterm.lua"
 # alias krc="v ~/Dotfiles/kitty/kitty.conf"
 # alias ybrc="v ~/Dotfiles/yabai/yabairc"
 # alias skrc="v ~/Dotfiles/skhd/skhdrc"
