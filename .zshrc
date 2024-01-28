@@ -103,27 +103,27 @@ bindkey -s "^o" "fzf -m | xargs -o nvim\r"
 # config shortcuts
 alias t="touch"
 alias cat="bat"
+alias cl="clear"
 alias c="clear"
 
 # navivgation shortcuts
 alias dot="cd ~/Dotfiles"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
-alias lg="cd ~/Library/Mobile\ Documents/iCloud~com~logseq~logseq/Documents"
+alias ob="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
-alias c="code"
 alias src="source ~/.zshrc"
 alias vrc="v ~/Dotfiles/.vimrc"
 alias zrc="v ~/Dotfiles/.zshrc"
 alias nrc="v ~/Dotfiles/nvim/init.lua"
 alias n="v -c \"lcd%:p:h\" ~/Desktop/Notes/notes.md"
-alias wrc="v ~/Dotfiles/.wezterm.lua"
+alias krc="v ~/Dotfiles/kitty/kitty.conf"
 
 # -- UNUSED --
-# alias krc="v ~/Dotfiles/kitty/kitty.conf"
+# alias wrc="v ~/Dotfiles/.wezterm.lua"
 # alias ybrc="v ~/Dotfiles/yabai/yabairc"
 # alias skrc="v ~/Dotfiles/skhd/skhdrc"
 

@@ -12,7 +12,7 @@ config.color_scheme = "kanagawabones"
 
 -- font
 config.font = wezterm.font { family = "JetBrains Mono" }
-config.font_size = 14.0
+config.font_size = 13.0
 
 -- window appearance
 config.window_background_opacity = 1.0
@@ -21,25 +21,10 @@ config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000
 config.default_workspace = "main"
 
--- tab bar
-config.colors = {
-    tab_bar = {
-        background = '#2A2A37',
-        active_tab = {
-            bg_color = '#2A2A37',
-        },
-        inactive_tab = {
-            bg_color = '#16161D',
-        },
-        new_tab = {
-            bg_color = '#16161D',
-        }
-    },
-}
-
+-- tab appearance
 config.use_fancy_tab_bar = false
 config.tab_max_width = 30
-config.tab_bar_at_bottom = true
+config.tab_bar_at_bottom = false
 config.status_update_interval = 1000
 config.show_tab_index_in_tab_bar = false
 
