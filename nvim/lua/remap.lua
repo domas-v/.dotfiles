@@ -44,11 +44,11 @@ map("n", "!", ":!", { desc = 'Run shell command', noremap=true })
 map("n", "<C-;>", ":lua ", { desc = 'Enter lua command', noremap=true })
 
 -- closing vim
-map("n", "<C-q>", "<cmd>close<cr>", { noremap=true })
-map("n", "zq", "<cmd>qa!<cr>", { noremap=true })
+map("n", "<leader>q", "<cmd>close<cr>", { noremap=true })
+map("n", "<leader>Q", "<cmd>qa!<cr>", { noremap=true })
 
 -- word wrap
-map("n", "<C-w><C-w>", "<cmd>set wrap!<cr>", { noremap=true })
+map("n", "<leader>ww", "<cmd>set wrap!<cr>", { noremap=true })
 
 -- undo/redo
 map("n", "U", "<C-r>", { noremap=true })
@@ -70,21 +70,24 @@ map('c', '<C-j>', '<RIGHT>', { noremap = true })
 map('c', '<C-k>', '<LEFT>', { noremap = true })
 
 -- search & replace
-map("n", "<esc>", "<cmd>nohl<cr>", { noremap=true })
 map("n", "<C-s>", "/", { noremap=true })
-map("n", "<C-r><C-w>", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap=true }) -- word under cursor
-map("v", "<C-r><C-r>", ":s/", { desc = "Search & Replace" , noremap=true })                  -- in visual selection
-map("n", "<C-r><C-r>", ":%s/", { desc = "Search & Replace", noremap=true })                 -- in whole buffer
-map("n", "<C-r><C-q>", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
+map("n", "<esc>", "<cmd>nohl<cr>", { noremap=true })
+map("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap=true }) -- word under cursor
+map("v", "<leader>R", ":s/", { desc = "Search & Replace" , noremap=true })                  -- in visual selection
+map("n", "<leader>R", ":%s/", { desc = "Search & Replace", noremap=true })                 -- in whole buffer
+map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
 { desc = "Search & Replace" }, { noremap=true })                                            -- in quickfix list
 
 -- tabs
-map("n", "<C-t><C-t>", "<cmd>tab split<cr>", { noremap=true })
-map("n", "<C-t><C-x>", "<cmd>tabclose<cr>", { noremap=true })
+map("n", "<leader>tt", "<cmd>tab split<cr>", { noremap=true })
+map("n", "<leader>tx", "<cmd>tabclose<cr>", { noremap=true })
 
 -- windows
 map("n", "<C-h>", "<C-w>h", { noremap=true })
 map("n", "<C-j>", "<C-w>j", { noremap=true })
 map("n", "<C-k>", "<C-w>k", { noremap=true })
 map("n", "<C-l>", "<C-w>l", { noremap=true })
-
+map("n", "<leader>h", "<C-w>h", { noremap=true })
+map("n", "<leader>j", "<C-w>j", { noremap=true })
+map("n", "<leader>k", "<C-w>k", { noremap=true })
+map("n", "<leader>l", "<C-w>l", { noremap=true })

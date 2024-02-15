@@ -32,6 +32,7 @@ return {
             { "<A-l>", "<cmd>lua require('smart-splits').resize_right()<cr>", "Resize right" },
 
             { "<C-w><C-r>", "<cmd>lua require('smart-splits').start_resize_mode()<cr>", "Start resize mode" },
+            { "<leader>wr", "<cmd>lua require('smart-splits').start_resize_mode()<cr>", "Start resize mode" },
         }
     },
     {
@@ -43,17 +44,23 @@ return {
             { "<C-w><C-k>", "<cmd>WinShift up<cr>",    desc = "WinShift up" },
             { "<C-w><C-j>", "<cmd>WinShift down<cr>",  desc = "WinShift down" },
             { "<C-w><C-l>", "<cmd>WinShift right<cr>", desc = "WinShift right" },
+
+            { "<leader>wm", "<cmd>WinShift<cr>",       desc = "WinShift mode" },
+            { "<leader>wh", "<cmd>WinShift left<cr>",  desc = "Winshift left" },
+            { "<leader>wk", "<cmd>WinShift up<cr>",    desc = "WinShift up" },
+            { "<leader>wj", "<cmd>WinShift down<cr>",  desc = "WinShift down" },
+            { "<leader>wl", "<cmd>WinShift right<cr>", desc = "WinShift right" },
         }
     },
-    {
-        "jpalardy/vim-slime",
-        init = function()
-            vim.g.slime_target = "wezterm"
-        end,
-        keys = {
-            { "<C-c><C-e>", "<cmd>%SlimeSend<cr>", "Slime send file" },
-            { "<C-c><C-c>", "<cmd>%SlimeSendCurrentLine<cr>", "Slime send current line" },
-        }
-    }
+    -- {
+    --     "jpalardy/vim-slime",
+    --     init = function()
+    --         vim.g.slime_target = "kitty"
+    --     end,
+    --     keys = {
+    --         { "<C-c><C-e>", "<cmd>%SlimeSend<cr>", "Slime send file" },
+    --         { "<C-c><C-c>", "<cmd>%SlimeSendCurrentLine<cr>", "Slime send current line" },
+    --     }
+    -- }
     -- https://github.com/nvim-pack/nvim-spectre
 }

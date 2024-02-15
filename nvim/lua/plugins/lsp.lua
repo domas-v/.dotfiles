@@ -189,8 +189,8 @@ return {
             end, { range = true })
         end,
         keys = {
-            { "<C-c><C-f>", ":Format<CR>", desc = "Format the current buffer", silent = true },
-            { "<C-c><C-f>", ":Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
+            { "<leader>F", ":Format<CR>",  desc = "Format the current buffer",  silent = true },
+            { "<leader>F", ":Format<CR>",  desc = "Format selection",           silent = true, mode = "v", }
         }
     },
     {

@@ -128,6 +128,7 @@ alias krc="v ~/Dotfiles/kitty/kitty.conf"
 # alias skrc="v ~/Dotfiles/skhd/skhdrc"
 
 # git & github
+alias lg="lazygit"
 alias gmm="git merge master"
 alias gsync="git pull && git add . && git commit -m 'Update' && git push"
 
