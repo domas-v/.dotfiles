@@ -65,7 +65,6 @@ return {
             { "<leader>xp", "<cmd>BufferPickDelete<cr>" },
         }
     },
-    
     {
           'nvim-lualine/lualine.nvim',
           dependencies = 'nvim-tree/nvim-web-devicons' ,
@@ -82,5 +81,18 @@ return {
         'kevinhwang91/nvim-bqf',
         ft = 'qf',
         dependencies = 'junegunn/fzf',
+    },
+    {
+        "DanilaMihailov/beacon.nvim" 
+    },
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("todo-comments").setup()
+        end,
+        keys = {
+            { "<leader>ft", "<cmd>TodoTelescope<cr>" }
+        }
     }
 }

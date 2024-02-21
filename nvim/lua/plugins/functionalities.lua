@@ -64,8 +64,11 @@ return {
             { "<leader>cc", "<cmd>%SlimeSendCurrentLine<cr>", "Slime send current line" },
         }
     },
-    {
-       "DanilaMihailov/beacon.nvim" 
-    }
+    --  TODO: install image.nvim
+    -- {
+    --     "benlubas/molten-nvim",
+    --     build = ":UpdateRemotePlugins",
+    -- },
+    
     -- https://github.com/nvim-pack/nvim-spectre
 }

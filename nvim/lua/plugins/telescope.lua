@@ -111,6 +111,7 @@ return {
             -- shortcuts
             { "<C-e>", "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
             { "<C-f>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '--type', 'file', '--hidden', '--exclude', '.git', '--exclude', 'venv' }})<cr>", desc = "Find files" },
+            { "<C-y>", "<cmd>Telescope neoclip<cr>",                       desc = "Neoclip" },
             { "<leader>s", "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
             { "<leader>S", "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
             { "<leader>l",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
@@ -121,14 +122,17 @@ return {
             { "<leader>fs", "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
             { "<leader>fr", "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
 
-            -- utils
+            -- file navigation
+            { "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '--type', 'file', '--hidden', '--exclude', '.git', '--exclude', 'venv' }})<cr>", desc = "Find files" },
             { "<leader>fg", "<cmd>Telescope git_files<cr>",                     desc = "Git files" },
+            { "<leader>fj", "<cmd>Telescope jumplist<cr>",                      desc = "Neoclip" },
+
+            -- utils
             { "<leader>fo", "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
             { "<leader>fh", "<cmd>Telescope help_tags<cr>",                     desc = "Help" },
             { "<leader>fk", "<cmd>Telescope keymaps<cr>",                       desc = "Keymaps" },
             { "<leader>fc", "<cmd>Telescope commands<cr>",                      desc = "Commands" },
             { "<leader>fy", "<cmd>Telescope neoclip<cr>",                       desc = "Neoclip" },
-            { "<leader>fj", "<cmd>Telescope jumplist<cr>",                      desc = "Neoclip" },
 
             -- lsp
             { "<leader>fl",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
