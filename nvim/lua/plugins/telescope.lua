@@ -108,12 +108,16 @@ return {
             telescope.load_extension("neoclip")
         end,
         keys = {
-            -- buffers
+            -- shortcuts
             { "<C-e>", "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
             { "<C-f>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '--type', 'file', '--hidden', '--exclude', '.git', '--exclude', 'venv' }})<cr>", desc = "Find files" },
+            { "<leader>S", "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
+            { "<leader>R", "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
+            { "<leader>L",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
+            { "<leader>D",  "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
 
             -- search
-            { "<leader>ff", "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
+            { "<leader>fs", "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
             { "<leader>fr", "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
 
             -- utils
@@ -126,9 +130,9 @@ return {
             { "<leader>fj", "<cmd>Telescope jumplist<cr>",                      desc = "Neoclip" },
 
             -- lsp
-            { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
-            { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
-            { "<leader>D",  "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
+            { "<leader>fl",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
+            { "<leader>fL",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
+            { "<leader>fd",  "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
         },
         cmd = { "Telescope" },
     }
