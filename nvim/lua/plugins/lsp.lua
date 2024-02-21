@@ -44,7 +44,8 @@ return {
                     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
                     vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
                     -- vim.keymap.set('n', '<space>n', vim.lsp.buf.type_definition, opts)
-                    vim.keymap.set('n', '<C-c><C-n>', vim.lsp.buf.rename, opts)
+                    vim.keymap.set('n', '<leader>dR', vim.lsp.buf.rename, opts)
+                    vim.keymap.set('n', '<C-c><C-r>', vim.lsp.buf.rename, opts)
                     vim.keymap.set({ 'n', 'v' }, '<C-c><C-a>', vim.lsp.buf.code_action, opts)
                     -- using telescope for references
                     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)

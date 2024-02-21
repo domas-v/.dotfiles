@@ -111,9 +111,10 @@ return {
             -- shortcuts
             { "<C-e>", "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
             { "<C-f>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '--type', 'file', '--hidden', '--exclude', '.git', '--exclude', 'venv' }})<cr>", desc = "Find files" },
-            { "<leader>S", "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
-            { "<leader>R", "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
-            { "<leader>L",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
+            { "<leader>s", "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
+            { "<leader>S", "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
+            { "<leader>l",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
+            { "<leader>L",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
             { "<leader>D",  "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
 
             -- search

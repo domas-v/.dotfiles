@@ -110,7 +110,7 @@ alias c="clear"
 alias dot="cd ~/Dotfiles"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
-alias ob="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
+alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 
 
 # neovim
