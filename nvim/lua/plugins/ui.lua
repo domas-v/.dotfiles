@@ -12,7 +12,7 @@ return {
     {
         'romgrk/barbar.nvim',
         lazy = false,
-        dependencies = 'kyazdani42/nvim-web-devicons',
+        dependencies = 'nvim-tree/nvim-web-devicons',
         config = function()
             require("barbar").setup({
                 animation = false,

@@ -74,4 +74,4 @@ o.lazyredraw       = false
 -- providers
 g.loaded_ruby_provider = 0
 g.loaded_perl_provider = 0
-g.python3_host_prog = "~/.pyenv/shims/python"
+g.python3_host_prog = "~/.pyenv/versions/3.12.2/bin/python"

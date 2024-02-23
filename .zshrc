@@ -132,9 +132,9 @@ alias lg="lazygit"
 alias gmm="git merge master"
 alias gsync="git pull && git add . && git commit -m 'Update' && git push"
 
-# exa
-alias l="exa -l --git"
-alias ll="exa -la --git"
+# eza
+alias l="eza -l --git"
+alias ll="eza -la --git"
 
 # python
 alias py="python"
@@ -151,3 +151,6 @@ function cd() {
   fi
 }
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

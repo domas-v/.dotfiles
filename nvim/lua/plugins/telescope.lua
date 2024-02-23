@@ -4,7 +4,7 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            "kyazdani42/nvim-web-devicons",
+            "nvim-telescope/telescope.nvim",
             -- extensions
             "nvim-telescope/telescope-live-grep-args.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
@@ -12,6 +12,7 @@ return {
             "AckslD/nvim-neoclip.lua",
         },
         config = function()
+            require('neoclip').setup()
             local actions = require("telescope.actions")
             local action_layout = require("telescope.actions.layout")
             local lga_actions = require("telescope-live-grep-args.actions")

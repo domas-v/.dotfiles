@@ -1842,6 +1842,7 @@ map kitty_mod+enter launch --location=vsplit --cwd=current
 map ctrl+enter launch --location=vsplit --cwd=current
 map kitty_mod+shift+v launch --location=vsplit --cwd=current
 map kitty_mod+shift+s launch --location=hsplit --cwd=current
+map kitty_mod+shift+t new_tab_with_cwd
 
 map kitty_mod+shift+h move_window left
 map kitty_mod+shift+l move_window right
@@ -2361,7 +2362,7 @@ map kitty_mod+q quit
 
 
 # BEGIN_KITTY_THEME
-# Rosé Pine
+# Kanagawa_light
 include current-theme.conf
 # END_KITTY_THEME
 include aura-theme.conf
