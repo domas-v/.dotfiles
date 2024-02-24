@@ -9,6 +9,9 @@ return {
         config = function()
             local dap = require('dap')
             local dapui = require("dapui")
+            if vim.fn.filereadable(".vscode/launch.json") then
+                require("dap.ext.vscode").load_launchjs(nil, {})
+            end
 
             --- dapui
             dapui.setup({
@@ -46,17 +49,6 @@ return {
             require('dap-python').setup("python")
             require("dap-python").test_runner = "pytest"
 
-            dap.configurations.python = {
-                {
-                    name = "tenspeed",
-                    type = "python",
-                    request = "launch",
-                    cwd = "${workspaceFolder}/services/tms",
-                    program ="${workspaceFolder}/venv/bin/chalice",
-                    args = { "local", "--no-autoreload", }
-                }
-            }
-            --
             --- c
             -- dap.adapters.cppdbg = {
             --     id = 'cppdbg',
@@ -78,7 +70,6 @@ return {
             --     },
             -- }
 
-            ---
             local sign = vim.fn.sign_define
             sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
             sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })

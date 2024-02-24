@@ -10,6 +10,11 @@ export ZSH="$HOME/.oh-my-zsh"
 # export EDITOR="nvim"
 
 
+export C_INCLUDE_PATH=/usr/local/include
+export LD_LIBRARY_PATH=/usr/local/lib
+export LIBRARY_PATH=/usr/local/lib
+
+
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
