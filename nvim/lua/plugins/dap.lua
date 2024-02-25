@@ -50,6 +50,11 @@ return {
             require("dap-python").test_runner = "pytest"
 
             --- c
+            dap.adapters.lldb = {
+                id = 'cppdbg',
+                type = 'executable',
+                command = '/Users/domev/.vscode/extensions/ms-vscode.cpptools-1.17.5-darwin-arm64/debugAdapters/bin/OpenDebugAD7',
+            }
             -- dap.adapters.cppdbg = {
             --     id = 'cppdbg',
             --     type = 'executable',
