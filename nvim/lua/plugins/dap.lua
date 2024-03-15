@@ -55,6 +55,8 @@ return {
                 type = 'executable',
                 command = '/Users/domev/.vscode/extensions/ms-vscode.cpptools-1.17.5-darwin-arm64/debugAdapters/bin/OpenDebugAD7',
             }
+
+            -- TODO: c debuger
             -- dap.adapters.cppdbg = {
             --     id = 'cppdbg',
             --     type = 'executable',

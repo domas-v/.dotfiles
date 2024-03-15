@@ -63,12 +63,7 @@ return {
             { "<leader>ce", "<cmd>%SlimeSend<cr>", "Slime send file" },
             { "<leader>cc", "<cmd>%SlimeSendCurrentLine<cr>", "Slime send current line" },
         }
-    },
-    --  TODO: install image.nvim
-    -- {
-    --     "benlubas/molten-nvim",
-    --     build = ":UpdateRemotePlugins",
-    -- },
+    }
     
-    -- https://github.com/nvim-pack/nvim-spectre
+    -- TODO: https://github.com/nvim-pack/nvim-spectre
 }

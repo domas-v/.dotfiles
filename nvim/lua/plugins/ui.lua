@@ -5,8 +5,6 @@ return {
         config = function() require('nvim-tree').setup() end,
         keys = {
             { "<leader><TAB>", "<cmd>NvimTreeToggle<cr>" },
-            -- { "<leader>tt",    "<cmd>NvimTreeToggle<cr>" },
-            { "<leader>tf",    "<cmd>NvimTreeFindFile<cr>" }
         }
     },
     {
@@ -83,9 +81,6 @@ return {
         dependencies = 'junegunn/fzf',
     },
     {
-        "DanilaMihailov/beacon.nvim" 
-    },
-    {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
@@ -94,5 +89,8 @@ return {
         keys = {
             { "<leader>ft", "<cmd>TodoTelescope<cr>" }
         }
+    },
+    {
+        "DanilaMihailov/beacon.nvim" 
     }
 }
