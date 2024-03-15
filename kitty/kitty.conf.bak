@@ -2362,7 +2362,7 @@ map kitty_mod+q quit
 
 
 # BEGIN_KITTY_THEME
-# Kanagawa_light
+# Kanagawa_dragon
 include current-theme.conf
 # END_KITTY_THEME
 include aura-theme.conf
