@@ -160,3 +160,11 @@ function cd() {
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+alias gcloud="/Users/domev/Downloads/google-cloud-sdk/bin/gcloud"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/domev/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/domev/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/domev/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/domev/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
