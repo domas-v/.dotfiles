@@ -50,33 +50,24 @@ return {
             require('dap-python').setup("python")
             require("dap-python").test_runner = "pytest"
 
-            --- c
-            dap.adapters.lldb = {
-                id = 'cppdbg',
-                type = 'executable',
-                command = '/Users/domev/.vscode/extensions/ms-vscode.cpptools-1.17.5-darwin-arm64/debugAdapters/bin/OpenDebugAD7',
-            }
-
             -- TODO: c debuger
-            -- dap.adapters.cppdbg = {
-            --     id = 'cppdbg',
-            --     type = 'executable',
-            --     command = '/Users/domev/.vscode/extensions/ms-vscode.cpptools-1.17.5-darwin-arm64/debugAdapters/bin/OpenDebugAD7',
-            -- }
-            -- dap.configurations.c = {
-            --     {
-            --         name = "Launch file",
-            --         type = "cppdbg",
-            --         request = "launch",
-            --         program = function()
-            --             return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-            --         end,
-            --         MIMode = 'lldb',
-            --         MIDebuggerPath = '/usr/bin/lldb',
-            --         cwd = '${workspaceFolder}',
-            --         stopAtEntry = true,
-            --     },
-            -- }
+            require('dap').adapters.lldb = {
+                type = 'executable',
+                command = '/opt/homebrew/Cellar/llvm/17.0.6_1/bin/lldb-vscode',
+                name = 'lldb'
+            }
+            require('dap').configurations.c = {
+                {
+                    name = "Launch",
+                    type = "lldb",
+                    request = "launch",
+                    program = "${fileDirname}/${fileBasenameNoExtension}",
+                    args = {},
+                    cwd = "${fileDirname}",
+                    stopOnEntry = false,
+                    runInTerminal = false,
+                }
+            }
 
             local sign = vim.fn.sign_define
             sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })

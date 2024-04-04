@@ -60,15 +60,6 @@ return {
             linting = require("lint")
             linting.linters_by_ft = {
                 python = {'flake8'},
-                c = {'cppcheck'},
-            }
-            local cppcheck = linting.linters.cppcheck
-            cppcheck.args = {
-                '--enable=warning,style,performance,information',
-                '--language=c',
-                '--inline-suppr',
-                '--cppcheck-build-dir=~/.builds/',
-                '--template={file}:{line}:{column}: [{id}] {severity}: {message}'
             }
 
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
