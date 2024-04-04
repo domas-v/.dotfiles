@@ -50,7 +50,7 @@ return {
             require('dap-python').setup("python")
             require("dap-python").test_runner = "pytest"
 
-            -- TODO: c debuger
+            -- c debuger
             require('dap').adapters.lldb = {
                 type = 'executable',
                 command = '/opt/homebrew/Cellar/llvm/17.0.6_1/bin/lldb-vscode',

@@ -51,18 +51,6 @@ return {
             { "<leader>wj", "<cmd>WinShift down<cr>",  desc = "WinShift down" },
             { "<leader>wl", "<cmd>WinShift right<cr>", desc = "WinShift right" },
         }
-    },
-    {
-        "jpalardy/vim-slime",
-        init = function()
-            vim.g.slime_target = "kitty"
-        end,
-        keys = {
-            { "<C-c><C-e>", "<cmd>%SlimeSend<cr>", "Slime send file" },
-            { "<C-c><C-c>", "<cmd>%SlimeSendCurrentLine<cr>", "Slime send current line" },
-            { "<leader>ce", "<cmd>%SlimeSend<cr>", "Slime send file" },
-            { "<leader>cc", "<cmd>%SlimeSendCurrentLine<cr>", "Slime send current line" },
-        }
     }
     
     -- TODO: https://github.com/nvim-pack/nvim-spectre

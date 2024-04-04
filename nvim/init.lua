@@ -24,5 +24,4 @@ require("lazy").setup("plugins", {
 
 vim.cmd("colorscheme kanagawa")
 
-vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr-o:hor20"
 

@@ -9,9 +9,8 @@ return {
                     "vimdoc",
                     "python",
                     "lua",
-                    "vim",
                     "json",
-                    "http"
+                    "c"
                 },
                 sync_install = false,
                 auto_install = false,
