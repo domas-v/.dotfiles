@@ -1,13 +1,13 @@
 return {
-    {
-        'rmagatti/auto-session',
-        config = function()
-            require("auto-session").setup {
-                log_level = "error",
-                auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
-            }
-        end
-    },
+    -- {
+    --     'rmagatti/auto-session',
+    --     config = function()
+    --         require("auto-session").setup {
+    --             log_level = "error",
+    --             auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
+    --         }
+    --     end
+    -- },
     {
         "Pocco81/auto-save.nvim",
         config = function() require("auto-save").setup({ execution_message = { message = "" } }) end,

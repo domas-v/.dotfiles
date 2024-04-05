@@ -44,8 +44,7 @@ return {
                     vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
                     -- vim.keymap.set('n', '<space>n', vim.lsp.buf.type_definition, opts)
                     vim.keymap.set('n', '<leader>dR', vim.lsp.buf.rename, opts)
-                    vim.keymap.set('n', '<C-c><C-r>', vim.lsp.buf.rename, opts)
-                    vim.keymap.set({ 'n', 'v' }, '<C-c><C-a>', vim.lsp.buf.code_action, opts)
+                    vim.keymap.set({ 'n', 'v' }, '<leader>dA', vim.lsp.buf.code_action, opts)
                     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
                     -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
                 end,
@@ -183,12 +182,4 @@ return {
             { "<leader>F", ":Format<CR>",  desc = "Format selection",           silent = true, mode = "v", }
         }
     },
-    {
-        "utilyre/barbecue.nvim",
-        name = "barbecue",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons",
-        },
-    }
 }

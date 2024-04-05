@@ -157,7 +157,7 @@ cc50() {
 # python
 alias py="python"
 alias ipy="ipython"
-alias a="source venv/bin/activate"
+# alias a="source venv/bin/activate"
 alias dd="deactivate"
 alias pua="pip uninstall -y -r <(pip freeze)"
 
@@ -167,6 +167,22 @@ function cd() {
   if [[ -e "venv/bin/activate" ]]; then
   	source venv/bin/activate
   fi
+}
+
+function a() {
+    if [[ "$#" -eq 0 ]]; then
+        if [[ -e "venv/bin/activate" ]]; then
+            source venv/bin/activate
+        else
+            echo "No virtual environment here"
+        fi
+    elif [[ "$#" -eq 1 ]]; then
+        conc="$@/venv/bin/activate"
+        conc="${conc%/}venv/bin/activate"
+        echo $conc
+    else
+        echo "No virtual environment here"
+    fi
 }
 
 export PYENV_ROOT="$HOME/.pyenv"
