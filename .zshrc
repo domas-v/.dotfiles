@@ -4,8 +4,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-# export PATH="/Users/domev/.local/bin:$PATH"
-# export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+
 # export VISUAL="code"
 # export EDITOR="nvim"
 
@@ -128,11 +127,6 @@ alias nrc="v ~/Dotfiles/nvim/init.lua"
 alias n="v -c \"lcd%:p:h\" ~/Desktop/Notes/notes.md"
 alias krc="v ~/Dotfiles/kitty/kitty.conf"
 
-# -- UNUSED --
-# alias wrc="v ~/Dotfiles/.wezterm.lua"
-# alias ybrc="v ~/Dotfiles/yabai/yabairc"
-# alias skrc="v ~/Dotfiles/skhd/skhdrc"
-
 # git & github
 alias lg="lazygit"
 alias gmm="git merge master"
@@ -141,6 +135,24 @@ alias gsync="git pull && git add . && git commit -m 'Update' && git push"
 # eza
 alias l="eza -l --git"
 alias ll="eza -la --git"
+
+# C
+cc50() {
+    if [[ $# -ne 1 ]]; then
+        echo "Usage: cc50 <path-to-program.c>"
+        return 1
+    fi
+
+    local source_file="$1"
+    local program_name=${source_file%.*}
+
+    if [[ ! -f "$source_file" ]]; then
+        echo "Error: $source_file not found."
+        return 1
+    fi
+
+    clang -g "$source_file" -o "$program_name" -lcs50
+}
 
 # python
 alias py="python"
