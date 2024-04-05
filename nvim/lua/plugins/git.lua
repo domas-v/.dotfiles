@@ -42,5 +42,8 @@ return {
             { "<leader>gw", "<cmd>Gitsigns toggle_word_diff<cr>",          desc = "Git diff words" },
             { "<leader>gd", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
         }
+    },
+    {
+        "something"
     }
 }
