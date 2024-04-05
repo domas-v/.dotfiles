@@ -44,8 +44,20 @@ return {
         }
     },
     {
-        "akinsho/git-conflict.nvim",
-        version = "*",
-        config = true
+        "sindrets/diffview.nvim",
+        config = function()
+            require("diffview").setup({
+                view = {
+                    merge_tool = {
+                        layout = "diff3_mixed"
+                    }
+                },
+                file_panel = {
+                    win_config = {
+                        width = 25
+                    }
+                }
+            })
+        end
     },
 }

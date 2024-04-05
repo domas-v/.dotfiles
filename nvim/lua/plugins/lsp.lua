@@ -25,7 +25,6 @@ return {
                     },
                 },
             }
-            lspconfig.racket_langserver.setup{}
             lspconfig.clangd.setup {
                 cmd = { "clangd",
                 "--offset-encoding=utf-16" }
@@ -47,7 +46,6 @@ return {
                     vim.keymap.set('n', '<leader>dR', vim.lsp.buf.rename, opts)
                     vim.keymap.set('n', '<C-c><C-r>', vim.lsp.buf.rename, opts)
                     vim.keymap.set({ 'n', 'v' }, '<C-c><C-a>', vim.lsp.buf.code_action, opts)
-                    -- using telescope for references
                     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
                     -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
                 end,

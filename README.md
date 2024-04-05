@@ -11,4 +11,3 @@
 - Tools
     - bat
     - spaceship.zsh
-    - fzf
