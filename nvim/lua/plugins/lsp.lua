@@ -157,12 +157,19 @@ return {
         end
     },
     {
-        'stevearc/conform.nvim',
+        "stevearc/conform.nvim",
         config = function()
             require("conform").setup({
                 formatters_by_ft = {
                     python = { "black", "isort" },
+                    c = { "clang-format" },
+                    json = { "jq" }
                 },
+                formatters = {
+                    jq = {
+                       args = { "--indent", "4" }, 
+                    }
+                }
             })
 
             vim.api.nvim_create_user_command("Format", function(args)
