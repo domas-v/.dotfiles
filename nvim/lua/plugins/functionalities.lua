@@ -1,5 +1,6 @@
 return {
     -- {
+    -- TODO: change to some session manager
     --     'rmagatti/auto-session',
     --     config = function()
     --         require("auto-session").setup {

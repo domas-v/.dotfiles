@@ -4,11 +4,9 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            "nvim-telescope/telescope.nvim",
             -- extensions
             "nvim-telescope/telescope-live-grep-args.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
-            -- neoclip:
             "AckslD/nvim-neoclip.lua",
         },
         config = function()

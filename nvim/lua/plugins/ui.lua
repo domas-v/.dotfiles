@@ -91,9 +91,6 @@ return {
         }
     },
     {
-        "DanilaMihailov/beacon.nvim" 
-    },
-    {
         "utilyre/barbecue.nvim",
         name = "barbecue",
         version = "*",
