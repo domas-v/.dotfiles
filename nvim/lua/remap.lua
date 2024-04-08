@@ -60,10 +60,6 @@ map("n", "<leader>Y", [["+Y]], { noremap=true })
 map("n", "Y", "y$", { noremap=true })
 map("x", "p", [["_dP]])  -- paste over visual selection (if doesn't work as expected, rebind to leader-p)
 
--- folding
-map("n", "zf", "za", { noremap=true })
-map("n", "zF", "zA", { noremap=true })
-
 -- pop up movement
 map('i', '<C-j>', 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
 map('i', '<C-k>', 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })

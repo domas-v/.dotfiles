@@ -19,7 +19,6 @@
 #: heavy. Setting them manually is useful for font families that have
 #: many weight variants like Book, Medium, Thick, etc. For example::
 
-# font_family      JetBrains Mono
 font_family        JetBrains Mono
 # bold_font        JetBrains Mono Bold
 # italic_font      JetBrains Mono Italic
@@ -2362,7 +2361,6 @@ map kitty_mod+q quit
 
 
 # BEGIN_KITTY_THEME
-# Kanagawa_dragon
+# Kanagawa_light
 include current-theme.conf
 # END_KITTY_THEME
-include aura-theme.conf

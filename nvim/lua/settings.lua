@@ -50,9 +50,9 @@ o.conceallevel   = 2
 --     { "BufEnter" },
 --     { pattern = { "*" }, command = "normal zx zR" }
 -- ) -- because of https://github.com/nvim-telescope/telescope.nvim/issues/699
-o.foldlevel  = 1
-o.foldmethod = "expr"
+o.foldlevelstart  = 99
 o.foldexpr   = "nvim_treesitter#foldexpr()"
+o.foldmethod = "expr"
 
 -- search
 o.ignorecase       = true

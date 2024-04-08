@@ -20,15 +20,15 @@ return {
                     elements = {
                         {
                             id = "repl",
-                            size = 0.6
+                            size = 0.7
                         },
                         {
                             id = "console",
-                            size = 0.4
+                            size = 0.3
                         }
                     },
-                    position = "right",
-                    size = 0.5
+                    position = "bottom",
+                    size = 0.3
                 } }
             })
 
