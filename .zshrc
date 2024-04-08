@@ -139,20 +139,26 @@ alias ll="eza -la --git"
 
 # C
 cc50() {
-    if [[ $# -ne 1 ]]; then
-        echo "Usage: cc50 <path-to-program.c>"
+    if [[ $# -ne 1 && $# -ne 2 ]]; then
+        echo "Usage: cc50 [-d] <path-to-program.c>"
         return 1
+    elif [[ $# -eq 2 && $2 != "-d" ]]; then
+        echo "Second param should be -d"
+        return 1
+    elif [[ $# -eq 2 && $2 == "-d" ]]; then
+        debug_flag="-g"
     fi
 
     local source_file="$1"
     local program_name=${source_file%.*}
+
 
     if [[ ! -f "$source_file" ]]; then
         echo "Error: $source_file not found."
         return 1
     fi
 
-    clang -g "$source_file" -o "$program_name" -lcs50
+    clang $debug_flag "$source_file" -o "$program_name" -lcs50
 }
 
 # python
@@ -190,10 +196,3 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-alias gcloud="/Users/domev/Downloads/google-cloud-sdk/bin/gcloud"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/domev/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/domev/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/domev/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/domev/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
