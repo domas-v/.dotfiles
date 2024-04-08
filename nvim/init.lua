@@ -22,7 +22,6 @@ require("lazy").setup("plugins", {
 })
 
 
-vim.cmd("colorscheme kanagawa-wave")
+vim.cmd("colorscheme github_dark")
 
--- TODO: 
--- lua neovim development/autocomplete
+-- TODO: lua neovim development/autocomplete
