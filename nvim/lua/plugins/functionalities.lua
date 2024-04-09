@@ -53,19 +53,5 @@ return {
             { "<leader>wl", "<cmd>WinShift right<cr>", desc = "WinShift right" },
         }
     },
-    {
-        "vhyrro/luarocks.nvim",
-        priority = 1001, -- this plugin needs to run before anything else
-        opts = {
-            rocks = { "magick" },
-        },
-    },
-    {
-        "3rd/image.nvim",
-        dependencies = { "luarocks.nvim" },
-        config = function()
-            require("image").setup()
-        end
-    }
     -- TODO: https://github.com/nvim-pack/nvim-spectre
 }

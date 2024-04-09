@@ -1,19 +1,7 @@
 return {
-    -- {
-    --     "github/copilot.vim",
-    --     lazy = false,
-    --     init = function()
-    --         vim.g.copilot_no_tab_map = true
-    --         vim.api.nvim_set_keymap("i", "<S-CR>", "copilot#Accept('<CR>')", { silent = true, expr = true })
-    --         vim.g.copilot_assume_mapped = true
-    --         vim.g.copilot_filetypes = {
-    --             TelescopePrompt = false,
-    --             ["dap-repl"] = false
-    --         }
-    --     end
-    -- },
     {
         "neovim/nvim-lspconfig",
+        -- TODO: lua neovim LSP
         config = function()
             local lspconfig = require("lspconfig")
             lspconfig.pyright.setup{
