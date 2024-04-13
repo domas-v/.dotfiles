@@ -22,4 +22,4 @@ require("lazy").setup("plugins", {
 })
 
 
-vim.cmd("colorscheme github_dark")
+vim.cmd("colorscheme github_dark_dimmed")
