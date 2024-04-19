@@ -7,6 +7,7 @@ return {
             -- extensions
             "nvim-telescope/telescope-live-grep-args.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
+            "nvim-telescope/telescope-frecency.nvim",
             "AckslD/nvim-neoclip.lua",
         },
         config = function()
@@ -78,13 +79,13 @@ return {
                 pickers = {
                     find_files = {
                         follow = true,
-                        previewer = false,
+                        previewer = true,
                     },
                     lsp_dynamic_workspace_symbols = {
                         sorter = telescope.extensions.fzf.native_fzf_sorter(fzf_opts)
                     },
                     current_buffer_fuzzy_find = {
-                        previewer = false,
+                        previewer = true,
                     },
                 },
                 extensions = {
@@ -105,11 +106,12 @@ return {
             telescope.load_extension("fzf")
             telescope.load_extension("live_grep_args")
             telescope.load_extension("neoclip")
+            telescope.load_extension("frecency")
         end,
         keys = {
             -- shortcuts
             { "<C-e>", "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
-            { "<C-f>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'fd', '.', '--type', 'file', '--hidden', '--exclude', '.git', '--exclude', 'venv' }})<cr>", desc = "Find files" },
+            { "<C-f>", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Find file" },
             { "<C-y>", "<cmd>Telescope neoclip<cr>",                       desc = "Neoclip" },
             { "<leader>s", "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Current buffer" },
             { "<leader>S", "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },

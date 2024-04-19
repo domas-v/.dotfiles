@@ -8,10 +8,10 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- restore cursor position
-api.nvim_create_autocmd(
-    { "BufEnter" },
-    { pattern = { "*" }, command = 'silent! silent! normal! g`"' }
-)
+-- api.nvim_create_autocmd(
+--     { "BufEnter" },
+--     { pattern = { "*" }, command = 'silent! silent! normal! g`"' }
+-- )
 
 -- g.startofline = false
 

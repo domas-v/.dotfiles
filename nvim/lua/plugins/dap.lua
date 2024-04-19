@@ -20,20 +20,34 @@ return {
                     elements = {
                         {
                             id = "repl",
-                            size = 0.6
+                            size = 0.5
                         },
                         {
                             id = "console",
-                            size = 0.4
+                            size = 0.5
                         }
                     },
                     position = "bottom",
                     size = 0.3
+                }, {
+                    elements = {
+                        {
+                            id = "scopes",
+                            size = 1.0
+                        },
+                        -- {
+                        --     id = "breakpoints",
+                        --     size = 0.33
+                        -- }
+                    },
+                    position = "left",
+                    size = 0.25
                 } }
+
             })
 
             require("nvim-dap-virtual-text").setup({
-                virt_text_win_col = 30
+                virt_text_win_col = 60
             })
 
             dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -85,20 +99,14 @@ return {
             { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", desc = "Test python method" },
 
             -- ui
-            { "<leader>dR", "<cmd>DapVirtualTextForceRefresh<cr>", desc = "DAP Refresh virtual text" },
             { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>", desc = "Toggle DAP Virtual text" },
             { "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", desc = "Toggle DAP UI" },
             { "<leader>de", "<cmd>lua require('dapui').eval()<cr>",   desc = "DAP Eval" },
+            { "<leader>dR", "<cmd>DapVirtualTextForceRefresh<cr>", desc = "DAP Refresh virtual text" },
 
             -- floats
+            { "<leader>df", "<cmd>lua require('dapui').float_element()<cr>", desc = "Toggle DAP Float element" },
             { "<leader>db",  "<cmd>lua require('dapui').float_element('breakpoints')<cr>", desc = "Toggle DAP Breakpoints" },
-            { "<leader>dff", "<cmd>lua require('dapui').float_element()<cr>", desc = "Toggle DAP Float element" },
-            { "<leader>dfb", "<cmd>lua require('dapui').float_element('breakpoints')<cr>", desc = "Toggle DAP Breakpoints" },
-            { "<leader>dfs", "<cmd>lua require('dapui').float_element('scopes')<cr>",  desc = "Toggle DAP Scopes" },
-            { "<leader>dfc", "<cmd>lua require('dapui').float_element('console')<cr>", desc = "Toggle DAP Console" },
-            { "<leader>dfr", "<cmd>lua require('dapui').float_element('repl')<cr>",    desc = "Toggle DAP Repl" },
-            { "<leader>dft", "<cmd>lua require('dapui').float_element('stacks')<cr>",  desc = "Toggle DAP Stacks" },
-            { "<leader>dfw", "<cmd>lua require('dapui').float_element('watches')<cr>", desc = "Toggle DAP Watches" },
         }
     },
     {
@@ -111,7 +119,7 @@ return {
             local opts = { noremap = true, silent = true }
             local keymap = vim.api.nvim_set_keymap
             keymap("n", "<leader>dd", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", opts)
-            keymap("n", "<leader>dc", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
+            keymap("n", "<leader>dC", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
         end,
     }
 }

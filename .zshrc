@@ -5,9 +5,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# export VISUAL="code"
-# export EDITOR="nvim"
-
+export VISUAL="nvim"
+export EDITOR="nvim"
 
 export C_INCLUDE_PATH=/usr/local/include
 export LD_LIBRARY_PATH=/usr/local/lib
@@ -103,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 export FZF_DEFAULT_COMMAND='fd . -t f -H -E .git -E venv'
 # export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=1 --git --icons {} | head -200'"
 bindkey "^q" "fzf-cd-widget"
-bindkey -s "^o" "fzf -m | xargs -o nvim\r"
+bindkey -s "^o" "fzf -m | xargs -o vim\r"
 
 # config shortcuts
 alias t="touch"
@@ -115,7 +114,7 @@ alias c="clear"
 alias dot="cd ~/Dotfiles"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
-alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
+alias nt="cd ~/Desktop/Notes/"
 
 
 # neovim

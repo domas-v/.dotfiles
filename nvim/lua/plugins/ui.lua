@@ -76,11 +76,6 @@ return {
           end,
     },
     {
-        'kevinhwang91/nvim-bqf',
-        ft = 'qf',
-        dependencies = 'junegunn/fzf',
-    },
-    {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
@@ -96,10 +91,8 @@ return {
         version = "*",
         dependencies = {
             "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons", -- optional dependency
+            "nvim-tree/nvim-web-devicons",
         },
-        opts = {
-            -- configurations go here
-        },
+        opts = {},
     }
 }
