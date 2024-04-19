@@ -1,10 +1,27 @@
 return {
     {
+        'sindrets/winshift.nvim',
+        config = function() require('winshift').setup() end,
+        keys = {
+            { "<C-w><C-m>", "<cmd>WinShift<cr>",       desc = "WinShift mode" },
+            { "<C-w><C-h>", "<cmd>WinShift left<cr>",  desc = "Winshift left" },
+            { "<C-w><C-k>", "<cmd>WinShift up<cr>",    desc = "WinShift up" },
+            { "<C-w><C-j>", "<cmd>WinShift down<cr>",  desc = "WinShift down" },
+            { "<C-w><C-l>", "<cmd>WinShift right<cr>", desc = "WinShift right" },
+
+            { "<leader>wm", "<cmd>WinShift<cr>",       desc = "WinShift mode" },
+            { "<leader>wh", "<cmd>WinShift left<cr>",  desc = "Winshift left" },
+            { "<leader>wk", "<cmd>WinShift up<cr>",    desc = "WinShift up" },
+            { "<leader>wj", "<cmd>WinShift down<cr>",  desc = "WinShift down" },
+            { "<leader>wl", "<cmd>WinShift right<cr>", desc = "WinShift right" },
+        }
+    },
+    {
         "nvim-tree/nvim-tree.lua",
         cmd = "NvimTreeToggle",
         config = function() require('nvim-tree').setup() end,
         keys = {
-            { "<leader><TAB>", "<cmd>NvimTreeToggle<cr>" },
+            { "<leader><TAB>", "<cmd>NvimTreeFindFileToggle<cr>" },
         }
     },
     {
@@ -77,6 +94,7 @@ return {
     },
     {
         "folke/todo-comments.nvim",
+        lazy = false,
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("todo-comments").setup()
