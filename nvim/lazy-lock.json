@@ -40,7 +40,6 @@
   "nvim-web-devicons": { "branch": "master", "commit": "beb6367ab8496c9e43f22e0252735fdadae1872d" },
   "persistent-breakpoints.nvim": { "branch": "main", "commit": "01e43512ef8d137f2b9e5c1c74fd35c37e787b59" },
   "plenary.nvim": { "branch": "master", "commit": "8aad4396840be7fc42896e3011751b7609ca4119" },
-  "remember-me.nvim": { "branch": "main", "commit": "1f2ef40e08ac9023eca6786aa414580380bad8d3" },
   "remember.nvim": { "branch": "master", "commit": "b7613e14692478a0428dc69ca380b6fbb2448e60" },
   "smart-splits.nvim": { "branch": "master", "commit": "95d11bfc83263236431ead7dc017f5ab0ff992ca" },
   "telescope-frecency.nvim": { "branch": "master", "commit": "94a532cb9c4713db83acf5432f5aadfd096e2af9" },

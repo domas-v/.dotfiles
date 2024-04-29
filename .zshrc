@@ -5,13 +5,13 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-export VISUAL="nvim"
-export EDITOR="nvim"
+export VISUAL="code"
+export EDITOR="code"
 
-export C_INCLUDE_PATH=/usr/local/include
-export LD_LIBRARY_PATH=/usr/local/lib
-export LIBRARY_PATH=/usr/local/lib
-export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
+# export C_INCLUDE_PATH=/usr/local/include
+# export LD_LIBRARY_PATH=/usr/local/lib
+# export LIBRARY_PATH=/usr/local/lib
+# export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
 
 
 if type brew &>/dev/null
@@ -150,7 +150,6 @@ cc50() {
 
     local source_file="$1"
     local program_name=${source_file%.*}
-
 
     if [[ ! -f "$source_file" ]]; then
         echo "Error: $source_file not found."
