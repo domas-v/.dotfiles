@@ -9,9 +9,11 @@ export VISUAL="code"
 export EDITOR="code"
 
 # export C_INCLUDE_PATH=/usr/local/include
-# export LD_LIBRARY_PATH=/usr/local/lib
+export LD_LIBRARY_PATH=/usr/local/lib
+export DYLD_LIBRARY_PATH=/usr/local/lib
 # export LIBRARY_PATH=/usr/local/lib
 # export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
+# export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/Users/domev/Projects/CS50/libcs50-11.0.2
 
 
 if type brew &>/dev/null
@@ -114,11 +116,11 @@ alias c="clear"
 alias dot="cd ~/Dotfiles"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
-alias nt="cd ~/Desktop/Notes/"
+alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 
 
 # neovim
-alias v="nvim -c \"lcd%:p:h\""
+alias v="vim -c \"lcd%:p:h\""
 alias c="code"
 alias src="source ~/.zshrc"
 alias vrc="v ~/Dotfiles/.vimrc"
@@ -128,7 +130,6 @@ alias n="v -c \"lcd%:p:h\" ~/Desktop/Notes/notes.md"
 alias krc="v ~/Dotfiles/kitty/kitty.conf"
 
 # git & github
-alias lg="lazygit"
 alias gmm="git merge master"
 alias gsync="git pull && git add . && git commit -m 'Update' && git push"
 
