@@ -121,12 +121,12 @@ alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 
 # neovim
 alias v="vim -c \"lcd%:p:h\""
+alias n="nvim -c \"lcd%:p:h\""
 alias c="code"
 alias src="source ~/.zshrc"
 alias vrc="v ~/Dotfiles/.vimrc"
 alias zrc="v ~/Dotfiles/.zshrc"
 alias nrc="v ~/Dotfiles/nvim/init.lua"
-alias n="v -c \"lcd%:p:h\" ~/Desktop/Notes/notes.md"
 alias krc="v ~/Dotfiles/kitty/kitty.conf"
 
 # git & github
