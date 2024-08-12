@@ -70,8 +70,8 @@ map('c', '<C-k>', '<LEFT>', { noremap = true })
 map("n", "<C-s>", "/", { noremap=true })
 map("n", "<esc>", "<cmd>nohl<cr>", { noremap=true })
 map("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap=true }) -- word under cursor
-map("v", "<leader>R", ":s/", { desc = "Search & Replace" , noremap=true })                  -- in visual selection
-map("n", "<leader>R", ":%s/", { desc = "Search & Replace", noremap=true })                 -- in whole buffer
+map("v", "<leader>rr", ":s/", { desc = "Search & Replace" , noremap=true })                  -- in visual selection
+map("n", "<leader>rr", ":%s/", { desc = "Search & Replace", noremap=true })                 -- in whole buffer
 map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
 { desc = "Search & Replace" }, { noremap=true })                                            -- in quickfix list
 

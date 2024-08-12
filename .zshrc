@@ -91,8 +91,8 @@ plugins=(
     aws
     rust
     docker
-    ripgrep
-    fd
+    # ripgrep
+    # fd
     fzf
 )
 
@@ -120,9 +120,10 @@ alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 
 
 # neovim
-alias v="vim -c \"lcd%:p:h\""
-alias n="nvim -c \"lcd%:p:h\""
+# alias v="vim -c \"lcd%:p:h\""
+alias v="nvim -c \"lcd%:p:h\""
 alias c="code"
+alias d="docker"
 alias src="source ~/.zshrc"
 alias vrc="v ~/Dotfiles/.vimrc"
 alias zrc="v ~/Dotfiles/.zshrc"

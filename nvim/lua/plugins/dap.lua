@@ -65,23 +65,23 @@ return {
             require("dap-python").test_runner = "pytest"
 
             -- c debuger
-            require('dap').adapters.lldb = {
-                type = 'executable',
-                command = '/opt/homebrew/Cellar/llvm/17.0.6_1/bin/lldb-vscode',
-                name = 'lldb'
-            }
-            require('dap').configurations.c = {
-                {
-                    name = "Launch",
-                    type = "lldb",
-                    request = "launch",
-                    program = "${fileDirname}/${fileBasenameNoExtension}",
-                    args = {},
-                    cwd = "${fileDirname}",
-                    stopOnEntry = false,
-                    runInTerminal = false,
-                }
-            }
+            -- require('dap').adapters.lldb = {
+            --     type = 'executable',
+            --     command = '/opt/homebrew/Cellar/llvm/17.0.6_1/bin/lldb-vscode',
+            --     name = 'lldb'
+            -- }
+            -- require('dap').configurations.c = {
+            --     {
+            --         name = "Launch",
+            --         type = "lldb",
+            --         request = "launch",
+            --         program = "${fileDirname}/${fileBasenameNoExtension}",
+            --         args = {},
+            --         cwd = "${fileDirname}",
+            --         stopOnEntry = false,
+            --         runInTerminal = false,
+            --     }
+            -- }
 
             local sign = vim.fn.sign_define
             sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })

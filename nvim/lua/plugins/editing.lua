@@ -41,24 +41,5 @@ return {
             require('remember')
         end
     },
-    {
-        -- -- remembers which files were open
-        -- "EricDriussi/remember-me.nvim",
-        -- config = function()
-        --     require("remember_me").setup({
-        --         ignore_ft = { "man", "gitignore", "gitcommit" },
-        --         session_store = "~/.cache/remember-me/",
-        --         ext = ".r.vim",
-        --         project_roots = { ".git", ".svn" },
-        --     })
-        -- end
-    },
     { "RRethy/vim-illuminate" },
-    -- {
-    --     "vhyrro/luarocks.nvim",
-    --     priority = 1001, -- this plugin needs to run before anything else
-    --     opts = {
-    --         rocks = { "magick" },
-    --     },
-    -- }
 }
