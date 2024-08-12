@@ -24,8 +24,7 @@ return {
                     keymaps = {
                         init_selection = "<CR>",
                         node_incremental = "<CR>",
-                        scope_incremental = "<TAB>",
-                        node_decremental = "<S-Tab>",
+                        -- node_decremental = "<S-Tab>",
                     },
                 },
                 indent = {
@@ -40,6 +39,16 @@ return {
                             ["af"] = "@function.outer",
                             ["ic"] = "@class.inner",
                             ["ac"] = "@class.outer",
+                            ["ia"] = "@parameter.inner",
+                            ["aa"] = "@parameter.outer",
+                            ["ir"] = "@return.inner",
+                            ["ar"] = "@return.outer",
+                            ["ii"] = "@conditional.inner",
+                            ["ai"] = "@conditional.outer",
+                            ["il"] = "@loop.inner",
+                            ["al"] = "@loop.outer",
+                            ["is"] = "@statement.inner",
+                            ["as"] = "@statement.outer",
                         }
                     },
                     move = {
@@ -48,18 +57,38 @@ return {
                         goto_next_start = {
                             ["]f"] = "@function.outer",
                             ["]c"] = "@class.outer",
+                            ["]a"] = "@parameter.outer",
+                            ["]r"] = "@return.outer",
+                            ["]i"] = "@conditional.outer",
+                            ["]l"] = "@loop.outer",
+                            ["]s"] = "@statement.outer",
                         },
                         goto_next_end = {
                             ["]F"] = "@function.outer",
                             ["]C"] = "@class.outer",
+                            ["]A"] = "@parameter.outer",
+                            ["]R"] = "@return.outer",
+                            ["]I"] = "@conditional.outer",
+                            ["]L"] = "@loop.outer",
+                            ["]s"] = "@statement.outer",
                         },
                         goto_previous_start = {
                             ["[f"] = "@function.outer",
                             ["[c"] = "@class.outer",
+                            ["[a"] = "@parameter.outer",
+                            ["[r"] = "@return.outer",
+                            ["[i"] = "@conditional.outer",
+                            ["[l"] = "@loop.outer",
+                            ["]S"] = "@statement.outer",
                         },
                         goto_previous_end = {
                             ["[F"] = "@function.outer",
                             ["[C"] = "@class.outer",
+                            ["[A"] = "@parameter.outer",
+                            ["[R"] = "@return.outer",
+                            ["[I"] = "@conditional.outer",
+                            ["[L"] = "@loop.outer",
+                            ["]S"] = "@statement.outer",
                         }
                     },
                     lsp_interop = {

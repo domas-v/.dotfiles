@@ -15,6 +15,9 @@ vim.g.loaded_netrwPlugin = 1
 
 -- g.startofline = false
 
+-- use system clipboard
+o.clipboard = "unnamedplus"
+
 -- line numbers
 wo.linebreak     = true
 o.nu             = true
