@@ -116,12 +116,10 @@ alias c="clear"
 alias dot="cd ~/Dotfiles"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
-alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
+alias nt="nvim ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
 
 
 # neovim
-# alias v="vim -c \"lcd%:p:h\""
-alias v="vim -c \"lcd%:p:h\""
 alias v="nvim -c \"lcd%:p:h\""
 alias c="code"
 alias d="docker"
