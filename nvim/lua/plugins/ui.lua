@@ -100,7 +100,7 @@ return {
             require("todo-comments").setup()
         end,
         keys = {
-            { "<leader>ft", "<cmd>TodoTelescope<cr>" }
+            { "<leader>T", "<cmd>TodoTelescope<cr>" }
         }
     },
     {
