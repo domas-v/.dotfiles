@@ -47,6 +47,7 @@ map("n", "<C-;>", ":lua ", { desc = 'Enter lua command', noremap=true })
 map("n", "<C-q>", "<cmd>close<cr>", { noremap=true })
 map("n", "<leader>q", "<cmd>close<cr>", { noremap=true })
 map("n", "<leader>Q", "<cmd>bd<cr>", { noremap=true })
+map("n", "<leader>X", "<cmd>wqa!<cr>", { noremap=true })
 
 -- word wrap
 map("n", "<leader>ww", "<cmd>set wrap!<cr>", { noremap=true })
@@ -55,27 +56,21 @@ map("n", "<leader>ww", "<cmd>set wrap!<cr>", { noremap=true })
 map("n", "U", "<C-r>", { noremap=true })
 
 -- yanking & pasting
-map({ "n", "v" }, "<leader>y", [["+y]], { noremap=true })
-map("n", "<leader>Y", [["+Y]], { noremap=true })
 map("n", "Y", "y$", { noremap=true })
 map("x", "p", [["_dP]])  -- paste over visual selection (if doesn't work as expected, rebind to leader-p)
 
 -- pop up movement
-map('i', '<C-j>', 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
+map('i', '<-j>', 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
 map('i', '<C-k>', 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true })
 map('c', '<C-j>', '<RIGHT>', { noremap = true })
 map('c', '<C-k>', '<LEFT>', { noremap = true })
 
 -- search & replace
-map("n", "<C-s>", "/", { noremap=true })
 map("n", "<esc>", "<cmd>nohl<cr>", { noremap=true })
-
--- TODO: think of better bindings
-map("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap=true }) -- word under cursor
-map("v", "<leader>rr", ":s/", { desc = "Search & Replace" , noremap=true })                  -- in visual selection
-map("n", "<leader>rr", ":%s/", { desc = "Search & Replace", noremap=true })                 -- in whole buffer
-map("n", "<leader>rq", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
-{ desc = "Search & Replace" }, { noremap=true })                                            -- in quickfix list
+map("v", "<leader>R", ":s/", { desc = "Search & Replace" , noremap=true })                  -- in visual selection
+map("n", "<leader>R", [[:%s/<C-r><C-w>//gI<Left><Left><Left>]], { noremap=true }) -- word under cursor
+-- map("n", "<leader>R", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
+-- { desc = "Search & Replace" }, { noremap=true })                                            -- in quickfix list
 
 -- tabs
 map("n", "<leader>tt", "<cmd>tab split<cr>", { noremap=true })
