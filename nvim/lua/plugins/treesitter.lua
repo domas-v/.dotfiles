@@ -49,6 +49,8 @@ return {
                             ["al"] = "@loop.outer",
                             ["is"] = "@statement.inner",
                             ["as"] = "@statement.outer",
+                            ["ib"] = "@block.inner",
+                            ["ab"] = "@block.outer",
                         }
                     },
                     move = {
