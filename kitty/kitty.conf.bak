@@ -19,7 +19,7 @@
 #: heavy. Setting them manually is useful for font families that have
 #: many weight variants like Book, Medium, Thick, etc. For example::
 
-font_size 14.0
+font_size 13.0
 
 #: Font size (in pts)
 
@@ -1860,6 +1860,10 @@ map kitty_mod+k kitten pass_keys.py neighboring_window top    ctrl+k
 map kitty_mod+h kitten pass_keys.py neighboring_window left   ctrl+h
 map kitty_mod+l kitten pass_keys.py neighboring_window right  ctrl+l
 
+map ctrl+j kitten pass_keys.py neighboring_window bottom ctrl+j
+map ctrl+k kitten pass_keys.py neighboring_window top    ctrl+k
+map ctrl+h kitten pass_keys.py neighboring_window left   ctrl+h
+
 #::  You can open a new window that is allowed to control kitty via
 #::  the kitty remote control facility with launch --allow-remote-
 #::  control. Any programs running in that window will be allowed to
@@ -2357,7 +2361,7 @@ include current-theme.conf
 
 
 # BEGIN_KITTY_FONTS
-font_family      family=""
+font_family      family="JetBrains Mono"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
