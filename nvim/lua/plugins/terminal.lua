@@ -13,12 +13,11 @@ return {
             { "<C-k>", "<cmd>lua require('smart-splits').move_cursor_up()<cr>", "Move top" },
             { "<C-l>", "<cmd>lua require('smart-splits').move_cursor_right()<cr>", "Move right" },
 
-            { "<A-h>", "<cmd>lua require('smart-splits').resize_left()<cr>", "Resize left" },
-            { "<A-j>", "<cmd>lua require('smart-splits').resize_down()<cr>", "Resize bottom" },
-            { "<A-k>", "<cmd>lua require('smart-splits').resize_up()<cr>", "Resize top" },
-            { "<A-l>", "<cmd>lua require('smart-splits').resize_right()<cr>", "Resize right" },
+            -- { "<A-h>", "<cmd>lua require('smart-splits').resize_left()<cr>", "Resize left" },
+            -- { "<A-j>", "<cmd>lua require('smart-splits').resize_down()<cr>", "Resize bottom" },
+            -- { "<A-k>", "<cmd>lua require('smart-splits').resize_up()<cr>", "Resize top" },
+            -- { "<A-l>", "<cmd>lua require('smart-splits').resize_right()<cr>", "Resize right" },
 
-            { "<C-w><C-r>", "<cmd>lua require('smart-splits').start_resize_mode()<cr>", "Start resize mode" },
             { "<leader>wr", "<cmd>lua require('smart-splits').start_resize_mode()<cr>", "Start resize mode" },
         }
     },

@@ -49,10 +49,6 @@ o.termguicolors  = true
 o.conceallevel   = 2
 
 -- folds
--- api.nvim_create_autocmd(
---     { "BufEnter" },
---     { pattern = { "*" }, command = "normal zx zR" }
--- ) -- because of https://github.com/nvim-telescope/telescope.nvim/issues/699
 o.foldlevelstart  = 99
 o.foldexpr   = "nvim_treesitter#foldexpr()"
 o.foldmethod = "expr"

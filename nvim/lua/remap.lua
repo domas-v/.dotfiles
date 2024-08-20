@@ -69,6 +69,7 @@ map('c', '<C-k>', '<LEFT>', { noremap = true })
 -- search & replace
 map("n", "<C-s>", "/", { noremap=true })
 map("n", "<esc>", "<cmd>nohl<cr>", { noremap=true })
+
 -- TODO: think of better bindings
 map("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap=true }) -- word under cursor
 map("v", "<leader>rr", ":s/", { desc = "Search & Replace" , noremap=true })                  -- in visual selection

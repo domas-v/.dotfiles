@@ -93,17 +93,6 @@ return {
           end,
     },
     {
-        "folke/todo-comments.nvim",
-        lazy = false,
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require("todo-comments").setup()
-        end,
-        keys = {
-            { "<leader>T", "<cmd>TodoTelescope<cr>" }
-        }
-    },
-    {
         "utilyre/barbecue.nvim",
         name = "barbecue",
         version = "*",

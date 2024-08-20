@@ -42,7 +42,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # Uncomment the following line to change how often to auto-update (in days).
 # zstyle ':omz:update' frequency 13
 
-# Uncomment the following line if pasting URLs and other text is messed up.
+# Uncomment the following line if pasting URLs and other text is medomed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
@@ -57,7 +57,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# Caution: this setting can cause idomues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -133,9 +133,35 @@ alias krc="v ~/Dotfiles/kitty/kitty.conf"
 alias gmm="git merge master"
 alias gsync="git pull && git add . && git commit -m 'Update' && git push"
 
-# eza
+# file listings
+function preview_stuff() {
+    # Check if an argument is provided
+    if [ -z "$1" ]; then
+        # If no argument is provided, list files in the current directory
+        eza -la --git
+        return
+    fi
+
+    # Get the file extension
+    local ext="${1##*.}"
+
+    # Define a list of image extensions
+    local img_exts="jpg jpeg png gif bmp tiff svg webp"
+
+    # Check if the file is an image
+    if [[ " $img_exts " == *" $ext "* ]]; then
+        # If it's an image, use viu to display it
+        viu "$1" -w 50
+    else
+        # Otherwise, list the directory contents
+        eza -la --git "$1"
+    fi
+}
+
 alias l="eza -l --git"
-alias ll="eza -la --git"
+# alias ll="eza -la --git"
+alias ll="preview_stuff"
+
 
 # C
 cc50() {
