@@ -19,12 +19,7 @@
 #: heavy. Setting them manually is useful for font families that have
 #: many weight variants like Book, Medium, Thick, etc. For example::
 
-font_family        JetBrains Mono
-# bold_font        JetBrains Mono Bold
-# italic_font      JetBrains Mono Italic
-# bold_italic_font JetBrains Mono Bold Italic
-
-font_size 13.0
+font_size 14.0
 
 #: Font size (in pts)
 
@@ -1860,11 +1855,6 @@ map kitty_mod+ctrl+k kitten pass_keys.py relative_resize up    8 alt+k
 map kitty_mod+ctrl+h kitten pass_keys.py relative_resize left  8 alt+h
 map kitty_mod+ctrl+l kitten pass_keys.py relative_resize right 8 alt+l
 
-# map ctrl+j kitten pass_keys.py neighboring_window bottom ctrl+j
-# map ctrl+k kitten pass_keys.py neighboring_window top    ctrl+k
-# map ctrl+h kitten pass_keys.py neighboring_window left   ctrl+h
-# map ctrl+l kitten pass_keys.py neighboring_window right  ctrl+l
-
 map kitty_mod+j kitten pass_keys.py neighboring_window bottom ctrl+j
 map kitty_mod+k kitten pass_keys.py neighboring_window top    ctrl+k
 map kitty_mod+h kitten pass_keys.py neighboring_window left   ctrl+h
@@ -2063,7 +2053,7 @@ map kitty_mod+shift+space next_layout
 
 map kitty_mod+shift+g toggle_layout splits
 map kitty_mod+shift+f toggle_layout stack
-map kitty_mod+shift+b toggle_layout fat:bias=70
+map kitty_mod+` toggle_layout fat:bias=70
 
 
 map kitty_mod+shift+r layout_action rotate
@@ -2361,6 +2351,14 @@ map kitty_mod+q quit
 
 
 # BEGIN_KITTY_THEME
-# Kanagawa_dragon
+# Kanagawa
 include current-theme.conf
 # END_KITTY_THEME
+
+
+# BEGIN_KITTY_FONTS
+font_family      family=""
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS
