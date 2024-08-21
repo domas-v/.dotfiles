@@ -72,7 +72,6 @@ return {
             { "<leader>8",  "<cmd>BufferGoto 8<cr>" },
             { "<leader>9",  "<cmd>BufferLast<cr>" },
 
-            { "<C-x>",      "<cmd>BufferClose<cr>" },
             { "<leader>xx", "<cmd>BufferClose<cr>" },
             { "<leader>xo", "<cmd>BufferCloseAllButCurrent<cr>" },
             { "<leader>xh", "<cmd>BufferCloseBuffersLeft<cr>" },
