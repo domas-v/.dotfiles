@@ -4,7 +4,7 @@ return {
         -- TODO: lua neovim LSP
         config = function()
             local lspconfig = require("lspconfig")
-            lspconfig.pyright.setup{
+            lspconfig.pyright.setup {
                 settings = {
                     python = {
                         analysis = {
@@ -15,10 +15,10 @@ return {
             }
             lspconfig.clangd.setup {
                 cmd = { "clangd",
-                "--offset-encoding=utf-16" }
+                    "--offset-encoding=utf-16" }
             }
-            lspconfig.marksman.setup{}
-            lspconfig.lua_ls.setup{}
+            lspconfig.marksman.setup {}
+            lspconfig.lua_ls.setup {}
 
             vim.keymap.set('n', '<leader>dv', vim.diagnostic.open_float)
             vim.keymap.set('n', '<leader>dk', vim.diagnostic.goto_prev)
@@ -30,7 +30,7 @@ return {
                     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
                     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
                     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-                    vim.keymap.set('n', 'K',  vim.lsp.buf.hover, opts)
+                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
                     -- vim.keymap.set('n', '<space>n', vim.lsp.buf.type_definition, opts)
                     vim.keymap.set('n', '<leader>dR', vim.lsp.buf.rename, opts)
                     vim.keymap.set({ 'n', 'v' }, '<leader>dA', vim.lsp.buf.code_action, opts)
@@ -43,10 +43,10 @@ return {
     },
     {
         "mfussenegger/nvim-lint",
-        config = function() 
+        config = function()
             linting = require("lint")
             linting.linters_by_ft = {
-                python = {'flake8'},
+                python = { 'flake8' },
             }
 
             vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -97,21 +97,21 @@ return {
                     ["<CR>"]  = cmp.mapping.confirm({ select = true }),
                 }),
                 sources = cmp.config.sources(
-                {
-                    { name = "nvim_lsp" },
-                    { name = "nvim_lua" },
-                    { name = "luasnip" },
-                    { name = "lazydev", group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
-                },
-                {
-                    { name = "buffer" },
-                    { name = "path" },
-                })
+                    {
+                        { name = "nvim_lsp" },
+                        { name = "nvim_lua" },
+                        { name = "luasnip" },
+                        { name = "lazydev", group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
+                    },
+                    {
+                        { name = "buffer" },
+                        { name = "path" },
+                    })
             })
             cmp.setup({
                 enabled = function()
                     return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
-                    or require("cmp_dap").is_dap_buffer()
+                        or require("cmp_dap").is_dap_buffer()
                 end
             })
             cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
@@ -127,7 +127,8 @@ return {
                     end
 
                     fallback()
-                end})
+                end
+            })
             special_prev_item = cmp.mapping({
                 c = function(fallback)
                     if cmp.visible() then
@@ -135,7 +136,8 @@ return {
                     end
 
                     fallback()
-                end})
+                end
+            })
             cmp.setup.cmdline({ '/', '?' }, {
                 mapping = cmp.mapping.preset.cmdline({
                     ['<C-j>'] = special_next_item,
@@ -170,7 +172,7 @@ return {
                 },
                 formatters = {
                     jq = {
-                       args = { "--indent", "4" }, 
+                        args = { "--indent", "4" },
                     }
                 }
             })
@@ -188,8 +190,8 @@ return {
             end, { range = true })
         end,
         keys = {
-            { "<leader>.", ":Format<CR>",  desc = "Format the current buffer",  silent = true },
-            { "<leader>.", ":Format<CR>",  desc = "Format selection",           silent = true, mode = "v", }
+            { "<leader>F", ":Format<CR>", desc = "Format the current buffer", silent = true },
+            { "<leader>F", ":Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
         }
     },
 }

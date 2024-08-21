@@ -25,6 +25,14 @@ return {
         }
     },
     {
+        'stevearc/oil.nvim',
+        opts = {},
+        dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+        keys = {
+            { "<leader>O", "<cmd>Oil<cr>" }
+        }
+    },
+    {
         'romgrk/barbar.nvim',
         lazy = false,
         dependencies = 'nvim-tree/nvim-web-devicons',
@@ -34,14 +42,14 @@ return {
                 focus_on_close = 'previous',
                 icons = {
                     button = 'Ｘ',
-                    pinned = {button = ' ' , filename = true},
+                    pinned = { button = ' ', filename = true },
                 },
             })
         end,
         keys = {
             { "<leader>*",  "<cmd>BufferPin<cr>" },
             { "<leader>b",  "<cmd>BufferPick<cr>" },
-            { "<C-b>",  "<cmd>BufferPick<cr>" },
+            { "<C-b>",      "<cmd>BufferPick<cr>" },
 
             { "<C-n>",      "<cmd>BufferNext<cr>" },
             { "<C-p>",      "<cmd>BufferPrevious<cr>" },
@@ -52,16 +60,16 @@ return {
             { "<leader>]",  "<cmd>BufferMoveNext<cr>" },
             { "<leader>[",  "<cmd>BufferMovePrevious<cr>" },
 
-            { "<C-1>",  "<cmd>BufferGoto 1<cr>" },
-            { "<C-1>",  "<cmd>BufferGoto 1<cr>" },
-            { "<C-2>",  "<cmd>BufferGoto 2<cr>" },
-            { "<C-3>",  "<cmd>BufferGoto 3<cr>" },
-            { "<C-4>",  "<cmd>BufferGoto 4<cr>" },
-            { "<C-5>",  "<cmd>BufferGoto 5<cr>" },
-            { "<C-6>",  "<cmd>BufferGoto 6<cr>" },
-            { "<C-7>",  "<cmd>BufferGoto 7<cr>" },
-            { "<C-8>",  "<cmd>BufferGoto 8<cr>" },
-            { "<C-9>",  "<cmd>BufferLast<cr>" },
+            { "<C-1>",      "<cmd>BufferGoto 1<cr>" },
+            { "<C-1>",      "<cmd>BufferGoto 1<cr>" },
+            { "<C-2>",      "<cmd>BufferGoto 2<cr>" },
+            { "<C-3>",      "<cmd>BufferGoto 3<cr>" },
+            { "<C-4>",      "<cmd>BufferGoto 4<cr>" },
+            { "<C-5>",      "<cmd>BufferGoto 5<cr>" },
+            { "<C-6>",      "<cmd>BufferGoto 6<cr>" },
+            { "<C-7>",      "<cmd>BufferGoto 7<cr>" },
+            { "<C-8>",      "<cmd>BufferGoto 8<cr>" },
+            { "<C-9>",      "<cmd>BufferLast<cr>" },
             { "<leader>1",  "<cmd>BufferGoto 1<cr>" },
             { "<leader>2",  "<cmd>BufferGoto 2<cr>" },
             { "<leader>3",  "<cmd>BufferGoto 3<cr>" },
@@ -80,16 +88,16 @@ return {
         }
     },
     {
-          'nvim-lualine/lualine.nvim',
-          dependencies = 'nvim-tree/nvim-web-devicons' ,
-          config = function()
-              require('lualine').setup {
-                  show_filename_only = false,
-                  sections = {
-                      lualine_x = {'filetype'}
-                  }
-              }
-          end,
+        'nvim-lualine/lualine.nvim',
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        config = function()
+            require('lualine').setup {
+                show_filename_only = false,
+                sections = {
+                    lualine_x = { 'filetype' }
+                }
+            }
+        end,
     },
     {
         "utilyre/barbecue.nvim",
