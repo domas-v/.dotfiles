@@ -2353,7 +2353,7 @@ map kitty_mod+q quit
 
 
 # BEGIN_KITTY_THEME
-# GitHub Light
+# Kanagawa_light
 include current-theme.conf
 # END_KITTY_THEME
 

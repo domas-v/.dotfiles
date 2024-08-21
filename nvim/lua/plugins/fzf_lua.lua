@@ -1,10 +1,13 @@
 return {
     "ibhagwan/fzf-lua",
-    -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-        -- calling `setup` is optional for customization
         require("fzf-lua").setup({
+            winopts = {
+                height = 0.5,
+                width = 0.7,
+                border = "|",
+            },
             keymap = {
                 builtin = {
                     true,
@@ -12,6 +15,9 @@ return {
                     ["<C-l>"] = "preview-page-down",
                     ["<C-h>"] = "preview-page-up",
                 },
+                fzf = {
+                    ["ctrl-q"] = "select-all"
+                }
             },
             previewers = {
                 builtin = {
@@ -21,18 +27,23 @@ return {
                         ["jpg"] = { "viu", "-b" },
                     }
                 }
-            }
+            },
+            files = { formatter = "path.filename_first" },
+            buffers = { formatter = "path.filename_first" },
+            grep = { formatter = "path.filename_first" }
         })
     end,
     keys = {
         -- shortcuts
         { "<C-e>",      "<cmd>FzfLua buffers<cr>" },
         { "<C-f>",      "<cmd>FzfLua lgrep_curbuf<cr>" },
+        { "<C-s>",      "<cmd>FzfLua lines<cr>" },
 
         -- search inside file
         { "<leader>e",  "<cmd>FzfLua buffers<cr>" },
         { "<leader>r",  "<cmd>FzfLua live_grep_glob<cr>" },
         { "<leader>W",  "<cmd>FzfLua grep_cword<cr>" },
+        { "<leader>W",  "<cmd>FzfLua grep_visual<cr>",               mode = { "v" } },
 
         -- search for files
         { "<leader>f",  "<cmd>FzfLua files cwd_only=true<cr>" },
@@ -46,9 +57,9 @@ return {
 
         -- utils
         { "<C-space>",  "<cmd>FzfLua command_history<cr>" },
-        { "<leader>hk", "<cmd>FzfLua keymaps<cr>" },
-        { "<leader>hc", "<cmd>FzfLua command<cr>" },
-        { "<leader>ht", "<cmd>FzfLua help_tags<cr>" },
+        { "<leader>?k", "<cmd>FzfLua keymaps<cr>" },
+        { "<leader>?c", "<cmd>FzfLua command<cr>" },
+        { "<leader>?t", "<cmd>FzfLua help_tags<cr>" },
 
         -- git
         { "<leader>gB", "<cmd>FzfLua git_branches<cr>" },

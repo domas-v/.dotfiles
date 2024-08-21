@@ -44,7 +44,7 @@ return {
     {
         "mfussenegger/nvim-lint",
         config = function()
-            linting = require("lint")
+            local linting = require("lint")
             linting.linters_by_ft = {
                 python = { 'flake8' },
             }
@@ -120,7 +120,7 @@ return {
                 },
             })
 
-            special_next_item = cmp.mapping({
+            local special_next_item = cmp.mapping({
                 c = function(fallback)
                     if cmp.visible() then
                         return cmp.select_next_item()
@@ -129,7 +129,7 @@ return {
                     fallback()
                 end
             })
-            special_prev_item = cmp.mapping({
+            local special_prev_item = cmp.mapping({
                 c = function(fallback)
                     if cmp.visible() then
                         return cmp.select_prev_item()
