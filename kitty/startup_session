@@ -1,8 +1,0 @@
-layout splits
-cd ~
-launch --title "Home" zsh
-
-new_tab Work
-layout splits
-cd ~/Work/tenspeed-lambda/
-launch zsh
