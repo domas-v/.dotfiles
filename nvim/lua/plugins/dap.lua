@@ -16,34 +16,40 @@ return {
 
             --- dapui
             dapui.setup({
-                layouts = { {
-                    elements = {
-                        {
-                            id = "repl",
-                            size = 0.5
+                layouts = {
+                    {
+                        elements = {
+                            {
+                                id = "repl",
+                                size = 0.5
+                            },
+                            {
+                                id = "console",
+                                size = 0.5,
+                            }
                         },
-                        {
-                            id = "console",
-                            size = 0.5
-                        }
+                        position = "bottom",
+                        size = 0.3
                     },
-                    position = "bottom",
-                    size = 0.3
-                }, {
-                    elements = {
-                        {
-                            id = "scopes",
-                            size = 1.0
-                        },
-                        -- {
-                        --     id = "breakpoints",
-                        --     size = 0.33
-                        -- }
-                    },
-                    position = "left",
-                    size = 0.25
-                } }
-
+                    -- {
+                    --     elements = {
+                    --         {
+                    --             id = "scopes",
+                    --             size = 0.33
+                    --         },
+                    --         {
+                    --             id = "breakpoints",
+                    --             size = 0.33
+                    --         },
+                    --         {
+                    --             id = "watches",
+                    --             size = 0.33
+                    --         }
+                    --     },
+                    --     position = "left",
+                    --     size = 0.25
+                    -- }
+                }
             })
 
             require("nvim-dap-virtual-text").setup({
@@ -90,23 +96,26 @@ return {
         end,
         keys = {
             -- debug controls
-            { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",             desc = "Start DAP" },
-            { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>",            desc = "Stop DAP" },
-            { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>",            desc = "Step over" },
-            { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>",            desc = "Step into" },
-            { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>",             desc = "Step out" },
-            { "<leader>dr", "<cmd>lua require('dap').repl.toggle()<cr>",        desc = "Toggle DAP Repl" },
-            { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", desc = "Test python method" },
+            { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",                       desc = "Start DAP" },
+            { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>",                      desc = "Stop DAP" },
+            { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>",                      desc = "Step over" },
+            { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>",                      desc = "Step into" },
+            { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>",                       desc = "Step out" },
+            { "<leader>dr", "<cmd>lua require('dap').repl.toggle()<cr>",                  desc = "Toggle DAP Repl" },
+            { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>",           desc = "Test python method" },
 
             -- ui
-            { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>", desc = "Toggle DAP Virtual text" },
-            { "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", desc = "Toggle DAP UI" },
-            { "<leader>de", "<cmd>lua require('dapui').eval()<cr>",   desc = "DAP Eval" },
-            { "<leader>dR", "<cmd>DapVirtualTextForceRefresh<cr>", desc = "DAP Refresh virtual text" },
+            { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>",                              desc = "Toggle DAP Virtual text" },
+            { "<leader>du", "<cmd>lua require('dapui').toggle()<cr>",                     desc = "Toggle DAP UI" },
+            { "<leader>de", "<cmd>lua require('dapui').eval()<cr>",                       desc = "DAP Eval",                mode = { "n", "v" } },
+            { "<leader>dR", "<cmd>DapVirtualTextForceRefresh<cr>",                        desc = "DAP Refresh virtual text" },
 
             -- floats
-            { "<leader>df", "<cmd>lua require('dapui').float_element()<cr>", desc = "Toggle DAP Float element" },
-            { "<leader>db",  "<cmd>lua require('dapui').float_element('breakpoints')<cr>", desc = "Toggle DAP Breakpoints" },
+            { "<leader>df", "<cmd>lua require('dapui').float_element()<cr>",              desc = "Toggle DAP Float element" },
+            { "<leader>db", "<cmd>lua require('dapui').float_element('breakpoints')<cr>", desc = "Toggle DAP Breakpoints" },
+            { "<leader>dw", "<cmd>lua require('dapui').float_element('watches')<cr>",     desc = "Toggle DAP Breakpoints" },
+            { "<leader>dc", "<cmd>lua require('dapui').float_element('stacks')<cr>",      desc = "Toggle DAP Breakpoints" },
+            { "<leader>dq", "<cmd>lua require('dapui').float_element('scopes')<cr>",      desc = "Toggle DAP Breakpoints" },
         }
     },
     {
