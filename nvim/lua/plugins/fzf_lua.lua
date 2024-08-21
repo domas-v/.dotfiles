@@ -10,13 +10,20 @@ return {
             },
             keymap = {
                 builtin = {
-                    true,
+                    false,
+                    ["<C-.>"] = "toggle-help",
                     ["<C-p>"] = "toggle-preview",
                     ["<C-l>"] = "preview-page-down",
                     ["<C-h>"] = "preview-page-up",
                 },
                 fzf = {
-                    ["ctrl-q"] = "select-all"
+                    false,
+                    ["ctrl-A"] = "toggle-all",
+                    ["ctrl-Q"] = "select-all+accept",
+                    ["ctrl-z"] = "abort",
+                    ["ctrl-u"] = "unix-line-discard",
+                    ["ctrl-a"] = "beginning-of-line",
+                    ["ctrl-e"] = "end-of-line",
                 }
             },
             previewers = {
