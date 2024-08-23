@@ -6,12 +6,13 @@ return {
         config = function ()
             require("nvim-treesitter.configs").setup {
                 ensure_installed = {
-                    "vimdoc",
-                    "markdown",
                     "python",
                     "lua",
+                    "c",
+                    "markdown",
+                    "vimdoc",
                     "json",
-                    "c"
+                    "http",
                 },
                 sync_install = false,
                 auto_install = false,

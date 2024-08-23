@@ -18,8 +18,7 @@ return {
                 },
                 fzf = {
                     false,
-                    ["ctrl-A"] = "toggle-all",
-                    ["ctrl-Q"] = "select-all+accept",
+                    ["ctrl-q"] = "select-all+accept",
                     ["ctrl-z"] = "abort",
                     ["ctrl-u"] = "unix-line-discard",
                     ["ctrl-a"] = "beginning-of-line",
