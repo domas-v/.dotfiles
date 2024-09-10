@@ -77,7 +77,7 @@ return {
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
             "rcarriga/cmp-dap",
-            "L3MON4D3/LuaSnip"
+            { "L3MON4D3/LuaSnip", build = "make install_jsregexp" }
         },
         config = function()
             local cmp = require("cmp")

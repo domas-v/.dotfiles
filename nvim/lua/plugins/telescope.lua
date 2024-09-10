@@ -6,7 +6,7 @@ return {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             -- extensions
-            -- "nvim-telescope/telescope-live-grep-args.nvim",
+            "nvim-telescope/telescope-live-grep-args.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
             {
                 "danielfalk/smart-open.nvim",
@@ -106,13 +106,12 @@ return {
             -- shortcuts
             { "<C-e>",      "<cmd>Telescope buffers<cr>",                       desc = "Buffers" },
             { "<C-f>",      "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Find files" },
-            { "<C-s>",      "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Find files" },
 
             -- file search
             { "<leader>e",  "<cmd>Telescope buffers<cr>",                       desc = "Options" },
             { "<leader>r",  "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
             { "<leader>f",  "<cmd>Telescope smart_open<cr>",                    desc = "Current buffer" },
-            { "<leader>o",  "<cmd>Telescope files<cr>",                         desc = "Current buffer" },
+            { "<leader>o",  "<cmd>Telescope find_files<cr>",                    desc = "Current buffer" },
 
             { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
             { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },

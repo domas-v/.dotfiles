@@ -1,11 +1,12 @@
 return {
     "ibhagwan/fzf-lua",
+    -- enabled = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         require("fzf-lua").setup({
             winopts = {
-                height = 0.5,
-                width = 0.7,
+                height = 0.6,
+                width = 0.8,
                 border = "|",
             },
             keymap = {
@@ -64,8 +65,8 @@ return {
         -- utils
         { "<C-space>",  "<cmd>FzfLua command_history<cr>" },
         { "<leader>?k", "<cmd>FzfLua keymaps<cr>" },
-        { "<leader>?c", "<cmd>FzfLua command<cr>" },
-        { "<leader>?t", "<cmd>FzfLua help_tags<cr>" },
+        { "<leader>?c", "<cmd>FzfLua commands<cr>" },
+        { "<leader>?h", "<cmd>FzfLua help_tags<cr>" },
 
         -- git
         { "<leader>gB", "<cmd>FzfLua git_branches<cr>" },

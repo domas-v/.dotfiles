@@ -1,10 +1,10 @@
-# --- APP KEYBINDINGS
-alt - e : open -a Emacs.app
-shift + alt - e : open -a "Visual Studio Code.app"
-alt - d : open -a Firefox.app
-alt - t : open -a Terminal.app
-alt - f : open -a Finder.app
-alt - z : open -a Messages.app
-alt - x : open -a Messenger.app
-alt - c : open -a Slack.app
-alt - r : open -a Reminders.app
+# # --- APP KEYBINDINGS
+# alt - e : open -a Emacs.app
+# shift + alt - e : open -a "Visual Studio Code.app"
+# alt - d : open -a Firefox.app
+# alt - t : open -a Terminal.app
+# alt - f : open -a Finder.app
+# alt - z : open -a Messages.app
+# alt - x : open -a Messenger.app
+# alt - c : open -a Slack.app
+# alt - r : open -a Reminders.app
