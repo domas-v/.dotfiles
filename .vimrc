@@ -129,8 +129,9 @@ vnoremap K :m '<-2<CR>gv=gv
 vnoremap H <gv
 vnoremap L >gv
 
-" join lines
+" lines
 nnoremap J mzJ`z
+nnoremap <C-k> D
 
 " wrapped line movement
 nnoremap k gk
