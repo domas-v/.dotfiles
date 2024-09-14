@@ -1,18 +1,20 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        enabled = false,
+        -- enabled = false,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             -- extensions
             "nvim-telescope/telescope-live-grep-args.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
+            "nvim-telescope/telescope-fzy-native.nvim",
             {
                 "danielfalk/smart-open.nvim",
                 branch = "0.2.x",
                 dependencies = { "kkharji/sqlite.lua" },
-            }
+            },
+            "nvim-telescope/telescope-dap.nvim"
         },
         config = function()
             local actions = require("telescope.actions")
@@ -101,6 +103,9 @@ return {
             telescope.load_extension("fzf")
             telescope.load_extension("live_grep_args")
             telescope.load_extension("smart_open")
+            telescope.load_extension("dap")
+            telescope.load_extension('fzy_native')
+
         end,
         keys = {
             -- shortcuts
@@ -111,18 +116,23 @@ return {
             { "<leader>e",  "<cmd>Telescope buffers<cr>",                       desc = "Options" },
             { "<leader>r",  "<cmd>Telescope live_grep_args<cr>",                desc = "Live grep" },
             { "<leader>f",  "<cmd>Telescope smart_open<cr>",                    desc = "Current buffer" },
-            { "<leader>o",  "<cmd>Telescope find_files<cr>",                    desc = "Current buffer" },
 
             { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
             { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
             { "<leader>D",  "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
-            { "<leader>B",  "<cmd>Telescope breakpoints<cr>",                   desc = "Breakpoints" },
+
+            -- dap
+            { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>",               desc = "Breakpoints" },
 
             -- utils
             { "<leader>?k", "<cmd>Telescope keymaps<cr>",                       desc = "Keymaps" },
             { "<leader>?c", "<cmd>Telescope commands<cr>",                      desc = "Commands" },
             { "<leader>?t", "<cmd>Telescope help_tags<cr>",                     desc = "Help" },
             { "<leader>?o", "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
+
+            -- git
+            { "<leader>gB", "<cmd>Telescope git_branches<cr>",                  desc = "Git branches" },
+            { "<leader>gS", "<cmd>Telescope git_status<cr>",                    desc = "Git status" },
         },
         cmd = { "Telescope" },
     }

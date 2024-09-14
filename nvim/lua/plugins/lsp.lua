@@ -34,8 +34,8 @@ return {
                     -- vim.keymap.set('n', '<space>n', vim.lsp.buf.type_definition, opts)
                     vim.keymap.set('n', '<leader>dR', vim.lsp.buf.rename, opts)
                     vim.keymap.set({ 'n', 'v' }, '<leader>dA', vim.lsp.buf.code_action, opts)
-                    vim.keymap.set('n', 'gr', require('fzf-lua').lsp_references, opts)
-                    -- vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
+                    -- vim.keymap.set('n', 'gr', require('fzf-lua').lsp_references, opts)
+                    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
                     -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
                 end,
             })
