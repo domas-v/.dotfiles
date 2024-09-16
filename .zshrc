@@ -85,14 +85,12 @@ plugins=(
     zsh-interactive-cd
     python
     pyenv
-    # poetry
     pip
     gh
     aws
     rust
     docker
-    # ripgrep
-    # fd
+    direnv
     fzf
 )
 
@@ -162,44 +160,13 @@ alias l="eza -l --git"
 # alias ll="eza -la --git"
 alias ll="preview_stuff"
 
-
-# C
-cc50() {
-    if [[ $# -ne 1 && $# -ne 2 ]]; then
-        echo "Usage: cc50 [-d] <path-to-program.c>"
-        return 1
-    elif [[ $# -eq 2 && $2 != "-d" ]]; then
-        echo "Second param should be -d"
-        return 1
-    elif [[ $# -eq 2 && $2 == "-d" ]]; then
-        debug_flag="-g"
-    fi
-
-    local source_file="$1"
-    local program_name=${source_file%.*}
-
-    if [[ ! -f "$source_file" ]]; then
-        echo "Error: $source_file not found."
-        return 1
-    fi
-
-    clang $debug_flag "$source_file" -o "$program_name" -lcs50
-}
-
 # python
+#
 alias py="python"
 alias ipy="ipython"
 # alias a="source venv/bin/activate"
 alias dd="deactivate"
 alias pua="pip uninstall -y -r <(pip freeze)"
-
-# virtualenvs
-function cd() {
-  builtin cd "$@" && \
-  if [[ -e "venv/bin/activate" ]]; then
-  	source venv/bin/activate
-  fi
-}
 
 function a() {
     if [[ "$#" -eq 0 ]]; then
