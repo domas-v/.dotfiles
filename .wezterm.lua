@@ -17,16 +17,16 @@ end
 
 local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
-        return "rose-pine-moon"
+        return "GitHub Dark"
     else
-        return "rose-pine-dawn"
+        return "Github"
     end
 end
 config.color_scheme = scheme_for_appearance(get_appearance())
 
 -- font
-config.font = wezterm.font { family = "JetBrains Mono", }
-config.font_size = 14.0
+config.font = wezterm.font("JetBrains Mono", {weight = "DemiBold"} )
+config.font_size = 13.0
 
 -- window appearance
 config.window_background_opacity = 0.95
@@ -37,49 +37,9 @@ config.default_workspace = "main"
 
 -- tab bar
 config.use_fancy_tab_bar = true
-config.tab_max_width = 30
 config.tab_bar_at_bottom = true
 config.status_update_interval = 1000
 config.show_tab_index_in_tab_bar = false
-
-local basename = function(s)
-    -- Current working directory
-    return string.gsub(s, "(.*[/\\])(.*)", "%2")
-end
-
-wezterm.on(
-    'format-tab-title',
-    function(tab, tabs, panes, config, hover, max_width)
-        local cmd = basename(tab.active_pane.foreground_process_name)
-        local cwd = basename(tab.active_pane.current_working_dir)
-
-        local cmd_table = {
-            nvim = wezterm.nerdfonts.dev_code .. " ",
-            zsh = wezterm.nerdfonts.dev_terminal_badge .. " ",
-        }
-
-        cmd = cmd_table[cmd]
-
-        if cwd == basename(wezterm.home_dir) then
-            cwd = wezterm.nerdfonts.dev_apple .. " "
-        end
-
-        if #tab.panes > 1 then
-            cmd = cmd .. " " .. wezterm.nerdfonts.cod_split_horizontal .. " "
-        end
-
-        if tab.active_pane.is_zoomed then
-            cmd = cmd .. " " .. wezterm.nerdfonts.cod_zoom_in .. " "
-        end
-
-        local title = " " .. cmd .. " " .. cwd
-
-        return {
-            { Foreground = { Color = "#e0af68" } },
-            { Text = title },
-        }
-    end
-)
 
 ---------- keybindings ----------
 local act = wezterm.action
