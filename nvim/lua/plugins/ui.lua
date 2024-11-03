@@ -19,15 +19,6 @@ return {
         }
     },
     {
-        'stevearc/oil.nvim',
-        enabled = false,
-        opts = {},
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        keys = {
-            { "<leader>O", "<cmd>Oil<cr>" }
-        }
-    },
-    {
         'romgrk/barbar.nvim',
         lazy = false,
         dependencies = 'nvim-tree/nvim-web-devicons',
