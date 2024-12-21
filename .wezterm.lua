@@ -17,7 +17,7 @@ end
 
 local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
-        return "GitHub Dark"
+        return "kanagawa"
     else
         return "Github"
     end

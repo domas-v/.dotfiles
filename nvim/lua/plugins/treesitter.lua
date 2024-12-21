@@ -52,6 +52,9 @@ return {
                             ["as"] = "@statement.outer",
                             ["ib"] = "@block.inner",
                             ["ab"] = "@block.outer",
+                            ["i/"] = "@comment.inner",
+                            ["a/"] = "@comment.outer",
+
                         }
                     },
                     move = {
@@ -65,6 +68,7 @@ return {
                             ["]i"] = "@conditional.outer",
                             ["]l"] = "@loop.outer",
                             ["]s"] = "@statement.outer",
+                            ["]/"] = "@comment.outer",
                         },
                         goto_next_end = {
                             ["]F"] = "@function.outer",
@@ -82,7 +86,8 @@ return {
                             ["[r"] = "@return.outer",
                             ["[i"] = "@conditional.outer",
                             ["[l"] = "@loop.outer",
-                            ["]S"] = "@statement.outer",
+                            ["[S"] = "@statement.outer",
+                            ["[/"] = "@comment.outer",
                         },
                         goto_previous_end = {
                             ["[F"] = "@function.outer",

@@ -30,25 +30,7 @@ return {
                         },
                         position = "bottom",
                         size = 0.3
-                    },
-                    -- {
-                    --     elements = {
-                    --         {
-                    --             id = "scopes",
-                    --             size = 0.33
-                    --         },
-                    --         {
-                    --             id = "breakpoints",
-                    --             size = 0.33
-                    --         },
-                    --         {
-                    --             id = "watches",
-                    --             size = 0.33
-                    --         }
-                    --     },
-                    --     position = "left",
-                    --     size = 0.25
-                    -- }
+                    }
                 }
             })
 
@@ -93,6 +75,24 @@ return {
             sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
             sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
             sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
+
+            local function dap_eval_in_split()
+                local buf_name_pattern = '^dap%-eval://'
+
+                for _, win in ipairs(vim.api.nvim_list_wins()) do
+                    local buf = vim.api.nvim_win_get_buf(win)
+                    if vim.api.nvim_buf_get_name(buf):match(buf_name_pattern) then
+                        vim.api.nvim_set_current_win(win)
+                        return
+                    end
+                end
+
+                vim.cmd('DapEval')
+            end
+
+
+            vim.keymap.set('n', '<leader>de', dap_eval_in_split, { noremap = true, silent = true })
+            vim.keymap.set('x', '<leader>de', dap_eval_in_split, { noremap = true, silent = true })
         end,
         keys = {
             -- debug controls
@@ -107,7 +107,7 @@ return {
             -- ui
             { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>",                              desc = "Toggle DAP Virtual text" },
             { "<leader>du", "<cmd>lua require('dapui').toggle()<cr>",                     desc = "Toggle DAP UI" },
-            { "<leader>de", "<cmd>lua require('dapui').eval()<cr>",                       desc = "DAP Eval",                mode = { "n", "v" } },
+            { "<leader>dE", "<cmd>lua require('dapui').eval()<cr>",                       desc = "DAP Eval",                mode = { "n", "v" } },
             { "<leader>dR", "<cmd>DapVirtualTextForceRefresh<cr>",                        desc = "DAP Refresh virtual text" },
 
             -- floats
