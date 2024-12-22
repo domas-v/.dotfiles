@@ -1,52 +1,135 @@
+local api = vim.api
+local eval_buf_pattern = "dap%-eval://"
+local repl_winopts = { width = math.floor(vim.o.columns * 0.5) }
+
+local function _set_autocmd(eval_buf)
+    api.nvim_create_autocmd("BufWriteCmd", {
+        buffer = eval_buf,
+        callback = function(args)
+            vim.bo[args.buf].modified = false
+            local repl = require("dap.repl")
+            local lines = api.nvim_buf_get_lines(args.buf, 0, -1, true)
+            repl.execute(table.concat(lines, "\n"))
+            repl.open(repl_winopts, "vsp")
+        end,
+    })
+    vim.b[eval_buf].dap_eval_autocmd_registered = true
+end
+
+local function _create_eval_buf()
+    local eval_buf = api.nvim_create_buf(true, true)
+    api.nvim_buf_set_name(eval_buf, "dap-eval://" .. vim.bo.filetype)
+    vim.bo[eval_buf].swapfile = false
+    vim.bo[eval_buf].buftype = "acwrite"
+    vim.bo[eval_buf].bufhidden = "hide"
+    vim.bo[eval_buf].filetype = vim.bo.filetype
+
+    return eval_buf
+end
+
+local function _split_third()
+    local total_lines = vim.o.lines
+    local split_height = math.floor(total_lines / 3)
+    vim.cmd("botright split")
+    vim.cmd("resize " .. split_height)
+end
+
+local function toggle_dap_ui()
+    local repl_buf_pattern = "dap%-repl"
+    local eval_win = nil
+    local repl_win = nil
+    for _, win in ipairs(api.nvim_list_wins()) do
+        local buf = api.nvim_win_get_buf(win)
+        if api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
+            eval_win = win
+        elseif api.nvim_buf_get_name(buf):match(repl_buf_pattern) then
+            repl_win = win
+        end
+    end
+
+    local closed_any = false
+    if eval_win then
+        api.nvim_win_close(eval_win, true)
+        closed_any = true
+    end
+    if repl_win then
+        api.nvim_win_close(repl_win, true)
+        closed_any = true
+    end
+
+    if closed_any then
+        return
+    end
+
+    local eval_buf
+    for _, buf in ipairs(api.nvim_list_bufs()) do
+        if api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
+            eval_buf = buf
+            break
+        end
+    end
+
+    if not eval_buf then
+        eval_buf = _create_eval_buf()
+        if not vim.b[eval_buf].dap_eval_autocmd_registered then
+            _set_autocmd(eval_buf)
+        end
+    end
+
+    vim.cmd("only")
+    _split_third()
+    api.nvim_win_set_buf(0, eval_buf)
+    require("dap.repl").toggle(repl_winopts, "vsp")
+end
+
+local function toggle_dap_eval()
+    for _, win in ipairs(api.nvim_list_wins()) do
+        local buf = api.nvim_win_get_buf(win)
+        if api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
+            api.nvim_win_close(win, true)
+            return
+        end
+    end
+
+    local eval_buf
+    for _, buf in ipairs(api.nvim_list_bufs()) do
+        if api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
+            eval_buf = buf
+            break
+        end
+    end
+
+    if not eval_buf then
+        eval_buf = _create_eval_buf()
+        if not vim.b[eval_buf].dap_eval_autocmd_registered then
+            _set_autocmd(eval_buf)
+        end
+    end
+
+    vim.cmd("only")
+    _split_third()
+    api.nvim_win_set_buf(0, eval_buf)
+end
+
 return {
     {
         "mfussenegger/nvim-dap",
         dependencies = {
             "mfussenegger/nvim-dap-python",
-            "rcarriga/nvim-dap-ui",
             "theHamsta/nvim-dap-virtual-text",
             "nvim-neotest/nvim-nio",
         },
         config = function()
             local dap = require('dap')
-            local dapui = require("dapui")
             if vim.fn.filereadable(".vscode/launch.json") then
                 require("dap.ext.vscode").load_launchjs(nil, {})
             end
 
-            --- dapui
-            dapui.setup({
-                layouts = {
-                    {
-                        elements = {
-                            {
-                                id = "repl",
-                                size = 0.5
-                            },
-                            {
-                                id = "console",
-                                size = 0.5,
-                            }
-                        },
-                        position = "bottom",
-                        size = 0.3
-                    }
-                }
-            })
 
+            dap.defaults.fallback.terminal_win_cmd = 'tabnew'
             require("nvim-dap-virtual-text").setup({
                 virt_text_win_col = 60
             })
-
-            dap.listeners.after.event_initialized["dapui_config"] = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated["dapui_config"] = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited["dapui_config"] = function()
-                dapui.close()
-            end
 
             --- python
             require('dap-python').setup("python")
@@ -76,46 +159,24 @@ return {
             sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
             sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
 
-            local function dap_eval_in_split()
-                local buf_name_pattern = '^dap%-eval://'
-
-                for _, win in ipairs(vim.api.nvim_list_wins()) do
-                    local buf = vim.api.nvim_win_get_buf(win)
-                    if vim.api.nvim_buf_get_name(buf):match(buf_name_pattern) then
-                        vim.api.nvim_set_current_win(win)
-                        return
-                    end
-                end
-
-                vim.cmd('DapEval')
-            end
-
-
-            vim.keymap.set('n', '<leader>de', dap_eval_in_split, { noremap = true, silent = true })
-            vim.keymap.set('x', '<leader>de', dap_eval_in_split, { noremap = true, silent = true })
+            api.nvim_create_user_command("DapUIToggle", toggle_dap_ui, {})
+            api.nvim_create_user_command("DapEvalToggle", toggle_dap_eval, {})
+            vim.keymap.set('n', '<leader>du', "<cmd>DapUIToggle<cr>", { noremap = true, silent = true })
+            vim.keymap.set('n', '<leader>de', "<cmd>DapEvalToggle<cr>", { noremap = true, silent = true })
         end,
         keys = {
             -- debug controls
-            { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",                       desc = "Start DAP" },
-            { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>",                      desc = "Stop DAP" },
-            { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>",                      desc = "Step over" },
-            { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>",                      desc = "Step into" },
-            { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>",                       desc = "Step out" },
-            { "<leader>dr", "<cmd>lua require('dap').repl.toggle()<cr>",                  desc = "Toggle DAP Repl" },
-            { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>",           desc = "Test python method" },
+            { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",             desc = "Start DAP" },
+            { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>",            desc = "Stop DAP" },
+            { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>",            desc = "Step over" },
+            { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>",            desc = "Step into" },
+            { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>",             desc = "Step out" },
+            { "<leader>dr", "<cmd>lua require('dap').repl.toggle({})<cr>",      desc = "Toggle DAP Repl" },
+            { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", desc = "Test python method" },
 
             -- ui
-            { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>",                              desc = "Toggle DAP Virtual text" },
-            { "<leader>du", "<cmd>lua require('dapui').toggle()<cr>",                     desc = "Toggle DAP UI" },
-            { "<leader>dE", "<cmd>lua require('dapui').eval()<cr>",                       desc = "DAP Eval",                mode = { "n", "v" } },
-            { "<leader>dR", "<cmd>DapVirtualTextForceRefresh<cr>",                        desc = "DAP Refresh virtual text" },
-
-            -- floats
-            { "<leader>df", "<cmd>lua require('dapui').float_element()<cr>",              desc = "Toggle DAP Float element" },
-            { "<leader>db", "<cmd>lua require('dapui').float_element('breakpoints')<cr>", desc = "Toggle DAP Breakpoints" },
-            { "<leader>dw", "<cmd>lua require('dapui').float_element('watches')<cr>",     desc = "Toggle DAP Breakpoints" },
-            { "<leader>dc", "<cmd>lua require('dapui').float_element('stacks')<cr>",      desc = "Toggle DAP Breakpoints" },
-            { "<leader>dq", "<cmd>lua require('dapui').float_element('scopes')<cr>",      desc = "Toggle DAP Breakpoints" },
+            { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>",                    desc = "Toggle DAP Virtual text" },
+            { "<leader>dR", "<cmd>DapVirtualTextForceRefresh<cr>",              desc = "DAP Refresh virtual text" },
         }
     },
     {
