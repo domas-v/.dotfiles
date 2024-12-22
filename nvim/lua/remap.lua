@@ -5,6 +5,10 @@ map("n", "<Space>", "<Nop>", { noremap = true, silent = true })
 map("n", "Q", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 
+-- mouse
+map("n", "<S-ScrollWheelUp>", "zh", { noremap = true, silent = true })
+map("n", "<S-ScrollWheelDown>", "zl", { noremap = true, silent = true })
+
 -- insert mode keybindings
 map("i", "<C-a>", "<Home>", { noremap = true, silent = true })
 map("i", "<C-f>", "<Right>", { noremap = true, silent = true })

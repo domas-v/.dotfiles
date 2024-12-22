@@ -171,10 +171,7 @@ return {
             { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>",             desc = "Step out" },
             { "<leader>dr", "<cmd>lua require('dap').repl.toggle({})<cr>",      desc = "Toggle DAP Repl" },
             { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", desc = "Test python method" },
-
-            -- ui
             { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>",                    desc = "Toggle DAP Virtual text" },
-            { "<leader>dR", "<cmd>DapVirtualTextForceRefresh<cr>",              desc = "DAP Refresh virtual text" },
         }
     },
     {

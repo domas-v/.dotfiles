@@ -11,12 +11,20 @@ return {
         }
     },
     {
-        "nvim-tree/nvim-tree.lua",
-        cmd = "NvimTreeToggle",
-        config = function() require('nvim-tree').setup() end,
-        keys = {
-            { "<leader><TAB>", "<cmd>NvimTreeFindFileToggle<cr>" },
-        }
+        'stevearc/oil.nvim',
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {
+            columns = {
+                "icon",
+                "permissions",
+                "size",
+                "mtime"
+            },
+            view_options = {
+                show_hidden = true
+            }
+        },
+        keys = { { "<leader><TAB>", "<cmd>vs | Oil<cr>" } }
     },
     {
         'romgrk/barbar.nvim',
