@@ -4,7 +4,7 @@ return {
         lazy = false,
         priority = 1000,
         opts = {
-            transparent = true,
+            transparent = false,
             colors = {
                 theme = {
                     all = {
@@ -34,7 +34,7 @@ return {
         config = function()
             require('github-theme').setup({
                 options = {
-                    transparent = true,
+                    transparent = false,
                     styles = {
                         comments = 'italic',
                         keywords = 'bold',

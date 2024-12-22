@@ -14,7 +14,6 @@ return {
                     "json",
                     "http",
                 },
-                sync_install = false,
                 auto_install = false,
                 highlight = {
                     enable = true,
@@ -25,7 +24,6 @@ return {
                     keymaps = {
                         init_selection = "<CR>",
                         node_incremental = "<CR>",
-                        -- node_decremental = "<S-Tab>",
                     },
                 },
                 indent = {

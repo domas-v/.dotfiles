@@ -1,11 +1,9 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        -- enabled = false,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            -- extensions
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
             "nvim-telescope/telescope-fzy-native.nvim",
             "nvim-telescope/telescope-dap.nvim",
@@ -95,27 +93,28 @@ return {
         end,
         keys = {
             -- file search
-            { "<leader>e",  "<cmd>Telescope buffers<cr>",                       desc = "Options" },
-            { "<leader>r",  "<cmd>Telescope live_grep<cr>",                     desc = "Live grep" },
-            { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Find files" },
-            { "<leader>o",  "<cmd>Telescope find_files<cr>",                    desc = "Current buffer" },
+            { "<leader>e",  "<cmd>Telescope buffers<cr>",                                              desc = "Options" },
+            { "<leader>r",  "<cmd>Telescope live_grep<cr>",                                            desc = "Live grep" },
+            { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",                            desc = "Find files" },
+            { "<leader>o",  "<cmd>Telescope find_files<cr>",                                           desc = "Current buffer" },
+            { "<leader>O",  '<cmd>lua require("telescope.builtin").find_files({ hidden = true })<cr>', desc = "Find files, including hidden" },
 
-            { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",          desc = "LSP symbols" },
-            { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "LSP workspace symbols" },
-            { "<leader>D",  "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
+            { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",                                 desc = "LSP symbols" },
+            { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",                        desc = "LSP workspace symbols" },
+            { "<leader>D",  "<cmd>Telescope diagnostics<cr>",                                          desc = "Diagnostics" },
 
             -- dap
-            { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>",          desc = "Breakpoints" },
+            { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>",                                 desc = "Breakpoints" },
 
             -- utils
-            { "<leader>?k", "<cmd>Telescope keymaps<cr>",                       desc = "Keymaps" },
-            { "<leader>?c", "<cmd>Telescope commands<cr>",                      desc = "Commands" },
-            { "<leader>?t", "<cmd>Telescope help_tags<cr>",                     desc = "Help" },
-            { "<leader>?o", "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
+            { "<leader>?k", "<cmd>Telescope keymaps<cr>",                                              desc = "Keymaps" },
+            { "<leader>?c", "<cmd>Telescope commands<cr>",                                             desc = "Commands" },
+            { "<leader>?t", "<cmd>Telescope help_tags<cr>",                                            desc = "Help" },
+            { "<leader>?o", "<cmd>Telescope vim_options<cr>",                                          desc = "Options" },
 
             -- git
-            { "<leader>gB", "<cmd>Telescope git_branches<cr>",                  desc = "Git branches" },
-            { "<leader>gS", "<cmd>Telescope git_status<cr>",                    desc = "Git status" },
+            { "<leader>gB", "<cmd>Telescope git_branches<cr>",                                         desc = "Git branches" },
+            { "<leader>gS", "<cmd>Telescope git_status<cr>",                                           desc = "Git status" },
         },
         cmd = { "Telescope" },
     }
