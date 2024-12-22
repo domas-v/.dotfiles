@@ -2,10 +2,8 @@ local map = vim.keymap.set
 
 -- leader keys
 map("n", "<Space>", "<Nop>", { noremap = true, silent = true })
-map("n", ";", "<Nop>", { noremap = true, silent = true })
 map("n", "Q", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
-vim.g.maplocalleader = ";"
 
 -- insert mode keybindings
 map("i", "<C-a>", "<Home>", { noremap = true, silent = true })
@@ -65,9 +63,9 @@ map('c', '<C-j>', '<RIGHT>', { noremap = true })
 map('c', '<C-k>', '<LEFT>', { noremap = true })
 
 -- search & replace
+map({ "n", "v" }, "s", "/", { noremap = true })
+map({ "n" }, "S", "?", { noremap = true })
 map("n", "<esc>", "<cmd>nohl<cr>", { noremap = true })
-map("v", "<leader>R", ":s/", { desc = "Search & Replace", noremap = true })                                                              -- in visual selection
-map("n", "<leader>R", [[:%s/<C-r><C-w>//gc<Left><Left><Left>]], { noremap=true }) -- word under cursor
 -- map("n", "<leader>R", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
 --     { noremap = true })                                                                                                                  -- in quickfix list
 
@@ -85,7 +83,7 @@ map("n", "<leader>ws", "<C-w>s", { noremap = true })
 map("n", "<leader>wo", "<C-w>o", { noremap = true })
 
 -- resize splits
-map("n", "<M-,>", "<C-w>5<")
-map("n", "<M-.>", "<C-w>5>")
-map("n", "<M-]>", "<C-W>+")
-map("n", "<M-[>", "<C-W>-")
+map("n", "<M-,>", "<C-w>7<")
+map("n", "<M-.>", "<C-w>7>")
+map("n", "<M-]>", "5<C-W>+")
+map("n", "<M-[>", "5<C-W>-")
