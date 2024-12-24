@@ -43,7 +43,7 @@ map("n", "T", "gg", { noremap = true })
 
 -- commands
 map("n", "!", ":!", { desc = 'Run shell command', noremap = true })
-map("n", "<C-;>", ":lua ", { desc = 'Enter lua command', noremap = true })
+map("n", "<C-S-;>", ":lua ", { desc = 'Enter lua command', noremap = true })
 
 -- closing vim
 map("n", "<C-q>", "<cmd>close<cr>", { noremap = true })
@@ -76,6 +76,12 @@ map("n", "<esc>", "<cmd>nohl<cr>", { noremap = true })
 -- tabs
 map("n", "<leader>tt", "<cmd>tab split<cr>", { noremap = true })
 map("n", "<leader>tx", "<cmd>tabclose<cr>", { noremap = true })
+map("n", "<leader>to", "<cmd>tabonly<cr>", { noremap = true })
+
+-- buffers
+map("n", "<C-n>", "<cmd>bnext<cr>", { noremap = true })
+map("n", "<C-p>", "<cmd>bprev<cr>", { noremap = true })
+map("n", "<C-b>", "<cmd>b#<cr>", { noremap = true })
 
 -- windows
 map("n", "<C-h>", "<C-w>h", { noremap = true })

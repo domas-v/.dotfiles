@@ -12,7 +12,7 @@ return {
     },
     init = function()
         vim.g.db_ui_use_nerd_fonts = 1
-        vim.keymap.set("n", "<leader>§", ":DBUIToggle<CR>", { noremap = true, silent = true })
+        vim.keymap.set("n", "<leader><leader>d", ":DBUIToggle<cr>", { noremap = true, silent = true })
     end,
 }
 

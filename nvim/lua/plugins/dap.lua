@@ -78,6 +78,7 @@ local function toggle_dap_ui()
 
     vim.cmd("only")
     _split_third()
+    api.nvim_win_set_buf(0, eval_buf)
     require("dap.repl").toggle(repl_winopts, "vsp")
 end
 
@@ -107,6 +108,11 @@ local function toggle_dap_eval()
 
     vim.cmd("only")
     _split_third()
+    api.nvim_win_set_buf(0, eval_buf)
+end
+
+local function toggle_dap_repl()
+    require('dap').repl.toggle({ height = math.floor(vim.o.lines / 3) })
 end
 
 return {
@@ -123,17 +129,14 @@ return {
                 require("dap.ext.vscode").load_launchjs(nil, {})
             end
 
-
             dap.defaults.fallback.terminal_win_cmd = 'tabnew'
-            require("nvim-dap-virtual-text").setup({
-                virt_text_win_col = 60
-            })
+            require("nvim-dap-virtual-text").setup({ virt_text_win_col = 60 })
 
             --- python
             require('dap-python').setup("python")
             require("dap-python").test_runner = "pytest"
 
-            -- c debuger
+            -- c
             -- require('dap').adapters.lldb = {
             --     type = 'executable',
             --     command = '/opt/homebrew/Cellar/llvm/17.0.6_1/bin/lldb-vscode',
@@ -159,8 +162,10 @@ return {
 
             api.nvim_create_user_command("DapUIToggle", toggle_dap_ui, {})
             api.nvim_create_user_command("DapEvalToggle", toggle_dap_eval, {})
+            api.nvim_create_user_command("DapReplToggle", toggle_dap_repl, {})
             vim.keymap.set('n', '<leader>du', "<cmd>DapUIToggle<cr>", { noremap = true, silent = true })
             vim.keymap.set('n', '<leader>de', "<cmd>DapEvalToggle<cr>", { noremap = true, silent = true })
+            vim.keymap.set('n', '<leader>dr', "<cmd>DapReplToggle<cr>", { noremap = true, silent = true })
         end,
         keys = {
             -- debug controls
@@ -169,7 +174,6 @@ return {
             { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>",            desc = "Step over" },
             { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>",            desc = "Step into" },
             { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>",             desc = "Step out" },
-            { "<leader>dr", "<cmd>lua require('dap').repl.toggle({})<cr>",      desc = "Toggle DAP Repl" },
             { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", desc = "Test python method" },
             { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>",                    desc = "Toggle DAP Virtual text" },
         }

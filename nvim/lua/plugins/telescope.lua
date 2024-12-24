@@ -7,10 +7,8 @@ return {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
             "nvim-telescope/telescope-fzy-native.nvim",
             "nvim-telescope/telescope-dap.nvim",
-            {
-                "prochri/telescope-all-recent.nvim",
-                dependencies = { "kkharji/sqlite.lua" },
-            }
+            'LukasPietzschmann/telescope-tabs',
+            { "prochri/telescope-all-recent.nvim",        dependencies = { "kkharji/sqlite.lua" } },
         },
         config = function()
             local actions = require("telescope.actions")
@@ -90,23 +88,33 @@ return {
             telescope.load_extension("fzf")
             telescope.load_extension("dap")
             telescope.load_extension("fzy_native")
+            require('telescope-tabs').setup({})
         end,
         keys = {
-            -- file search
-            { "<leader>e",  "<cmd>Telescope buffers<cr>",                                              desc = "Options" },
-            { "<leader>r",  "<cmd>Telescope live_grep<cr>",                                            desc = "Live grep" },
+            { "<C-;>",      "<cmd>Telescope<cr>",                                                      desc = "Telescope" },
+
+            -- tabs
+            { "<leader>T",  "<cmd>lua require('telescope-tabs').list_tabs()<cr>",                      desc = "Tabs" },
+
+            -- buffers
+            { "<C-e>",      "<cmd>Telescope buffers<cr>",                                              desc = "Buffers" },
+            { "<leader>e",  "<cmd>Telescope buffers<cr>",                                              desc = "Buffers" },
             { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",                            desc = "Find files" },
+
+            -- file search
+            { "<leader>r",  "<cmd>Telescope live_grep<cr>",                                            desc = "Live grep" },
             { "<leader>o",  "<cmd>Telescope find_files<cr>",                                           desc = "Current buffer" },
             { "<leader>O",  '<cmd>lua require("telescope.builtin").find_files({ hidden = true })<cr>', desc = "Find files, including hidden" },
 
+            -- lsp
             { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",                                 desc = "LSP symbols" },
             { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",                        desc = "LSP workspace symbols" },
-            { "<leader>D",  "<cmd>Telescope diagnostics<cr>",                                          desc = "Diagnostics" },
 
-            -- dap
-            { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>",                                 desc = "Breakpoints" },
+            -- dap & diagnostics
+            { "<leader>db", "<cmd>Telescope dap list_breakpoints<cr>",                                 desc = "Breakpoints" },
+            { "<leader>dl", "<cmd>Telescope diagnostics<cr>",                                          desc = "Diagnostics list" },
 
-            -- utils
+            -- help
             { "<leader>?k", "<cmd>Telescope keymaps<cr>",                                              desc = "Keymaps" },
             { "<leader>?c", "<cmd>Telescope commands<cr>",                                             desc = "Commands" },
             { "<leader>?t", "<cmd>Telescope help_tags<cr>",                                            desc = "Help" },

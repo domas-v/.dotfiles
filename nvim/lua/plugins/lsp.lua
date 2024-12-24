@@ -1,7 +1,6 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        -- TODO: lua neovim LSP
         config = function()
             local lspconfig = require("lspconfig")
             lspconfig.pyright.setup {
@@ -18,7 +17,7 @@ return {
                     "--offset-encoding=utf-16" }
             }
             lspconfig.marksman.setup {}
-            lspconfig.lua_ls.setup {}
+            lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { disable = { "missing-fields" } } } } })
 
             vim.keymap.set('n', '<leader>dv', vim.diagnostic.open_float)
             vim.keymap.set('n', '<leader>dk', vim.diagnostic.goto_prev)
@@ -31,12 +30,9 @@ return {
                     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
                     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
                     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-                    -- vim.keymap.set('n', '<space>n', vim.lsp.buf.type_definition, opts)
-                    vim.keymap.set('n', '<leader>dR', vim.lsp.buf.rename, opts)
-                    vim.keymap.set({ 'n', 'v' }, '<leader>dA', vim.lsp.buf.code_action, opts)
+                    vim.keymap.set('n', '<leader>dN', vim.lsp.buf.rename, opts)
+                    vim.keymap.set({ 'n', 'v' }, '<leader>da', vim.lsp.buf.code_action, opts)
                     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
-                    -- vim.keymap.set('n', 'gr', require('fzf-lua').lsp_references, opts)
-                    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
                 end,
             })
         end
@@ -58,15 +54,9 @@ return {
     },
     {
         "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
-        opts = {
-            library = {
-                -- See the configuration section for more details
-                -- Load luvit types when the `vim.uv` word is found
-                { path = "luvit-meta/library", words = { "vim%.uv" } },
-            },
-        },
-        dependencies = { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+        ft = "lua",
+        opts = { library = { { path = "luvit-meta/library", words = { "vim%.uv" } } } },
+        dependencies = { "Bilal2453/luvit-meta", lazy = true }
     },
     {
         "hrsh7th/nvim-cmp",
