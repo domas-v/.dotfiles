@@ -5,7 +5,7 @@ return {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
-            "nvim-telescope/telescope-fzy-native.nvim",
+            { "nvim-telescope/telescope-fzy-native.nvim", enabled = false },
             "nvim-telescope/telescope-dap.nvim",
             'LukasPietzschmann/telescope-tabs',
             { "prochri/telescope-all-recent.nvim",        dependencies = { "kkharji/sqlite.lua" } },
@@ -87,7 +87,6 @@ return {
             require("telescope-all-recent").setup({})
             telescope.load_extension("fzf")
             telescope.load_extension("dap")
-            telescope.load_extension("fzy_native")
             require('telescope-tabs').setup({})
         end,
         keys = {

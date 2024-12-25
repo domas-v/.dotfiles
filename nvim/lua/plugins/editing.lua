@@ -35,6 +35,5 @@ return {
         config = function()
             require('remember')
         end
-    },
-    { "RRethy/vim-illuminate" },
+    }
 }
