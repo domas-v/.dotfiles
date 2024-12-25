@@ -39,7 +39,10 @@ map("n", "gh", "|", { noremap = true })
 -- scrolling
 map("n", "<C-d>", "<C-d>zz", { desc = 'Scroll down', noremap = true })
 map("n", "<C-u>", "<C-u>zz", { desc = 'Scroll up', noremap = true })
-map("n", "T", "gg", { noremap = true })
+map("n", "<M-l>", "zl", { desc = 'Scroll right', noremap = true })
+map("n", "<M-L>", "zL", { desc = 'Scroll right more', noremap = true })
+map("n", "<M-h>", "zh", { desc = 'Scroll left', noremap = true })
+map("n", "<M-H>", "zH", { desc = 'Scroll left more', noremap = true })
 
 -- commands
 map("n", "!", ":!", { desc = 'Run shell command', noremap = true })

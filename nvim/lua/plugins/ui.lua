@@ -12,40 +12,47 @@ return {
         }
     },
     {
-        'stevearc/oil.nvim',
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        cmd = { "Oil" },
-        opts = {
-            columns = {
-                "icon",
-                "permissions",
-                "size",
-                "mtime"
+        "refractalize/oil-git-status.nvim",
+        dependencies = {
+            'stevearc/oil.nvim',
+            dependencies = { "nvim-tree/nvim-web-devicons" },
+            cmd = { "Oil" },
+            opts = {
+                win_options = {
+                    signcolumn = "yes:2",
+                },
+                columns = {
+                    "icon",
+                    "permissions",
+                    "size",
+                    "mtime"
+                },
+                view_options = {
+                    show_hidden = true
+                },
+                use_default_keymaps = false,
+                keymaps = {
+                    ["g?"] = { "actions.show_help", mode = "n" },
+                    ["<CR>"] = "actions.select",
+                    ["<C-v>"] = { "actions.select", opts = { vertical = true } },
+                    ["<C-s>"] = { "actions.select", opts = { horizontal = true } },
+                    ["<C-t>"] = { "actions.select", opts = { tab = true } },
+                    ["<leader>p"] = "actions.preview",
+                    ["q"] = { "actions.close", mode = "n" },
+                    ["<C-r>"] = "actions.refresh",
+                    ["-"] = { "actions.parent", mode = "n" },
+                    ["_"] = { "actions.open_cwd", mode = "n" },
+                    ["`"] = { "actions.cd", mode = "n" },
+                    ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+                    ["gs"] = { "actions.change_sort", mode = "n" },
+                    ["gx"] = "actions.open_external",
+                    ["g."] = { "actions.toggle_hidden", mode = "n" },
+                    ["g\\"] = { "actions.toggle_trash", mode = "n" },
+                },
             },
-            view_options = {
-                show_hidden = true
-            },
-            use_default_keymaps = false,
-            keymaps = {
-                ["g?"] = { "actions.show_help", mode = "n" },
-                ["<CR>"] = "actions.select",
-                ["<C-v>"] = { "actions.select", opts = { vertical = true } },
-                ["<C-s>"] = { "actions.select", opts = { horizontal = true } },
-                ["<C-t>"] = { "actions.select", opts = { tab = true } },
-                ["<leader>p"] = "actions.preview",
-                ["q"] = { "actions.close", mode = "n" },
-                ["<C-l>"] = "actions.refresh",
-                ["-"] = { "actions.parent", mode = "n" },
-                ["_"] = { "actions.open_cwd", mode = "n" },
-                ["`"] = { "actions.cd", mode = "n" },
-                ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
-                ["gs"] = { "actions.change_sort", mode = "n" },
-                ["gx"] = "actions.open_external",
-                ["g."] = { "actions.toggle_hidden", mode = "n" },
-                ["g\\"] = { "actions.toggle_trash", mode = "n" },
-            },
+            keys = { { "<leader>.", "<cmd>Oil<cr>" } }
         },
-        keys = { { "<leader>.", "<cmd>Oil<cr>" } }
+        config = true,
     },
     {
         'nvim-lualine/lualine.nvim',
