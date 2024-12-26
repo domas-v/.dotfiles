@@ -10,4 +10,4 @@
     - skhd
 - Tools
     - bat
-    - spaceship.zsh
+    - spaceship.zshstuff
