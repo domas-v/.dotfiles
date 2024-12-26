@@ -7,11 +7,14 @@ return {
         opts = {
             keymap = {
                 preset = "default",
+                ["<CR>"] = { "accept", "fallback" },
+                ["<TAB>"] = { "select_and_accept" },
                 ["<C-j>"] = { "select_next" },
                 ["<C-k>"] = { "select_prev" },
-                ["<CR>"] = { "accept", "fallback" },
                 cmdline = {
-                    ["<TAB>"] = { "select_and_accept" }
+                    ["<TAB>"] = { "select_and_accept" },
+                    ["<C-j>"] = { "select_next" },
+                    ["<C-k>"] = { "select_prev" },
                 }
             },
             appearance = {
@@ -19,7 +22,10 @@ return {
                 nerd_font_variant = "mono"
             },
             sources = {
-                default = { "lsp", "path", "buffer" },
+                default = { "lsp", "path", "snippets", "buffer", "dadbod" },
+                providers = {
+                    dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+                },
             },
             completion = {
                 accept = { auto_brackets = { enabled = true } },
