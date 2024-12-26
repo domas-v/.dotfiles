@@ -6,9 +6,9 @@ return {
             lspconfig.pyright.setup({})
             lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { disable = { "missing-fields" } } } } })
 
-            vim.keymap.set('n', '<leader>dv', vim.diagnostic.open_float)
-            vim.keymap.set('n', '<leader>dk', vim.diagnostic.goto_prev)
-            vim.keymap.set('n', '<leader>dj', vim.diagnostic.goto_next)
+            vim.keymap.set('n', '<leader>xv', vim.diagnostic.open_float)
+            vim.keymap.set('n', '<leader>xk', vim.diagnostic.goto_prev)
+            vim.keymap.set('n', '<leader>xj', vim.diagnostic.goto_next)
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
                 callback = function(ev)

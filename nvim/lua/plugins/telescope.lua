@@ -8,7 +8,7 @@ return {
             { "nvim-telescope/telescope-fzy-native.nvim", enabled = false },
             "nvim-telescope/telescope-dap.nvim",
             'LukasPietzschmann/telescope-tabs',
-            { "prochri/telescope-all-recent.nvim",        dependencies = { "kkharji/sqlite.lua" } },
+            { "prochri/telescope-all-recent.nvim", dependencies = { "kkharji/sqlite.lua" } },
         },
         config = function()
             local actions = require("telescope.actions")
@@ -108,10 +108,10 @@ return {
             -- lsp
             { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",                                 desc = "LSP symbols" },
             { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",                        desc = "LSP workspace symbols" },
+            { "<leader>X",  "<cmd>Telescope diagnostics<cr>",                                          desc = "Diagnostics list" },
 
-            -- dap & diagnostics
-            { "<leader>db", "<cmd>Telescope dap list_breakpoints<cr>",                                 desc = "Breakpoints" },
-            { "<leader>dl", "<cmd>Telescope diagnostics<cr>",                                          desc = "Diagnostics list" },
+            -- dap
+            { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>",                                 desc = "Breakpoints" },
 
             -- help
             { "<leader>?k", "<cmd>Telescope keymaps<cr>",                                              desc = "Keymaps" },
