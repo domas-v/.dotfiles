@@ -46,8 +46,6 @@ return {
                             ["ai"] = "@conditional.outer",
                             ["il"] = "@loop.inner",
                             ["al"] = "@loop.outer",
-                            ["is"] = "@statement.inner",
-                            ["as"] = "@statement.outer",
                             ["ib"] = "@block.inner",
                             ["ab"] = "@block.outer",
                             ["i/"] = "@comment.inner",
@@ -65,7 +63,7 @@ return {
                             ["]r"] = "@return.outer",
                             ["]i"] = "@conditional.outer",
                             ["]l"] = "@loop.outer",
-                            ["]s"] = "@statement.outer",
+                            ["]x"] = "@statement.outer",
                             ["]/"] = "@comment.outer",
                         },
                         goto_next_end = {
@@ -75,7 +73,6 @@ return {
                             ["]R"] = "@return.outer",
                             ["]I"] = "@conditional.outer",
                             ["]L"] = "@loop.outer",
-                            ["]s"] = "@statement.outer",
                         },
                         goto_previous_start = {
                             ["[f"] = "@function.outer",
@@ -84,7 +81,6 @@ return {
                             ["[r"] = "@return.outer",
                             ["[i"] = "@conditional.outer",
                             ["[l"] = "@loop.outer",
-                            ["[S"] = "@statement.outer",
                             ["[/"] = "@comment.outer",
                         },
                         goto_previous_end = {
@@ -94,7 +90,6 @@ return {
                             ["[R"] = "@return.outer",
                             ["[I"] = "@conditional.outer",
                             ["[L"] = "@loop.outer",
-                            ["]S"] = "@statement.outer",
                         }
                     },
                     lsp_interop = {
