@@ -102,5 +102,21 @@ return {
             'junegunn/fzf',
             config = function() vim.fn['fzf#install']() end
         }
+    },
+    {
+        "ya2s/nvim-cursorline",
+        config = function()
+            require('nvim-cursorline').setup {
+                cursorline = {
+                    enable = true,
+                    timeout = 0,
+                    number = false,
+                },
+                cursorword = {
+                    enable = true,
+                    min_length = 3,
+                }
+            }
+        end
     }
 }
