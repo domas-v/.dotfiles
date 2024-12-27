@@ -3,23 +3,26 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
+            local map = vim.keymap
+            local lsp = vim.lsp
+
             lspconfig.pyright.setup({})
             lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { disable = { "missing-fields" } } } } })
 
-            vim.keymap.set('n', '<leader>xv', vim.diagnostic.open_float)
-            vim.keymap.set('n', '<leader>xk', vim.diagnostic.goto_prev)
-            vim.keymap.set('n', '<leader>xj', vim.diagnostic.goto_next)
+            map.set('n', '<leader>xv', vim.diagnostic.open_float)
+            map.set('n', '<leader>xk', vim.diagnostic.goto_prev)
+            map.set('n', '<leader>xj', vim.diagnostic.goto_next)
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
                 callback = function(ev)
                     local opts = { buffer = ev.buf }
-                    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-                    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-                    vim.keymap.set('n', '<leader>dN', vim.lsp.buf.rename, opts)
-                    vim.keymap.set({ 'n', 'v' }, '<leader>da', vim.lsp.buf.code_action, opts)
-                    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
+                    map.set('n', 'gd', lsp.buf.definition, opts)
+                    map.set('n', 'gD', lsp.buf.declaration, opts)
+                    map.set('n', 'gi', lsp.buf.implementation, opts)
+                    map.set('n', 'K', lsp.buf.hover, opts)
+                    map.set('n', 'R', lsp.buf.rename, opts)
+                    map.set({ 'n', 'v' }, 'ga', lsp.buf.code_action, opts)
+                    map.set('n', 'gr', lsp.buf.references, opts)
                 end,
             })
         end
