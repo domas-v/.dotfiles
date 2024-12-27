@@ -12,6 +12,12 @@ return {
         }
     },
     {
+        "famiu/bufdelete.nvim",
+        keys = {
+            { "<C-x>", "<cmd>lua require('bufdelete').bufdelete(0)<cr>", desc = "Delete current buffer" },
+        }
+    },
+    {
         "refractalize/oil-git-status.nvim",
         dependencies = {
             'stevearc/oil.nvim',

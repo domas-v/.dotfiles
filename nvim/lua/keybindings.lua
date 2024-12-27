@@ -51,7 +51,6 @@ map("n", "<C-S-;>", ":lua ", { desc = 'Enter lua command', noremap = true })
 
 -- closing vim
 map("n", "<C-q>", "<cmd>close<cr>", { noremap = true })
-map("n", "<C-x>", "<cmd>bd<cr>", { noremap = true })
 map("n", "<leader>Q", "<cmd>wqa!<cr>", { noremap = true })
 
 -- word wrap
@@ -79,6 +78,7 @@ map("n", "<leader>tx", "<cmd>tabclose<cr>", { noremap = true })
 map("n", "<leader>to", "<cmd>tabonly<cr>", { noremap = true })
 
 -- buffers
+map("n", "<C-S-x>", "<cmd>bd<cr>", { noremap = true })
 map("n", "<C-n>", "<cmd>bnext<cr>", { noremap = true })
 map("n", "<C-p>", "<cmd>bprev<cr>", { noremap = true })
 map("n", "<C-b>", "<cmd>b#<cr>", { noremap = true })

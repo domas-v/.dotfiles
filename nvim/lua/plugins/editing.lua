@@ -32,8 +32,7 @@ return {
         end
     },
     {
-        -- remembers where in file I was
-        "vladdoster/remember.nvim",
+        "vladdoster/remember.nvim", -- remembers where in file I was
         config = function()
             require('remember')
         end
