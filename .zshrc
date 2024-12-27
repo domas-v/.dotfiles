@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
@@ -8,12 +6,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export VISUAL="nvim"
 export EDITOR="nvim"
 
-# export C_INCLUDE_PATH=/usr/local/include
 export LD_LIBRARY_PATH=/usr/local/lib
 export DYLD_LIBRARY_PATH=/usr/local/lib
-# export LIBRARY_PATH=/usr/local/lib
-# export DYLD_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_LIBRARY_PATH"
-# export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/Users/domev/Projects/CS50/libcs50-11.0.2
 
 
 if type brew &>/dev/null
@@ -100,9 +94,10 @@ source $ZSH/oh-my-zsh.sh
 
 # fzf config
 export FZF_DEFAULT_COMMAND='fd . -t f -H -E .git -E venv'
-# export FZF_ALT_C_OPTS="--preview 'exa --long --tree --level=1 --git --icons {} | head -200'"
+export FZF_ALT_C_OPTS="--preview 'eza --long --tree --level=1 --git --icons {} | head -200'"
+
 bindkey "^q" "fzf-cd-widget"
-bindkey -s "^o" "fzf -m | xargs -o vim\r"
+bindkey -s "^o" "fzf -m | xargs -o nvim\r"
 
 # config shortcuts
 alias t="touch"
@@ -114,8 +109,8 @@ alias c="clear"
 alias dot="cd ~/Dotfiles"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
-alias nt="nvim ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes"
-
+alias sesl="ll ~/.local/share/nvim/sessions/"
+alias sesc="cd ~/.local/share/nvim/sessions/"
 
 # neovim
 alias v="nvim -c \"lcd%:p:h\""
