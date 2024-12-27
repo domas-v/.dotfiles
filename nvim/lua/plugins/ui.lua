@@ -50,7 +50,7 @@ return {
                     ["g\\"] = { "actions.toggle_trash", mode = "n" },
                 },
             },
-            keys = { { "<leader>.", "<cmd>Oil<cr>" } }
+            keys = { { "<leader>D", "<cmd>Oil<cr>", "Oil directory" } }
         },
         config = true,
     },

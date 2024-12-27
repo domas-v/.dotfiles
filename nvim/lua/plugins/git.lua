@@ -23,7 +23,11 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         lazy = false,
-        config = function() require('gitsigns').setup() end,
+        config = function()
+            require('gitsigns').setup({
+                current_line_blame_opts = { delay = 100 },
+            })
+        end,
         keys = {
             { "<leader>gj", "<cmd>Gitsigns next_hunk<cr>",                 desc = "Gitsigns next" },
             { "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>",                 desc = "Gitsigns prev" },
