@@ -1,25 +1,37 @@
 return {
     {
+        'saghen/blink.compat',
+        version = '*',
+        lazy = true,
+        opts = {},
+    },
+    {
         "saghen/blink.cmp",
-        enabled = true,
-        dependencies = "rafamadriz/friendly-snippets",
+        enabled = false,
+        dependencies = { "rafamadriz/friendly-snippets", "rcarriga/cmp-dap" },
         version = "*",
         opts = {
             keymap = {
                 preset = "default",
                 ["<CR>"] = { "accept", "fallback" },
-                ["<TAB>"] = { "select_and_accept" },
                 ["<C-j>"] = { "select_next" },
                 ["<C-k>"] = { "select_prev" },
-            },
-            appearance = {
-                use_nvim_cmp_as_default = true,
-                nerd_font_variant = "mono"
+                cmdline = {
+                    ["<CR>"] = { "accept", "fallback" },
+                    ["<C-j>"] = { "select_next" },
+                    ["<C-k>"] = { "select_prev" },
+                    ["<TAB>"] = { "select_and_accept" }
+                }
             },
             sources = {
-                default = { "lsp", "path", "snippets", "buffer", "dadbod" },
+                default = { "lsp", "path", "snippets", "buffer", "dadbod", "dap" },
                 providers = {
                     dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+                    dap = {
+                        name = "cmp-dap",
+                        module = "blink.compat.source",
+                        enabled = true,
+                    },
                 },
             },
             completion = {
@@ -33,7 +45,7 @@ return {
     },
     {
         "hrsh7th/nvim-cmp",
-        enabled = false,
+        enabled = true,
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lua",
@@ -65,7 +77,7 @@ return {
                         { name = "nvim_lsp" },
                         { name = "nvim_lua" },
                         { name = "luasnip" },
-                        { name = "lazydev", group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
+                        { name = "lazydev", group_index = 0 },
                     },
                     {
                         { name = "buffer" },
