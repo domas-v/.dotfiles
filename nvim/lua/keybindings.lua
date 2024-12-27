@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local autocmd = vim.api.nvim_create_autocmd
 
 -- leader keys
 map("n", "<Space>", "<Nop>", { noremap = true, silent = true })
@@ -69,12 +70,8 @@ map('i', '<C-k>', 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap
 map('c', '<C-j>', '<RIGHT>', { noremap = true })
 map('c', '<C-k>', '<LEFT>', { noremap = true })
 
--- search & replace
-map({ "n", "v" }, "s", "/", { noremap = true })
-map({ "n" }, "S", "?", { noremap = true })
+-- search highlighting
 map("n", "<esc>", "<cmd>nohl<cr>", { noremap = true })
--- map("n", "<leader>R", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
---     { noremap = true })                                                                                                                  -- in quickfix list
 
 -- tabs
 map("n", "<leader>tt", "<cmd>tab split<cr>", { noremap = true })
@@ -86,14 +83,20 @@ map("n", "<C-n>", "<cmd>bnext<cr>", { noremap = true })
 map("n", "<C-p>", "<cmd>bprev<cr>", { noremap = true })
 map("n", "<C-b>", "<cmd>b#<cr>", { noremap = true })
 
+-- quickfix
+map("n", "<leader>co", "<cmd>copen<cr>", { noremap = true })
+map("n", "<leader>cr", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
+    { noremap = true }) -- in quickfix list
+autocmd("FileType", {
+    pattern = "qf",
+    callback = function() map("n", "q", "<cmd>cclose<cr>", { buffer = true, silent = true }) end
+})
+
 -- windows
 map("n", "<C-h>", "<C-w>h", { noremap = true })
 map("n", "<C-j>", "<C-w>j", { noremap = true })
 map("n", "<C-k>", "<C-w>k", { noremap = true })
 map("n", "<C-l>", "<C-w>l", { noremap = true })
-map("n", "<leader>wv", "<C-w>v", { noremap = true })
-map("n", "<leader>ws", "<C-w>s", { noremap = true })
-map("n", "<leader>wo", "<C-w>o", { noremap = true })
 
 -- resize splits
 map("n", "<M-,>", "<C-w>7<")
