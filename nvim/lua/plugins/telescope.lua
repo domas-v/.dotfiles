@@ -7,7 +7,7 @@ return {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
             { "nvim-telescope/telescope-fzy-native.nvim", enabled = false },
             "nvim-telescope/telescope-dap.nvim",
-            'LukasPietzschmann/telescope-tabs',
+            "LukasPietzschmann/telescope-tabs",
             { "prochri/telescope-all-recent.nvim", dependencies = { "kkharji/sqlite.lua" } },
         },
         config = function()
@@ -87,9 +87,10 @@ return {
             require("telescope-all-recent").setup({})
             telescope.load_extension("fzf")
             telescope.load_extension("dap")
-            require('telescope-tabs').setup({})
+            require("telescope-tabs").setup({})
         end,
         keys = {
+
             { "<C-;>",      "<cmd>Telescope<cr>",                                                      desc = "Telescope" },
 
             -- tabs
@@ -103,11 +104,12 @@ return {
             -- file search
             { "<leader>r",  "<cmd>Telescope live_grep<cr>",                                            desc = "Live grep" },
             { "<leader>o",  "<cmd>Telescope find_files<cr>",                                           desc = "Current buffer" },
-            { "<leader>O",  '<cmd>lua require("telescope.builtin").find_files({ hidden = true })<cr>', desc = "Find files, including hidden" },
+            { "<leader>O",  "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", desc = "Find files, including hidden" },
 
             -- lsp
             { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",                                 desc = "LSP symbols" },
             { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",                        desc = "LSP workspace symbols" },
+            { "<leader>xr", "<cmd>Telescope lsp_references<cr>",                                       desc = "LSP references" },
             { "<leader>X",  "<cmd>Telescope diagnostics<cr>",                                          desc = "Diagnostics list" },
 
             -- dap
