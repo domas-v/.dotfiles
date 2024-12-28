@@ -112,5 +112,5 @@ return {
             config = function() vim.fn['fzf#install']() end
         }
     },
-    { "RRethy/vim-illuminate" }
+    { "RRethy/vim-illuminate", event = "VeryLazy" }
 }
