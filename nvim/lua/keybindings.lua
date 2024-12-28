@@ -1,57 +1,58 @@
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
+local default_opts = { noremap = true, silent = true }
 
 -- leader keys
-map("n", "<Space>", "<Nop>", { noremap = true, silent = true })
-map("n", "Q", "<Nop>", { noremap = true, silent = true })
+map("n", "<Space>", "<Nop>", default_opts)
+map("n", "Q", "<Nop>", default_opts)
 vim.g.mapleader = " "
 
 -- mouse
-map("n", "<S-ScrollWheelUp>", "zh", { noremap = true, silent = true })
-map("n", "<S-ScrollWheelDown>", "zl", { noremap = true, silent = true })
+map("n", "<S-ScrollWheelUp>", "zh", default_opts)
+map("n", "<S-ScrollWheelDown>", "zl", default_opts)
 
 -- insert mode keybindings
-map("i", "<C-a>", "<Home>", { noremap = true, silent = true })
-map("i", "<C-f>", "<Right>", { noremap = true, silent = true })
-map("i", "<C-b>", "<Left>", { noremap = true, silent = true })
-map("i", "<C-e>", "<End>", { noremap = true, silent = true })
-map("i", "<C-d>", "<Del>", { noremap = true, silent = true })
-map("i", "<C-u>", "<C-G>u<C-U>", { noremap = true, silent = true })
+map("i", "<C-a>", "<Home>", default_opts)
+map("i", "<C-f>", "<Right>", default_opts)
+map("i", "<C-b>", "<Left>", default_opts)
+map("i", "<C-e>", "<End>", default_opts)
+map("i", "<C-d>", "<Del>", default_opts)
+map("i", "<C-u>", "<C-G>u<C-U>", default_opts)
 
 -- move visual selection
-map("v", "J", ":m '>+1<CR>gv=gv", { desc = 'Move visual line down', noremap = true })
-map("v", "K", ":m '<-2<CR>gv=gv", { desc = 'Move visual line up', noremap = true })
-map("v", "H", "<gv", { desc = 'Move visual line left', noremap = true })
-map("v", "L", ">gv", { desc = 'Move visual line right', noremap = true })
+map("v", "J", ":m '>+1<CR>gv=gv", default_opts)
+map("v", "K", ":m '<-2<CR>gv=gv", default_opts)
+map("v", "H", "<gv", default_opts)
+map("v", "L", ">gv", default_opts)
 
 -- join lines
-map("n", "J", "mzJ`z", { desc = 'Join lines', noremap = true })
+map("n", "J", "mzJ`z", default_opts)
 
 -- wrapped line movement
-map("n", "k", "gk", { noremap = true })
-map("n", "j", "gj", { noremap = true })
+map("n", "k", "gk", default_opts)
+map("n", "j", "gj", default_opts)
 
 -- move to first/last characters
-map("n", "L", "g$", { noremap = true })
-map("n", "H", "_", { noremap = true })
-map("n", "gl", "$", { noremap = true })
-map("n", "gh", "|", { noremap = true })
+map("n", "L", "g$", default_opts)
+map("n", "H", "_", default_opts)
+map("n", "gl", "$", default_opts)
+map("n", "gh", "|", default_opts)
 
 -- scrolling
-map("n", "<C-d>", "<C-d>zz", { desc = 'Scroll down', noremap = true })
-map("n", "<C-u>", "<C-u>zz", { desc = 'Scroll up', noremap = true })
-map("n", "<C-S-l>", "zl", { desc = 'Scroll right', noremap = true })
-map("n", "<C-S-h>", "zh", { desc = 'Scroll left', noremap = true })
-map("n", "<C-M-L>", "zL", { desc = 'Scroll right more', noremap = true })
-map("n", "<C-M-H>", "zH", { desc = 'Scroll left more', noremap = true })
+map("n", "<C-d>", "<C-d>zz", default_opts)
+map("n", "<C-u>", "<C-u>zz", default_opts)
+map("n", "<C-S-l>", "zl", default_opts)
+map("n", "<C-S-h>", "zh", default_opts)
+map("n", "<C-M-L>", "zL", default_opts)
+map("n", "<C-M-H>", "zH", default_opts)
 
 -- commands
-map("n", "!", ":!", { desc = 'Run shell command', noremap = true })
-map("n", "<C-S-;>", ":lua ", { desc = 'Enter lua command', noremap = true })
+map("n", "!", ":!", default_opts)
+map("n", "<C-S-;>", ":lua ", default_opts)
 
 -- closing vim
-map("n", "<C-q>", "<cmd>close<cr>", { noremap = true })
-map("n", "<leader>Q", "<cmd>wqa!<cr>", { noremap = true })
+map("n", "<C-q>", "<cmd>close<cr>", default_opts)
+map("n", "<leader>Q", "<cmd>wqa!<cr>", default_opts)
 
 -- word wrap
 map("n", "<leader><leader>w", "<cmd>set wrap!<cr>", { noremap = true })
@@ -78,10 +79,10 @@ map("n", "<leader>tx", "<cmd>tabclose<cr>", { noremap = true })
 map("n", "<leader>to", "<cmd>tabonly<cr>", { noremap = true })
 
 -- buffers
-map("n", "<C-S-x>", "<cmd>bd<cr>", { noremap = true })
-map("n", "<C-n>", "<cmd>bnext<cr>", { noremap = true })
-map("n", "<C-p>", "<cmd>bprev<cr>", { noremap = true })
-map("n", "<C-b>", "<cmd>b#<cr>", { noremap = true })
+map("n", "<C-S-x>", "<cmd>bd<cr>", default_opts)
+map("n", "<C-n>", "<cmd>bnext<cr>", default_opts)
+map("n", "<C-p>", "<cmd>bprev<cr>", default_opts)
+map("n", "<C-b>", "<cmd>b#<cr>", default_opts)
 
 -- quickfix
 map("n", "<leader>co", "<cmd>copen<cr>", { noremap = true })
@@ -99,13 +100,13 @@ autocmd("FileType", {
 })
 
 -- windows
-map("n", "<C-h>", "<C-w>h", { noremap = true })
-map("n", "<C-j>", "<C-w>j", { noremap = true })
-map("n", "<C-k>", "<C-w>k", { noremap = true })
-map("n", "<C-l>", "<C-w>l", { noremap = true })
+map("n", "<C-h>", "<C-w>h", default_opts)
+map("n", "<C-j>", "<C-w>j", default_opts)
+map("n", "<C-k>", "<C-w>k", default_opts)
+map("n", "<C-l>", "<C-w>l", default_opts)
 
 -- resize splits
-map("n", "<C-,>", "<C-w>7<")
-map("n", "<C-.>", "<C-w>7>")
-map("n", "<C-]>", "5<C-W>+")
-map("n", "<C-[>", "5<C-W>-")
+map("n", "<C-,>", "<C-w>7<", default_opts)
+map("n", "<C-.>", "<C-w>7>", default_opts)
+map("n", "<C-]>", "5<C-W>+", default_opts)
+map("n", "<C-[>", "5<C-W>-", default_opts)

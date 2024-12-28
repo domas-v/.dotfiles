@@ -2,7 +2,6 @@ require("settings")
 require("keybindings")
 require("config.lazy")
 
-
 local function get_system_theme_mac()
     -- Returns `Dark` if it's dark, otherwise doesn't return anything
     local handle = io.popen('defaults read -g AppleInterfaceStyle 2>/dev/null')

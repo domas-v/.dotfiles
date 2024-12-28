@@ -1,6 +1,9 @@
 local api = vim.api
+local map = vim.keymap.set
 local eval_buf_pattern = "dap%-eval://"
 local repl_winopts = { width = math.floor(vim.o.columns * 0.5) }
+local default_opts = { noremap = true, silent = true }
+
 
 local function _set_autocmd(eval_buf)
     api.nvim_create_autocmd("BufWriteCmd", {
@@ -120,18 +123,19 @@ return {
         "mfussenegger/nvim-dap",
         dependencies = {
             "mfussenegger/nvim-dap-python",
-            "theHamsta/nvim-dap-virtual-text",
+            {
+                "theHamsta/nvim-dap-virtual-text",
+                config = function() require("nvim-dap-virtual-text").setup({ virt_text_win_col = 60 }) end
+            },
             "nvim-neotest/nvim-nio",
         },
         config = function()
             local dap = require('dap')
             dap.defaults.fallback.terminal_win_cmd = 'tabnew'
-
             if vim.fn.filereadable(".vscode/launch.json") then
                 require("dap.ext.vscode").load_launchjs(nil, {})
             end
-
-            require("nvim-dap-virtual-text").setup({ virt_text_win_col = 60 })
+            vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 
             --- python
             require('dap-python').setup("python")
@@ -142,29 +146,14 @@ return {
                 type = "executable",
                 command = "/Users/domev/.vscode/extensions/vadimcn.vscode-lldb-1.11.1/adapter/codelldb",
             }
-            dap.configurations.cpp = {
-                {
-                    name = "Launch file",
-                    type = "codelldb",
-                    request = "launch",
-                    program = "${fileDirname}/${fileBasenameNoExtension}.out",
-                    cwd = '${workspaceFolder}',
-                    stopOnEntry = false,
-                },
-            }
             dap.configurations.c = dap.configurations.cpp
-
-            local sign = vim.fn.sign_define
-            sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
-            sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
-            sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
 
             api.nvim_create_user_command("DapUIToggle", toggle_dap_ui, {})
             api.nvim_create_user_command("DapEvalToggle", toggle_dap_eval, {})
             api.nvim_create_user_command("DapReplToggle", toggle_dap_repl, {})
-            vim.keymap.set('n', '<leader>du', "<cmd>DapUIToggle<cr>", { noremap = true, silent = true })
-            vim.keymap.set('n', '<leader>de', "<cmd>DapEvalToggle<cr>", { noremap = true, silent = true })
-            vim.keymap.set('n', '<leader>dr', "<cmd>DapReplToggle<cr>", { noremap = true, silent = true })
+            map('n', '<leader>du', "<cmd>DapUIToggle<cr>", default_opts)
+            map('n', '<leader>de', "<cmd>DapEvalToggle<cr>", default_opts)
+            map('n', '<leader>dr', "<cmd>DapReplToggle<cr>", default_opts)
         end,
         keys = {
             -- debug controls
@@ -180,14 +169,11 @@ return {
     {
         "Weissle/persistent-breakpoints.nvim",
         config = function()
-            require('persistent-breakpoints').setup {
-                load_breakpoints_event = { "BufReadPost" }
-            }
+            require('persistent-breakpoints').setup({ load_breakpoints_event = { "BufReadPost" } })
 
-            local opts = { noremap = true, silent = true }
-            local keymap = vim.api.nvim_set_keymap
-            keymap("n", "<leader>dd", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", opts)
-            keymap("n", "<leader>dC", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>", opts)
+            map("n", "<leader>dd", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", default_opts)
+            map("n", "<leader>dC", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>",
+                default_opts)
         end,
     }
 }
