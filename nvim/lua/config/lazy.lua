@@ -16,10 +16,8 @@ vim.opt.rtp:prepend(lazypath)
 
 
 require("lazy").setup("plugins", {
-    dev = {
-        path = "~/Projects/",
-    },
-    change_detection = {
-        notify = false,
-    },
+    dev = { path = "~/Projects/" },
+    change_detection = { notify = false },
+    rocks = { hererocks = true },
+
 })
