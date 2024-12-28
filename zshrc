@@ -95,17 +95,11 @@ source $ZSH/oh-my-zsh.sh
 # fzf config
 export FZF_DEFAULT_COMMAND='fd . -t f -H -E .git -E venv'
 export FZF_ALT_C_OPTS="--preview 'eza --long --tree --level=1 --git --icons {} | head -200'"
-
 bindkey "^q" "fzf-cd-widget"
 bindkey -s "^o" "fzf -m | xargs -o nvim\r"
 
-# config shortcuts
-alias t="touch"
-alias cat="bat"
-alias cl="clear"
-alias c="clear"
-
 # navivgation shortcuts
+alias t="touch"
 alias dot="cd ~/Dotfiles"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
@@ -128,13 +122,6 @@ alias gsync="git pull && git add . && git commit -m 'Update' && git push"
 
 # file listings
 function preview_stuff() {
-    # Check if an argument is provided
-    if [ -z "$1" ]; then
-        # If no argument is provided, list files in the current directory
-        eza -la --git
-        return
-    fi
-
     # Get the file extension
     local ext="${1##*.}"
 
@@ -146,39 +133,21 @@ function preview_stuff() {
         # If it's an image, use viu to display it
         viu "$1" -w 50
     else
-        # Otherwise, list the directory contents
-        eza -la --git "$1"
+        # Otherwise use bat
+        bat "$1"
     fi
 }
+
+alias cat="preview_stuff"
 
 alias l="eza -l --git"
-# alias ll="eza -la --git"
-alias ll="preview_stuff"
+alias ll="eza -la --git"
 
 # python
-#
 alias py="python"
-alias ipy="ipython"
-# alias a="source venv/bin/activate"
-alias dd="deactivate"
 alias pua="pip uninstall -y -r <(pip freeze)"
 
-function a() {
-    if [[ "$#" -eq 0 ]]; then
-        if [[ -e "venv/bin/activate" ]]; then
-            source venv/bin/activate
-        else
-            echo "No virtual environment here"
-        fi
-    elif [[ "$#" -eq 1 ]]; then
-        conc="$@/venv/bin/activate"
-        conc="${conc%/}venv/bin/activate"
-        echo $conc
-    else
-        echo "No virtual environment here"
-    fi
-}
-
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
