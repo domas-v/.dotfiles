@@ -54,7 +54,7 @@ map("n", "<C-q>", "<cmd>close<cr>", { noremap = true })
 map("n", "<leader>Q", "<cmd>wqa!<cr>", { noremap = true })
 
 -- word wrap
-map("n", "<leader>ww", "<cmd>set wrap!<cr>", { noremap = true })
+map("n", "<leader><leader>w", "<cmd>set wrap!<cr>", { noremap = true })
 
 -- undo/redo
 map("n", "U", "<C-r>", { noremap = true })
@@ -90,6 +90,12 @@ map("n", "<leader>cr", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><
 autocmd("FileType", {
     pattern = "qf",
     callback = function() map("n", "q", "<cmd>cclose<cr>", { buffer = true, silent = true }) end
+})
+
+-- help
+autocmd("FileType", {
+    pattern = "help",
+    callback = function() map("n", "q", "<cmd>close<cr>", { buffer = true, silent = true }) end
 })
 
 -- windows

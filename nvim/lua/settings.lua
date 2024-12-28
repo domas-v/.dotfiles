@@ -19,11 +19,11 @@ o.nu                     = true
 o.relativenumber         = true
 
 -- tabs and spaces
-o.tabstop                = 4
 o.expandtab              = true
+o.smartindent            = true
+o.tabstop                = 4
 o.shiftwidth             = 4
 o.softtabstop            = 4
-o.smartindent            = true
 
 -- remove clutter
 o.swapfile               = false
@@ -51,7 +51,6 @@ o.foldmethod             = "expr"
 -- search
 o.ignorecase             = true
 o.smartcase              = true
--- o.hlsearch = false
 o.incsearch              = true
 
 -- misc

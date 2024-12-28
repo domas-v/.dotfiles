@@ -125,11 +125,12 @@ return {
         },
         config = function()
             local dap = require('dap')
+            dap.defaults.fallback.terminal_win_cmd = 'tabnew'
+
             if vim.fn.filereadable(".vscode/launch.json") then
                 require("dap.ext.vscode").load_launchjs(nil, {})
             end
 
-            dap.defaults.fallback.terminal_win_cmd = 'tabnew'
             require("nvim-dap-virtual-text").setup({ virt_text_win_col = 60 })
 
             --- python
@@ -137,23 +138,21 @@ return {
             require("dap-python").test_runner = "pytest"
 
             -- c
-            -- require('dap').adapters.lldb = {
-            --     type = 'executable',
-            --     command = '/opt/homebrew/Cellar/llvm/17.0.6_1/bin/lldb-vscode',
-            --     name = 'lldb'
-            -- }
-            -- require('dap').configurations.c = {
-            --     {
-            --         name = "Launch",
-            --         type = "lldb",
-            --         request = "launch",
-            --         program = "${fileDirname}/${fileBasenameNoExtension}",
-            --         args = {},
-            --         cwd = "${fileDirname}",
-            --         stopOnEntry = false,
-            --         runInTerminal = false,
-            --     }
-            -- }
+            dap.adapters.codelldb = {
+                type = "executable",
+                command = "/Users/domev/.vscode/extensions/vadimcn.vscode-lldb-1.11.1/adapter/codelldb",
+            }
+            dap.configurations.cpp = {
+                {
+                    name = "Launch file",
+                    type = "codelldb",
+                    request = "launch",
+                    program = "${fileDirname}/${fileBasenameNoExtension}.out",
+                    cwd = '${workspaceFolder}',
+                    stopOnEntry = false,
+                },
+            }
+            dap.configurations.c = dap.configurations.cpp
 
             local sign = vim.fn.sign_define
             sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })

@@ -8,6 +8,7 @@ return {
 
             lspconfig.pyright.setup({})
             lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { disable = { "missing-fields" } } } } })
+            lspconfig.clangd.setup({})
 
             map.set('n', '<leader>xv', vim.diagnostic.open_float)
             map.set('n', '<leader>xk', vim.diagnostic.goto_prev)
