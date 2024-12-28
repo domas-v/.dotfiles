@@ -40,10 +40,10 @@ map("n", "gh", "|", { noremap = true })
 -- scrolling
 map("n", "<C-d>", "<C-d>zz", { desc = 'Scroll down', noremap = true })
 map("n", "<C-u>", "<C-u>zz", { desc = 'Scroll up', noremap = true })
-map("n", "<M-l>", "zl", { desc = 'Scroll right', noremap = true })
-map("n", "<M-L>", "zL", { desc = 'Scroll right more', noremap = true })
-map("n", "<M-h>", "zh", { desc = 'Scroll left', noremap = true })
-map("n", "<M-H>", "zH", { desc = 'Scroll left more', noremap = true })
+map("n", "<C-S-l>", "zl", { desc = 'Scroll right', noremap = true })
+map("n", "<C-S-h>", "zh", { desc = 'Scroll left', noremap = true })
+map("n", "<C-M-L>", "zL", { desc = 'Scroll right more', noremap = true })
+map("n", "<C-M-H>", "zH", { desc = 'Scroll left more', noremap = true })
 
 -- commands
 map("n", "!", ":!", { desc = 'Run shell command', noremap = true })
@@ -99,7 +99,7 @@ map("n", "<C-k>", "<C-w>k", { noremap = true })
 map("n", "<C-l>", "<C-w>l", { noremap = true })
 
 -- resize splits
-map("n", "<M-,>", "<C-w>7<")
-map("n", "<M-.>", "<C-w>7>")
-map("n", "<M-]>", "5<C-W>+")
-map("n", "<M-[>", "5<C-W>-")
+map("n", "<C-,>", "<C-w>7<")
+map("n", "<C-.>", "<C-w>7>")
+map("n", "<C-]>", "5<C-W>+")
+map("n", "<C-[>", "5<C-W>-")
