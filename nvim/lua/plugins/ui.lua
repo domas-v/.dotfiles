@@ -65,7 +65,10 @@ return {
         dependencies = 'nvim-tree/nvim-web-devicons',
         config = function()
             require('lualine').setup({
-                options = { globalstatus = true },
+                options = {
+                    globalstatus = true,
+                    theme = "catppuccin"
+                },
                 show_filename_only = false,
                 sections = {
                     lualine_x = { 'filetype' }
@@ -109,20 +112,5 @@ return {
             config = function() vim.fn['fzf#install']() end
         }
     },
-    {
-        "ya2s/nvim-cursorline",
-        config = function()
-            require('nvim-cursorline').setup {
-                cursorline = {
-                    enable = true,
-                    timeout = 0,
-                    number = false,
-                },
-                cursorword = {
-                    enable = true,
-                    min_length = 3,
-                }
-            }
-        end
-    }
+    { "RRethy/vim-illuminate" }
 }

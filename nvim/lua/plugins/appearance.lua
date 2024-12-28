@@ -1,19 +1,44 @@
 return {
     {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function()
+            require("catppuccin").setup({
+                transparent_background = true,
+                styles = {
+                    comments = { "italic" },
+                    conditionals = { "italic" },
+                    loops = { "italic" },
+                    functions = { "bold" },
+                    keywords = { "bold" },
+                    strings = {},
+                    variables = {},
+                    numbers = {},
+                    booleans = {},
+                    properties = {},
+                    types = {},
+                    operators = {},
+                },
+                default_integrations = true,
+                integrations = {
+                    gitsigns = true,
+                    treesitter = true,
+                    blink_cmp = true,
+                    diffview = true,
+                    nvim_surround = true,
+                },
+            })
+        end
+    },
+    {
         "rebelot/kanagawa.nvim",
+        enabled = false,
         lazy = false,
         priority = 1000,
         opts = {
             transparent = false,
-            colors = {
-                theme = {
-                    all = {
-                        ui = {
-                            bg_gutter = "none"
-                        }
-                    }
-                }
-            },
+            colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
             overrides = function(colors)
                 local theme = colors.theme
                 return {
@@ -28,21 +53,20 @@ return {
         }
     },
     {
-        "projekt0n/github-nvim-theme",
+        "folke/tokyonight.nvim",
         enabled = false,
         lazy = false,
         priority = 1000,
-        config = function()
-            require('github-theme').setup({
-                options = {
-                    transparent = false,
-                    styles = {
-                        comments = 'italic',
-                        keywords = 'bold',
-                        types = 'italic,bold',
-                    }
-                }
-            })
-        end
-    },
+        opts = {
+            transparent = true,
+            styles = {
+                comments = { italic = true },
+                keywords = { bold = true },
+                functions = { bold = true },
+                variables = {},
+                sidebars = "dark",
+                floats = "dark",
+            },
+        },
+    }
 }

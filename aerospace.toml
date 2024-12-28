@@ -63,8 +63,6 @@ preset = 'qwerty'
 # - Arrows.         left, down, up, right
 # All possible modifiers: cmd, alt, ctrl, shift
 
-cmd-h = [] # Disable "hide application"
-cmd-alt-h = [] # Disable "hide others"
 alt-comma = 'reload-config'
 
 alt-e = 'exec-and-forget open /Applications/kitty.app'

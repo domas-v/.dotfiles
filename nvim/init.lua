@@ -14,10 +14,10 @@ end
 
 if get_system_theme_mac() then
     vim.o.background = "dark"
-    vim.cmd("colorscheme kanagawa-wave")
+    vim.cmd("colorscheme catppuccin-frappe")
 else
     vim.o.background = "light"
-    vim.cmd("colorscheme kanagawa-lotus")
+    vim.cmd("colorscheme catppuccin-latte")
 end
 
 -- htto filetype is not detected somehow. this is a fix

@@ -5,7 +5,6 @@ return {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
-            { "nvim-telescope/telescope-fzy-native.nvim", enabled = false },
             "nvim-telescope/telescope-dap.nvim",
             "LukasPietzschmann/telescope-tabs",
             { "prochri/telescope-all-recent.nvim", dependencies = { "kkharji/sqlite.lua" } },
