@@ -122,6 +122,12 @@ alias gsync="git pull && git add . && git commit -m 'Update' && git push"
 
 # file listings
 function preview_stuff() {
+    # If no arguments, fall back to real cat reading stdin
+    if [ $# -eq 0 ]; then
+        command bat
+        return
+    fi
+
     # Get the file extension
     local ext="${1##*.}"
 
@@ -138,10 +144,34 @@ function preview_stuff() {
     fi
 }
 
-alias cat="preview_stuff"
+alias pcat="preview_stuff"
 
 alias l="eza -l --git"
 alias ll="eza -la --git"
+
+# notifications
+function notify() {
+  local start_time end_time exit_status elapsed
+  start_time=$(date +%s)
+
+  "$@"
+  exit_status=$?
+
+  end_time=$(date +%s)
+  elapsed=$(( end_time - start_time ))
+
+  if [ $exit_status -eq 0 ]; then
+    terminal-notifier -title "Finished" \
+      -message "'$*' in ${elapsed}s"
+  else
+    terminal-notifier -title "Failed" \
+      -message "'$*' (exit $exit_status) in ${elapsed}s"
+  fi
+
+  return $exit_status
+}
+
+alias n="notify"
 
 # python
 alias py="python"
