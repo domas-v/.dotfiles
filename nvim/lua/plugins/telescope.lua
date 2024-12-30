@@ -61,8 +61,11 @@ return {
                             ["<C-p>"] = action_layout.toggle_preview,
                         }
                     },
-                    theme = "dropdown",
-                    layout_strategy = "bottom_pane",
+                    -- theme = "cursor",
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        width = 0.8
+                    },
                     sort_lastused = true,
                     sorting_strategy = "ascending",
                 },
