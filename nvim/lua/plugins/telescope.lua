@@ -7,7 +7,7 @@ return {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
             "nvim-telescope/telescope-dap.nvim",
             "LukasPietzschmann/telescope-tabs",
-            { "prochri/telescope-all-recent.nvim", dependencies = { "kkharji/sqlite.lua" } },
+            { "prochri/telescope-all-recent.nvim",        dependencies = { "kkharji/sqlite.lua" } },
         },
         config = function()
             local actions = require("telescope.actions")
@@ -61,10 +61,13 @@ return {
                             ["<C-p>"] = action_layout.toggle_preview,
                         }
                     },
-                    -- theme = "cursor",
                     layout_strategy = "vertical",
                     layout_config = {
-                        width = 0.8
+                        mirror = true,
+                        prompt_position = "top",
+                        preview_height = 0.4,
+                        height = 0.8,
+                        width = 0.7
                     },
                     sort_lastused = true,
                     sorting_strategy = "ascending",
@@ -72,13 +75,10 @@ return {
                 pickers = {
                     find_files = {
                         follow = true,
-                        previewer = true,
+                        find_command = { "fd" }
                     },
                     lsp_dynamic_workspace_symbols = {
                         sorter = telescope.extensions.fzf.native_fzf_sorter(fzf_opts)
-                    },
-                    current_buffer_fuzzy_find = {
-                        previewer = true,
                     },
                 },
                 extensions = {
@@ -93,39 +93,41 @@ return {
         end,
         keys = {
 
-            { "<C-;>",      "<cmd>Telescope<cr>",                                                      desc = "Telescope" },
+            { "<C-;>",      "<cmd>Telescope builtin previewer=false<cr>",                   desc = "Telescope" },
+            { "<leader>H",  "<cmd>Telescope help_tags<cr>",                                 desc = "Telescope" },
+            { "<leader>K",  "<cmd>Telescope keymaps<cr>",                                   desc = "Telescope" },
 
             -- tabs
-            { "<leader>T",  "<cmd>lua require('telescope-tabs').list_tabs()<cr>",                      desc = "Tabs" },
+            { "<leader>T",  "<cmd>lua require('telescope-tabs').list_tabs()<cr>",           desc = "Tabs" },
 
             -- buffers
-            { "<C-e>",      "<cmd>Telescope buffers<cr>",                                              desc = "Buffers" },
-            { "<leader>e",  "<cmd>Telescope buffers<cr>",                                              desc = "Buffers" },
-            { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find<cr>",                            desc = "Find files" },
+            { "<C-e>",      "<cmd>Telescope buffers<cr>",                                   desc = "Buffers" },
+            { "<leader>e",  "<cmd>Telescope buffers<cr>",                                   desc = "Buffers" },
+            { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>", desc = "Find files" },
 
             -- file search
-            { "<leader>r",  "<cmd>Telescope live_grep<cr>",                                            desc = "Live grep" },
-            { "<leader>o",  "<cmd>Telescope find_files<cr>",                                           desc = "Current buffer" },
-            { "<leader>O",  "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<cr>", desc = "Find files, including hidden" },
+            { "<leader>r",  "<cmd>Telescope live_grep<cr>",                                 desc = "Live grep" },
+            { "<leader>o",  "<cmd>Telescope find_files<cr>",                                desc = "Current buffer" },
+            { "<leader>O",  "<cmd>Telescope find_files hidden=true no_ignore=true<cr>",     desc = "Find files, including hidden" },
 
             -- lsp
-            { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",                                 desc = "LSP symbols" },
-            { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",                        desc = "LSP workspace symbols" },
-            { "<leader>xr", "<cmd>Telescope lsp_references<cr>",                                       desc = "LSP references" },
-            { "<leader>X",  "<cmd>Telescope diagnostics<cr>",                                          desc = "Diagnostics list" },
+            { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",                      desc = "LSP symbols" },
+            { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",             desc = "LSP workspace symbols" },
+            { "<leader>xr", "<cmd>Telescope lsp_references<cr>",                            desc = "LSP references" },
+            { "<leader>X",  "<cmd>Telescope diagnostics<cr>",                               desc = "Diagnostics list" },
 
             -- dap
-            { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>",                                 desc = "Breakpoints" },
+            { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>",                      desc = "Breakpoints" },
 
             -- help
-            { "<leader>?k", "<cmd>Telescope keymaps<cr>",                                              desc = "Keymaps" },
-            { "<leader>?c", "<cmd>Telescope commands<cr>",                                             desc = "Commands" },
-            { "<leader>?t", "<cmd>Telescope help_tags<cr>",                                            desc = "Help" },
-            { "<leader>?o", "<cmd>Telescope vim_options<cr>",                                          desc = "Options" },
+            { "<leader>?k", "<cmd>Telescope keymaps<cr>",                                   desc = "Keymaps" },
+            { "<leader>?c", "<cmd>Telescope commands<cr>",                                  desc = "Commands" },
+            { "<leader>?t", "<cmd>Telescope help_tags<cr>",                                 desc = "Help" },
+            { "<leader>?o", "<cmd>Telescope vim_options<cr>",                               desc = "Options" },
 
             -- git
-            { "<leader>gB", "<cmd>Telescope git_branches<cr>",                                         desc = "Git branches" },
-            { "<leader>gS", "<cmd>Telescope git_status<cr>",                                           desc = "Git status" },
+            { "<leader>gB", "<cmd>Telescope git_branches<cr>",                              desc = "Git branches" },
+            { "<leader>gS", "<cmd>Telescope git_status<cr>",                                desc = "Git status" },
         },
         cmd = { "Telescope" },
     }
