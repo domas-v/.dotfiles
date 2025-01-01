@@ -106,8 +106,7 @@
 # ]
 
 # config
-alt - 0x2B : aerospace enable toggle
-alt - 0x2F : aerospace reload-config
+alt + shift - 0x2F : aerospace enable toggle
 
 # apps
 alt - e : open /Applications/kitty.app
