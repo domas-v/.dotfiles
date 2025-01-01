@@ -109,7 +109,7 @@
 alt + shift - 0x2F : aerospace enable toggle
 
 # apps
-alt - e : open /Applications/kitty.app
+alt - e : open /Applications/kitty.app/.app/
 alt - q : open /Applications/Brave\ Browser.app/
 alt - g : open /Applications/ChatGPT.app/
 alt - z : open /Applications/Slack.app/
@@ -132,6 +132,10 @@ alt + shift - w : aerospace move up
 alt + shift - a : aerospace move left
 alt + shift - s : aerospace move down
 alt + shift - d : aerospace move right
+alt + ctrl - w : aerospace join-with up
+alt + ctrl - a : aerospace join-with left
+alt + ctrl - s : aerospace join-with down
+alt + ctrl - d : aerospace join-with right
 
 # vim hjkl
 alt - j : aerospace focus --boundaries-action wrap-around-the-workspace down
@@ -139,9 +143,13 @@ alt - h : aerospace focus --boundaries-action wrap-around-the-workspace left
 alt - k : aerospace focus --boundaries-action wrap-around-the-workspace up
 alt - l : aerospace focus --boundaries-action wrap-around-the-workspace right
 alt + shift - h : aerospace move left
-alt + shift - j : aerospace move down
 alt + shift - k : aerospace move up
+alt + shift - j : aerospace move down
 alt + shift - l : aerospace move right
+alt + ctrl - h : aerospace join-with left
+alt + ctrl - j : aerospace join-with up
+alt + ctrl - k : aerospace join-with down
+alt + ctrl - l : aerospace join-with right
 
 alt - n : aerospace focus-monitor --wrap-around next
 alt - p : aerospace focus-monitor --wrap-around prev

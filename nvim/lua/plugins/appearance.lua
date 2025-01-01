@@ -10,7 +10,7 @@ return {
                     comments = { "italic" },
                     conditionals = { "italic" },
                     loops = { "italic" },
-                    functions = { "bold" },
+                    functions = { "italic" },
                     keywords = { "bold" },
                     strings = {},
                     variables = {},
@@ -68,5 +68,7 @@ return {
                 floats = "dark",
             },
         },
-    }
+    },
+    -- TODO:
+    -- { rose-pine }
 }

@@ -43,6 +43,7 @@ return {
                             ["<C-d>"] = actions.delete_buffer,
                             ["<C-l>"] = actions.preview_scrolling_down,
                             ["<C-h>"] = actions.preview_scrolling_up,
+                            ["<C-s>"] = actions.select_horizontal,
                             ["<C-q>"] = function(prompt_bufnr)
                                 actions.smart_send_to_qflist(prompt_bufnr)
                                 vim.cmd("copen")
@@ -55,6 +56,7 @@ return {
                             ["<J>"] = actions.results_scrolling_down,
                             ["<k>"] = actions.move_selection_previous,
                             ["<K>"] = actions.results_scrolling_up,
+                            ["<C-s>"] = actions.select_horizontal,
                             ["<C-d>"] = actions.delete_buffer,
                             ["<C-l>"] = actions.preview_scrolling_down,
                             ["<C-h>"] = actions.preview_scrolling_up,

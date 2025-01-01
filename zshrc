@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -75,15 +76,16 @@ plugins=(
     git
     zsh-autosuggestions
     zsh-interactive-cd
+    aws
+    tmux
+    fzf
+    direnv
     python
     pyenv
     pip
-    gh
-    aws
     rust
     docker
-    direnv
-    fzf
+    gh
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -120,6 +122,11 @@ alias vrc="v ~/.dotfiles/vimrc"
 alias zrc="v ~/.dotfiles/zshrc"
 alias nrc="v ~/.dotfiles/nvim/init.lua"
 alias krc="v ~/.dotfiles/kitty/kitty.conf"
+alias arc="v ~/.dotfiles/alacritty.toml"
+
+if [[ -n "$TMUX" ]]; then
+    alias exit='tmux detach'
+fi
 
 # file listings
 function preview_stuff() {
@@ -166,4 +173,3 @@ eval "$(pyenv init --path)"
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-
