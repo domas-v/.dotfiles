@@ -109,7 +109,7 @@
 alt + shift - 0x2F : aerospace enable toggle
 
 # apps
-alt - e : open /Applications/WezTerm.app/
+alt - e : open /Applications/kitty.app/
 alt - q : open /Applications/Brave\ Browser.app/
 alt - g : open /Applications/ChatGPT.app/
 alt - z : open /Applications/Slack.app/
