@@ -156,9 +156,12 @@ alt - p : aerospace focus-monitor --wrap-around prev
 alt + shift - n : aerospace move-node-to-monitor --wrap-around --focus-follows-window next
 alt + shift - p : aerospace move-node-to-monitor --wrap-around --focus-follows-window prev
 
+alt - 0x1D : aerospace balance-sizes
 alt - 0x1B : aerospace resize smart -50
+alt + shift - 0x1B : aerospace resize smart -300
 alt - 0x18 : aerospace resize smart +50
-alt + shift - 0x18 : aerospace balance-sizes
+alt + shift - 0x18 : aerospace resize smart +300
+
 
 alt - 1 : aerospace workspace 1
 alt - 2 : aerospace workspace 2
