@@ -51,6 +51,7 @@ config.keys = {
     { key = '+',     mods = 'CMD',      action = act.ResetFontSize },
     { key = '=',     mods = 'CTRL',     action = act.DisableDefaultAssignment },
     { key = '-',     mods = 'CTRL',     action = act.DisableDefaultAssignment },
+    { key = ' ',     mods = 'CTRL',     action = act.DisableDefaultAssignment },
 
     -- splits
     { key = 'Enter', mods = 'CMD',      action = act.SplitHorizontal },

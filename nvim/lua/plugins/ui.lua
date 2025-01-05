@@ -56,7 +56,10 @@ return {
                     ["g\\"] = { "actions.toggle_trash", mode = "n" },
                 },
             },
-            keys = { { "<leader>D", "<cmd>Oil<cr>", "Oil directory" } }
+            keys = {
+                { "<leader>D", "<cmd>Oil<cr>",                                      "Oil directory" },
+                { "<leader>.", "<cmd>lua require('oil').open(vim.fn.getcwd())<cr>", "Oil directory" }
+            }
         },
         config = true,
     },

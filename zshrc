@@ -89,7 +89,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -114,14 +113,8 @@ alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
 
 alias v="nvim -c \"lcd%:p:h\""
-alias c="code"
-alias d="docker"
 alias src="source ~/.zshrc"
-alias vrc="v ~/.dotfiles/vimrc"
 alias zrc="v ~/.dotfiles/zshrc"
-alias nrc="v ~/.dotfiles/nvim/init.lua"
-alias krc="v ~/.dotfiles/kitty/kitty.conf"
-alias arc="v ~/.dotfiles/alacritty.toml"
 
 # file listings
 function preview_stuff() {
@@ -147,7 +140,8 @@ function preview_stuff() {
     fi
 }
 
-alias pcat="preview_stuff"
+alias cat="preview_stuff"
+alias t="touch"
 alias l="eza -l --git"
 alias ll="eza -la --git"
 

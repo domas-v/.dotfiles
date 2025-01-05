@@ -22,7 +22,7 @@ return {
 
             local window_width = 0.7
             local window_height = 0.8
-            local cutoff = 190 -- mac window width
+            local cutoff = 200 -- mac window width
 
             telescope.setup({
                 defaults = {
