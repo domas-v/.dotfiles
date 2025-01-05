@@ -79,7 +79,6 @@ local function toggle_dap_ui()
         end
     end
 
-    vim.cmd("only")
     _split_third()
     api.nvim_win_set_buf(0, eval_buf)
     require("dap.repl").toggle(repl_winopts, "vsp")

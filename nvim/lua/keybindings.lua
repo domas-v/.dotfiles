@@ -50,9 +50,10 @@ map("n", "<C-M-H>", "zH", default_opts)
 map("n", "!", ":!", default_opts)
 map("n", "<C-S-;>", ":lua ", default_opts)
 
--- closing vim
+-- saving and closing
 map("n", "<C-q>", "<cmd>close<cr>", default_opts)
-map("n", "<leader>Q", "<cmd>wqa!<cr>", default_opts)
+map("n", "<leader>Q", "<cmd>qa<cr>", default_opts)
+map("n", "<leader>W", "<cmd>wa<cr>", default_opts)
 
 -- word wrap
 map("n", "<leader><leader>w", "<cmd>set wrap!<cr>", { noremap = true })
@@ -108,5 +109,5 @@ map("n", "<C-l>", "<C-w>l", default_opts)
 -- resize splits
 map("n", "<C-]>", "<C-w>10<", default_opts)
 map("n", "<C-[>", "<C-w>10>", default_opts)
-map("n", "<C-->", "5<C-W>+", default_opts)
-map("n", "<C-=>", "5<C-W>-", default_opts)
+map("n", "<C-.>", "5<C-W>+", default_opts)
+map("n", "<C-,>", "5<C-W>-", default_opts)

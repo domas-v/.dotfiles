@@ -77,7 +77,6 @@ plugins=(
     zsh-autosuggestions
     zsh-interactive-cd
     aws
-    tmux
     fzf
     direnv
     python
@@ -123,10 +122,6 @@ alias zrc="v ~/.dotfiles/zshrc"
 alias nrc="v ~/.dotfiles/nvim/init.lua"
 alias krc="v ~/.dotfiles/kitty/kitty.conf"
 alias arc="v ~/.dotfiles/alacritty.toml"
-
-if [[ -n "$TMUX" ]]; then
-    alias exit='tmux detach'
-fi
 
 # file listings
 function preview_stuff() {
