@@ -85,16 +85,16 @@ return {
                 }
             })
 
-            vim.keymap.set("n", "<C-1>", "<cmd>LualineBuffersJump! 1<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-2>", "<cmd>LualineBuffersJump! 2<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-3>", "<cmd>LualineBuffersJump! 3<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-4>", "<cmd>LualineBuffersJump! 4<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-5>", "<cmd>LualineBuffersJump! 5<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-6>", "<cmd>LualineBuffersJump! 6<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-7>", "<cmd>LualineBuffersJump! 7<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-8>", "<cmd>LualineBuffersJump! 8<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-9>", "<cmd>LualineBuffersJump! 9<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-0>", "<cmd>LualineBuffersJump $<cr>", { noremap = true })
+            vim.keymap.set("n", "<leader>1", "<cmd>LualineBuffersJump! 1<cr>", { noremap = true })
+            vim.keymap.set("n", "<leader>2", "<cmd>LualineBuffersJump! 2<cr>", { noremap = true })
+            vim.keymap.set("n", "<leader>3", "<cmd>LualineBuffersJump! 3<cr>", { noremap = true })
+            vim.keymap.set("n", "<leader>4", "<cmd>LualineBuffersJump! 4<cr>", { noremap = true })
+            vim.keymap.set("n", "<leader>5", "<cmd>LualineBuffersJump! 5<cr>", { noremap = true })
+            vim.keymap.set("n", "<leader>6", "<cmd>LualineBuffersJump! 6<cr>", { noremap = true })
+            vim.keymap.set("n", "<leader>7", "<cmd>LualineBuffersJump! 7<cr>", { noremap = true })
+            vim.keymap.set("n", "<leader>8", "<cmd>LualineBuffersJump! 8<cr>", { noremap = true })
+            vim.keymap.set("n", "<leader>9", "<cmd>LualineBuffersJump! 9<cr>", { noremap = true })
+            vim.keymap.set("n", "<leader>0", "<cmd>LualineBuffersJump $<cr>", { noremap = true })
         end,
     },
     {

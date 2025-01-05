@@ -73,6 +73,13 @@ config.keys = {
     { key = 'p',     mods = 'CMD',      action = act.ActivateTabRelative(-1) },
     { key = '[',     mods = 'CMD',      action = act.MoveTabRelative(-1) },
     { key = ']',     mods = 'CMD',      action = act.MoveTabRelative(1) },
+
+    -- tmux
+    {
+        key = 'v',
+        mods = 'CMD|SHIFT',
+        action = wezterm.action.SendKey { key = 'b', mods = 'CTRL' },
+    },
 }
 
 return config

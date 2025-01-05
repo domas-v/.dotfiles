@@ -78,6 +78,7 @@ plugins=(
     zsh-interactive-cd
     aws
     fzf
+    tmux
     direnv
     python
     pyenv
@@ -140,10 +141,13 @@ function preview_stuff() {
     fi
 }
 
-alias cat="preview_stuff"
+alias bat="preview_stuff"
 alias t="touch"
 alias l="eza -l --git"
 alias ll="eza -la --git"
+
+# tmux
+alias td="tmux detach"
 
 # python
 alias py="python"

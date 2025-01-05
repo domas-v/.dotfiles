@@ -110,7 +110,7 @@ return {
         end,
         keys = {
 
-            { "<C-;>",      "<cmd>Telescope builtin previewer=false<cr>",                   desc = "Telescope" },
+            -- { "<C-;>",      "<cmd>Telescope builtin previewer=false<cr>",                   desc = "Telescope" },
             { "<leader>H",  "<cmd>Telescope help_tags<cr>",                                 desc = "Telescope" },
             { "<leader>K",  "<cmd>Telescope keymaps<cr>",                                   desc = "Telescope" },
 

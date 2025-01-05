@@ -1,0 +1,74 @@
+[window]
+opacity = 0.8
+blur = true
+
+[colors.cursor]
+cursor = "#D8D8D8"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font" }
+size = 13
+
+[[hints.enabled]]
+command = "open"
+hyperlinks = true
+mouse.enabled = true
+post_processing = true
+persist = false
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+binding = { key = "e", mods = "Command" }
+
+[keyboard]
+bindings = [
+# commands
+# { key = "x", mods = "Command|Shift", action = "ToggleViMode" },
+{ key = "x", mods = "Command|Shift", chars = "\u0019[" },
+
+# tmux bindings --> \u0002 is C-b
+# tmux bindings --> \u0019 is C-y
+{ key = ";", mods = "Command", chars = "\u0019:" },  # command mode
+
+# panes
+{ key = "w", mods = "Command|Shift", chars = "\u0019f" },  # search for panes
+{ key = "Enter", mods = "Command", chars = "\u0019%" },  # split
+{ key = "~", mods = "Command|Shift", chars = "\u0019v" },  # split
+{ key = "v", mods = "Command|Shift", chars = "\u0019%" },  # split
+{ key = "s", mods = "Command|Shift", chars = "\u0019\u0022" },  # split
+{ key = "f", mods = "Command|Shift", chars = "\u0019z" },  # zoom
+{ key = "{", mods = "Command|Shift", chars = "\u0019{" }, # swap pane left
+{ key = "}", mods = "Command|Shift", chars = "\u0019}" }, # swap pane right
+{ key = "h", mods = "Command", chars = "\u0019h" },
+{ key = "j", mods = "Command", chars = "\u0019j" },
+{ key = "k", mods = "Command", chars = "\u0019k" },
+{ key = "l", mods = "Command", chars = "\u0019l" },
+
+# windows
+{ key = "t", mods = "Command", chars = "\u0019c" },  # new window
+{ key = "w", mods = "Command", chars = "\u0019x" },  # kill pane
+{ key = "n", mods = "Command", chars = "\u0019n" },  # next window
+{ key = "p", mods = "Command", chars = "\u0019p" },  # prev window
+
+{ key = "1", mods = "Command", chars = "\u00191" },
+{ key = "2", mods = "Command", chars = "\u00192" },
+{ key = "3", mods = "Command", chars = "\u00193" },
+{ key = "4", mods = "Command", chars = "\u00194" },
+{ key = "5", mods = "Command", chars = "\u00195" },
+{ key = "6", mods = "Command", chars = "\u00196" },
+{ key = "7", mods = "Command", chars = "\u00197" },
+{ key = "8", mods = "Command", chars = "\u00198" },
+{ key = "9", mods = "Command", chars = "\u00199" },
+{ key = "[", mods = "Command", chars = "\u0019o" },
+{ key = "]", mods = "Command", chars = "\u0019i" },
+
+# sessions
+{ key = "r", mods = "Command|Shift", chars = "\u0019$" },  # rename
+{ key = "z", mods = "Command|Shift", chars = "\u0019d" },  # detach
+{ key = "p", mods = "Command|Shift", chars = "\u0019s" },  # list
+
+# layouts
+{ key = "Space", mods = "Command|Shift", chars = "\u0019 " },  # next layout
+{ key = "g", mods = "Command|Shift", chars = "\u0019\u001b5" },  # next layout
+{ key = "z", mods = "Command|Shift", chars = "\u0019d" },  # detach
+{ key = "p", mods = "Command|Shift", chars = "\u0019s" },  # list
+
+]

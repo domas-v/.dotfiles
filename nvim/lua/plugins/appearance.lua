@@ -12,13 +12,6 @@ return {
                     loops = { "italic" },
                     functions = { "italic" },
                     keywords = { "bold" },
-                    strings = {},
-                    variables = {},
-                    numbers = {},
-                    booleans = {},
-                    properties = {},
-                    types = {},
-                    operators = {},
                 },
                 default_integrations = true,
                 integrations = {

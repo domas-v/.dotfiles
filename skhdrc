@@ -117,7 +117,8 @@ alt - x : open /Applications/Messenger.app/
 alt - c : open /System/Applications/Messages.app
 
 # layout
-alt + shift - g : aerospace layout tiles horizontal vertical
+# alt + shift - g : aerospace layout tiles horizontal vertical
+alt + shift - g : aerospace layout horizontal vertical
 alt + shift - f : aerospace layout accordion tiles
 alt + shift - v : aerospace fullscreen
 alt + shift - c : aerospace layout tiling floating
@@ -161,7 +162,6 @@ alt - 0x1B : aerospace resize smart -50
 alt + shift - 0x1B : aerospace resize smart -300
 alt - 0x18 : aerospace resize smart +50
 alt + shift - 0x18 : aerospace resize smart +300
-
 
 alt - 1 : aerospace workspace 1
 alt - 2 : aerospace workspace 2
