@@ -14,7 +14,7 @@ end
 
 if get_system_theme_mac() then
     vim.o.background = "dark"
-    vim.cmd("colorscheme catppuccin-frappe")
+    vim.cmd("colorscheme catppuccin")
 else
     vim.o.background = "light"
     vim.cmd("colorscheme catppuccin-latte")
