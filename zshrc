@@ -7,7 +7,6 @@ export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -165,3 +164,5 @@ eval "$(pyenv init --path)"
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+eval "$(starship init zsh)"
