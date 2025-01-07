@@ -85,8 +85,8 @@ return {
                 }
             })
 
-            vim.keymap.set("n", "<C-1", "<cmd>LualineBuffersJump! 1<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-2", "<cmd>LualineBuffersJump! 2<cr>", { noremap = true })
+            vim.keymap.set("n", "<C-1>", "<cmd>LualineBuffersJump! 1<cr>", { noremap = true })
+            vim.keymap.set("n", "<C-2>", "<cmd>LualineBuffersJump! 2<cr>", { noremap = true })
             vim.keymap.set("n", "<C-3>", "<cmd>LualineBuffersJump! 3<cr>", { noremap = true })
             vim.keymap.set("n", "<C-4>", "<cmd>LualineBuffersJump! 4<cr>", { noremap = true })
             vim.keymap.set("n", "<C-5>", "<cmd>LualineBuffersJump! 5<cr>", { noremap = true })

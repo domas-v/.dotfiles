@@ -86,7 +86,10 @@ map("n", "<C-p>", "<cmd>bprev<cr>", default_opts)
 map("n", "<C-b>", "<cmd>b#<cr>", default_opts)
 
 -- quickfix
+map("n", "<leader>cj", "<cmd>cnext<cr>", { noremap = true })
+map("n", "<leader>ck", "<cmd>cprevious<cr>", { noremap = true })
 map("n", "<leader>co", "<cmd>copen<cr>", { noremap = true })
+map("n", "<leader>cc", "<cmd>cclose<cr>", { noremap = true })
 map("n", "<leader>cr", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
     { noremap = true }) -- in quickfix list
 autocmd("FileType", {

@@ -19,7 +19,7 @@
 #: heavy. Setting them manually is useful for font families that have
 #: many weight variants like Book, Medium, Thick, etc. For example::
 
-font_size 12.5
+font_size 13.0
 
 #: Font size (in pts)
 
@@ -1826,8 +1826,8 @@ map kitty_mod+q quit
 
 
 # BEGIN_KITTY_FONTS
-font_family      family='Iosevka Term Slab' style='Light Extended'
-bold_font        family='Iosevka Term Slab' style='Semibold Extended'
-italic_font      family='Iosevka Term Slab' style='Extended Italic'
-bold_italic_font family='Iosevka Term Slab' style='Semibold Extended Italic'
+font_family      family='Iosevka Term' style='Medium Extended'
+bold_font        family='Iosevka Term' postscript_name=Iosevka-Term-Bold-Extended
+italic_font      family='Iosevka Term' postscript_name=Iosevka-Term-Extended-Italic
+bold_italic_font family='Iosevka Term' postscript_name=Iosevka-Term-Bold-Extended-Italic
 # END_KITTY_FONTS
