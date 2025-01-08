@@ -126,7 +126,7 @@ return {
             { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",                      desc = "LSP symbols" },
             { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",             desc = "LSP workspace symbols" },
             { "<leader>xr", "<cmd>Telescope lsp_references<cr>",                            desc = "LSP references" },
-            { "<leader>X",  "<cmd>Telescope diagnostics<cr>",                               desc = "Diagnostics list" },
+            { "<leader>xx", "<cmd>Telescope diagnostics<cr>",                               desc = "Diagnostics list" },
 
             -- dap
             { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>",                      desc = "Breakpoints" },
