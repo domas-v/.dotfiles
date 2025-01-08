@@ -11,7 +11,7 @@ vim.g.mapleader = " "
 map("n", "<S-ScrollWheelUp>", "zh", default_opts)
 map("n", "<S-ScrollWheelDown>", "zl", default_opts)
 
--- insert mode keybindings
+-- insert mode navigation
 map("i", "<C-a>", "<Home>", default_opts)
 map("i", "<C-f>", "<Right>", default_opts)
 map("i", "<C-b>", "<Left>", default_opts)
@@ -49,6 +49,11 @@ map("n", "<C-M-H>", "zH", default_opts)
 -- commands
 map("n", "!", ":!", default_opts)
 map("n", "<C-S-;>", ":lua ", default_opts)
+
+-- lua execution
+map("n", "<leader><leader>E", "<cmd>source %<cr>")
+map("n", "<leader><leader>e", ":.lua<cr>")
+map("v", "<leader><leader>e", ":lua<cr>")
 
 -- saving and closing
 map("n", "<C-q>", "<cmd>close<cr>", default_opts)
@@ -89,8 +94,8 @@ map("n", "<leader>ck", "<cmd>cprevious<cr>", { noremap = true })
 map("n", "<leader>co", "<cmd>copen<cr>", { noremap = true })
 map("n", "<leader>cc", "<cmd>cclose<cr>", { noremap = true })
 map("n", "<leader>cr", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
-    { noremap = true }) -- in quickfix list
-autocmd("FileType", {
+    { noremap = true })
+autocmd("FileType", { -- in quickfix list
     pattern = "qf",
     callback = function() map("n", "q", "<cmd>cclose<cr>", { buffer = true, silent = true }) end
 })
