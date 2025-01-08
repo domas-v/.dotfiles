@@ -111,7 +111,7 @@ map("n", "<C-k>", "<C-w>k", default_opts)
 map("n", "<C-l>", "<C-w>l", default_opts)
 
 -- resize splits
-map("n", "<C-]>", "<C-w>10<", default_opts)
-map("n", "<C-[>", "<C-w>10>", default_opts)
-map("n", "<C-.>", "5<C-W>+", default_opts)
-map("n", "<C-,>", "5<C-W>-", default_opts)
+map("n", "<C-->", "<C-w>10<", default_opts)
+map("n", "<C-=>", "<C-w>10>", default_opts)
+map("n", "<C-S-->", "5<C-W>+", default_opts)
+map("n", "<C-S-=>", "5<C-W>-", default_opts)

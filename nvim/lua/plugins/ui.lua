@@ -92,8 +92,8 @@ return {
             { "<C-0>",   "<cmd>BufferLineGoToBuffer 9<cr>" },
             { "<C-n>",   "<cmd>BufferLineCycleNext<cr>" },
             { "<C-p>",   "<cmd>BufferLineCyclePrev<cr>" },
-            { "<C-S-n>", "<cmd>BufferLineMoveNext<cr>" },
-            { "<C-S-p>", "<cmd>BufferLineMovePrev<cr>" },
+            { "<C-]>", "<cmd>BufferLineMoveNext<cr>" },
+            { "<C-[>", "<cmd>BufferLineMovePrev<cr>" },
             { "<C-S-8>", "<cmd>BufferLineTogglePin<cr>" },
             { "<C-b>",   "<cmd>BufferLinePick<cr>" },
         }

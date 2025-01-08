@@ -1,27 +1,11 @@
 return {
     {
-        "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        config = function()
-            require("neogit").setup({
-                kind = "tab",
-                commit_editor = {
-                    kind = "vsplit",
-                },
-                disable_commit_confirmation = true
-            })
-        end,
-        cmd = { "Neogit" },
-        keys = {
-            { "<leader>gg", "<cmd>Neogit<cr>",      desc = "Neogit" },
-            { "<leader>gp", "<cmd>Neogit pull<cr>", desc = "Neogit" },
-            { "<leader>gP", "<cmd>Neogit push<cr>", desc = "Neogit" },
-        }
-    },
-    {
         "tpope/vim-fugitive",
+        keys = {
+            { "<leader>gg", "<cmd>tab Git<cr>" },
+            { "<leader>gp", "<cmd>Git pull<cr>" },
+            { "<leader>gP", "<cmd>Git push<cr>" },
+        }
     },
     {
         "lewis6991/gitsigns.nvim",
@@ -47,28 +31,32 @@ return {
         }
     },
     {
-        "sindrets/diffview.nvim",
-        enabled = false,
-        config = function()
-            require("diffview").setup({
-                view = {
-                    merge_tool = {
-                        layout = "diff3_mixed"
-                    }
-                },
-                file_panel = {
-                    win_config = {
-                        width = 25
-                    }
-                }
-            })
-        end
-    },
-    {
         'ruifm/gitlinker.nvim',
         dependencies = 'nvim-lua/plenary.nvim',
         config = function()
             require "gitlinker".setup()
         end
-    }
+    },
+    {
+        "NeogitOrg/neogit",
+        enabled = false,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            require("neogit").setup({
+                kind = "tab",
+                commit_editor = {
+                    kind = "vsplit",
+                },
+                disable_commit_confirmation = true
+            })
+        end,
+        cmd = { "Neogit" },
+        keys = {
+            { "<leader>gg", "<cmd>Neogit<cr>",      desc = "Neogit" },
+            { "<leader>gp", "<cmd>Neogit pull<cr>", desc = "Neogit" },
+            { "<leader>gP", "<cmd>Neogit push<cr>", desc = "Neogit" },
+        }
+    },
 }
