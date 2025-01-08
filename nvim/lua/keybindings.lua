@@ -78,12 +78,13 @@ map("n", "<esc>", "<cmd>nohl<cr>", { noremap = true })
 map("n", "<leader>tt", "<cmd>tab split<cr>", { noremap = true })
 map("n", "<leader>tx", "<cmd>tabclose<cr>", { noremap = true })
 map("n", "<leader>to", "<cmd>tabonly<cr>", { noremap = true })
+map("n", "<leader>tn", "<cmd>tabnew<cr>", { noremap = true })
 
 -- buffers
 map("n", "<C-S-x>", "<cmd>bd<cr>", default_opts)
-map("n", "<C-n>", "<cmd>bnext<cr>", default_opts)
-map("n", "<C-p>", "<cmd>bprev<cr>", default_opts)
-map("n", "<C-b>", "<cmd>b#<cr>", default_opts)
+-- map("n", "<C-n>", "<cmd>bnext<cr>", default_opts)
+-- map("n", "<C-p>", "<cmd>bprev<cr>", default_opts)
+-- map("n", "<C-b>", "<cmd>b#<cr>", default_opts)
 
 -- quickfix
 map("n", "<leader>cj", "<cmd>cnext<cr>", { noremap = true })

@@ -57,11 +57,51 @@ return {
                 },
             },
             keys = {
-                { "<leader>D", "<cmd>Oil<cr>",                                      "Oil directory" },
-                { "<leader>.", "<cmd>lua require('oil').open(vim.fn.getcwd())<cr>", "Oil directory" }
+                { "<leader>D", "<cmd>Oil<cr>" },
+                { "<leader>.", "<cmd>lua require('oil').open(vim.fn.getcwd())<cr>" }
             }
         },
         config = true,
+    },
+    {
+        'akinsho/bufferline.nvim',
+        lazy = false,
+        version = "*",
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        config = function()
+            local bufferline = require('bufferline')
+            bufferline.setup({
+                options = {
+                    style_preset = bufferline.style_preset.minimal,
+                    numbers = "ordinal",
+                    themable = false,
+                }
+            }
+            )
+        end,
+        keys = {
+            { "<C-1>",   "<cmd>BufferLineGoToBuffer 1<cr>" },
+            { "<C-2>",   "<cmd>BufferLineGoToBuffer 2<cr>" },
+            { "<C-3>",   "<cmd>BufferLineGoToBuffer 3<cr>" },
+            { "<C-4>",   "<cmd>BufferLineGoToBuffer 4<cr>" },
+            { "<C-5>",   "<cmd>BufferLineGoToBuffer 5<cr>" },
+            { "<C-6>",   "<cmd>BufferLineGoToBuffer 6<cr>" },
+            { "<C-7>",   "<cmd>BufferLineGoToBuffer 7<cr>" },
+            { "<C-8>",   "<cmd>BufferLineGoToBuffer 8<cr>" },
+            { "<C-9>",   "<cmd>BufferLineGoToBuffer 9<cr>" },
+            { "<C-0>",   "<cmd>BufferLineGoToBuffer 9<cr>" },
+            { "<C-n>",   "<cmd>BufferLineCycleNext<cr>" },
+            { "<C-p>",   "<cmd>BufferLineCyclePrev<cr>" },
+            { "<C-S-n>", "<cmd>BufferLineMoveNext<cr>" },
+            { "<C-S-p>", "<cmd>BufferLineMovePrev<cr>" },
+            { "<C-S-8>", "<cmd>BufferLineTogglePin<cr>" },
+            { "<C-b>",   "<cmd>BufferLinePick<cr>" },
+        }
+    },
+    {
+        "tiagovla/scope.nvim",
+        config = true,
+        keys = { { "<leader>tm", "<cmd>ScopeMoveBuf<cr>" } }
     },
     {
         'nvim-lualine/lualine.nvim',
@@ -75,26 +115,8 @@ return {
                 show_filename_only = false,
                 sections = {
                     lualine_x = { 'filetype' }
-                },
-                tabline = {
-                    lualine_a = { 'buffers' },
-                    lualine_c = {},
-                    lualine_x = {},
-                    lualine_y = {},
-                    lualine_z = { 'tabs' },
                 }
             })
-
-            vim.keymap.set("n", "<C-1>", "<cmd>LualineBuffersJump! 1<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-2>", "<cmd>LualineBuffersJump! 2<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-3>", "<cmd>LualineBuffersJump! 3<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-4>", "<cmd>LualineBuffersJump! 4<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-5>", "<cmd>LualineBuffersJump! 5<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-6>", "<cmd>LualineBuffersJump! 6<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-7>", "<cmd>LualineBuffersJump! 7<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-8>", "<cmd>LualineBuffersJump! 8<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-9>", "<cmd>LualineBuffersJump! 9<cr>", { noremap = true })
-            vim.keymap.set("n", "<C-0>", "<cmd>LualineBuffersJump $<cr>", { noremap = true })
         end,
     },
     {

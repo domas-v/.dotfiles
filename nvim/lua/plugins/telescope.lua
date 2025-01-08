@@ -6,7 +6,6 @@ return {
             "MunifTanjim/nui.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make", },
             "nvim-telescope/telescope-dap.nvim",
-            "LukasPietzschmann/telescope-tabs",
             { "prochri/telescope-all-recent.nvim",        dependencies = { "kkharji/sqlite.lua" } },
         },
         config = function()
@@ -106,7 +105,6 @@ return {
             require("telescope-all-recent").setup({})
             telescope.load_extension("fzf")
             telescope.load_extension("dap")
-            require("telescope-tabs").setup({})
         end,
         keys = {
 
@@ -118,8 +116,8 @@ return {
             { "<leader>T",  "<cmd>lua require('telescope-tabs').list_tabs()<cr>",           desc = "Tabs" },
 
             -- buffers
-            { "<C-e>",      "<cmd>Telescope buffers<cr>",                                   desc = "Buffers" },
-            { "<leader>e",  "<cmd>Telescope buffers<cr>",                                   desc = "Buffers" },
+            { "<C-e>",      "<cmd>Telescope scope buffers<cr>",                                   desc = "Buffers" },
+            { "<leader>e",  "<cmd>Telescope scope buffers<cr>",                                   desc = "Buffers" },
             { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>", desc = "Find files" },
 
             -- file search
