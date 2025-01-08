@@ -10,12 +10,11 @@ else
 end
 
 -- fonts
-config.font = wezterm.font({ family = "JetBrainsMono Nerd Font" })
--- config.font = wezterm.font({ family = "MonaspiceKr Nerd Font" })
-config.font_size = 12.5
+config.font = wezterm.font({ family = "Iosevka Term", stretch = "Expanded", weight = "Regular" })
+config.font_size = 13.0
 
 -- window settings
-config.window_background_opacity = 0.9
+config.window_background_opacity = 1.0
 config.macos_window_background_blur = 30
 config.window_decorations = "RESIZE|TITLE"
 
