@@ -37,27 +37,5 @@ return {
         config = function()
             require "gitlinker".setup()
         end
-    },
-    {
-        "NeogitOrg/neogit",
-        enabled = false,
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        config = function()
-            require("neogit").setup({
-                kind = "tab",
-                commit_editor = {
-                    kind = "vsplit",
-                },
-                disable_commit_confirmation = true
-            })
-        end,
-        cmd = { "Neogit" },
-        keys = {
-            { "<leader>gg", "<cmd>Neogit<cr>",      desc = "Neogit" },
-            { "<leader>gp", "<cmd>Neogit pull<cr>", desc = "Neogit" },
-            { "<leader>gP", "<cmd>Neogit push<cr>", desc = "Neogit" },
-        }
-    },
+    }
 }
