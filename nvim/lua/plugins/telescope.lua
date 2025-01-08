@@ -112,12 +112,9 @@ return {
             { "<leader>H",  "<cmd>Telescope help_tags<cr>",                                 desc = "Telescope" },
             { "<leader>K",  "<cmd>Telescope keymaps<cr>",                                   desc = "Telescope" },
 
-            -- tabs
-            { "<leader>T",  "<cmd>lua require('telescope-tabs').list_tabs()<cr>",           desc = "Tabs" },
-
             -- buffers
-            { "<C-e>",      "<cmd>Telescope scope buffers<cr>",                                   desc = "Buffers" },
-            { "<leader>e",  "<cmd>Telescope scope buffers<cr>",                                   desc = "Buffers" },
+            { "<C-e>",      "<cmd>Telescope scope buffers<cr>",                             desc = "All buffers" },
+            { "<leader>e",  "<cmd>Telescope buffers<cr>",                                   desc = "Scope buffers" },
             { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>", desc = "Find files" },
 
             -- file search
