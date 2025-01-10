@@ -1,7 +1,20 @@
 return {
     {
         "tpope/vim-fugitive",
-        cmd = { "Git", "G" }
+        -- cmd = { "Git", "G" },
+        init = function()
+            vim.api.nvim_create_user_command("G", function()
+                vim.cmd("vert Git")
+            end, {})
+
+            vim.api.nvim_create_user_command("Gp", function()
+                vim.cmd("Git push")
+            end, {})
+
+            vim.api.nvim_create_user_command("Gl", function()
+                vim.cmd("Git pull")
+            end, {})
+        end
     },
     {
         "lewis6991/gitsigns.nvim",

@@ -114,7 +114,7 @@ return {
             { "<leader>K",  "<cmd>Telescope keymaps<cr>" },
 
             -- buffers
-            { "<C-e>",      "<cmd>Telescope scope buffers<cr>" },
+            { "<C-e>",      "<cmd>Telescope buffers<cr>" },
             { "<leader>e",  "<cmd>Telescope buffers<cr>" },
             { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>" },
             { "<leader>T",  "<cmd>Telescope treesitter<cr>" },

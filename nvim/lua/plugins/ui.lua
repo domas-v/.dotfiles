@@ -73,7 +73,7 @@ return {
             bufferline.setup({
                 options = {
                     style_preset = bufferline.style_preset.minimal,
-                    numbers = "ordinal",
+                    numbers = "none",
                     themable = false,
                 }
             }
@@ -92,14 +92,15 @@ return {
             { "<C-0>",   "<cmd>BufferLineGoToBuffer 9<cr>" },
             { "<C-n>",   "<cmd>BufferLineCycleNext<cr>" },
             { "<C-p>",   "<cmd>BufferLineCyclePrev<cr>" },
-            { "<C-]>", "<cmd>BufferLineMoveNext<cr>" },
-            { "<C-[>", "<cmd>BufferLineMovePrev<cr>" },
+            { "<C-]>",   "<cmd>BufferLineMoveNext<cr>" },
+            { "<C-[>",   "<cmd>BufferLineMovePrev<cr>" },
             { "<C-S-8>", "<cmd>BufferLineTogglePin<cr>" },
-            { "<C-b>",   "<cmd>BufferLinePick<cr>" },
+            { "<C-a>",   "<cmd>BufferLinePick<cr>" },
         }
     },
     {
         "tiagovla/scope.nvim",
+        enabled = false,
         config = true,
         keys = { { "<leader>tm", "<cmd>ScopeMoveBuf<cr>" } }
     },
