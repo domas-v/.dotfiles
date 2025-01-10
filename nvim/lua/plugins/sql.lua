@@ -1,17 +1,20 @@
 return {
-    'kristijanhusak/vim-dadbod-ui',
+    "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-        { 'tpope/vim-dadbod',                     lazy = true },
-        { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' } }
+        { "tpope/vim-dadbod",                     lazy = true },
+        { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" } }
     },
     cmd = {
-        'DBUI',
-        'DBUIToggle',
-        'DBUIAddConnection',
-        'DBUIFindBuffer',
+        "D",
+        "DBUI",
+        "DBUIToggle",
+        "DBUIAddConnection",
+        "DBUIFindBuffer",
     },
     init = function()
         vim.g.db_ui_use_nerd_fonts = 1
-        vim.keymap.set("n", "<leader><leader>d", ":DBUIToggle<cr>", { noremap = true, silent = true })
+        vim.api.nvim_create_user_command("D", function()
+            vim.cmd("DBUI")
+        end, {})
     end,
 }
