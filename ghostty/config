@@ -1,0 +1,83 @@
+### Appearance ###
+theme = dark:catppuccin-mocha,light:catppuccin-latte
+font-family = "Iosevka Term Extended"
+
+# cursor
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
+
+
+### SHORTCUTS ###
+
+# copy mode
+keybind = cmd+shift+x=text:\x02\x5b
+# command mode
+keybind = cmd+;=text:\x02\x3a
+
+# list sessions
+keybind = cmd+shift+p=text:\x02\x73
+keybind = cmd+shift+o=text:\x02\x66
+# detach
+keybind = cmd+shift+d=text:\x02\x64
+# rename session
+keybind = ctrl+cmd+s=text:\x02\x24
+
+# new window
+keybind = cmd+t=text:\x02\x63
+# next
+keybind = cmd+n=text:\x02\x6e
+#prev
+keybind = cmd+p=text:\x02\x70
+# move window
+keybind = cmd+]=text:\x02\x6f
+keybind = cmd+[=text:\x02\x69
+# select
+keybind = cmd+1=text:\x02\x31
+keybind = cmd+2=text:\x02\x32
+keybind = cmd+3=text:\x02\x33
+keybind = cmd+4=text:\x02\x34
+keybind = cmd+5=text:\x02\x35
+keybind = cmd+6=text:\x02\x36
+keybind = cmd+7=text:\x02\x37
+keybind = cmd+8=text:\x02\x38
+keybind = cmd+9=text:\x02\x39
+# rename window
+keybind = ctrl+cmd+t=text:\x02\x2c
+
+# kill pane
+keybind = cmd+w=text:\x02\x78
+# vertical pane
+keybind = ctrl+cmd+v=text:\x02\x25
+keybind = cmd+enter=text:\x02\x25
+# horizontal pane
+keybind = ctrl+cmd+s=text:\x02\x22
+# bot pane
+keybind = cmd+`=text:\x02\x76
+# zoom pane
+keybind = cmd+f=text:\x02\x7a
+# select left
+keybind = cmd+h=text:\x02\x68
+# select down
+keybind = cmd+j=text:\x02\x6a
+# select up
+keybind = cmd+k=text:\x02\x6b
+# select right
+keybind = cmd+l=text:\x02\x6c
+
+# swap
+keybind = cmd+shift+l=text:\x02\x7d
+keybind = cmd+shift+h=text:\x02\x7b
+
+# resize
+keybind = ctrl+cmd+h=text:\x1b\x5b\x31\x3b\x35\x44
+keybind = ctrl+cmd+j=text:\x1b\x5b\x31\x3b\x35\x42
+keybind = ctrl+cmd+k=text:\x1b\x5b\x31\x3b\x35\x41
+keybind = ctrl+cmd+l=text:\x1b\x5b\x31\x3b\x35\x43
+
+# layouts
+# even-horizontal
+keybind = cmd+shift+j=text:\x1b\x5b\x31\x3b\x36\x44
+# even-vertical
+keybind = cmd+shift+k=text:\x1b\x5b\x31\x3b\x36\x43
+
