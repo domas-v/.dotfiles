@@ -108,38 +108,41 @@ return {
         end,
         keys = {
 
-            -- { "<C-;>",      "<cmd>Telescope builtin previewer=false<cr>",                   desc = "Telescope" },
-            { "<leader>H",  "<cmd>Telescope help_tags<cr>",                                 desc = "Telescope" },
-            { "<leader>K",  "<cmd>Telescope keymaps<cr>",                                   desc = "Telescope" },
+            -- { "<C-;>",      "<cmd>Telescope builtin previewer=false<cr>",},
+            { "<leader>R",  "<cmd>Telescope resume<cr>" },
+            { "<leader>H",  "<cmd>Telescope help_tags<cr>" },
+            { "<leader>K",  "<cmd>Telescope keymaps<cr>" },
 
             -- buffers
-            { "<C-e>",      "<cmd>Telescope scope buffers<cr>",                             desc = "All buffers" },
-            { "<leader>e",  "<cmd>Telescope buffers<cr>",                                   desc = "Scope buffers" },
-            { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>", desc = "Find files" },
+            { "<C-e>",      "<cmd>Telescope scope buffers<cr>" },
+            { "<leader>e",  "<cmd>Telescope buffers<cr>" },
+            { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>" },
+            { "<leader>T",  "<cmd>Telescope treesitter<cr>" },
 
-            -- file search
-            { "<leader>r",  "<cmd>Telescope live_grep<cr>",                                 desc = "Live grep" },
-            { "<leader>o",  "<cmd>Telescope find_files<cr>",                                desc = "Current buffer" },
-            { "<leader>O",  "<cmd>Telescope find_files hidden=true no_ignore=true<cr>",     desc = "Find files, including hidden" },
+            -- search
+            { "<leader>r",  "<cmd>Telescope live_grep<cr>" },
+            { "<leader>G",  "<cmd>Telescope grep_string<cr>" },
+            { "<leader>o",  "<cmd>Telescope find_files<cr>" },
+            { "<leader>O",  "<cmd>Telescope find_files hidden=true no_ignore=true<cr>" },
 
             -- lsp
-            { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>",                      desc = "LSP symbols" },
-            { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",             desc = "LSP workspace symbols" },
-            { "<leader>xr", "<cmd>Telescope lsp_references<cr>",                            desc = "LSP references" },
-            { "<leader>xx", "<cmd>Telescope diagnostics<cr>",                               desc = "Diagnostics list" },
+            { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>" },
+            { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>" },
+            { "<leader>xr", "<cmd>Telescope lsp_references<cr>" },
+            { "<leader>xx", "<cmd>Telescope diagnostics<cr>" },
 
             -- dap
-            { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>",                      desc = "Breakpoints" },
+            { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>" },
 
             -- help
-            { "<leader>?k", "<cmd>Telescope keymaps<cr>",                                   desc = "Keymaps" },
-            { "<leader>?c", "<cmd>Telescope commands<cr>",                                  desc = "Commands" },
-            { "<leader>?t", "<cmd>Telescope help_tags<cr>",                                 desc = "Help" },
-            { "<leader>?o", "<cmd>Telescope vim_options<cr>",                               desc = "Options" },
+            { "<leader>?k", "<cmd>Telescope keymaps<cr>" },
+            { "<leader>?c", "<cmd>Telescope commands<cr>" },
+            { "<leader>?t", "<cmd>Telescope help_tags<cr>" },
+            { "<leader>?o", "<cmd>Telescope vim_options<cr>" },
 
             -- git
-            { "<leader>gB", "<cmd>Telescope git_branches<cr>",                              desc = "Git branches" },
-            { "<leader>gS", "<cmd>Telescope git_status<cr>",                                desc = "Git status" },
+            { "<leader>gB", "<cmd>Telescope git_branches<cr>" },
+            { "<leader>gS", "<cmd>Telescope git_status<cr>" },
         },
         cmd = { "Telescope" },
     }
