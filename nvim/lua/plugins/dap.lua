@@ -1,17 +1,15 @@
-local api = vim.api
-local map = vim.keymap.set
 local eval_buf_pattern = "dap%-eval://"
 local repl_winopts = { width = math.floor(vim.o.columns * 0.5) }
 local default_opts = { noremap = true, silent = true }
 
 
 local function _set_autocmd(eval_buf)
-    api.nvim_create_autocmd("BufWriteCmd", {
+    vim.api.nvim_create_autocmd("BufWriteCmd", {
         buffer = eval_buf,
         callback = function(args)
             vim.bo[args.buf].modified = false
             local repl = require("dap.repl")
-            local lines = api.nvim_buf_get_lines(args.buf, 0, -1, true)
+            local lines = vim.api.nvim_buf_get_lines(args.buf, 0, -1, true)
             repl.execute(table.concat(lines, "\n"))
             repl.open(repl_winopts, "vsp")
         end,
@@ -20,8 +18,8 @@ local function _set_autocmd(eval_buf)
 end
 
 local function _create_eval_buf()
-    local eval_buf = api.nvim_create_buf(true, true)
-    api.nvim_buf_set_name(eval_buf, "dap-eval://" .. vim.bo.filetype)
+    local eval_buf = vim.api.nvim_create_buf(true, true)
+    vim.api.nvim_buf_set_name(eval_buf, "dap-eval://" .. vim.bo.filetype)
     vim.bo[eval_buf].swapfile = false
     vim.bo[eval_buf].buftype = "acwrite"
     vim.bo[eval_buf].bufhidden = "hide"
@@ -41,22 +39,22 @@ local function toggle_dap_ui()
     local repl_buf_pattern = "dap%-repl"
     local eval_win = nil
     local repl_win = nil
-    for _, win in ipairs(api.nvim_list_wins()) do
-        local buf = api.nvim_win_get_buf(win)
-        if api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        if vim.api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
             eval_win = win
-        elseif api.nvim_buf_get_name(buf):match(repl_buf_pattern) then
+        elseif vim.api.nvim_buf_get_name(buf):match(repl_buf_pattern) then
             repl_win = win
         end
     end
 
     local closed_any = false
     if eval_win then
-        api.nvim_win_close(eval_win, true)
+        vim.api.nvim_win_close(eval_win, true)
         closed_any = true
     end
     if repl_win then
-        api.nvim_win_close(repl_win, true)
+        vim.api.nvim_win_close(repl_win, true)
         closed_any = true
     end
 
@@ -65,8 +63,8 @@ local function toggle_dap_ui()
     end
 
     local eval_buf
-    for _, buf in ipairs(api.nvim_list_bufs()) do
-        if api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
             eval_buf = buf
             break
         end
@@ -80,22 +78,22 @@ local function toggle_dap_ui()
     end
 
     _split_third()
-    api.nvim_win_set_buf(0, eval_buf)
+    vim.api.nvim_win_set_buf(0, eval_buf)
     require("dap.repl").toggle(repl_winopts, "vsp")
 end
 
 local function toggle_dap_eval()
-    for _, win in ipairs(api.nvim_list_wins()) do
-        local buf = api.nvim_win_get_buf(win)
-        if api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
-            api.nvim_win_close(win, true)
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        if vim.api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
+            vim.api.nvim_win_close(win, true)
             return
         end
     end
 
     local eval_buf
-    for _, buf in ipairs(api.nvim_list_bufs()) do
-        if api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
             eval_buf = buf
             break
         end
@@ -110,7 +108,7 @@ local function toggle_dap_eval()
 
     vim.cmd("only")
     _split_third()
-    api.nvim_win_set_buf(0, eval_buf)
+    vim.api.nvim_win_set_buf(0, eval_buf)
 end
 
 local function toggle_dap_repl()
@@ -146,12 +144,12 @@ return {
             }
             dap.configurations.c = dap.configurations.cpp
 
-            api.nvim_create_user_command("DapUIToggle", toggle_dap_ui, {})
-            api.nvim_create_user_command("DapEvalToggle", toggle_dap_eval, {})
-            api.nvim_create_user_command("DapReplToggle", toggle_dap_repl, {})
-            map('n', '<leader>du', "<cmd>DapUIToggle<cr>", default_opts)
-            map('n', '<leader>de', "<cmd>DapEvalToggle<cr>", default_opts)
-            map('n', '<leader>dr', "<cmd>DapReplToggle<cr>", default_opts)
+            vim.api.nvim_create_user_command("DapUIToggle", toggle_dap_ui, {})
+            vim.api.nvim_create_user_command("DapEvalToggle", toggle_dap_eval, {})
+            vim.api.nvim_create_user_command("DapReplToggle", toggle_dap_repl, {})
+            vim.keymap.set('n', '<leader>du', "<cmd>DapUIToggle<cr>", default_opts)
+            vim.keymap.set('n', '<leader>de', "<cmd>DapEvalToggle<cr>", default_opts)
+            vim.keymap.set('n', '<leader>dr', "<cmd>DapReplToggle<cr>", default_opts)
         end,
         keys = {
             -- debug controls
@@ -169,8 +167,8 @@ return {
         config = function()
             require('persistent-breakpoints').setup({ load_breakpoints_event = { "BufReadPost" } })
 
-            map("n", "<leader>dd", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", default_opts)
-            map("n", "<leader>dC", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>",
+            vim.keymap.set("n", "<leader>dd", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>", default_opts)
+            vim.keymap.set("n", "<leader>dC", "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>",
                 default_opts)
         end,
     }
