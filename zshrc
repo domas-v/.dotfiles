@@ -76,6 +76,7 @@ plugins=(
     zsh-autosuggestions
     zsh-interactive-cd
     aws
+    tmux
     fzf
     direnv
     python
