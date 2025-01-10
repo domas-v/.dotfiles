@@ -1,12 +1,7 @@
 return {
     {
         "tpope/vim-fugitive",
-        cmd = { "Git" },
-        keys = {
-            { "<leader>gg", "<cmd>tab Git<cr>" },
-            { "<leader>gp", "<cmd>Git pull<cr>" },
-            { "<leader>gP", "<cmd>Git push<cr>" },
-        }
+        cmd = { "Git", "G" }
     },
     {
         "lewis6991/gitsigns.nvim",
