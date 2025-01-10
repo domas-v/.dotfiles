@@ -17,12 +17,13 @@ keybind = cmd+;=text:\x02\x3a
 
 # list sessions
 keybind = cmd+shift+p=text:\x02\x73
-keybind = cmd+shift+o=text:\x02\x66
 # detach
 keybind = cmd+shift+d=text:\x02\x64
 # rename session
 keybind = ctrl+cmd+s=text:\x02\x24
 
+# list windows
+keybind = cmd+shift+o=text:\x02\x66
 # new window
 keybind = cmd+t=text:\x02\x63
 # next
@@ -55,7 +56,7 @@ keybind = ctrl+cmd+s=text:\x02\x22
 # bot pane
 keybind = cmd+`=text:\x02\x76
 # zoom pane
-keybind = cmd+f=text:\x02\x7a
+keybind = cmd+shift+f=text:\x02\x7a
 # select left
 keybind = cmd+h=text:\x02\x68
 # select down

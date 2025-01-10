@@ -36,5 +36,18 @@ return {
         config = function()
             require('remember')
         end
-    }
+    },
+    {
+        "brenton-leighton/multiple-cursors.nvim",
+        version = "*",
+        opts = {},
+        keys = {
+            { "<c-s-j>",       "<cmd>multiplecursorsadddown<cr>",          mode = { "n", "x" }, desc = "add cursor and move down" },
+            { "<c-s-k>",       "<cmd>multiplecursorsaddup<cr>",            mode = { "n", "x" }, desc = "add cursor and move up" },
+            { "<c-leftmouse>", "<cmd>multiplecursorsmouseadddelete<cr>",   mode = { "n", "i" }, desc = "add or remove cursor" },
+            { "<leader>a",     "<cmd>multiplecursorsaddjumpnextmatch<cr>", mode = { "n", "x" }, desc = "add cursor and jump to next cword" },
+            { "<leader>a",     "<cmd>multiplecursorsaddmatches<cr>",       mode = { "n", "x" }, desc = "add cursors to cword" },
+            { "<leader>l",     "<cmd>multiplecursorslock<cr>",             mode = { "n", "x" }, desc = "lock virtual cursors" },
+        },
+    },
 }
