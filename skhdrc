@@ -113,7 +113,7 @@ alt - e : open /Applications/Ghostty.app/
 alt - q : open /Applications/Brave\ Browser.app/
 alt - g : open /Applications/ChatGPT.app/
 alt - z : open /Applications/Slack.app/
-alt - x : open /Applications/Messenger.app/
+# alt - x : open /Applications/Messenger.app/
 alt - c : open /System/Applications/Messages.app
 
 # layout
