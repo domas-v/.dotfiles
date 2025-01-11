@@ -6,12 +6,11 @@ local helpers = require("helpers")
 if not helpers.is_dark() then
     config.color_scheme = "catppuccin-latte"
 else
-    config.color_scheme = "catppuccin-frappe"
+    config.color_scheme = "catppuccin-mocha"
 end
 
 -- fonts
-config.font = wezterm.font({ family = "Iosevka Term", stretch = "Expanded", weight = "Regular" })
-config.font_size = 13.0
+config.font_size = 13
 
 -- window settings
 config.window_background_opacity = 1.0
@@ -57,7 +56,7 @@ config.keys = {
     { key = 'w',     mods = 'CMD',      action = act.CloseCurrentPane { confirm = true }, },
     { key = 'v',     mods = 'CMD|CTRL', action = act.SplitHorizontal },
     { key = 's',     mods = 'CMD|CTRL', action = act.SplitVertical },
-    { key = 'B',     mods = 'CMD',      action = act.SplitPane { direction = 'Down', size = { Percent = 30 } } },
+    { key = '`',     mods = 'CMD',      action = act.SplitPane { direction = 'Down', size = { Percent = 30 } } },
     { key = 'h',     mods = 'CMD',      action = act.ActivatePaneDirection 'Left' },
     { key = 'j',     mods = 'CMD',      action = act.ActivatePaneDirection 'Down' },
     { key = 'k',     mods = 'CMD',      action = act.ActivatePaneDirection 'Up' },
@@ -67,18 +66,10 @@ config.keys = {
     -- tabs
     { key = 't',     mods = 'CMD|CTRL', action = act.ShowTabNavigator },
     { key = 'T',     mods = 'CMD',      action = act.SpawnCommandInNewTab { cwd = wezterm.home_dir } },
-    { key = 'C',     mods = 'CMD',      action = act.SpawnCommandInNewTab { cwd = wezterm.home_dir .. "/.dotfiles", args = { "nvim" } } },
     { key = 'n',     mods = 'CMD',      action = act.ActivateTabRelative(1) },
     { key = 'p',     mods = 'CMD',      action = act.ActivateTabRelative(-1) },
     { key = '[',     mods = 'CMD',      action = act.MoveTabRelative(-1) },
     { key = ']',     mods = 'CMD',      action = act.MoveTabRelative(1) },
-
-    -- tmux
-    {
-        key = 'v',
-        mods = 'CMD|SHIFT',
-        action = wezterm.action.SendKey { key = 'b', mods = 'CTRL' },
-    },
 }
 
 return config
