@@ -12,6 +12,7 @@ end
 
 -- fonts
 config.font_size = 13
+-- config.font = wezterm.font("Iosevka Term", {weight = "Regular", stretch = "Expanded"})
 
 -- window settings
 config.window_background_opacity = 1.0
@@ -31,7 +32,7 @@ config.colors = { tab_bar = helpers.tab_bar_colors }
 --     end
 -- )
 
-wezterm.on('update-status', function(window)
+wezterm.on("update-status", function(window)
     local color_scheme = window:effective_config().resolved_palette
     window:set_right_status(wezterm.format(helpers.get_right_status(window, color_scheme)))
 end)
@@ -47,50 +48,53 @@ config.unix_domains = {
 local act = wezterm.action
 config.keys = {
     -- general
-    { key = ';',     mods = 'CMD',      action = act.ActivateCommandPalette, },
-    { key = ':',     mods = 'CMD',      action = act.ShowLauncher },
-    { key = 'P',     mods = 'CMD',      action = act.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' } },
-    { key = "X",     mods = 'CMD',      action = act.ActivateCopyMode, },
-    { key = "'",     mods = 'CMD',      action = act.QuickSelect },
+    { key = ";",     mods = "CMD",       action = act.ActivateCommandPalette, },
+    { key = ":",     mods = "CMD",       action = act.ShowLauncher },
+    { key = "P",     mods = "CMD",       action = act.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" } },
+    { key = "X",     mods = "CMD",       action = act.ActivateCopyMode, },
+    { key = "'",     mods = "CMD",       action = act.QuickSelect },
 
-    { key = '=',     mods = 'CMD',      action = act.IncreaseFontSize },
-    { key = '-',     mods = 'CMD',      action = act.DecreaseFontSize },
-    { key = '0',     mods = 'CMD',      action = act.ResetFontSize },
-    { key = '=',     mods = 'CTRL',     action = act.DisableDefaultAssignment },
-    { key = '-',     mods = 'CTRL',     action = act.DisableDefaultAssignment },
-    { key = ' ',     mods = 'CTRL',     action = act.DisableDefaultAssignment },
+    { key = "=",     mods = "CMD",       action = act.IncreaseFontSize },
+    { key = "-",     mods = "CMD",       action = act.DecreaseFontSize },
+    { key = "0",     mods = "CMD",       action = act.ResetFontSize },
+
+    { key = "=",     mods = "CTRL",      action = act.DisableDefaultAssignment },
+    { key = "+",     mods = "CTRL",      action = act.DisableDefaultAssignment },
+    { key = "-",     mods = "CTRL",      action = act.DisableDefaultAssignment },
+    { key = "_",     mods = "CTRL",      action = act.DisableDefaultAssignment },
+    { key = " ",     mods = "CTRL",      action = act.DisableDefaultAssignment },
 
     -- scrollback
-    { key = 'u',     mods = 'CMD',      action = act.ScrollByLine(-1) },
-    { key = 'd',     mods = 'CMD',      action = act.ScrollByLine(1) },
-    { key = 'U',     mods = 'CMD',      action = act.ScrollByPage(-0.5) },
-    { key = 'D',     mods = 'CMD',      action = act.ScrollByPage(0.5) },
+    { key = "u",     mods = "CMD",       action = act.ScrollByLine(-1) },
+    { key = "d",     mods = "CMD",       action = act.ScrollByLine(1) },
+    { key = "U",     mods = "CMD",       action = act.ScrollByPage(-0.5) },
+    { key = "D",     mods = "CMD",       action = act.ScrollByPage(0.5) },
 
     -- panes
-    { key = 'w',     mods = 'CMD',      action = act.CloseCurrentPane { confirm = true }, },
-    { key = 'f',     mods = 'CMD|CTRL', action = act.TogglePaneZoomState },
-    { key = 'Enter', mods = 'CMD',      action = act.SplitHorizontal },
-    { key = 'v',     mods = 'CMD|CTRL', action = act.SplitHorizontal },
-    { key = 's',     mods = 'CMD|CTRL', action = act.SplitVertical },
-    { key = '`',     mods = 'CMD',      action = act.SplitPane { direction = 'Down', size = { Percent = 30 } } }, -- TODO: make it so that it either creates or focuses the terminal below
+    { key = "w",     mods = "CMD",       action = act.CloseCurrentPane { confirm = true }, },
+    { key = "f",     mods = "CMD|SHIFT", action = act.TogglePaneZoomState },
+    { key = "Enter", mods = "CMD",       action = act.SplitHorizontal },
+    { key = "v",     mods = "CMD|CTRL",  action = act.SplitHorizontal },
+    { key = "s",     mods = "CMD|CTRL",  action = act.SplitVertical },
+    { key = "`",     mods = "CMD",       action = act.SplitPane { direction = "Down", size = { Percent = 30 } } },  -- TODO: make it so that it either creates or focuses the terminal below
 
-    { key = 'w',     mods = 'CMD|CTRL', action = act.PaneSelect { mode = "SwapWithActive", alphabet = "qwertasd" } },
-    { key = 'h',     mods = 'CMD',      action = act.ActivatePaneDirection 'Left' },
-    { key = 'j',     mods = 'CMD',      action = act.ActivatePaneDirection 'Down' },
-    { key = 'k',     mods = 'CMD',      action = act.ActivatePaneDirection 'Up' },
-    { key = 'l',     mods = 'CMD',      action = act.ActivatePaneDirection 'Right' },
+    { key = "w",     mods = "CMD|CTRL",  action = act.PaneSelect { mode = "SwapWithActive", alphabet = "qwertasd" } },
+    { key = "h",     mods = "CMD",       action = act.ActivatePaneDirection "Left" },
+    { key = "j",     mods = "CMD",       action = act.ActivatePaneDirection "Down" },
+    { key = "k",     mods = "CMD",       action = act.ActivatePaneDirection "Up" },
+    { key = "l",     mods = "CMD",       action = act.ActivatePaneDirection "Right" },
 
-    { key = 'h',     mods = 'CMD|CTRL', action = act.AdjustPaneSize { "Left", 9 } },
-    { key = 'j',     mods = 'CMD|CTRL', action = act.AdjustPaneSize { 'Down', 7 } },
-    { key = 'k',     mods = 'CMD|CTRL', action = act.AdjustPaneSize { 'Up', 7 } },
-    { key = 'l',     mods = 'CMD|CTRL', action = act.AdjustPaneSize { 'Right', 9 } },
+    { key = "h",     mods = "CMD|CTRL",  action = act.AdjustPaneSize { "Left", 9 } },
+    { key = "j",     mods = "CMD|CTRL",  action = act.AdjustPaneSize { "Down", 7 } },
+    { key = "k",     mods = "CMD|CTRL",  action = act.AdjustPaneSize { "Up", 7 } },
+    { key = "l",     mods = "CMD|CTRL",  action = act.AdjustPaneSize { "Right", 9 } },
 
     -- tabs
     {
-        key = 't',
-        mods = 'CMD|CTRL',
+        key = "t",
+        mods = "CMD|CTRL",
         action = act.PromptInputLine {
-            description = 'Enter new name for tab',
+            description = "Enter new name for tab",
             action = wezterm.action_callback(
                 function(window, pane, line)
                     if line then
@@ -99,29 +103,29 @@ config.keys = {
                 end)
         }
     },
-    { key = 'T', mods = 'CMD',       action = act.SpawnCommandInNewTab { cwd = wezterm.home_dir } },
-    { key = 'n', mods = 'CMD',       action = act.ActivateTabRelative(1) },
-    { key = 'p', mods = 'CMD',       action = act.ActivateTabRelative(-1) },
-    { key = '[', mods = 'CMD',       action = act.MoveTabRelative(-1) },
-    { key = ']', mods = 'CMD',       action = act.MoveTabRelative(1) },
+    { key = "T", mods = "CMD",       action = act.SpawnCommandInNewTab { cwd = wezterm.home_dir } },
+    { key = "n", mods = "CMD",       action = act.ActivateTabRelative(1) },
+    { key = "p", mods = "CMD",       action = act.ActivateTabRelative(-1) },
+    { key = "[", mods = "CMD",       action = act.MoveTabRelative(-1) },
+    { key = "]", mods = "CMD",       action = act.MoveTabRelative(1) },
 
     -- sessions
-    { key = 'a', mods = 'CMD|SHIFT', action = act.AttachDomain "unix" },
-    { key = 'd', mods = 'CMD|SHIFT', action = act.DetachDomain { DomainName = "unix" } },
+    { key = "a", mods = "CMD|SHIFT", action = act.AttachDomain "unix" },
+    { key = "d", mods = "CMD|SHIFT", action = act.DetachDomain { DomainName = "unix" } },
     {
-        key = 'r',
-        mods = 'CMD|CTRL',
+        key = "r",
+        mods = "CMD|CTRL",
         action = act.PromptInputLine {
-            description = 'Enter new name for session',
+            description = "Enter new name for session",
             action = wezterm.action_callback(
-            function(window, pane, line)
-                if line then
-                    wezterm.mux.rename_workspace(
-                    window:mux_window():get_workspace(),
-                    line
-                    )
+                function(window, pane, line)
+                    if line then
+                        wezterm.mux.rename_workspace(
+                            window:mux_window():get_workspace(),
+                            line
+                        )
+                    end
                 end
-            end
             ),
         },
     },
