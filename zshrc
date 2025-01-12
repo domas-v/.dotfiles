@@ -112,7 +112,8 @@ alias dot="cd ~/.dotfiles/"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
 
-alias v="nvim -c \"lcd%:p:h\""
+alias v="nvim"
+alias wez="wezterm"
 alias src="source ~/.zshrc"
 alias zrc="v ~/.dotfiles/zshrc"
 
