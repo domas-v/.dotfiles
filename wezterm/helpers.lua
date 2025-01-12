@@ -78,11 +78,18 @@ module.tab_bar_colors = {
 }
 
 local function segments_for_right_status(window)
-    return {
-        window:active_workspace(),
-        window:active_pane():get_domain_name(),
-        wezterm.hostname()
-    }
+    local result = {}
+
+    if window:active_workspace() then
+        table.insert(result, window:active_workspace())
+    end
+    if window:active_pane() and window:active_pane():get_domain_name() then
+        table.insert(result, window:active_pane():get_domain_name())
+    end
+
+    table.insert(result, wezterm.hostname())
+
+    return result
 end
 
 function module.get_right_status(window, color_scheme)
