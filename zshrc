@@ -76,7 +76,6 @@ plugins=(
     zsh-autosuggestions
     zsh-interactive-cd
     aws
-    tmux
     fzf
     direnv
     python
@@ -145,9 +144,6 @@ alias bat="preview_stuff"
 alias t="touch"
 alias l="eza -l --git"
 alias ll="eza -la --git"
-
-# tmux
-alias td="tmux detach"
 
 # python
 alias py="python"
