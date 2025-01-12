@@ -46,7 +46,7 @@ return {
             { "<c-s-k>",       "<cmd>MultipleCursorsAddUp<cr>",            mode = { "n", "x" }, desc = "add cursor and move up" },
             { "<c-leftmouse>", "<cmd>MultipleCursorsMouseAddDelete<cr>",   mode = { "n", "i" }, desc = "add or remove cursor" },
             { "<leader>a",     "<cmd>MultipleCursorsAddJumpNextMatch<cr>", mode = { "n", "x" }, desc = "add cursor and jump to next cword" },
-            { "<leader>a",     "<cmd>MultipleCursorsAddMatches<cr>",       mode = { "n", "x" }, desc = "add cursors to cword" },
+            { "<leader>A",     "<cmd>MultipleCursorsAddMatches<cr>",       mode = { "n", "x" }, desc = "add cursors to cword" },
             { "<leader>l",     "<cmd>MultipleCursorsLock<cr>",             mode = { "n", "x" }, desc = "lock virtual cursors" },
         },
     },
