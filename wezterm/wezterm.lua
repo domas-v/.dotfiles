@@ -24,16 +24,24 @@ config.use_fancy_tab_bar = false
 config.tab_max_width = 300
 config.colors = { tab_bar = helpers.tab_bar_colors }
 
-wezterm.on(
-    'format-tab-title',
-    function(tab, tabs, panes, conf, hover, max_width)
-        return { { Text = " " .. helpers.get_title(tab) .. " " } }
-    end
-)
+-- wezterm.on(
+--     'format-tab-title',
+--     function(tab, tabs, panes, conf, hover, max_width)
+--         return { { Text = " " .. helpers.get_title(tab) .. " " } }
+--     end
+-- )
+
 wezterm.on('update-status', function(window)
     local color_scheme = window:effective_config().resolved_palette
     window:set_right_status(wezterm.format(helpers.get_right_status(window, color_scheme)))
 end)
+
+-- sessions
+config.unix_domains = {
+    {
+        name = "unix",
+    }
+}
 
 -- keybindings
 local act = wezterm.action
@@ -91,13 +99,32 @@ config.keys = {
                 end)
         }
     },
-    { key = 'T', mods = 'CMD', action = act.SpawnCommandInNewTab { cwd = wezterm.home_dir } },
-    { key = 'n', mods = 'CMD', action = act.ActivateTabRelative(1) },
-    { key = 'p', mods = 'CMD', action = act.ActivateTabRelative(-1) },
-    { key = '[', mods = 'CMD', action = act.MoveTabRelative(-1) },
-    { key = ']', mods = 'CMD', action = act.MoveTabRelative(1) },
+    { key = 'T', mods = 'CMD',       action = act.SpawnCommandInNewTab { cwd = wezterm.home_dir } },
+    { key = 'n', mods = 'CMD',       action = act.ActivateTabRelative(1) },
+    { key = 'p', mods = 'CMD',       action = act.ActivateTabRelative(-1) },
+    { key = '[', mods = 'CMD',       action = act.MoveTabRelative(-1) },
+    { key = ']', mods = 'CMD',       action = act.MoveTabRelative(1) },
 
-    -- TODO: sessions
+    -- sessions
+    { key = 'a', mods = 'CMD|SHIFT', action = act.AttachDomain "unix" },
+    { key = 'd', mods = 'CMD|SHIFT', action = act.DetachDomain { DomainName = "unix" } },
+    {
+        key = 'r',
+        mods = 'CMD|CTRL',
+        action = act.PromptInputLine {
+            description = 'Enter new name for session',
+            action = wezterm.action_callback(
+            function(window, pane, line)
+                if line then
+                    wezterm.mux.rename_workspace(
+                    window:mux_window():get_workspace(),
+                    line
+                    )
+                end
+            end
+            ),
+        },
+    },
 }
 
 return config

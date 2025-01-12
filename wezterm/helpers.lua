@@ -2,11 +2,6 @@ local function basename(s)
     return string.gsub(s, '(.*[/\\])(.*)', '%2')
 end
 
-local function escape_lua_pattern(s)
-    return s:gsub("([%^%$%(%)%%%.%[%]%*%+%-%?])", "%%%1")
-end
-
-
 local wezterm = require("wezterm")
 local module = {}
 
@@ -85,7 +80,8 @@ module.tab_bar_colors = {
 local function segments_for_right_status(window)
     return {
         window:active_workspace(),
-        wezterm.hostname(),
+        window:active_pane():get_domain_name(),
+        wezterm.hostname()
     }
 end
 
