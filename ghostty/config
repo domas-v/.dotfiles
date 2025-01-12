@@ -7,6 +7,7 @@ shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = false
 
+initial-command = "/opt/homebrew/bin/tmux attach"
 
 ### SHORTCUTS ###
 
@@ -31,8 +32,8 @@ keybind = cmd+n=text:\x02\x6e
 #prev
 keybind = cmd+p=text:\x02\x70
 # move window
-keybind = cmd+]=text:\x02\x6f
-keybind = cmd+[=text:\x02\x69
+keybind = cmd+[=text:\x02\x6f
+keybind = cmd+]=text:\x02\x69
 # select
 keybind = cmd+1=text:\x02\x31
 keybind = cmd+2=text:\x02\x32

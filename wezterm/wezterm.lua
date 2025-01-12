@@ -1,6 +1,7 @@
 local wezterm = require "wezterm"
-local config = wezterm.config_builder()
 local helpers = require("helpers")
+
+local config = wezterm.config_builder()
 
 -- colors
 if not helpers.is_dark() then
@@ -46,30 +47,57 @@ config.keys = {
 
     { key = '=',     mods = 'CMD',      action = act.IncreaseFontSize },
     { key = '-',     mods = 'CMD',      action = act.DecreaseFontSize },
-    { key = '+',     mods = 'CMD',      action = act.ResetFontSize },
+    { key = '0',     mods = 'CMD',      action = act.ResetFontSize },
     { key = '=',     mods = 'CTRL',     action = act.DisableDefaultAssignment },
     { key = '-',     mods = 'CTRL',     action = act.DisableDefaultAssignment },
     { key = ' ',     mods = 'CTRL',     action = act.DisableDefaultAssignment },
 
-    -- splits
-    { key = 'Enter', mods = 'CMD',      action = act.SplitHorizontal },
+    -- scrollback
+    { key = 'u',     mods = 'CMD',      action = act.ScrollByLine(-1) },
+    { key = 'd',     mods = 'CMD',      action = act.ScrollByLine(1) },
+    { key = 'U',     mods = 'CMD',      action = act.ScrollByPage(-0.5) },
+    { key = 'D',     mods = 'CMD',      action = act.ScrollByPage(0.5) },
+
+    -- panes
     { key = 'w',     mods = 'CMD',      action = act.CloseCurrentPane { confirm = true }, },
+    { key = 'f',     mods = 'CMD|CTRL', action = act.TogglePaneZoomState },
+    { key = 'Enter', mods = 'CMD',      action = act.SplitHorizontal },
     { key = 'v',     mods = 'CMD|CTRL', action = act.SplitHorizontal },
     { key = 's',     mods = 'CMD|CTRL', action = act.SplitVertical },
-    { key = '`',     mods = 'CMD',      action = act.SplitPane { direction = 'Down', size = { Percent = 30 } } },
+    { key = '`',     mods = 'CMD',      action = act.SplitPane { direction = 'Down', size = { Percent = 30 } } }, -- TODO: make it so that it either creates or focuses the terminal below
+
+    { key = 'w',     mods = 'CMD|CTRL', action = act.PaneSelect { mode = "SwapWithActive", alphabet = "qwertasd" } },
     { key = 'h',     mods = 'CMD',      action = act.ActivatePaneDirection 'Left' },
     { key = 'j',     mods = 'CMD',      action = act.ActivatePaneDirection 'Down' },
     { key = 'k',     mods = 'CMD',      action = act.ActivatePaneDirection 'Up' },
     { key = 'l',     mods = 'CMD',      action = act.ActivatePaneDirection 'Right' },
-    { key = 'F',     mods = 'CMD',      action = act.TogglePaneZoomState },
+
+    { key = 'h',     mods = 'CMD|CTRL', action = act.AdjustPaneSize { "Left", 9 } },
+    { key = 'j',     mods = 'CMD|CTRL', action = act.AdjustPaneSize { 'Down', 7 } },
+    { key = 'k',     mods = 'CMD|CTRL', action = act.AdjustPaneSize { 'Up', 7 } },
+    { key = 'l',     mods = 'CMD|CTRL', action = act.AdjustPaneSize { 'Right', 9 } },
 
     -- tabs
-    { key = 't',     mods = 'CMD|CTRL', action = act.ShowTabNavigator },
-    { key = 'T',     mods = 'CMD',      action = act.SpawnCommandInNewTab { cwd = wezterm.home_dir } },
-    { key = 'n',     mods = 'CMD',      action = act.ActivateTabRelative(1) },
-    { key = 'p',     mods = 'CMD',      action = act.ActivateTabRelative(-1) },
-    { key = '[',     mods = 'CMD',      action = act.MoveTabRelative(-1) },
-    { key = ']',     mods = 'CMD',      action = act.MoveTabRelative(1) },
+    {
+        key = 't',
+        mods = 'CMD|CTRL',
+        action = act.PromptInputLine {
+            description = 'Enter new name for tab',
+            action = wezterm.action_callback(
+                function(window, pane, line)
+                    if line then
+                        window:active_tab():set_title(line)
+                    end
+                end)
+        }
+    },
+    { key = 'T', mods = 'CMD', action = act.SpawnCommandInNewTab { cwd = wezterm.home_dir } },
+    { key = 'n', mods = 'CMD', action = act.ActivateTabRelative(1) },
+    { key = 'p', mods = 'CMD', action = act.ActivateTabRelative(-1) },
+    { key = '[', mods = 'CMD', action = act.MoveTabRelative(-1) },
+    { key = ']', mods = 'CMD', action = act.MoveTabRelative(1) },
+
+    -- TODO: sessions
 }
 
 return config

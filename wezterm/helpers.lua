@@ -32,22 +32,23 @@ function module.get_title(tab)
         file_path = pane.current_working_dir.file_path
         if file_path == wezterm.home_dir .. "/.dotfiles" then
             file_path = wezterm.nerdfonts.seti_config
+        elseif file_path == wezterm.home_dir then
+            file_path = wezterm.nerdfonts.linux_apple
         else
-            local escaped_dir = escape_lua_pattern(wezterm.home_dir)
-            file_path = file_path:gsub(escaped_dir, wezterm.nerdfonts.custom_home .. " ")
+            file_path = file_path:match("[^/]+$")
         end
+
+        file_path = file_path .. " "
     end
 
     local process = basename(pane.foreground_process_name)
-    local separator = ": "
-    if process == "nvim" then
-        process = wezterm.nerdfonts.linux_neovim
-        separator = " " .. separator
-    elseif process == "zsh" then
+    if process == "zsh" then
         process = wezterm.nerdfonts.seti_shell
+    elseif process == "nvim" then
+        process = wezterm.nerdfonts.linux_neovim .. " "
     end
 
-    return process .. separator .. file_path
+    return process .. ": " .. file_path
 end
 
 function module.get_index(tab)
