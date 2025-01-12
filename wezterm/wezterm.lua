@@ -38,11 +38,14 @@ wezterm.on("update-status", function(window)
 end)
 
 -- sessions
+local main_domain = "unix"
 config.unix_domains = {
     {
-        name = "unix",
+        name = main_domain,
     }
 }
+
+config.default_domain = main_domain
 
 -- keybindings
 local act = wezterm.action
@@ -76,7 +79,7 @@ config.keys = {
     { key = "Enter", mods = "CMD",       action = act.SplitHorizontal },
     { key = "v",     mods = "CMD|CTRL",  action = act.SplitHorizontal },
     { key = "s",     mods = "CMD|CTRL",  action = act.SplitVertical },
-    { key = "`",     mods = "CMD",       action = act.SplitPane { direction = "Down", size = { Percent = 30 } } },  -- TODO: make it so that it either creates or focuses the terminal below
+    { key = "`",     mods = "CMD",       action = act.SplitPane { direction = "Down", size = { Percent = 30 } } }, -- TODO: make it so that it either creates or focuses the terminal below
 
     { key = "w",     mods = "CMD|CTRL",  action = act.PaneSelect { mode = "SwapWithActive", alphabet = "qwertasd" } },
     { key = "h",     mods = "CMD",       action = act.ActivatePaneDirection "Left" },
@@ -110,8 +113,8 @@ config.keys = {
     { key = "]", mods = "CMD",       action = act.MoveTabRelative(1) },
 
     -- sessions
-    { key = "a", mods = "CMD|SHIFT", action = act.AttachDomain "unix" },
-    { key = "d", mods = "CMD|SHIFT", action = act.DetachDomain { DomainName = "unix" } },
+    { key = "a", mods = "CMD|SHIFT", action = act.AttachDomain(main_domain) },
+    { key = "d", mods = "CMD|SHIFT", action = act.DetachDomain { DomainName = main_domain } },
     {
         key = "r",
         mods = "CMD|CTRL",
