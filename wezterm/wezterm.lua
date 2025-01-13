@@ -7,12 +7,11 @@ local config = wezterm.config_builder()
 if not helpers.is_dark() then
     config.color_scheme = "catppuccin-latte"
 else
-    config.color_scheme = "catppuccin-mocha"
+    config.color_scheme = "catppuccin-frappe"
 end
 
 -- fonts
 config.font_size = 13
--- config.font = wezterm.font("Iosevka Term", {weight = "Regular", stretch = "Expanded"})
 
 -- window settings
 config.window_background_opacity = 1.0
@@ -113,7 +112,7 @@ config.keys = {
     { key = "]", mods = "CMD",       action = act.MoveTabRelative(1) },
 
     -- sessions
-    { key = "a", mods = "CMD|SHIFT", action = act.AttachDomain(main_domain) },
+    { key = "a", mods = "CMD|SHIFT", action = act.AttachDomain("unix") },
     { key = "d", mods = "CMD|SHIFT", action = act.DetachDomain { DomainName = main_domain } },
     {
         key = "r",

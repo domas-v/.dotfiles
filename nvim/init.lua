@@ -12,13 +12,13 @@ local function get_system_theme_mac()
     end
 end
 
-if get_system_theme_mac() then
-    vim.o.background = "dark"
-    vim.cmd("colorscheme catppuccin")
-else
-    vim.o.background = "light"
-    vim.cmd("colorscheme catppuccin-latte")
-end
+vim.cmd("colorscheme catppuccin")
+-- if get_system_theme_mac() then
+--     vim.o.background = "dark"
+-- else
+--     vim.o.background = "light"
+--     vim.cmd("colorscheme catppuccin-latte")
+-- end
 
 -- htto filetype is not detected somehow. this is a fix
 vim.filetype.add({

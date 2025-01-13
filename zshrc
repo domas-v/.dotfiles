@@ -144,6 +144,8 @@ alias bat="preview_stuff"
 alias t="touch"
 alias l="eza -l --git"
 alias ll="eza -la --git"
+alias lt="eza -l --git -T -L 2"
+alias llt="eza -l --git -T -L"
 
 # python
 alias py="python"

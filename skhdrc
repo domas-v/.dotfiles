@@ -99,11 +99,9 @@
 
 # prevent skhd from monitoring events for specific applications.
 #
-# .blacklist [
-#    "kitty"
-#    "terminal"
-#    "qutebrowser"
-# ]
+.blacklist [
+   "raycast"
+]
 
 # config
 alt + shift - 0x2F : aerospace enable toggle
@@ -170,7 +168,6 @@ alt + ctrl - 0x1E : aerospace move-workspace-to-monitor next --wrap-around
 alt + ctrl - 0x21 : aerospace move-workspace-to-monitor prev --wrap-around
 
 # workspaces
-
 alt - n : aerospace list-workspaces --monitor all | aerospace workspace next --wrap-around
 alt - p : aerospace list-workspaces --monitor all | aerospace workspace prev --wrap-around
 
@@ -196,5 +193,3 @@ alt + shift - 6 : aerospace move-node-to-workspace 6
 alt + shift - 7 : aerospace move-node-to-workspace 7
 alt + shift - 8 : aerospace move-node-to-workspace 8
 alt + shift - 9 : aerospace move-node-to-workspace 9
-
-
