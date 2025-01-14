@@ -44,7 +44,7 @@ config.unix_domains = {
     }
 }
 
-config.default_domain = main_domain
+-- config.default_domain = main_domain
 
 -- keybindings
 local act = wezterm.action
@@ -112,8 +112,8 @@ config.keys = {
     { key = "]", mods = "CMD",       action = act.MoveTabRelative(1) },
 
     -- sessions
-    { key = "a", mods = "CMD|SHIFT", action = act.AttachDomain("unix") },
-    { key = "d", mods = "CMD|SHIFT", action = act.DetachDomain { DomainName = main_domain } },
+    { key = "a", mods = "CMD|SHIFT", action = act.AttachDomain(main_domain) },
+    { key = "q", mods = "CMD|SHIFT", action = act.DetachDomain { DomainName = main_domain } },
     {
         key = "r",
         mods = "CMD|CTRL",
