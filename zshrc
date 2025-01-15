@@ -77,6 +77,7 @@ plugins=(
     zsh-interactive-cd
     aws
     fzf
+    tmux
     direnv
     python
     pyenv
@@ -115,6 +116,9 @@ alias v="nvim"
 alias wez="wezterm"
 alias src="source ~/.zshrc"
 alias zrc="v ~/.dotfiles/zshrc"
+
+alias td="tmux detach"
+alias tx="tmux kill-session"
 
 # file listings
 function preview_stuff() {

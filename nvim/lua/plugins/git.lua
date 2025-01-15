@@ -1,6 +1,29 @@
 return {
     {
+        "NeogitOrg/neogit",
+        enabled = true,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            require("neogit").setup({
+                kind = "vsplit",
+                commit_editor = {
+                    kind = "split",
+                },
+                disable_commit_confirmation = true
+            })
+        end,
+        cmd = { "Neogit" },
+        keys = {
+            { "<leader>gg", "<cmd>Neogit<cr>",      desc = "Neogit" },
+            { "<leader>gp", "<cmd>Neogit pull<cr>", desc = "Neogit" },
+            { "<leader>gP", "<cmd>Neogit push<cr>", desc = "Neogit" },
+        }
+    },
+    {
         "tpope/vim-fugitive",
+        enabled = false,
         -- cmd = { "Git", "G" },
         init = function()
             vim.api.nvim_create_user_command("G", function()

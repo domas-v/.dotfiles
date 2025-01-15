@@ -7,14 +7,14 @@ cursor-style-blink = false
 
 # quick terminal
 quick-terminal-animation-duration = 0.1
-keybind = global:cmd+grave_accent=toggle_quick_terminal
+# keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = global:cmd+§=toggle_quick_terminal
 
 # title bar
 macos-titlebar-style = "transparent"
 window-new-tab-position = end
 
 # tmux config
-# config-file = tmux.config
+config-file = tmux.config
 
-config-file = keybindings.config
-
+# config-file = keybindings.config
