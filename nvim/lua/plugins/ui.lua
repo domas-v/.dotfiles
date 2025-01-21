@@ -99,12 +99,6 @@ return {
         }
     },
     {
-        "tiagovla/scope.nvim",
-        enabled = false,
-        config = true,
-        keys = { { "<leader>tm", "<cmd>ScopeMoveBuf<cr>" } }
-    },
-    {
         'nvim-lualine/lualine.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
         config = function()

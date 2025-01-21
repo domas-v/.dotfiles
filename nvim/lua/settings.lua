@@ -48,22 +48,34 @@ o.foldlevelstart         = 99
 o.foldexpr               = "nvim_treesitter#foldexpr()"
 o.foldmethod             = "expr"
 
+-- this saves fold
+vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
+    pattern = { "*.*" },
+    desc = "save view (folds), when closing file",
+    command = "mkview",
+})
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    pattern = { "*.*" },
+    desc = "load view (folds), when opening file",
+    command = "silent! loadview"
+})
+
 -- search
-o.ignorecase             = true
-o.smartcase              = true
-o.incsearch              = true
+o.ignorecase           = true
+o.smartcase            = true
+o.incsearch            = true
 
 -- misc
-o.mouse                  = "a"
-o.hidden                 = true               -- allow unsaved buffers
-o.completeopt            = "menuone,noselect" -- completion type
-o.fixendofline           = false              -- don't add new line at end of file
+o.mouse                = "a"
+o.hidden               = true                 -- allow unsaved buffers
+o.completeopt          = "menuone,noselect"   -- completion type
+o.fixendofline         = false                -- don't add new line at end of file
 
 -- performance
-o.updatetime             = 100
-o.timeoutlen             = 600
-o.lazyredraw             = false
+o.updatetime           = 100
+o.timeoutlen           = 600
+o.lazyredraw           = false
 
 -- providers
-g.loaded_ruby_provider   = 0
-g.loaded_perl_provider   = 0
+g.loaded_ruby_provider = 0
+g.loaded_perl_provider = 0
