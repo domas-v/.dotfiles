@@ -34,4 +34,9 @@ return {
             kitty_method = "normal",
         },
     },
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        after = { "nvim-treesitter" },
+        config = function() require("render-markdown").setup({}) end
+    }
 }
