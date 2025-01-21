@@ -1,7 +1,6 @@
 local o                  = vim.o  -- global options
 local wo                 = vim.wo -- window local options
 local g                  = vim.g  -- global variables
-local api                = vim.api
 
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw       = 1
@@ -67,9 +66,9 @@ o.incsearch            = true
 
 -- misc
 o.mouse                = "a"
-o.hidden               = true                 -- allow unsaved buffers
-o.completeopt          = "menuone,noselect"   -- completion type
-o.fixendofline         = false                -- don't add new line at end of file
+o.hidden               = true               -- allow unsaved buffers
+o.completeopt          = "menuone,noselect" -- completion type
+o.fixendofline         = false              -- don't add new line at end of file
 
 -- performance
 o.updatetime           = 100
@@ -79,3 +78,4 @@ o.lazyredraw           = false
 -- providers
 g.loaded_ruby_provider = 0
 g.loaded_perl_provider = 0
+g.python3_host_prog    = "~/.pyenv/shims/python"

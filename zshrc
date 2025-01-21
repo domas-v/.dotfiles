@@ -113,9 +113,9 @@ alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
 
 alias v="nvim"
-alias wez="wezterm"
 alias src="source ~/.zshrc"
 alias zrc="v ~/.dotfiles/zshrc"
+alias nt="v ~/Desktop/Notes/"
 
 alias td="tmux detach"
 alias tx="tmux kill-session"
@@ -144,7 +144,7 @@ function preview_stuff() {
     fi
 }
 
-alias bat="preview_stuff"
+alias vv="preview_stuff"
 alias t="touch"
 alias l="eza -l --git"
 alias ll="eza -la --git"
