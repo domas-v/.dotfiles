@@ -13,31 +13,28 @@ return {
                 },
                 disable_commit_confirmation = true
             })
+
+            vim.api.nvim_create_user_command('G', function()
+                vim.cmd('Neogit')
+            end, {})
+            vim.api.nvim_create_user_command('Gp', function()
+                vim.cmd('Neogit push')
+            end, {})
+            vim.api.nvim_create_user_command('Gl', function()
+                vim.cmd('Neogit pull')
+            end, {})
+            vim.api.nvim_create_user_command('Gc', function()
+                vim.cmd('Neogit commit')
+            end, {})
+
         end,
         cmd = { "Neogit" },
         keys = {
-            { "<leader>gg", "<cmd>Neogit<cr>",      desc = "Neogit" },
-            { "<leader>gp", "<cmd>Neogit pull<cr>", desc = "Neogit" },
-            { "<leader>gP", "<cmd>Neogit push<cr>", desc = "Neogit" },
+            { "<leader>gg", "<cmd>Neogit<cr>", },
+            { "<leader>gp", "<cmd>Neogit pull<cr>", },
+            { "<leader>gP", "<cmd>Neogit push<cr>", },
+            { "<leader>gc", "<cmd>Neogit commit<cr>", },
         }
-    },
-    {
-        "tpope/vim-fugitive",
-        enabled = false,
-        -- cmd = { "Git", "G" },
-        init = function()
-            vim.api.nvim_create_user_command("G", function()
-                vim.cmd("vert Git")
-            end, {})
-
-            vim.api.nvim_create_user_command("Gp", function()
-                vim.cmd("Git push")
-            end, {})
-
-            vim.api.nvim_create_user_command("Gl", function()
-                vim.cmd("Git pull")
-            end, {})
-        end
     },
     {
         "lewis6991/gitsigns.nvim",
