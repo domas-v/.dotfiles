@@ -9,10 +9,11 @@ return {
             lspconfig.pyright.setup({})
             lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { disable = { "missing-fields" } } } } })
             lspconfig.clangd.setup({})
+            lspconfig.marksman.setup({})
 
-            map.set('n', '<leader>xv', vim.diagnostic.open_float)
-            map.set('n', '<leader>xk', vim.diagnostic.goto_prev)
-            map.set('n', '<leader>xj', vim.diagnostic.goto_next)
+            map.set('n', '<leader>uv', vim.diagnostic.open_float)
+            map.set('n', '<leader>uk', vim.diagnostic.goto_prev)
+            map.set('n', '<leader>uj', vim.diagnostic.goto_next)
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
                 callback = function(ev)

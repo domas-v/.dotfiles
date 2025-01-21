@@ -10,6 +10,7 @@ return {
                     "lua",
                     "c",
                     "markdown",
+                    "markdown_inline",
                     "vimdoc",
                     "json",
                     "http",

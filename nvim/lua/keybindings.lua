@@ -53,6 +53,7 @@ vim.keymap.set("v", "<leader><leader>e", ":lua<cr>")
 
 -- saving and closing
 vim.keymap.set("n", "<C-q>", "<cmd>close<cr>", default_opts)
+vim.keymap.set("n", "<leader>q", "<cmd>close<cr>", default_opts)
 vim.keymap.set("n", "<leader>Q", "<cmd>qa<cr>", default_opts)
 vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", default_opts)
 
@@ -107,6 +108,11 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", default_opts)
 vim.keymap.set("n", "<C-j>", "<C-w>j", default_opts)
 vim.keymap.set("n", "<C-k>", "<C-w>k", default_opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", default_opts)
+
+vim.keymap.set("n", "<leader>h", "<C-w>h", default_opts)
+vim.keymap.set("n", "<leader>j", "<C-w>j", default_opts)
+vim.keymap.set("n", "<leader>k", "<C-w>k", default_opts)
+vim.keymap.set("n", "<leader>l", "<C-w>l", default_opts)
 
 -- resize splits
 vim.keymap.set("n", "<C-,>", "<C-w>10<", default_opts)

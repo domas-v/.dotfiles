@@ -128,8 +128,8 @@ return {
             -- lsp
             { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>" },
             { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>" },
-            { "<leader>xr", "<cmd>Telescope lsp_references<cr>" },
-            { "<leader>xx", "<cmd>Telescope diagnostics<cr>" },
+            { "<leader>ur", "<cmd>Telescope lsp_references<cr>" },
+            { "<leader>U",  "<cmd>Telescope diagnostics<cr>" },
 
             -- dap
             { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>" },
