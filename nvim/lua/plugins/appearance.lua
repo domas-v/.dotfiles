@@ -64,6 +64,4 @@ return {
             },
         },
     },
-    -- TODO:
-    -- { rose-pine }
 }
