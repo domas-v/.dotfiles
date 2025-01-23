@@ -128,6 +128,7 @@ return {
         },
         config = function()
             local dap = require('dap')
+            dap.defaults.fallback.terminal_win_cmd = "tabnew"
             if vim.fn.filereadable(".vscode/launch.json") then
                 require("dap.ext.vscode").load_launchjs(nil, {})
             end

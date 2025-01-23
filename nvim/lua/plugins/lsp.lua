@@ -11,7 +11,7 @@ return {
             lspconfig.clangd.setup({})
             lspconfig.marksman.setup({})
 
-            map.set('n', '<leader>uv', vim.diagnostic.open_float)
+            map.set('n', '<leader>uu', vim.diagnostic.open_float)
             map.set('n', '<leader>uk', vim.diagnostic.goto_prev)
             map.set('n', '<leader>uj', vim.diagnostic.goto_next)
             vim.api.nvim_create_autocmd('LspAttach', {
