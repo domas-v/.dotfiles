@@ -1,7 +1,7 @@
 return {
     {
         "vhyrro/luarocks.nvim",
-        priority = 1001, -- this plugin needs to run before anything else
+        priority = 1001,
         opts = {
             rocks = { "magick" },
         },
@@ -17,7 +17,7 @@ return {
                     clear_in_insert_mode = false,
                     download_remote_images = true,
                     only_render_image_at_cursor = false,
-                    filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+                    filetypes = { "markdown", "vimwiki", "quarto" },
                 },
                 neorg = {
                     enabled = true,
@@ -37,6 +37,12 @@ return {
     {
         "MeanderingProgrammer/render-markdown.nvim",
         after = { "nvim-treesitter" },
-        config = function() require("render-markdown").setup({}) end
-    }
+        opts = {
+            heading = {
+                render_modes = { "i" },
+                left_pad = { 1, 2, 3, 4, 5 }
+            }
+        },
+    },
+    { "folke/zen-mode.nvim", opts = {} }
 }
