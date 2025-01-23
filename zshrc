@@ -137,7 +137,8 @@ function preview_stuff() {
     # Check if the file is an image
     if [[ " $img_exts " == *" $ext "* ]]; then
         # If it's an image, use viu to display it
-        viu "$1" -w 50
+        # viu "$1" -w 50
+        kitty icat "$1"
     else
         # Otherwise use bat
         bat "$1"
