@@ -26,7 +26,6 @@ return {
             vim.api.nvim_create_user_command('Gc', function()
                 vim.cmd('Neogit commit')
             end, {})
-
         end,
         cmd = { "Neogit" },
         keys = {
@@ -40,9 +39,7 @@ return {
         "lewis6991/gitsigns.nvim",
         lazy = false,
         config = function()
-            require('gitsigns').setup({
-                current_line_blame_opts = { delay = 100 },
-            })
+            require('gitsigns').setup({ current_line_blame_opts = { delay = 100 } })
         end,
         keys = {
             { "<leader>gj", "<cmd>Gitsigns next_hunk<cr>",                 desc = "Gitsigns next" },

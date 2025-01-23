@@ -90,7 +90,8 @@ vim.keymap.set("n", "<leader>cj", "<cmd>cnext<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>ck", "<cmd>cprevious<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>co", "<cmd>copen<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>cc", "<cmd>cclose<cr>", { noremap = true })
-vim.keymap.set("n", "<leader>cr", ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
+vim.keymap.set("n", "<leader>cr",
+    ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
     { noremap = true })
 vim.api.nvim_create_autocmd("FileType", { -- in quickfix list
     pattern = "qf",
@@ -113,6 +114,10 @@ vim.keymap.set("n", "<leader>h", "<C-w>h", default_opts)
 vim.keymap.set("n", "<leader>j", "<C-w>j", default_opts)
 vim.keymap.set("n", "<leader>k", "<C-w>k", default_opts)
 vim.keymap.set("n", "<leader>l", "<C-w>l", default_opts)
+
+vim.keymap.set("n", "<leader>wo", "<C-w>o", default_opts)
+vim.keymap.set("n", "<leader>wv", "<C-w>v", default_opts)
+vim.keymap.set("n", "<leader>ws", "<C-w>s", default_opts)
 
 -- resize splits
 vim.keymap.set("n", "<C-,>", "<C-w>10<", default_opts)
