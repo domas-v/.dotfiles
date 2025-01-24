@@ -42,7 +42,11 @@ return {
                 render_modes = { "i" },
                 left_pad = { 1, 2, 3, 4, 5 }
             }
-        },
+        }
     },
-    { "folke/zen-mode.nvim", opts = {} }
+    {
+        "Snikimonkd/yazmp",
+        cmd = { "Zenmode" },
+        keys = { { "<leader>zm", ":Zenmode<cr>" } }
+    }
 }

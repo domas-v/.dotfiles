@@ -107,8 +107,6 @@ return {
             telescope.load_extension("dap")
         end,
         keys = {
-
-            -- { "<C-;>",      "<cmd>Telescope builtin previewer=false<cr>",},
             { "<leader>R",  "<cmd>Telescope resume<cr>" },
             { "<leader>H",  "<cmd>Telescope help_tags<cr>" },
             { "<leader>K",  "<cmd>Telescope keymaps<cr>" },
