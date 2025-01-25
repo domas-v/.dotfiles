@@ -111,11 +111,11 @@ export VISUAL="nvim"
 alias dot="cd ~/.dotfiles/"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
+alias nt="cd ~/Desktop/Notes/"
 
 alias v="nvim"
 alias src="source ~/.zshrc"
 alias zrc="v ~/.dotfiles/zshrc"
-alias nt="v ~/Desktop/Notes/"
 
 alias td="tmux detach"
 alias tx="tmux kill-session"

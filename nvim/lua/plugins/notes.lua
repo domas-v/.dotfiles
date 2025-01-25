@@ -36,6 +36,7 @@ return {
     },
     {
         "MeanderingProgrammer/render-markdown.nvim",
+        enabled = false,
         after = { "nvim-treesitter" },
         opts = {
             heading = {
@@ -43,6 +44,34 @@ return {
                 left_pad = { 1, 2, 3, 4, 5 }
             }
         }
+    },
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false,
+        opts = {
+            preview = {
+                modes = { "n", "no", "c", "i" },
+                hybrid_modes = { "i", },
+                linewise_hybrid_mode = true
+            },
+            markdown = {
+                headings = {
+                    shift_width = 0,
+                    org_indent = false,
+                    org_indent_wrap = false
+                },
+                list_items = {
+                    marker_minus = {
+                        add_padding = false,
+                        text = "•"
+                    },
+                    marker_plus = { add_padding = false },
+                    marker_star = { add_padding = false },
+                    marker_dot = { add_padding = false },
+                },
+                code_blocks = { sign = false }
+            }
+        },
     },
     {
         "Snikimonkd/yazmp",

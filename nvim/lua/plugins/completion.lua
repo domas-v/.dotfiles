@@ -38,8 +38,8 @@ return {
                         return { "dadbod", "snippets", "buffer" }
                     elseif is_dap_buffer() then
                         return { "dap", "snippets", "buffer" }
-                    elseif vim.bo.filetype == "markdown" then
-                        return { "markdown", "lsp", "path", "snippets", "buffer" }
+                    -- elseif vim.bo.filetype == "markdown" then
+                    --     return { "markdown", "lsp", "path", "snippets", "buffer" }
                     else
                         return { "lsp", "path", "snippets", "buffer" }
                     end
@@ -47,7 +47,7 @@ return {
                 providers = {
                     dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
                     dap = { name = "dap", module = "blink.compat.source" },
-                    markdown = { name = "RenderMarkdown", module = "render-markdown.integ.blink", fallbacks = { "lsp" } }
+                    -- markdown = { name = "RenderMarkdown", module = "render-markdown.integ.blink", fallbacks = { "lsp" } }
                 },
             },
             completion = {

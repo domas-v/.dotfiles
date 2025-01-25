@@ -113,7 +113,7 @@ return {
             { "<C-]>",     "<cmd>BufferLineMoveNext<cr>" },
             { "<C-[>",     "<cmd>BufferLineMovePrev<cr>" },
             { "<C-*>",     "<cmd>BufferLineTogglePin<cr>" },
-            { "<C-a>",     "<cmd>BufferLinePick<cr>" },
+            { "<C-t>",     "<cmd>BufferLinePick<cr>" },
         }
     },
     {
