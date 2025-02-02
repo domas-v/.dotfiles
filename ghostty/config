@@ -1,4 +1,8 @@
+# font
 font-family = "JetBrains Mono"
+
+# color theme
+theme = "catppuccin-mocha"
 
 # cursor
 shell-integration-features = no-cursor
@@ -15,7 +19,7 @@ macos-titlebar-style = "transparent"
 window-new-tab-position = end
 
 # tmux config
-# config-file = tmux.config
+config-file = tmux.config
 
 # keybindings
-config-file = keybindings.config
+# config-file = keybindings.config
