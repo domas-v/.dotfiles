@@ -110,10 +110,12 @@ return {
             { "<leader>R",  "<cmd>Telescope resume<cr>" },
             { "<leader>H",  "<cmd>Telescope help_tags<cr>" },
             { "<leader>K",  "<cmd>Telescope keymaps<cr>" },
+            { "<leader>C",  "<cmd>Telescope quickfix<cr>" },
+            { "<leader>J",  "<cmd>Telescope jumplist<cr>" },
+            { "<leader>V",  "<cmd>Telescope marks<cr>" },
 
             -- buffers
-            { "<C-e>",      "<cmd>Telescope buffers<cr>" },
-            { "<leader>e",  "<cmd>Telescope buffers<cr>" },
+            { "<leader>,",  "<cmd>Telescope buffers<cr>" },
             { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>" },
             { "<leader>T",  "<cmd>Telescope treesitter<cr>" },
 
@@ -139,8 +141,8 @@ return {
             { "<leader>?o", "<cmd>Telescope vim_options<cr>" },
 
             -- git
-            { "<leader>gB", "<cmd>Telescope git_branches<cr>" },
-            { "<leader>gS", "<cmd>Telescope git_status<cr>" },
+            { "<leader>gb", "<cmd>Telescope git_branches<cr>" },
+            { "<leader>gs", "<cmd>Telescope git_status<cr>" },
         },
         cmd = { "Telescope" },
     }

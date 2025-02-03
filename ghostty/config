@@ -3,6 +3,8 @@ font-family = "JetBrains Mono"
 
 # color theme
 theme = "catppuccin-mocha"
+background-opacity = 0.8
+background-blur = true
 
 # cursor
 shell-integration-features = no-cursor
@@ -11,8 +13,7 @@ cursor-style-blink = false
 
 # quick terminal
 quick-terminal-animation-duration = 0.1
-# keybind = global:cmd+grave_accent=toggle_quick_terminal
-# keybind = global:cmd+§=toggle_quick_terminal
+keybind = global:cmd+§=toggle_quick_terminal
 
 # title bar
 macos-titlebar-style = "transparent"

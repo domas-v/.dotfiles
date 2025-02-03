@@ -88,8 +88,7 @@ vim.keymap.set("n", "<leader>X", "<cmd>bd<cr>", default_opts)
 -- quickfix
 vim.keymap.set("n", "<leader>cj", "<cmd>cnext<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>ck", "<cmd>cprevious<cr>", { noremap = true })
-vim.keymap.set("n", "<leader>co", "<cmd>copen<cr>", { noremap = true })
-vim.keymap.set("n", "<leader>cc", "<cmd>cclose<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>cc", "<cmd>copen<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>cr",
     ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
     { noremap = true })

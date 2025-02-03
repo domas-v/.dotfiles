@@ -36,7 +36,7 @@ return {
     },
     {
         "MeanderingProgrammer/render-markdown.nvim",
-        enabled = false,
+        -- enabled = false,
         after = { "nvim-treesitter" },
         opts = {
             heading = {
@@ -47,6 +47,7 @@ return {
     },
     {
         "OXY2DEV/markview.nvim",
+        enabled = false,
         lazy = false,
         opts = {
             preview = {

@@ -34,9 +34,6 @@ return {
                     "size",
                     "mtime"
                 },
-                view_options = {
-                    show_hidden = true
-                },
                 use_default_keymaps = false,
                 keymaps = {
                     ["g?"] = { "actions.show_help", mode = "n" },
@@ -96,7 +93,7 @@ return {
             { "<leader>]", "<cmd>BufferLineMoveNext<cr>" },
             { "<leader>[", "<cmd>BufferLineMovePrev<cr>" },
             { "<leader>*", "<cmd>BufferLineTogglePin<cr>" },
-            { "<leader>a", "<cmd>BufferLinePick<cr>" },
+            { "<leader>e", "<cmd>BufferLinePick<cr>" },
 
             { "<C-1>",     "<cmd>BufferLineGoToBuffer 1<cr>" },
             { "<C-2>",     "<cmd>BufferLineGoToBuffer 2<cr>" },
@@ -151,4 +148,37 @@ return {
         }
     },
     { "RRethy/vim-illuminate", event = "VeryLazy" },
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = { "kevinhwang91/promise-async" },
+        config = function()
+            vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+            vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+            require('ufo').setup({
+                provider_selector = function(bufnr, filetype, buftype)
+                    return { 'treesitter', 'indent' }
+                end,
+                enable_get_fold_virt_text = true,
+                open_fold_hl_timeout = 150,
+                preview = {
+                    win_config = {
+                        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+                        winhighlight = "Normal:Folded",
+                        winblend = 0,
+                    },
+                    mappings = {
+                        jumpTop = "[",
+                        jumpBot = "]",
+                    },
+                },
+            })
+        end
+    },
+    {
+        "luukvbaal/statuscol.nvim",
+        config = function()
+            require("statuscol").setup()
+        end,
+    }
 }
