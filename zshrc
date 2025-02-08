@@ -111,7 +111,7 @@ export VISUAL="nvim"
 alias dot="cd ~/.dotfiles/"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
-alias nt="cd ~/Desktop/Notes/"
+alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/"
 
 alias v="nvim"
 alias src="source ~/.zshrc"
