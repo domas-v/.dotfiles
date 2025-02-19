@@ -146,10 +146,10 @@ return {
             dap.configurations.c = dap.configurations.cpp
 
             vim.api.nvim_create_user_command("DapUIToggle", toggle_dap_ui, {})
-            vim.api.nvim_create_user_command("DapEvalToggle", toggle_dap_eval, {})
-            vim.api.nvim_create_user_command("DapReplToggle", toggle_dap_repl, {})
             vim.keymap.set('n', '<leader>du', "<cmd>DapUIToggle<cr>", default_opts)
+            vim.api.nvim_create_user_command("DapEvalToggle", toggle_dap_eval, {})
             vim.keymap.set('n', '<leader>de', "<cmd>DapEvalToggle<cr>", default_opts)
+            vim.api.nvim_create_user_command("DapReplToggle", toggle_dap_repl, {})
             vim.keymap.set('n', '<leader>dr', "<cmd>DapReplToggle<cr>", default_opts)
         end,
         keys = {

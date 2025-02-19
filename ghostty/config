@@ -13,7 +13,7 @@ cursor-style-blink = false
 
 # quick terminal
 quick-terminal-animation-duration = 0.1
-keybind = global:cmd+`=toggle_quick_terminal
+# keybind = global:cmd+`=toggle_quick_terminal
 
 # title bar
 macos-titlebar-style = "transparent"
