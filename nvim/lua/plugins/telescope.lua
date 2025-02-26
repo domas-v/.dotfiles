@@ -107,42 +107,42 @@ return {
             telescope.load_extension("dap")
         end,
         keys = {
-            { "<leader>R",  "<cmd>Telescope resume<cr>" },
-            { "<leader>H",  "<cmd>Telescope help_tags<cr>" },
-            { "<leader>K",  "<cmd>Telescope keymaps<cr>" },
-            { "<leader>C",  "<cmd>Telescope quickfix<cr>" },
-            { "<leader>J",  "<cmd>Telescope jumplist<cr>" },
-            { "<leader>V",  "<cmd>Telescope marks<cr>" },
+            { "<leader><leader>r", "<cmd>Telescope resume<cr>" },
+            { "<leader>H",         "<cmd>Telescope help_tags<cr>" },
+            { "<leader>K",         "<cmd>Telescope keymaps<cr>" },
+            { "<leader>C",         "<cmd>Telescope quickfix<cr>" },
+            { "<leader>J",         "<cmd>Telescope jumplist<cr>" },
+            { "<leader>V",         "<cmd>Telescope marks<cr>" },
 
             -- buffers
-            { "<leader>,",  "<cmd>Telescope buffers<cr>" },
-            { "<leader>f",  "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>" },
-            { "<leader>T",  "<cmd>Telescope treesitter<cr>" },
+            { "<leader>,",         "<cmd>Telescope buffers<cr>" },
+            { "<leader>f",         "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>" },
+            { "<leader>T",         "<cmd>Telescope treesitter<cr>" },
 
             -- search
-            { "<leader>r",  "<cmd>Telescope live_grep<cr>" },
-            { "<leader>G",  "<cmd>Telescope grep_string<cr>" },
-            { "<leader>o",  "<cmd>Telescope find_files<cr>" },
-            { "<leader>O",  "<cmd>Telescope find_files hidden=true no_ignore=true<cr>" },
+            { "<leader>r",         "<cmd>Telescope live_grep<cr>" },
+            { "<leader>G",         "<cmd>Telescope grep_string<cr>" },
+            { "<leader>o",         "<cmd>Telescope find_files<cr>" },
+            { "<leader>O",         "<cmd>Telescope find_files hidden=true no_ignore=true<cr>" },
 
             -- lsp
-            { "<leader>s",  "<cmd>Telescope lsp_document_symbols<cr>" },
-            { "<leader>S",  "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>" },
-            { "<leader>ur", "<cmd>Telescope lsp_references<cr>" },
-            { "<leader>U",  "<cmd>Telescope diagnostics<cr>" },
+            { "<leader>s",         "<cmd>Telescope lsp_document_symbols<cr>" },
+            { "<leader>S",         "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>" },
+            { "<leader>R",         "<cmd>Telescope lsp_references<cr>" },
+            { "<leader>D",         "<cmd>Telescope diagnostics<cr>" },
 
             -- dap
-            { "<leader>B",  "<cmd>Telescope dap list_breakpoints<cr>" },
+            { "<leader>B",         "<cmd>Telescope dap list_breakpoints<cr>" },
 
             -- help
-            { "<leader>?k", "<cmd>Telescope keymaps<cr>" },
-            { "<leader>?c", "<cmd>Telescope commands<cr>" },
-            { "<leader>?t", "<cmd>Telescope help_tags<cr>" },
-            { "<leader>?o", "<cmd>Telescope vim_options<cr>" },
+            { "<leader>?k",        "<cmd>Telescope keymaps<cr>" },
+            { "<leader>?c",        "<cmd>Telescope commands<cr>" },
+            { "<leader>?t",        "<cmd>Telescope help_tags<cr>" },
+            { "<leader>?o",        "<cmd>Telescope vim_options<cr>" },
 
             -- git
-            { "<leader>gb", "<cmd>Telescope git_branches<cr>" },
-            { "<leader>gs", "<cmd>Telescope git_status<cr>" },
+            { "<leader>gb",        "<cmd>Telescope git_branches<cr>" },
+            { "<leader>gs",        "<cmd>Telescope git_status<cr>" },
         },
         cmd = { "Telescope" },
     }

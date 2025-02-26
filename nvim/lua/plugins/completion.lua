@@ -14,12 +14,8 @@ return {
         dependencies = { "rafamadriz/friendly-snippets", "rcarriga/cmp-dap" },
         version = "*",
         opts = {
-            keymap = {
-                preset = "default",
-                ["<CR>"] = { "accept", "fallback" },
-                ["<C-j>"] = { "select_next" },
-                ["<C-k>"] = { "select_prev" },
-                cmdline = {
+            cmdline = {
+                keymap = {
                     ["<CR>"] = { "accept", "fallback" },
                     ["<C-j>"] = { "select_next" },
                     ["<C-k>"] = { "select_prev" },
@@ -27,6 +23,12 @@ return {
                     ["<C-p>"] = { "select_prev" },
                     ["<TAB>"] = { "select_and_accept" }
                 }
+            },
+            keymap = {
+                preset = "default",
+                ["<CR>"] = { "accept", "fallback" },
+                ["<C-j>"] = { "select_next" },
+                ["<C-k>"] = { "select_prev" },
             },
             enabled = function()
                 return vim.bo.buftype ~= "prompt" or is_dap_buffer()
@@ -38,8 +40,8 @@ return {
                         return { "dadbod", "snippets", "buffer" }
                     elseif is_dap_buffer() then
                         return { "dap", "snippets", "buffer" }
-                    -- elseif vim.bo.filetype == "markdown" then
-                    --     return { "markdown", "lsp", "path", "snippets", "buffer" }
+                        -- elseif vim.bo.filetype == "markdown" then
+                        --     return { "markdown", "lsp", "path", "snippets", "buffer" }
                     else
                         return { "lsp", "path", "snippets", "buffer" }
                     end

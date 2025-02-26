@@ -56,7 +56,7 @@ return {
             },
             keys = {
                 { "<leader>.", "<cmd>Oil<cr>" },
-                { "<leader>D", "<cmd>lua require('oil').open(vim.fn.getcwd())<cr>" }
+                { "<leader>>", "<cmd>lua require('oil').open(vim.fn.getcwd())<cr>" }
             }
         },
         config = true,
