@@ -66,35 +66,42 @@ return {
                             ["<C-p>"] = action_layout.toggle_preview,
                         }
                     },
-                    layout_strategy = "flex",
-                    layout_config = {
-                        flex = {
-                            flip_columns = cutoff, -- mac screen width
-                        },
-                        vertical = {
-                            mirror = true,
-                            prompt_position = "top",
-                            preview_height = 0.4,
-                            height = window_height,
-                            width = window_width,
-                        },
-                        horizontal = {
-                            prompt_position = "top",
-                            preview_width = 0.5,
-                            height = window_height,
-                            width = window_width,
-                        }
-                    },
+                    -- layout_strategy = "flex",
+                    -- layout_config = {
+                    --     flex = {
+                    --         flip_columns = cutoff, -- mac screen width
+                    --     },
+                    --     vertical = {
+                    --         mirror = true,
+                    --         prompt_position = "top",
+                    --         preview_height = 0.4,
+                    --         height = window_height,
+                    --         width = window_width,
+                    --     },
+                    --     horizontal = {
+                    --         prompt_position = "top",
+                    --         preview_width = 0.5,
+                    --         height = window_height,
+                    --         width = window_width,
+                    --     }
+                    -- },
                     sort_lastused = true,
                     sorting_strategy = "ascending",
                 },
                 pickers = {
                     find_files = {
                         follow = true,
-                        find_command = { "fd", "--type", "file" }
+                        find_command = { "fd", "--type", "file" },
+                        theme = "ivy"
                     },
+                    live_grep = { theme = "ivy" },
+                    current_buffer_fuzzy_find = { theme = "ivy" },
+                    buffers = { theme = "ivy" },
+                    help_tags = { theme = "ivy" },
+                    lsp_document_symbols = { theme = "ivy" },
                     lsp_dynamic_workspace_symbols = {
-                        sorter = telescope.extensions.fzf.native_fzf_sorter(fzf_opts)
+                        sorter = telescope.extensions.fzf.native_fzf_sorter(fzf_opts),
+                        { theme = "ivy" }
                     },
                 },
                 extensions = {
