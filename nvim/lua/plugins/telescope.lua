@@ -124,7 +124,6 @@ return {
             -- buffers
             { "<leader>,",         "<cmd>Telescope buffers<cr>" },
             { "<leader>f",         "<cmd>Telescope current_buffer_fuzzy_find previewer=false<cr>" },
-            { "<leader>T",         "<cmd>Telescope treesitter<cr>" },
 
             -- search
             { "<leader>r",         "<cmd>Telescope live_grep<cr>" },
