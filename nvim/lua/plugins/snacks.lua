@@ -4,13 +4,17 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
+        input = { enabled = true },
         bigfile = { enabled = true },
+        quickfile = { enabled = true },
         dashboard = { enabled = true },
-        explorer = { enabled = true },
         indent = {
             enabled = true,
             animate = { enabled = false }
         },
+        explorer = { enabled = true },
+        bufdelete = { enabled = true },
+        words = { enabled = true },
         picker = {
             enabled = true,
             layout = {
@@ -21,23 +25,15 @@ return {
                 commands = { layout = { preview = false } },
                 keymaps = { layout = { preview = false } },
                 help = { layout = { preview = false } },
+                notifications = { layout = { preview = false } },
             }
         },
-        bufdelete = { enabled = true },
-        --     input = { enabled = true },
-        --     notifier = {
-        --         enabled = true,
-        --         timeout = 3000,
-        --     },
-        --     quickfile = { enabled = true },
-        --     scope = { enabled = true },
-        --     statuscolumn = { enabled = true },
-        --     words = { enabled = true },
-        --     styles = {
-        --         notification = {
-        --             wo = { wrap = true }
-        --         }
-        --     }
+        -- scope = { enabled = true },
+        notifier = {
+            enabled = true,
+            timeout = 3000,
+        },
+        gitbrowse = { enabled = true },
     },
     keys = {
         --- PICKERS ---
@@ -64,18 +60,18 @@ return {
         { "<leader>s",  function() Snacks.picker.lsp_symbols() end },
         { "<leader>S",  function() Snacks.picker.lsp_workspace_symbols() end },
         { "<leader>R",  function() Snacks.picker.lsp_references() end },
-        -- { "<leader>d",  function() Snacks.picker.diagnostics_buffer() end },
         { "<leader>D",  function() Snacks.picker.diagnostics() end },
 
         -- git
         { "<leader>gs", function() Snacks.picker.git_status() end },
         { "<leader>gb", function() Snacks.picker.git_branches() end },
         { "<leader>gz", function() Snacks.picker.git_stash() end },
+        { "<leader>go", function() Snacks.gitbrowse() end },
         --- END PICKERS ---
 
         --- BUFDELETE ---
         { "<leader>x",  function() Snacks.bufdelete() end },
-        { "<C-x>",      function() Snacks.bufdelete() end }
+        { "<C-x>",      function() Snacks.bufdelete() end },
         --- END BUFDELETE ---
     }
 }

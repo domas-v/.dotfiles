@@ -24,14 +24,6 @@ return {
         },
     },
     {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require("ibl").setup({
-                scope = { enabled = false },
-            })
-        end
-    },
-    {
         "vladdoster/remember.nvim", -- remembers where in file I was
         config = function()
             require('remember')

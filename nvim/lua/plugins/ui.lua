@@ -87,7 +87,6 @@ return {
             { "<leader>]", "<cmd>BufferLineMoveNext<cr>" },
             { "<leader>[", "<cmd>BufferLineMovePrev<cr>" },
             { "<leader>*", "<cmd>BufferLineTogglePin<cr>" },
-            { "<leader>e", "<cmd>BufferLinePick<cr>" },
 
             { "<C-1>",     "<cmd>BufferLineGoToBuffer 1<cr>" },
             { "<C-2>",     "<cmd>BufferLineGoToBuffer 2<cr>" },
@@ -141,7 +140,6 @@ return {
             config = function() vim.fn['fzf#install']() end
         }
     },
-    { "RRethy/vim-illuminate", event = "VeryLazy" },
     {
         "kevinhwang91/nvim-ufo",
         dependencies = { "kevinhwang91/promise-async" },
@@ -168,11 +166,5 @@ return {
                 },
             })
         end
-    },
-    {
-        "luukvbaal/statuscol.nvim",
-        config = function()
-            require("statuscol").setup()
-        end,
     }
 }

@@ -1,7 +1,6 @@
 return {
     {
         "NeogitOrg/neogit",
-        enabled = true,
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
@@ -50,17 +49,10 @@ return {
             { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
 
             -- toggles
-            { "<leader>gL", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Git blame current line" },
+            { "<leader>gl", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Git blame current line" },
             { "<leader>gB", "<cmd>Gitsigns blame<cr>",                     desc = "Git blame file" },
             { "<leader>gW", "<cmd>Gitsigns toggle_word_diff<cr>",          desc = "Git diff words" },
             { "<leader>gD", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
         }
-    },
-    {
-        'ruifm/gitlinker.nvim',
-        dependencies = 'nvim-lua/plenary.nvim',
-        config = function()
-            require "gitlinker".setup()
-        end
     }
 }
