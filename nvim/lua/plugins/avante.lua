@@ -59,10 +59,5 @@ return {
                 },
             },
         },
-        -- keys = {
-        --     { "<leader>aa", "<cmd>Avante<cr>",          desc = "Open Avante" },
-        --     { "<leader>ac", "<cmd>AvanteContext<cr>",   desc = "Avante with context" },
-        --     { "<leader>as", "<cmd>AvanteSelection<cr>", mode = { "n", "v" },         desc = "Avante with selection" },
-        -- },
     }
 }

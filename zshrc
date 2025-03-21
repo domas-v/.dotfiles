@@ -3,6 +3,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
 
+source "$HOME/.dotfiles/.api_keys.zsh"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
