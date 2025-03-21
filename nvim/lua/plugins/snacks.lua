@@ -4,22 +4,32 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-        input = { enabled = true },
-        bigfile = { enabled = true },
-        quickfile = { enabled = true },
+        -- ui
+        styles = {
+            input = { relative = "cursor" },
+            notification = { wo = { wrap = true } }
+        },
+        input = { enabled = true, },
         dashboard = { enabled = true },
+        image = {
+            enabled = true,
+            math = { latex = { font_size = "Large" } }
+        },
         indent = {
             enabled = true,
             animate = { enabled = false }
         },
+        -- files
+        bigfile = { enabled = true },
+        quickfile = { enabled = true },
         explorer = { enabled = true },
-        bufdelete = { enabled = true },
+        -- search
         words = { enabled = true },
         picker = {
             enabled = true,
             layout = {
                 cycle = true,
-                preset = "ivy_split"
+                preset = "ivy"
             },
             sources = {
                 commands = { layout = { preview = false } },
@@ -28,12 +38,14 @@ return {
                 notifications = { layout = { preview = false } },
             }
         },
-        -- scope = { enabled = true },
+        -- git
+        gitbrowse = { enabled = true },
+        -- misc
+        bufdelete = { enabled = true },
         notifier = {
             enabled = true,
             timeout = 3000,
         },
-        gitbrowse = { enabled = true },
     },
     keys = {
         --- PICKERS ---
@@ -42,6 +54,7 @@ return {
         { "<leader>;",  function() Snacks.picker.commands() end },
         { "<leader>K",  function() Snacks.picker.keymaps() end },
         { "<leader>H",  function() Snacks.picker.help() end },
+        { "<leader>N",  function() Snacks.picker.notifications() end },
         { "<leader>.",  function() Snacks.picker.resume() end },
 
         -- explorer
@@ -53,6 +66,8 @@ return {
 
         -- search
         { "<leader>r",  function() Snacks.picker.grep() end, },
+        { "<leader>G",  function() Snacks.picker.grep_word() end, },
+        { "<leader>f",  function() Snacks.picker.files() end, },
         { "<leader>o",  function() Snacks.picker.smart() end, },
         { "<leader>O",  function() Snacks.picker.smart({ hidden = true, no_ignore = true }) end, },
 
