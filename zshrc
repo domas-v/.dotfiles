@@ -130,19 +130,17 @@ function preview_stuff() {
         return
     fi
 
-    # Get the file extension
-    local ext="${1##*.}"
+    # Check if it's a directory
+    if [ -d "$1" ]; then
+        eza -l --git -T -L 2 "$1"
+        return
+    fi
 
-    # Define a list of image extensions
     local img_exts="jpg jpeg png gif bmp tiff svg webp"
-
-    # Check if the file is an image
-    if [[ " $img_exts " == *" $ext "* ]]; then
-        # If it's an image, use viu to display it
-        # viu "$1" -w 50
-        kitty icat "$1"
+    local extension="${1##*.}"
+    if [[ " $img_exts " == *" $extension "* ]]; then
+        viu "$1" -w 120
     else
-        # Otherwise use bat
         bat "$1"
     fi
 }
