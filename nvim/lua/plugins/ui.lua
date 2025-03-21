@@ -12,50 +12,6 @@ return {
         }
     },
     {
-        "refractalize/oil-git-status.nvim",
-        enabled = false,
-        dependencies = {
-            'stevearc/oil.nvim',
-            dependencies = { "nvim-tree/nvim-web-devicons" },
-            cmd = { "Oil" },
-            opts = {
-                win_options = {
-                    signcolumn = "yes:2",
-                },
-                columns = {
-                    "icon",
-                    "permissions",
-                    "size",
-                    "mtime"
-                },
-                use_default_keymaps = false,
-                keymaps = {
-                    ["g?"] = { "actions.show_help", mode = "n" },
-                    ["<CR>"] = "actions.select",
-                    ["<C-v>"] = { "actions.select", opts = { vertical = true } },
-                    ["<C-s>"] = { "actions.select", opts = { horizontal = true } },
-                    ["<C-t>"] = { "actions.select", opts = { tab = true } },
-                    ["<leader>p"] = "actions.preview",
-                    ["q"] = { "actions.close", mode = "n" },
-                    ["<C-r>"] = "actions.refresh",
-                    ["-"] = { "actions.parent", mode = "n" },
-                    ["_"] = { "actions.open_cwd", mode = "n" },
-                    ["`"] = { "actions.cd", mode = "n" },
-                    ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
-                    ["gs"] = { "actions.change_sort", mode = "n" },
-                    ["gx"] = "actions.open_external",
-                    ["g."] = { "actions.toggle_hidden", mode = "n" },
-                    ["g\\"] = { "actions.toggle_trash", mode = "n" },
-                },
-            },
-            keys = {
-                { "<leader>.", "<cmd>Oil<cr>" },
-                { "<leader>>", "<cmd>lua require('oil').open(vim.fn.getcwd())<cr>" }
-            }
-        },
-        config = true,
-    },
-    {
         'akinsho/bufferline.nvim',
         lazy = false,
         version = "*",
@@ -146,7 +102,6 @@ return {
         config = function()
             vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
             vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-
             require('ufo').setup({
                 provider_selector = function(bufnr, filetype, buftype)
                     return { 'treesitter', 'indent' }
