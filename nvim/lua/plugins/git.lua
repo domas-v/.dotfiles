@@ -28,10 +28,10 @@ return {
         end,
         cmd = { "Neogit" },
         keys = {
-            { "<leader>gg", "<cmd>Neogit<cr>", },
-            { "<leader>gp", "<cmd>Neogit pull<cr>", },
-            { "<leader>gP", "<cmd>Neogit push<cr>", },
-            { "<leader>gc", "<cmd>Neogit commit<cr>", },
+            { "<leader>gg", "<cmd>Neogit<cr>",        desc = "Open Neogit" },
+            { "<leader>gp", "<cmd>Neogit pull<cr>",   desc = "Git pull" },
+            { "<leader>gP", "<cmd>Neogit push<cr>",   desc = "Git push" },
+            { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Git commit" },
         }
     },
     {

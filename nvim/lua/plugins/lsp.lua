@@ -11,20 +11,22 @@ return {
             lspconfig.clangd.setup({})
             lspconfig.marksman.setup({})
 
-            map.set('n', '<leader>dv', vim.diagnostic.open_float)
-            map.set('n', '<leader>dk', vim.diagnostic.goto_prev)
-            map.set('n', '<leader>dj', vim.diagnostic.goto_next)
+            map.set('n', '<leader>dv', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+            map.set('n', '<leader>dk', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+            map.set('n', '<leader>dj', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
                 callback = function(ev)
                     local opts = { buffer = ev.buf }
-                    map.set('n', 'gd', lsp.buf.definition, opts)
-                    map.set('n', 'gD', lsp.buf.declaration, opts)
-                    map.set('n', 'gi', lsp.buf.implementation, opts)
-                    map.set('n', 'K', lsp.buf.hover, opts)
-                    map.set('n', 'R', lsp.buf.rename, opts)
-                    map.set({ 'n', 'v' }, 'ga', lsp.buf.code_action, opts)
-                    map.set('n', 'gr', lsp.buf.references, opts)
+                    map.set('n', 'gd', lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
+                    map.set('n', 'gD', lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to declaration" }))
+                    map.set('n', 'gi', lsp.buf.implementation,
+                        vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
+                    map.set('n', 'K', lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Show hover information" }))
+                    map.set('n', 'R', lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
+                    map.set({ 'n', 'v' }, 'ga', lsp.buf.code_action,
+                        vim.tbl_extend("force", opts, { desc = "Code action" }))
+                    map.set('n', 'gr', lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Find references" }))
                 end,
             })
         end

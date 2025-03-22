@@ -1,17 +1,18 @@
-local function is_dap_buffer()
-    return require("cmp_dap").is_dap_buffer()
-end
 return {
     {
-        'saghen/blink.compat',
-        version = '*',
-        lazy = true,
-        opts = {},
-    },
-    {
         "saghen/blink.cmp",
-        enabled = true,
-        dependencies = { "rafamadriz/friendly-snippets", "rcarriga/cmp-dap" },
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+            "rcarriga/cmp-dap",
+            {
+                'saghen/blink.compat',
+                version = '*',
+                lazy = true,
+                opts = {
+                    debug = true,
+                },
+            }
+        },
         version = "*",
         opts = {
             cmdline = {
@@ -39,20 +40,13 @@ return {
                 ["<C-j>"] = { "select_next" },
                 ["<C-k>"] = { "select_prev" },
             },
-            enabled = function()
-                return vim.bo.buftype ~= "prompt" or is_dap_buffer()
-            end,
             sources = {
-                default = function(_)
-                    local sql_filetypes = { mysql = true, sql = true }
-                    if sql_filetypes[vim.bo.filetype] ~= nil then
-                        return { "dadbod", "snippets", "buffer" }
-                    elseif is_dap_buffer() then
-                        return { "dap", "snippets", "buffer" }
-                    else
-                        return { "lsp", "path", "snippets", "buffer" }
-                    end
-                end,
+                default = { "lsp", "path", "snippets", "buffer" },
+                per_filetype = {
+                    sql = { "dadbod", "snippets", "buffer" },
+                    mysql = { "dadbod", "snippets", "buffer" },
+                    ["dap-repl"] = { "dap", "snippets", "buffer" },
+                },
                 providers = {
                     dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
                     dap = { name = "dap", module = "blink.compat.source" },

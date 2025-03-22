@@ -169,10 +169,10 @@ return {
             require('persistent-breakpoints').setup({ load_breakpoints_event = { "BufReadPost" } })
 
             vim.keymap.set("n", "<leader>dd", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>",
-                default_opts)
+                { noremap = true, silent = true, desc = "Toggle breakpoint" })
             vim.keymap.set("n", "<leader>dC",
                 "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>",
-                default_opts)
+                { noremap = true, silent = true, desc = "Clear all breakpoints" })
         end,
     }
 }
