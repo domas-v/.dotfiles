@@ -23,7 +23,6 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            --- Optional dependencies
             {
                 "zbirenbaum/copilot.lua",
                 event = "InsertEnter",
