@@ -48,6 +48,13 @@ return {
         },
     },
     keys = {
+        --- MISC ---
+        { "<leader>x",  function() Snacks.bufdelete() end,                                       desc = "Delete buffer" },
+        { "<C-x>",      function() Snacks.bufdelete() end,                                       desc = "Delete buffer" },
+        { "<leader>N",  function() Snacks.notifier.show_history() end,                           desc = "Show notification history" },
+        { "<leader>e",  function() Snacks.explorer() end,                                        desc = "Explorer" },
+        --- END MISC ---
+
         --- PICKERS ---
         -- help
         { "<leader>?",  function() Snacks.picker() end,                                          desc = "Show all pickers" },
@@ -55,10 +62,6 @@ return {
         { "<leader>K",  function() Snacks.picker.keymaps() end,                                  desc = "Show all keymaps" },
         { "<leader>H",  function() Snacks.picker.help() end,                                     desc = "Show all help" },
         { "<leader>.",  function() Snacks.picker.resume() end,                                   desc = "Resume last picker" },
-        { "<leader>N",  function() Snacks.notifier.show_history() end,                           desc = "Show notification history" },
-
-        -- explorer
-        { "<leader>e",  function() Snacks.explorer() end,                                        desc = "Explorer" },
 
         -- buffers
         { "<leader>,",  function() Snacks.picker.buffers({ sort_lastused = true }) end,          desc = "Show buffers" },
@@ -84,9 +87,5 @@ return {
         { "<leader>go", function() Snacks.gitbrowse() end,                                       desc = "Git browse" },
         --- END PICKERS ---
 
-        --- BUFDELETE ---
-        { "<leader>x",  function() Snacks.bufdelete() end,                                       desc = "Delete buffer" },
-        { "<C-x>",      function() Snacks.bufdelete() end,                                       desc = "Delete buffer" },
-        --- END BUFDELETE ---
     }
 }
