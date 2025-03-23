@@ -60,7 +60,7 @@ return {
         { "<leader>;",  function() Snacks.picker.commands() end,                                 desc = "Show all commands" },
         { "<leader>K",  function() Snacks.picker.keymaps() end,                                  desc = "Show all keymaps" },
         { "<leader>H",  function() Snacks.picker.help() end,                                     desc = "Show all help" },
-        { "<leader>.",  function() Snacks.picker.resume() end,                                   desc = "Resume last picker" },
+        { "<leader>R",  function() Snacks.picker.resume() end,                                   desc = "Resume last picker" },
 
         -- buffers
         { "<leader>,",  function() Snacks.picker.buffers({ sort_lastused = true }) end,          desc = "Show buffers" },
@@ -76,7 +76,7 @@ return {
         -- lsp
         { "<leader>s",  function() Snacks.picker.lsp_symbols() end,                              desc = "Document symbols" },
         { "<leader>S",  function() Snacks.picker.lsp_workspace_symbols() end,                    desc = "Workspace symbols" },
-        { "<leader>R",  function() Snacks.picker.lsp_references() end,                           desc = "Find references" },
+        -- { "<leader>R",  function() Snacks.picker.lsp_references() end,                           desc = "Find references" },
         { "<leader>D",  function() Snacks.picker.diagnostics() end,                              desc = "Show diagnostics" },
 
         -- git
