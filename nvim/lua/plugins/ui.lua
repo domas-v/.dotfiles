@@ -121,5 +121,19 @@ return {
                 },
             })
         end
-    }
+    },
+    {
+        "chrisgrieser/nvim-origami",
+        event = "VeryLazy",
+        opts = {},
+    },
+    {
+        "hedyhli/outline.nvim",
+        lazy = true,
+        cmd = { "Outline", "OutlineOpen" },
+        keys = {
+            { "<leader>>", "<cmd>Outline<CR>", desc = "Toggle outline" },
+        },
+        opts = {},
+    },
 }

@@ -48,8 +48,6 @@ vim.o.foldcolumn         = '0'
 vim.o.foldlevel          = 99
 vim.o.foldlevelstart     = 99
 vim.o.foldenable         = true
-vim.api.nvim_set_hl(0, "FoldColumn", {})
-vim.api.nvim_set_hl(0, "Folded", { bg = "#01579B" })
 
 
 -- search
