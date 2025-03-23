@@ -18,7 +18,8 @@ local function _set_autocmd(eval_buf)
 end
 
 local function _create_eval_buf()
-    local eval_buf = vim.api.nvim_create_buf(true, true)
+    -- make it an unlisted buffer
+    local eval_buf = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_buf_set_name(eval_buf, "dap-eval://" .. vim.bo.filetype)
     vim.bo[eval_buf].swapfile = false
     vim.bo[eval_buf].buftype = "acwrite"
@@ -153,7 +154,6 @@ return {
             vim.keymap.set('n', '<leader>dr', "<cmd>DapReplToggle<cr>", default_opts)
         end,
         keys = {
-            -- debug controls
             { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",             desc = "Start DAP" },
             { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>",            desc = "Stop DAP" },
             { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>",            desc = "Step over" },
