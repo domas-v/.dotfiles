@@ -1,7 +1,7 @@
 return {
     {
         "saghen/blink.cmp",
-        enabled = false,
+        enabled = true,
         dependencies = {
             "rafamadriz/friendly-snippets",
             "rcarriga/cmp-dap",
@@ -67,7 +67,7 @@ return {
     },
     {
         "hrsh7th/nvim-cmp",
-        enabled = true,
+        enabled = false,
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-nvim-lua",
@@ -107,7 +107,7 @@ return {
                     })
             })
             cmp.setup({
-                    enabled = function()
+                enabled = function()
                     return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
                         or require("cmp_dap").is_dap_buffer()
                 end
