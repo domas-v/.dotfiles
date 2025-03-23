@@ -51,17 +51,6 @@ vim.o.foldenable         = true
 vim.api.nvim_set_hl(0, "FoldColumn", {})
 vim.api.nvim_set_hl(0, "Folded", { bg = "#01579B" })
 
--- this saves fold
--- vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
---     pattern = { "*.*" },
---     desc = "save view (folds), when closing file",
---     command = "mkview",
--- })
--- vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
---     pattern = { "*.*" },
---     desc = "load view (folds), when opening file",
---     command = "silent! loadview"
--- })
 
 -- search
 o.ignorecase           = true
