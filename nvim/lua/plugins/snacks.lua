@@ -7,17 +7,32 @@ return {
         -- ui
         styles = {
             input = { relative = "cursor" },
-            notification = { wo = { wrap = true } }
+            notification = { wo = { wrap = true } },
+            zen = { backdrop = { transparent = false }, }
         },
         input = { enabled = true, },
-        dashboard = { enabled = true },
-        image = {
+        dashboard = {
             enabled = true,
-            math = { latex = { font_size = "Large" } }
+            preset = {
+                keys = {
+                    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+                    { icon = " ", key = "o", desc = "Smart File Picker", action = ":lua Snacks.picker.smart()" },
+                    { icon = " ", key = "r", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+                    { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+                    { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+                    { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+                    { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+                },
+            },
         },
+        image = { enabled = true, },
         indent = {
             enabled = true,
             animate = { enabled = false }
+        },
+        zen = {
+            enabled = true,
+            toggles = { dim = false, }
         },
         -- files
         bigfile = { enabled = true },
@@ -53,6 +68,8 @@ return {
         { "<C-x>",         function() Snacks.bufdelete() end,                                       desc = "Delete buffer" },
         { "<leader>N",     function() Snacks.notifier.show_history() end,                           desc = "Show notification history" },
         { "<leader><TAB>", function() Snacks.explorer() end,                                        desc = "Explorer" },
+        { "<leader>|",     function() Snacks.zen.zen() end,                                         desc = "Explorer" },
+        { "<leader>zz",    function() Snacks.zen.zoom() end,                                        desc = "Explorer" },
         --- END MISC ---
 
         --- PICKERS ---
