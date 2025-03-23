@@ -3,6 +3,7 @@ local function basename(s)
 end
 
 local wezterm = require("wezterm")
+local utf8 = require("utf8")
 local module = {}
 
 
@@ -99,7 +100,7 @@ function module.get_right_status(window, color_scheme)
     local bg = wezterm.color.parse(color_scheme.background)
     local fg = color_scheme.foreground
 
-    local gradient_to, gradient_from = bg
+    local gradient_to, gradient_from = bg, nil
     if is_dark() then
         gradient_from = gradient_to:lighten(0.2)
     else

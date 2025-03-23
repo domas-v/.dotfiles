@@ -2,6 +2,7 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    init = function() _G.Snacks = require("snacks") end,
     opts = {
         -- ui
         styles = {
@@ -84,6 +85,5 @@ return {
         { "<leader>gz", function() Snacks.picker.git_stash() end,                                desc = "Git stash" },
         { "<leader>go", function() Snacks.gitbrowse() end,                                       desc = "Git browse" },
         --- END PICKERS ---
-
     }
 }
