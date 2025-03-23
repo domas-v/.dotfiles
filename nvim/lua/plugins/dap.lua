@@ -149,13 +149,15 @@ return {
             vim.keymap.set('n', '<leader>dr', "<cmd>DapReplToggle<cr>", default_opts)
         end,
         keys = {
-            { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",             desc = "Start DAP" },
-            { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>",            desc = "Stop DAP" },
-            { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>",            desc = "Step over" },
-            { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>",            desc = "Step into" },
-            { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>",             desc = "Step out" },
-            { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", desc = "Test python method" },
-            { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>",                    desc = "Toggle DAP Virtual text" },
+            { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",                                                                            desc = "Start DAP" },
+            { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>",                                                                           desc = "Stop DAP" },
+            { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>",                                                                           desc = "Step over" },
+            { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>",                                                                           desc = "Step into" },
+            { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>",                                                                            desc = "Step out" },
+            { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>",                                                                desc = "Test python method" },
+            { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>",                                                                                   desc = "DAP Virtual text" },
+            { "<leader>df", "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>",                                       desc = "DAP hover variable" },
+            { "<leader>dF", "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes, { border = 'rounded' })<cr>", desc = "DAP scopes" },
         }
     },
     {
