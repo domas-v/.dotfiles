@@ -4,6 +4,7 @@ return {
         enabled = true,
         dependencies = {
             "rafamadriz/friendly-snippets",
+            "MahanRahmati/blink-nerdfont.nvim",
             "rcarriga/cmp-dap",
             {
                 'saghen/blink.compat',
@@ -42,7 +43,7 @@ return {
                 ["<C-k>"] = { "select_prev" },
             },
             sources = {
-                default = { "lsp", "path", "snippets", "buffer" },
+                default = { "lsp", "path", "snippets", "buffer", "nerdfont" },
                 per_filetype = {
                     sql = { "dadbod", "snippets", "buffer" },
                     mysql = { "dadbod", "snippets", "buffer" },
@@ -51,6 +52,12 @@ return {
                 providers = {
                     dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
                     dap = { name = "dap", module = "blink.compat.source" },
+                    nerdfont = {
+                        module = "blink-nerdfont",
+                        name = "Nerd Fonts",
+                        score_offset = 15, -- Tune by preference
+                        opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+                    }
                 },
             },
             completion = {
