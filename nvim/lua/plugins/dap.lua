@@ -129,15 +129,6 @@ return {
         },
         config = function()
             local dap = require('dap')
-            dap.defaults.fallback.terminal_win_cmd = "tabnew"
-            if vim.fn.filereadable(".vscode/launch.json") then
-                require("dap.ext.vscode").load_launchjs(nil, {})
-            end
-            vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
-
-            --- python
-            require('dap-python').setup("python")
-            require("dap-python").test_runner = "pytest"
 
             -- c
             dap.adapters.codelldb = {
@@ -145,7 +136,11 @@ return {
                 command = "/Users/domas-v/.vscode/extensions/vadimcn.vscode-lldb-1.11.3/adapter/codelldb",
             }
             dap.configurations.c = dap.configurations.cpp
+            --- python
+            require('dap-python').setup("python")
+            require("dap-python").test_runner = "pytest"
 
+            vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
             vim.api.nvim_create_user_command("DapUIToggle", toggle_dap_ui, {})
             vim.keymap.set('n', '<leader>du', "<cmd>DapUIToggle<cr>", default_opts)
             vim.api.nvim_create_user_command("DapEvalToggle", toggle_dap_eval, {})
