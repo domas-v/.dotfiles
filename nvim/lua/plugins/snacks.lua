@@ -76,7 +76,6 @@ return {
         -- lsp
         { "<leader>s",  function() Snacks.picker.lsp_symbols() end,                              desc = "Document symbols" },
         { "<leader>S",  function() Snacks.picker.lsp_workspace_symbols() end,                    desc = "Workspace symbols" },
-        -- { "<leader>R",  function() Snacks.picker.lsp_references() end,                           desc = "Find references" },
         { "<leader>D",  function() Snacks.picker.diagnostics() end,                              desc = "Show diagnostics" },
 
         -- git
