@@ -136,4 +136,9 @@ return {
         },
         opts = {},
     },
+    {
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {},
+    }
 }
