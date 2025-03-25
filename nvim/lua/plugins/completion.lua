@@ -43,11 +43,12 @@ return {
                 ["<C-k>"] = { "select_prev" },
             },
             sources = {
-                default = { "lsp", "path", "snippets", "buffer", "nerdfont" },
+                default = { "lsp", "path", "snippets", "buffer" },
                 per_filetype = {
                     sql = { "dadbod", "snippets", "buffer" },
                     mysql = { "dadbod", "snippets", "buffer" },
                     ["dap-repl"] = { "dap", "snippets", "buffer" },
+                    markdown = { "lsp", "path", "snippets", "buffer", "nerdfont" }
                 },
                 providers = {
                     dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
@@ -55,8 +56,8 @@ return {
                     nerdfont = {
                         module = "blink-nerdfont",
                         name = "Nerd Fonts",
-                        score_offset = 15, -- Tune by preference
-                        opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+                        score_offset = 15,
+                        opts = { insert = true },
                     }
                 },
             },
