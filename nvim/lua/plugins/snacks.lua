@@ -1,3 +1,8 @@
+local centered_explorer_options = {
+    layout = { preset = "vertical" },
+    auto_close = true,
+}
+
 return {
     "folke/snacks.nvim",
     priority = 1000,
@@ -15,11 +20,11 @@ return {
             enabled = true,
             preset = {
                 keys = {
-                    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-                    { icon = " ", key = "o", desc = "Smart File Picker", action = ":lua Snacks.picker.smart()" },
+                    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.smart()" },
+                    { icon = " ", key = "e", desc = "Explorer", action = ":lua Snacks.picker.explorer({ layout = { preset = 'vertical' } })" },
                     { icon = " ", key = "r", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
                     { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-                    { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+                    { icon = " ", key = "P", desc = "Projects", action = ":lua Snacks.picker.projects()" },
                     { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
                     { icon = " ", key = "q", desc = "Quit", action = ":qa" },
                 },
@@ -44,13 +49,20 @@ return {
             enabled = true,
             layout = {
                 cycle = true,
-                preset = "ivy"
+                preset = "vscode"
             },
             sources = {
-                commands = { layout = { preview = false } },
-                keymaps = { layout = { preview = false } },
-                help = { layout = { preview = false } },
-                notifications = { layout = { preview = false } },
+                commands = { layout = { preview = false, preset = "vertical" } },
+                keymaps = { layout = { preview = false, preset = "vertical" } },
+                help = { layout = { preview = false, preset = "vertical" } },
+                notifications = { layout = { preview = false, preset = "vertical" } },
+                qflist = { layout = { preview = true, preset = "vertical" } },
+                grep = { layout = { preset = "ivy" } },
+                grep_word = { layout = { preset = "ivy" } },
+                git_status = { layout = { preset = "ivy" } },
+                lsp_symbols = { layout = { preset = "ivy" } },
+                lsp_workspace_symbols = { layout = { preset = "ivy" } },
+                smart = { matcher = { history_bonus = true } }
             }
         },
         -- git
@@ -63,44 +75,45 @@ return {
         },
     },
     keys = {
-        --- MISC ---
-        { "<leader>x",     function() Snacks.bufdelete() end,                                       desc = "Delete buffer" },
-        { "<C-x>",         function() Snacks.bufdelete() end,                                       desc = "Delete buffer" },
-        { "<leader>N",     function() Snacks.notifier.show_history() end,                           desc = "Show notification history" },
-        { "<leader><TAB>", function() Snacks.explorer() end,                                        desc = "Explorer" },
-        { "<leader>|",     function() Snacks.zen.zen() end,                                         desc = "Explorer" },
-        { "<leader>zz",    function() Snacks.zen.zoom() end,                                        desc = "Explorer" },
-        --- END MISC ---
+        --- ACTIONS ---
+        { "<leader>x",     function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
+        { "<C-x>",         function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
+        { "<leader>|",     function() Snacks.zen.zen() end,                                  desc = "Zen" },
+        { "<leader>Z",     function() Snacks.zen.zoom() end,                                 desc = "Zoom" },
+        --- END ACTIONS ---
 
         --- PICKERS ---
+        { "<leader>N",     function() Snacks.picker.notifications() end,                     desc = "Notifications" },
+        { "<leader><TAB>", function() Snacks.explorer() end,                                 desc = "Side explorer" },
+        { "<leader>P",     function() Snacks.picker.projects() end,                          desc = "Projects" },
+        { "<leader>C",     function() Snacks.picker.qflist() end,                            desc = "Quickfix list" },
+
         -- help
-        { "<leader>?",     function() Snacks.picker() end,                                          desc = "Show all pickers" },
-        { "<leader>;",     function() Snacks.picker.commands() end,                                 desc = "Show all commands" },
-        { "<leader>K",     function() Snacks.picker.keymaps() end,                                  desc = "Show all keymaps" },
-        { "<leader>H",     function() Snacks.picker.help() end,                                     desc = "Show all help" },
-        { "<leader>.",     function() Snacks.picker.resume() end,                                   desc = "Resume last picker" },
+        { "<leader>?",     function() Snacks.picker() end,                                   desc = "All pickers" },
+        { "<leader>K",     function() Snacks.picker.keymaps() end,                           desc = "Keymaps" },
+        { "<leader>H",     function() Snacks.picker.help() end,                              desc = "Help" },
+        { "<leader>.",     function() Snacks.picker.resume() end,                            desc = "Resume last picker" },
 
         -- buffers
-        { "<leader>e",     function() Snacks.picker.buffers({ sort_lastused = true }) end,          desc = "Show buffers" },
-        { "<C-e>",         function() Snacks.picker.buffers({ sort_lastused = true }) end,          desc = "Show buffers" },
-        { "<leader>/",     function() Snacks.picker.lines() end,                                    desc = "Search in buffer" },
+        { "<leader>e",     function() Snacks.picker.explorer(centered_explorer_options) end, desc = "Center explorer" },
+        { "<leader>,",     function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
+        { "<leader>/",     function() Snacks.picker.lines() end,                             desc = "Search in buffer" },
 
         -- search
-        { "<leader>r",     function() Snacks.picker.grep() end,                                     desc = "Grep search" },
-        { "<leader>R",     function() Snacks.picker.grep_word() end,                                desc = "Grep current word" },
-        { "<leader>f",     function() Snacks.picker.files() end,                                    desc = "Find files" },
-        { "<leader>o",     function() Snacks.picker.smart() end,                                    desc = "Smart search" },
-        { "<leader>O",     function() Snacks.picker.smart({ hidden = true, no_ignore = true }) end, desc = "Smart search (all files)" },
+        { "<leader>r",     function() Snacks.picker.grep() end,                              desc = "Grep" },
+        { "<leader>R",     function() Snacks.picker.grep_word() end,                         desc = "Grep current word" },
+        { "<leader>f",     function() Snacks.picker.smart() end,                             desc = "Find file" },
 
         -- lsp
-        { "<leader>s",     function() Snacks.picker.lsp_symbols() end,                              desc = "Document symbols" },
-        { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end,                    desc = "Workspace symbols" },
-        { "<leader>D",     function() Snacks.picker.diagnostics() end,                              desc = "Show diagnostics" },
+        { "<leader>s",     function() Snacks.picker.lsp_symbols() end,                       desc = "LSP symbols" },
+        { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end,             desc = "LSP workspace symbols" },
+        { "<leader>D",     function() Snacks.picker.diagnostics() end,                       desc = "Diagnostics" },
 
         -- git
-        { "<leader>gb",    function() Snacks.picker.git_branches() end,                             desc = "Git branches" },
-        { "<leader>gz",    function() Snacks.picker.git_stash() end,                                desc = "Git stash" },
-        { "<leader>go",    function() Snacks.gitbrowse() end,                                       desc = "Git browse" },
+        { "<leader>gb",    function() Snacks.picker.git_branches() end,                      desc = "Git branches" },
+        { "<leader>gs",    function() Snacks.picker.git_status() end,                        desc = "Git stash" },
+        { "<leader>gz",    function() Snacks.picker.git_stash() end,                         desc = "Git stash" },
+        { "<leader>go",    function() Snacks.gitbrowse() end,                                desc = "Git browse" },
         --- END PICKERS ---
     }
 }
