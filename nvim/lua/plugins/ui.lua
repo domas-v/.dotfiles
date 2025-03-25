@@ -125,7 +125,9 @@ return {
     {
         "chrisgrieser/nvim-origami",
         event = "VeryLazy",
-        opts = {},
+        opts = {
+            setupFoldKeymaps = false,
+        },
     },
     {
         "hedyhli/outline.nvim",
