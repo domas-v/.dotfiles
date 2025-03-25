@@ -85,15 +85,17 @@ vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { noremap = true })
 -- buffers
 vim.keymap.set("n", "<leader>X", "<cmd>bd<cr>", default_opts)
 
--- quickfix
-vim.keymap.set("n", "<leader>cj", "<cmd>cnext<cr>", { noremap = true })
+-- quickfix list
+vim.keymap.set("n", "<leader>cj", "<cmd>cnext<cr>", { noremap = true, })
 vim.keymap.set("n", "<leader>ck", "<cmd>cprevious<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>cc", "<cmd>copen<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>ca", "<cmd>caddexpr expand('%') . ':' . line('.') . ':' . getline('.')<cr>",
+    { noremap = true, silent = true, desc = "Add current line to quickfix list" })
 vim.keymap.set("n", "<leader>cr",
-    ":cdo s///g | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
-    { noremap = true })
-vim.api.nvim_create_autocmd("FileType", { -- in quickfix list
-    pattern = "qf",
+    ":cdo s///gc | update<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>",
+    { noremap = true, desc = "Search and replace" })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "qf", -- in quickfix list
     callback = function() vim.keymap.set("n", "q", "<cmd>cclose<cr>", { buffer = true, silent = true }) end
 })
 
@@ -108,11 +110,6 @@ vim.api.nvim_create_autocmd("FileType", {
 -- vim.keymap.set("n", "<C-j>", "<C-w>j", default_opts)
 -- vim.keymap.set("n", "<C-k>", "<C-w>k", default_opts)
 -- vim.keymap.set("n", "<C-l>", "<C-w>l", default_opts)
-
-vim.keymap.set("n", "<leader>h", "<C-w>h", default_opts)
-vim.keymap.set("n", "<leader>j", "<C-w>j", default_opts)
-vim.keymap.set("n", "<leader>k", "<C-w>k", default_opts)
-vim.keymap.set("n", "<leader>l", "<C-w>l", default_opts)
 
 vim.keymap.set("n", "<leader>wo", "<C-w>o", default_opts)
 vim.keymap.set("n", "<leader>wv", "<C-w>v", default_opts)
