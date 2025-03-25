@@ -25,13 +25,16 @@ return {
             vim.api.nvim_create_user_command('Gc', function()
                 vim.cmd('Neogit commit')
             end, {})
+            vim.api.nvim_create_user_command('Gb', function()
+                vim.cmd('Neogit branch')
+            end, {})
+            vim.api.nvim_create_user_command('Gz', function()
+                vim.cmd('Neogit stash')
+            end, {})
         end,
         cmd = { "Neogit" },
         keys = {
-            { "<leader>gg", "<cmd>Neogit<cr>",        desc = "Open Neogit" },
-            { "<leader>gp", "<cmd>Neogit pull<cr>",   desc = "Git pull" },
-            { "<leader>gP", "<cmd>Neogit push<cr>",   desc = "Git push" },
-            { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Git commit" },
+            { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" }
         }
     },
     {
@@ -44,13 +47,13 @@ return {
             { "<leader>gj", "<cmd>Gitsigns next_hunk<cr>",                 desc = "Gitsigns next" },
             { "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>",                 desc = "Gitsigns prev" },
             { "<leader>gv", "<cmd>Gitsigns preview_hunk<cr>",              desc = "Gitsigns preview" },
-            { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>",                desc = "Gitsigns stage",        mode = { 'n', 'v' } },
+            { "<leader>ga", "<cmd>Gitsigns stage_hunk<cr>",                desc = "Gitsigns stage",        mode = { 'n', 'v' } },
             { "<leader>gx", "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "Gitsigns undo stage" },
             { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
 
             -- toggles
             { "<leader>gl", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Git blame current line" },
-            { "<leader>gB", "<cmd>Gitsigns blame<cr>",                     desc = "Git blame file" },
+            { "<leader>gL", "<cmd>Gitsigns blame<cr>",                     desc = "Git blame file" },
             { "<leader>gW", "<cmd>Gitsigns toggle_word_diff<cr>",          desc = "Git diff words" },
             { "<leader>gD", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
         }
