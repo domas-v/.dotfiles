@@ -26,6 +26,7 @@ return {
                     { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
                     { icon = " ", key = "P", desc = "Projects", action = ":lua Snacks.picker.projects()" },
                     { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+                    { icon = "󱙣 ", key = "H", desc = "Check health", action = ":checkhealth" },
                     { icon = " ", key = "q", desc = "Quit", action = ":qa" },
                 },
             },
