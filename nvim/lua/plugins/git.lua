@@ -6,9 +6,10 @@ return {
         },
         config = function()
             require("neogit").setup({
-                kind = "vsplit",
+                kind = "replace",
                 commit_editor = {
-                    kind = "split",
+                    kind = "vsplit",
+                    staged_diff_split_kind = "split",
                 },
                 disable_commit_confirmation = true
             })
