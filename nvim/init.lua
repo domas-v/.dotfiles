@@ -2,7 +2,7 @@ require("settings")
 require("keybindings")
 require("config.lazy")
 
-vim.cmd("colorscheme catppuccin-frappe")
+vim.cmd("colorscheme kanagawa")
 
 -- HACK: http filetype is not detected somehow. this is a fix
 vim.filetype.add({ extension = { http = "http" } })
