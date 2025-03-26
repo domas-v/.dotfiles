@@ -1,6 +1,7 @@
 local centered_explorer_options = {
     layout = { preset = "vertical" },
     auto_close = true,
+    focus = "input"
 }
 
 return {
