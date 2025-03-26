@@ -65,18 +65,16 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
-        config = function()
-            require('lualine').setup({
-                options = {
-                    globalstatus = true,
-                    theme = "catppuccin"
-                },
-                show_filename_only = false,
-                sections = {
-                    lualine_x = { 'filetype' }
-                }
-            })
-        end,
+        opts = {
+            options = {
+                globalstatus = true,
+                -- theme = "kanagawa"
+            },
+            show_filename_only = false,
+            sections = {
+                lualine_x = { 'filetype' }
+            }
+        }
     },
     {
         "utilyre/barbecue.nvim",
