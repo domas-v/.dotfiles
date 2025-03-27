@@ -5,6 +5,26 @@ return {
         opts = {},
     },
     {
+        "folke/zen-mode.nvim",
+        opts = {
+            window = { width = 100, },
+            plugins = {
+                gitsigns = { enabled = true },
+                kitty = {
+                    enabled = true,
+                    font = "+4",
+                },
+            }
+        },
+        keys = {
+            { "<leader>|", "<cmd>ZenMode<cr>" },
+        }
+    },
+    {
+        '2kabhishek/nerdy.nvim',
+        cmd = { "Nerdy" },
+    },
+    {
         "OXY2DEV/markview.nvim",
         lazy = false,
         priority = 999,
