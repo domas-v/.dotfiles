@@ -1826,8 +1826,8 @@ map kitty_mod+q quit
 
 
 # BEGIN_KITTY_FONTS
-font_family      family='Iosevka Term Slab' style='Semibold Extended'
-bold_font        family='Iosevka Term Slab' style='Extrabold Extended'
-italic_font      family='Iosevka Term Slab' style='Semibold Extended Italic'
-bold_italic_font family='Iosevka Term Slab' style='Extrabold Extended Italic'
+font_family      family='Iosevka Term Slab' style=Extended
+bold_font        family='Iosevka Term Slab' style='Bold Extended'
+italic_font      family='Iosevka Term Slab' style='Extended Italic'
+bold_italic_font family='Iosevka Term Slab' style='Bold Extended Italic'
 # END_KITTY_FONTS
