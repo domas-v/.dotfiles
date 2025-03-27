@@ -8,80 +8,85 @@ return {
     priority = 1000,
     lazy = false,
     init = function() _G.Snacks = require("snacks") end,
-    opts = {
-        -- settings
-        styles = {
-            input = { relative = "cursor" },
-            notification = { wo = { wrap = true } },
-            zen = { backdrop = { transparent = false }, }
-        },
-        -- plugins
-        input = { enabled = true, },
-        dashboard = {
-            enabled = true,
-            preset = {
-                keys = {
-                    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.smart()" },
-                    { icon = " ", key = "e", desc = "Explorer", action = ":lua Snacks.picker.explorer({ layout = { preset = 'vertical' } })" },
-                    { icon = " ", key = "r", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-                    { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-                    { icon = " ", key = "P", desc = "Projects", action = ":lua Snacks.picker.projects()" },
-                    { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-                    { icon = "󱙣 ", key = "H", desc = "Check health", action = ":checkhealth" },
-                    { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+    config = function()
+        require("snacks").setup({
+            -- settings
+            styles = {
+                input = { relative = "cursor" },
+                notification = { wo = { wrap = true } },
+                zen = { backdrop = { transparent = false } }
+            },
+            -- plugins
+            input = { enabled = true, },
+            dashboard = {
+                enabled = true,
+                preset = {
+                    keys = {
+                        { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.smart()" },
+                        { icon = " ", key = "e", desc = "Explorer", action = ":lua Snacks.picker.explorer({ layout = { preset = 'vertical' } })" },
+                        { icon = " ", key = "r", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+                        { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+                        { icon = " ", key = "P", desc = "Projects", action = ":lua Snacks.picker.projects()" },
+                        { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+                        { icon = "󱙣 ", key = "H", desc = "Check health", action = ":checkhealth" },
+                        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+                    },
                 },
             },
-        },
-        image = { enabled = true, },
-        indent = {
-            enabled = true,
-            animate = { enabled = false }
-        },
-        zen = {
-            enabled = true,
-            toggles = { dim = false, }
-        },
-        bigfile = { enabled = true },
-        quickfile = { enabled = true },
-        explorer = { enabled = true },
-        words = { enabled = true },
-        picker = {
-            enabled = true,
-            layout = {
-                cycle = true,
-                preset = "vscode"
+            image = { enabled = true, },
+            indent = {
+                enabled = true,
+                animate = { enabled = false }
             },
-            matcher = {
-                fuzzy = true,
-                smartcase = true,
-                ignorecase = true,
-                sort_empty = false,
-                filename_bonus = true,
-                file_pos = true,
-                cwd_bonus = true,
-                frecency = true,
-                history_bonus = true,
+            zen = {
+                enabled = true,
+                toggles = { dim = false, }
             },
-            sources = {
-                commands = { layout = { preview = false, preset = "vertical" } },
-                keymaps = { layout = { preview = false, preset = "vertical" } },
-                help = { layout = { preview = false, preset = "vertical" } },
-                notifications = { layout = { preview = false, preset = "vertical" } },
-                qflist = { layout = { preview = true, preset = "vertical" } },
-                grep = { layout = { preset = "ivy" } },
-                grep_word = { layout = { preset = "ivy" } },
-                git_status = { layout = { preset = "ivy" } },
-                lsp_symbols = { layout = { preset = "ivy" } },
-                lsp_workspace_symbols = { layout = { preset = "ivy" } },
-            }
-        },
-        gitbrowse = { enabled = true },
-        bufdelete = { enabled = true },
-        notifier = {
-            enabled = true,
-            timeout = 3000,
-        },
-    },
+            bigfile = { enabled = true },
+            quickfile = { enabled = true },
+            explorer = { enabled = true },
+            words = { enabled = true },
+            picker = {
+                enabled = true,
+                layout = {
+                    cycle = true,
+                    preset = "vscode"
+                },
+                matcher = {
+                    fuzzy = true,
+                    smartcase = true,
+                    ignorecase = true,
+                    sort_empty = false,
+                    filename_bonus = true,
+                    file_pos = true,
+                    cwd_bonus = true,
+                    frecency = true,
+                    history_bonus = true,
+                },
+                sources = {
+                    commands = { layout = { preview = false, preset = "vertical" } },
+                    keymaps = { layout = { preview = false, preset = "vertical" } },
+                    help = { layout = { preview = false, preset = "vertical" } },
+                    notifications = { layout = { preview = false, preset = "vertical" } },
+                    qflist = { layout = { preview = true, preset = "vertical" } },
+                    grep = { layout = { preset = "ivy" } },
+                    grep_word = { layout = { preset = "ivy" } },
+                    git_status = { layout = { preset = "ivy" } },
+                    lsp_symbols = { layout = { preset = "ivy" } },
+                    lsp_workspace_symbols = { layout = { preset = "ivy" } },
+                }
+            },
+            gitbrowse = { enabled = true },
+            bufdelete = { enabled = true },
+            notifier = {
+                enabled = true,
+                timeout = 3000,
+            },
+
+        })
+
+        vim.cmd('command Dash lua Snacks.dashboard()')
+    end,
     keys = {
         --- ACTIONS ---
         { "<leader>x",     function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
@@ -119,7 +124,6 @@ return {
 
         -- git
         { "<leader>gb",    function() Snacks.picker.git_branches() end,                      desc = "Git branches" },
-        { "<leader>gs",    function() Snacks.picker.git_status() end,                        desc = "Git stash" },
         { "<leader>gz",    function() Snacks.picker.git_stash() end,                         desc = "Git stash" },
         { "<leader>go",    function() Snacks.gitbrowse() end,                                desc = "Git browse" },
         --- END PICKERS ---
