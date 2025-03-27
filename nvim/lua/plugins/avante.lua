@@ -11,11 +11,11 @@ return {
                     provider = "claude",
                     model = "claude-3-7-sonnet-20240229",
                 },
-                -- {
-                --     name = "Claude Haiku",
-                --     provider = "claude",
-                --     model = "claude-3-haiku-20240307",
-                -- },
+                {
+                    name = "Claude Haiku",
+                    provider = "claude",
+                    model = "claude-3-haiku-20240307",
+                },
             },
             default_provider = "Claude",
         },
@@ -27,6 +27,11 @@ return {
                 "zbirenbaum/copilot.lua",
                 cmd = "Copilot",
                 opts = {
+                    filetypes = {
+                        ["dap-repl"] = false,
+                        ["AvanteInput"] = false,
+                        ["snacks_picker_input"] = false
+                    },
                     model = "claude-3-7-sonnet-20240229",
                     suggestion = {
                         enabled = true,
@@ -41,7 +46,6 @@ return {
                             dismiss = "<C-]>",
                         },
                     },
-                    panel = { enabled = false },
                 },
             },
         },
