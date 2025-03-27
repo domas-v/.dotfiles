@@ -43,8 +43,7 @@ vim.keymap.set("n", "<C-S-l>", "zL", default_opts)
 vim.keymap.set("n", "<C-S-h>", "zH", default_opts)
 
 -- commands
-vim.keymap.set("n", "!", ":!", default_opts)
-vim.keymap.set("n", "<C-S-;>", ":lua ", default_opts)
+vim.keymap.set("n", "<leader>;", ":lua ", default_opts)
 
 -- lua execution
 vim.keymap.set("n", "<leader><leader>E", "<cmd>source %<cr>")

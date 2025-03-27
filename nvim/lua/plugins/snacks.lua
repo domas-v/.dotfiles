@@ -1,7 +1,6 @@
 local centered_explorer_options = {
     layout = { preset = "vertical" },
     auto_close = true,
-    focus = "input"
 }
 
 return {
@@ -109,10 +108,9 @@ return {
         { "<leader>/",     function() Snacks.picker.lines() end,                             desc = "Search in buffer" },
 
         -- search
+        { "<leader>f",     function() Snacks.picker.smart() end,                             desc = "Find files" },
         { "<leader>r",     function() Snacks.picker.grep() end,                              desc = "Grep" },
         { "<leader>R",     function() Snacks.picker.grep_word() end,                         desc = "Grep current word" },
-        { "<leader>f",     function() Snacks.picker.smart() end,                             desc = "Smart find" },
-        { "<leader>o",     function() Snacks.picker.files() end,                             desc = "Find file" },
 
         -- lsp
         { "<leader>s",     function() Snacks.picker.lsp_symbols() end,                       desc = "LSP symbols" },

@@ -1750,10 +1750,10 @@ map kitty_mod+w close_window
 
 map kitty_mod+ctrl+backspace resize_window reset
 map kitty_mod+r start_resizing_window
-map kitty_mod+. resize_window shorter 5
-map kitty_mod+, resize_window taller 5
-map kitty_mod+shift+, resize_window narrower 8
-map kitty_mod+shift+. resize_window wider 8
+map kitty_mod+shift+. resize_window shorter 7
+map kitty_mod+shift+, resize_window taller 7
+map kitty_mod+, resize_window narrower 8
+map kitty_mod+. resize_window wider 8
 
 #: }}}
 
@@ -1826,8 +1826,8 @@ map kitty_mod+q quit
 
 
 # BEGIN_KITTY_FONTS
-font_family      family='Iosevka Term' style='Light Extended'
-bold_font        family='Iosevka Term' style='Semibold Extended'
-italic_font      family='Iosevka Term' style='Light Extended Italic'
-bold_italic_font family='Iosevka Term' style='Semibold Extended'
+font_family      family='Iosevka Term Slab' style='Semibold Extended'
+bold_font        family='Iosevka Term Slab' style='Extrabold Extended'
+italic_font      family='Iosevka Term Slab' style='Semibold Extended Italic'
+bold_italic_font family='Iosevka Term Slab' style='Extrabold Extended Italic'
 # END_KITTY_FONTS

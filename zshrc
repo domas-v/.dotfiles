@@ -110,11 +110,11 @@ fi
 export VISUAL="nvim"
 
 # aliases
-alias dot="v ~/.dotfiles/"
+alias dot="cd ~/.dotfiles/ && v ."
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
 alias vlmda="v ~/Projects/tenspeed-lambda/"
-alias nt="v ~/Desktop/Notes/"
+alias nt="cd ~/Desktop/Notes/ && v ."
 
 alias v="nvim"
 alias src="source ~/.zshrc"
