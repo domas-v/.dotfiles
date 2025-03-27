@@ -16,5 +16,6 @@ vim.api.nvim_create_autocmd("FileType", {
     desc = "Enable completion for DAP-REPL filetypes"
 })
 
+-- HACK: For folds
 vim.api.nvim_set_hl(0, "FoldColumn", {})
 vim.api.nvim_set_hl(0, "Folded", { bg = "NONE" })
