@@ -6,15 +6,15 @@ return {
         },
         config = function()
             require("neogit").setup({
-                kind = "replace",
+                kind = "vsplit",
                 commit_editor = {
-                    kind = "vsplit",
-                    staged_diff_split_kind = "split",
+                    kind = "split",
+                    show_staged_diff = false,
                 },
                 disable_commit_confirmation = true
             })
 
-            vim.cmd('command G Neogit')
+            vim.cmd('command Git Neogit')
             vim.cmd('command Gp Neogit push')
             vim.cmd('command Gl Neogit pull')
             vim.cmd('command Gc Neogit commit')
