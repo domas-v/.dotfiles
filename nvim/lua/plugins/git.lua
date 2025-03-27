@@ -14,26 +14,14 @@ return {
                 disable_commit_confirmation = true
             })
 
-            vim.api.nvim_create_user_command('G', function()
-                vim.cmd('Neogit')
-            end, {})
-            vim.api.nvim_create_user_command('Gp', function()
-                vim.cmd('Neogit push')
-            end, {})
-            vim.api.nvim_create_user_command('Gl', function()
-                vim.cmd('Neogit pull')
-            end, {})
-            vim.api.nvim_create_user_command('Gc', function()
-                vim.cmd('Neogit commit')
-            end, {})
-            vim.api.nvim_create_user_command('Gb', function()
-                vim.cmd('Neogit branch')
-            end, {})
-            vim.api.nvim_create_user_command('Gz', function()
-                vim.cmd('Neogit stash')
-            end, {})
+            vim.cmd('command G Neogit')
+            vim.cmd('command Gp Neogit push')
+            vim.cmd('command Gl Neogit pull')
+            vim.cmd('command Gc Neogit commit')
+            vim.cmd('command Gb Neogit branch')
+            vim.cmd('command Gz Neogit stash')
         end,
-        cmd = { "Neogit" },
+        cmd = { "G", "Gp", "Gl", "Gc", "Gb", "Gz" },
         keys = {
             { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" }
         }
