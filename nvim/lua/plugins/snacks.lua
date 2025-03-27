@@ -4,8 +4,6 @@ local centered_explorer_options = {
     focus = "input"
 }
 
-vim.cmd("command Dashboard lua Snacks.dashboard()")
-
 return {
     "folke/snacks.nvim",
     priority = 1000,
