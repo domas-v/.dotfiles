@@ -14,7 +14,6 @@ return {
             styles = {
                 input = { relative = "cursor" },
                 notification = { wo = { wrap = true } },
-                zen = { backdrop = { transparent = false } }
             },
             -- plugins
             input = { enabled = true, },
@@ -38,10 +37,7 @@ return {
                 enabled = true,
                 animate = { enabled = false }
             },
-            zen = {
-                enabled = true,
-                toggles = { dim = false, }
-            },
+            zen = { enabled = true, },
             bigfile = { enabled = true },
             quickfile = { enabled = true },
             explorer = { enabled = true },
@@ -91,7 +87,7 @@ return {
         --- ACTIONS ---
         { "<leader>x",     function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
         { "<C-x>",         function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
-        { "<leader>|",     function() Snacks.zen.zen() end,                                  desc = "Zen" },
+        -- { "<leader>|",     function() Snacks.zen.zen() end,                                  desc = "Zen" },
         { "<leader>Z",     function() Snacks.zen.zoom() end,                                 desc = "Zoom" },
         --- END ACTIONS ---
 

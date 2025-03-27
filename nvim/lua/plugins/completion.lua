@@ -3,7 +3,6 @@ return {
         "saghen/blink.cmp",
         dependencies = {
             "rafamadriz/friendly-snippets",
-            "MahanRahmati/blink-nerdfont.nvim",
             "rcarriga/cmp-dap",
             {
                 'saghen/blink.compat',
@@ -47,17 +46,10 @@ return {
                     sql = { "dadbod", "snippets", "buffer" },
                     mysql = { "dadbod", "snippets", "buffer" },
                     ["dap-repl"] = { "dap", "snippets", "buffer" },
-                    markdown = { "lsp", "path", "snippets", "buffer", "nerdfont" }
                 },
                 providers = {
                     dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
                     dap = { name = "dap", module = "blink.compat.source" },
-                    nerdfont = {
-                        module = "blink-nerdfont",
-                        name = "Nerd Fonts",
-                        score_offset = 15,
-                        opts = { insert = true },
-                    }
                 },
             },
             completion = {
