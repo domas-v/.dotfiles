@@ -4,18 +4,21 @@ local centered_explorer_options = {
     focus = "input"
 }
 
+vim.cmd("command Dashboard lua Snacks.dashboard()")
+
 return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
     init = function() _G.Snacks = require("snacks") end,
     opts = {
-        -- ui
+        -- settings
         styles = {
             input = { relative = "cursor" },
             notification = { wo = { wrap = true } },
             zen = { backdrop = { transparent = false }, }
         },
+        -- plugins
         input = { enabled = true, },
         dashboard = {
             enabled = true,
@@ -41,17 +44,26 @@ return {
             enabled = true,
             toggles = { dim = false, }
         },
-        -- files
         bigfile = { enabled = true },
         quickfile = { enabled = true },
         explorer = { enabled = true },
-        -- search
         words = { enabled = true },
         picker = {
             enabled = true,
             layout = {
                 cycle = true,
                 preset = "vscode"
+            },
+            matcher = {
+                fuzzy = true,
+                smartcase = true,
+                ignorecase = true,
+                sort_empty = false,
+                filename_bonus = true,
+                file_pos = true,
+                cwd_bonus = true,
+                frecency = true,
+                history_bonus = true,
             },
             sources = {
                 commands = { layout = { preview = false, preset = "vertical" } },
@@ -64,12 +76,9 @@ return {
                 git_status = { layout = { preset = "ivy" } },
                 lsp_symbols = { layout = { preset = "ivy" } },
                 lsp_workspace_symbols = { layout = { preset = "ivy" } },
-                smart = { matcher = { history_bonus = true } }
             }
         },
-        -- git
         gitbrowse = { enabled = true },
-        -- misc
         bufdelete = { enabled = true },
         notifier = {
             enabled = true,
@@ -104,7 +113,8 @@ return {
         -- search
         { "<leader>r",     function() Snacks.picker.grep() end,                              desc = "Grep" },
         { "<leader>R",     function() Snacks.picker.grep_word() end,                         desc = "Grep current word" },
-        { "<leader>f",     function() Snacks.picker.smart() end,                             desc = "Find file" },
+        { "<leader>f",     function() Snacks.picker.smart() end,                             desc = "Smart find" },
+        { "<leader>o",     function() Snacks.picker.files() end,                             desc = "Find file" },
 
         -- lsp
         { "<leader>s",     function() Snacks.picker.lsp_symbols() end,                       desc = "LSP symbols" },
