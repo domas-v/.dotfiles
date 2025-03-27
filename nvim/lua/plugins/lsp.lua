@@ -23,7 +23,7 @@ return {
                     map.set('n', 'gi', lsp.buf.implementation,
                         vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
                     map.set('n', 'K', lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Show hover information" }))
-                    map.set('n', 'R', lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
+                    map.set('n', 'gn', lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
                     map.set({ 'n', 'v' }, 'ga', lsp.buf.code_action,
                         vim.tbl_extend("force", opts, { desc = "Code action" }))
                     map.set('n', 'gr', lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Find references" }))
