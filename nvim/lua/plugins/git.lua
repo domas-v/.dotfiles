@@ -14,14 +14,13 @@ return {
                 disable_commit_confirmation = true
             })
 
-            vim.cmd('command Git Neogit')
             vim.cmd('command Gp Neogit push')
             vim.cmd('command Gl Neogit pull')
             vim.cmd('command Gc Neogit commit')
             vim.cmd('command Gb Neogit branch')
             vim.cmd('command Gz Neogit stash')
         end,
-        cmd = { "G", "Gp", "Gl", "Gc", "Gb", "Gz" },
+        cmd = { "Gp", "Gl", "Gc", "Gb", "Gz" },
         keys = {
             { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" }
         }
@@ -36,8 +35,8 @@ return {
             { "<leader>gj", "<cmd>Gitsigns next_hunk<cr>",                 desc = "Gitsigns next" },
             { "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>",                 desc = "Gitsigns prev" },
             { "<leader>gv", "<cmd>Gitsigns preview_hunk<cr>",              desc = "Gitsigns preview" },
-            { "<leader>ga", "<cmd>Gitsigns stage_hunk<cr>",                desc = "Gitsigns stage",        mode = { 'n', 'v' } },
-            { "<leader>gx", "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "Gitsigns undo stage" },
+            { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>",                desc = "Gitsigns stage",        mode = { 'n', 'v' } },
+            { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "Gitsigns undo stage" },
             { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
 
             -- toggles
