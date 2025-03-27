@@ -36,6 +36,22 @@ return {
                         marker_dot = { add_padding = add_padding, },
                         marker_parenthesis = { add_padding = add_padding },
                     },
+                    block_quotes = {
+                        ["PROOF"] = {
+                            preview = "󱉫 Proof",
+                            hl = "MarkviewBlockQuoteNote",
+                            title = true,
+                            icon = "󱉫",
+                            border = "▋"
+                        },
+                        ["INTUITION"] = {
+                            preview = " Intuition",
+                            hl = "MarkviewBlockQuoteNote",
+                            title = true,
+                            icon = "",
+                            border = "▋"
+                        },
+                    },
                 },
                 markdown_inline = {
                     internal_links = { default = { icon = "" } },
