@@ -116,76 +116,6 @@ local function toggle_dap_repl()
     require('dap').repl.toggle({ height = math.floor(vim.o.lines / 3) })
 end
 
-local function append_to_dap_eval_buffer(opts)
-    local eval_buf = nil
-
-    -- Try to find existing eval buffer
-    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-        if vim.api.nvim_buf_get_name(buf):match(eval_buf_pattern) then
-            eval_buf = buf
-            break
-        end
-    end
-
-    -- Create eval buffer if it doesn't exist
-    if not eval_buf then
-        eval_buf = _create_eval_buf()
-        if not vim.b[eval_buf].dap_eval_autocmd_registered then
-            _set_autocmd(eval_buf)
-        end
-    end
-
-    -- Get selected text
-    local start_line, start_col, end_line, end_col
-
-    if opts.range == 2 then
-        -- Visual selection
-        start_line = opts.line1 - 1
-        end_line = opts.line2
-
-        -- Get start and end columns for the visual selection
-        local mode = vim.fn.visualmode()
-        if mode == 'v' or mode == 'V' or mode == '' then
-            start_col = vim.fn.getpos("'<")[3] - 1
-            end_col = vim.fn.getpos("'>")[3]
-        else
-            start_col = 0
-            end_col = -1
-        end
-    else
-        -- Current line if no range specified
-        start_line = vim.fn.line('.') - 1
-        end_line = vim.fn.line('.')
-        start_col = 0
-        end_col = -1
-    end
-
-    -- Get the selected text
-    local lines = vim.api.nvim_buf_get_text(0, start_line, start_col, end_line - 1, end_col, {})
-
-    -- Append text to eval buffer
-    local current_lines = vim.api.nvim_buf_get_lines(eval_buf, 0, -1, false)
-    local new_lines = vim.list_extend(current_lines, lines)
-    vim.api.nvim_buf_set_lines(eval_buf, 0, -1, false, new_lines)
-
-    -- Open the eval buffer if it's not visible
-    local eval_win = nil
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-        local buf = vim.api.nvim_win_get_buf(win)
-        if buf == eval_buf then
-            eval_win = win
-            break
-        end
-    end
-
-    if not eval_win then
-        local current_win = vim.api.nvim_get_current_win()
-        _split_third()
-        vim.api.nvim_win_set_buf(0, eval_buf)
-        vim.api.nvim_set_current_win(current_win)
-    end
-end
-
 return {
     {
         "mfussenegger/nvim-dap",
@@ -217,9 +147,6 @@ return {
             vim.keymap.set('n', '<leader>de', "<cmd>DapEvalToggle<cr>", default_opts)
             vim.api.nvim_create_user_command("DapReplToggle", toggle_dap_repl, {})
             vim.keymap.set('n', '<leader>dr', "<cmd>DapReplToggle<cr>", default_opts)
-
-            vim.api.nvim_create_user_command('DapEvalVisual', append_to_dap_eval_buffer, { range = true })
-            vim.keymap.set('v', '<leader>de', "<cmd>DapEvalVisual<cr>", default_opts)
         end,
         keys = {
             { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",                                                                            desc = "Start DAP" },
