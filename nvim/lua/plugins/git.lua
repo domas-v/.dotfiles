@@ -14,13 +14,13 @@ return {
                 disable_commit_confirmation = true
             })
 
-            vim.cmd('command Gp Neogit push')
-            vim.cmd('command Gl Neogit pull')
+            vim.cmd('command GP Neogit push')
+            vim.cmd('command Gp Neogit pull')
+            vim.cmd('command Gm Neogit merge')
             vim.cmd('command Gc Neogit commit')
-            vim.cmd('command Gb Neogit branch')
             vim.cmd('command Gz Neogit stash')
         end,
-        cmd = { "Gp", "Gl", "Gc", "Gb", "Gz" },
+        cmd = {"GP", "Gp", "Gm", "Gc", "Gz" },
         keys = {
             { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" }
         }

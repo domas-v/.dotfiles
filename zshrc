@@ -116,6 +116,9 @@ alias lmda="cd ~/Projects/tenspeed-lambda/"
 alias vlmda="v ~/Projects/tenspeed-lambda/"
 alias nt="cd ~/Desktop/Notes/ && v ."
 
+alias gp="git pull"
+alias gP="git push"
+
 alias v="nvim"
 alias src="source ~/.zshrc"
 alias zrc="v ~/.dotfiles/zshrc"

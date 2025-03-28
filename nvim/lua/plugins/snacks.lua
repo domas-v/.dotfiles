@@ -87,7 +87,6 @@ return {
         --- ACTIONS ---
         { "<leader>x",     function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
         { "<C-x>",         function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
-        -- { "<leader>|",     function() Snacks.zen.zen() end,                                  desc = "Zen" },
         { "<leader>Z",     function() Snacks.zen.zoom() end,                                 desc = "Zoom" },
         --- END ACTIONS ---
 
