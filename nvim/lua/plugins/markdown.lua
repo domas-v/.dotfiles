@@ -7,7 +7,13 @@ return {
     {
         "folke/zen-mode.nvim",
         opts = {
-            window = { width = 100, },
+            window = {
+                width = 100,
+                options = {
+                    number = false, -- disable number column
+                    relativenumber = false, -- disable relative numbers
+                },
+            },
             plugins = {
                 gitsigns = { enabled = true },
                 kitty = {

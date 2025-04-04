@@ -24,6 +24,7 @@ return {
                         { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.smart()" },
                         { icon = " ", key = "e", desc = "Explorer", action = ":lua Snacks.picker.explorer({ layout = { preset = 'vertical' } })" },
                         { icon = " ", key = "r", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+                        { icon = "󰊢 ", key = "g", desc = "Git", action = ":Neogit" },
                         { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
                         { icon = " ", key = "P", desc = "Projects", action = ":lua Snacks.picker.projects()" },
                         { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
@@ -88,6 +89,7 @@ return {
         { "<leader>x",     function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
         { "<C-x>",         function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
         { "<leader>Z",     function() Snacks.zen.zoom() end,                                 desc = "Zoom" },
+        { "<leader>go",    function() Snacks.gitbrowse() end,                                desc = "Git browse" },
         --- END ACTIONS ---
 
         --- PICKERS ---
@@ -117,10 +119,6 @@ return {
         { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end,             desc = "LSP workspace symbols" },
         { "<leader>D",     function() Snacks.picker.diagnostics() end,                       desc = "Diagnostics" },
 
-        -- git
-        { "<leader>gb",    function() Snacks.picker.git_branches() end,                      desc = "Git branches" },
-        { "<leader>gz",    function() Snacks.picker.git_stash() end,                         desc = "Git stash" },
-        { "<leader>go",    function() Snacks.gitbrowse() end,                                desc = "Git browse" },
         --- END PICKERS ---
     }
 }

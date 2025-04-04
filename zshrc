@@ -110,11 +110,11 @@ fi
 export VISUAL="nvim"
 
 # aliases
-alias dot="cd ~/.dotfiles/ && v ."
+alias dot="cd ~/.dotfiles/ && v"
 alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
 alias vlmda="v ~/Projects/tenspeed-lambda/"
-alias nt="cd ~/Desktop/Notes/ && v ."
+alias nt="cd ~/Desktop/Notes/ && v"
 
 alias gp="git pull"
 alias gP="git push"
@@ -123,8 +123,7 @@ alias v="nvim"
 alias src="source ~/.zshrc"
 alias zrc="v ~/.dotfiles/zshrc"
 
-alias td="tmux detach"
-alias tx="tmux kill-session"
+alias tn="terminal-notifier -message \"DONE\" -sound default"
 
 # file listings
 function preview_stuff() {

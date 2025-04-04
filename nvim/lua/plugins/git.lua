@@ -13,16 +13,15 @@ return {
                 },
                 disable_commit_confirmation = true
             })
-
-            vim.cmd('command GP Neogit push')
-            vim.cmd('command Gp Neogit pull')
-            vim.cmd('command Gm Neogit merge')
-            vim.cmd('command Gc Neogit commit')
-            vim.cmd('command Gz Neogit stash')
         end,
-        cmd = {"GP", "Gp", "Gm", "Gc", "Gz" },
         keys = {
-            { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" }
+            { "<leader>gg", "<cmd>Neogit<cr>",        desc = "Open Neogit" },
+            { "<leader>gp", "<cmd>Neogit pull<cr>",   desc = "Neogit pull" },
+            { "<leader>gP", "<cmd>Neogit push<cr>",   desc = "Neogit push" },
+            { "<leader>gm", "<cmd>Neogit merge<cr>",  desc = "Neogit merge" },
+            { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Neogit commit" },
+            { "<leader>gz", "<cmd>Neogit stash<cr>",  desc = "Neogit stash" },
+            { "<leader>gb", "<cmd>Neogit branch<cr>", desc = "Neogit branch" },
         }
     },
     {
