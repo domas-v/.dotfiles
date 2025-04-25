@@ -14,6 +14,7 @@ return {
                 disable_commit_confirmation = true
             })
         end,
+        cmd = { "Neogit" },
         keys = {
             { "<leader>gg", "<cmd>Neogit<cr>",        desc = "Open Neogit" },
             { "<leader>gp", "<cmd>Neogit pull<cr>",   desc = "Neogit pull" },

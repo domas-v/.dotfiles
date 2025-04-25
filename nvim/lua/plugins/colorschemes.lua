@@ -1,13 +1,11 @@
 return {
     {
         "catppuccin/nvim",
-        enabled = false,
         lazy = false,
         priority = 1000,
         name = "catppuccin",
         config = function()
             require("catppuccin").setup({
-                flavour = "mocha",
                 transparent_background = false,
                 styles = {
                     comments = { "italic" },
@@ -26,19 +24,6 @@ return {
                 },
             })
         end
-    },
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        enabled = false,
-        priority = 1000,
-    },
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        enabled = false,
-        priority = 1000,
-        opts = {},
     },
     {
         "rebelot/kanagawa.nvim",
