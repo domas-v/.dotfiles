@@ -2,6 +2,7 @@ return {
     {
         "yetone/avante.nvim",
         event = "VeryLazy",
+        enabled = false,
         build = "make",
         version = false,
         opts = {
@@ -23,31 +24,32 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            {
-                "zbirenbaum/copilot.lua",
-                cmd = "Copilot",
-                opts = {
-                    filetypes = {
-                        ["dap-repl"] = false,
-                        ["AvanteInput"] = false,
-                        ["snacks_picker_input"] = false
-                    },
-                    model = "claude-3-7-sonnet-20240229",
-                    suggestion = {
-                        enabled = true,
-                        auto_trigger = true,
-                        debounce = 75,
-                        keymap = {
-                            accept = "<Tab>",
-                            accept_word = false,
-                            accept_line = false,
-                            next = "<M-]>",
-                            prev = "<M-[>",
-                            dismiss = "<C-]>",
-                        },
-                    },
-                },
-            },
         },
-    }
+    },
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        opts = {
+            filetypes = {
+                ["dap-repl"] = false,
+                ["AvanteInput"] = false,
+                ["snacks_picker_input"] = false
+            }
+        }
+        --     suggestion = {
+        --         enabled = true,
+        --         auto_trigger = true,
+        --         debounce = 75,
+        --         keymap = {
+        --             accept = "<Tab>",
+        --             accept_word = false,
+        --             accept_line = false,
+        --             next = "<M-]>",
+        --             prev = "<M-[>",
+        --             dismiss = "<C-]>",
+        --         },
+        --     },
+        -- },
+    },
 }
