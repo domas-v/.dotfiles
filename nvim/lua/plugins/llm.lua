@@ -1,29 +1,19 @@
 return {
     {
-        "yetone/avante.nvim",
-        event = "VeryLazy",
-        enabled = false,
-        build = "make",
-        version = false,
+        "olimorris/codecompanion.nvim",
         opts = {
-            providers = {
-                {
-                    name = "Claude",
-                    provider = "claude",
-                    model = "claude-3-7-sonnet-20240229",
+            strategies = {
+                chat = {
+                    adapter = "anthropic",
                 },
-                {
-                    name = "Claude Haiku",
-                    provider = "claude",
-                    model = "claude-3-haiku-20240307",
+                inline = {
+                    adapter = "anthropic",
                 },
-            },
-            default_provider = "Claude",
+            }
         },
         dependencies = {
-            "nvim-treesitter/nvim-treesitter",
             "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
+            "nvim-treesitter/nvim-treesitter",
         },
-    },
+    }
 }

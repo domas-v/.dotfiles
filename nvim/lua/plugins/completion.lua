@@ -46,6 +46,7 @@ return {
                     sql = { "dadbod", "snippets", "buffer" },
                     mysql = { "dadbod", "snippets", "buffer" },
                     ["dap-repl"] = { "dap", "snippets", "buffer" },
+                    codecompanion = { "codecompanion" },
                 },
                 providers = {
                     dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
