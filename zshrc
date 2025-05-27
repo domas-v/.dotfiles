@@ -115,6 +115,7 @@ alias pr="cd ~/Projects/"
 alias lmda="cd ~/Projects/tenspeed-lambda/"
 alias vlmda="v ~/Projects/tenspeed-lambda/"
 alias nt="cd ~/Desktop/Notes/ && v"
+alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/"
 
 alias gp="git pull"
 alias gP="git push"
