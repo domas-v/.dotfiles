@@ -158,6 +158,7 @@ alias llt="eza -l --git -T -L"
 
 # python
 alias py="python"
+alias ipy="ipython"
 alias pua="pip uninstall -y -r <(pip freeze)"
 
 # pyenv

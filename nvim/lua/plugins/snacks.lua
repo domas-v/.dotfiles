@@ -3,6 +3,17 @@ local centered_explorer_options = {
     auto_close = true,
 }
 
+local MAC_SCREEN_SIZE = 190
+
+local function side_explorer_width()
+    if vim.o.columns <= MAC_SCREEN_SIZE then
+        return 0.15
+    end
+
+    return 30
+end
+
+
 return {
     "folke/snacks.nvim",
     priority = 1000,
@@ -61,6 +72,7 @@ return {
                     history_bonus = true,
                 },
                 sources = {
+                    explorer = { layout = { layout = { width = side_explorer_width } } },
                     commands = { layout = { preview = false, preset = "vertical" } },
                     keymaps = { layout = { preview = false, preset = "vertical" } },
                     help = { layout = { preview = false, preset = "vertical" } },
