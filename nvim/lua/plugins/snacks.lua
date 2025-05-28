@@ -68,7 +68,7 @@ return {
                     filename_bonus = true,
                     file_pos = true,
                     cwd_bonus = true,
-                    frecency = true,
+                    frecency = false,
                     history_bonus = true,
                 },
                 sources = {

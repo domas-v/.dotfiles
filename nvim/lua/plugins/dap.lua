@@ -145,6 +145,7 @@ return {
             vim.keymap.set('n', '<leader>du', "<cmd>DapUIToggle<cr>", default_opts)
             vim.api.nvim_create_user_command("DapEvalToggle", toggle_dap_eval, {})
             vim.keymap.set('n', '<leader>de', "<cmd>DapEvalToggle<cr>", default_opts)
+            vim.keymap.set('v', '<leader>de', "<cmd>DapEval<cr>", default_opts)
             vim.api.nvim_create_user_command("DapReplToggle", toggle_dap_repl, {})
             vim.keymap.set('n', '<leader>dr', "<cmd>DapReplToggle<cr>", default_opts)
         end,
