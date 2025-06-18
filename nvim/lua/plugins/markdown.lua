@@ -10,7 +10,7 @@ return {
             window = {
                 width = 100,
                 options = {
-                    number = false, -- disable number column
+                    number = false,         -- disable number column
                     relativenumber = false, -- disable relative numbers
                 },
             },
@@ -28,10 +28,20 @@ return {
     },
     {
         '2kabhishek/nerdy.nvim',
-        cmd = { "Nerdy" },
+        cmd = { "Icons" },
+    },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+        opts = {
+            heading = { sign = false },
+            latex = { enabled = false },
+            code = { sign = false },
+        }
     },
     {
         "OXY2DEV/markview.nvim",
+        enabled = false,
         lazy = false,
         priority = 999,
         config = function()

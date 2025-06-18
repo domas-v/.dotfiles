@@ -46,5 +46,9 @@ return {
             { "<leader>gD", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
         }
     },
-    {'akinsho/git-conflict.nvim', version = "*", config = true}
+    {
+        'akinsho/git-conflict.nvim',
+        version = "*",
+        config = true
+    }
 }

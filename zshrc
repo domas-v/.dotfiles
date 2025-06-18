@@ -110,11 +110,9 @@ fi
 export VISUAL="nvim"
 
 # aliases
-alias dot="cd ~/.dotfiles/ && v"
+alias dot="cd ~/.dotfiles/"
 alias pr="cd ~/Projects/"
-alias lmda="cd ~/Projects/tenspeed-lambda/"
-alias vlmda="v ~/Projects/tenspeed-lambda/"
-alias nt="cd ~/Desktop/Notes/ && v"
+alias 10speed="cd ~/Projects/tenspeed-lambda/"
 alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/"
 
 alias gp="git pull"
@@ -122,7 +120,8 @@ alias gP="git push"
 
 alias v="nvim"
 alias src="source ~/.zshrc"
-alias zrc="v ~/.dotfiles/zshrc"
+alias zrc="cd ~/.dotfiles && v zshrc"
+alias vrc="cd ~/.dotfiles/nvim/ && v"
 
 alias tn="terminal-notifier -message \"DONE\" -sound default"
 
