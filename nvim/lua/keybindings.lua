@@ -42,9 +42,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", default_opts)
 vim.keymap.set("n", "<C-S-l>", "zL", default_opts)
 vim.keymap.set("n", "<C-S-h>", "zH", default_opts)
 
--- commands
-vim.keymap.set("n", "<leader>;", ":lua ", default_opts)
-
 -- lua execution
 vim.keymap.set("n", "<leader><leader>E", "<cmd>source %<cr>")
 vim.keymap.set("n", "<leader><leader>e", ":.lua<cr>")
@@ -55,7 +52,7 @@ vim.keymap.set("n", "<leader>q", "<cmd>close<cr>", default_opts)
 vim.keymap.set("n", "<leader>Q", "<cmd>qa<cr>", default_opts)
 vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", default_opts)
 
--- word wrap
+-- toggle word wrap
 vim.keymap.set("n", "<leader><leader>w", "<cmd>set wrap!<cr>", { noremap = true })
 
 -- undo/redo
@@ -98,10 +95,10 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- help
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "help",
-    callback = function() vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true, silent = true }) end
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "help",
+--     callback = function() vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true, silent = true }) end
+-- })
 
 -- windows
 -- vim.keymap.set("n", "<C-h>", "<C-w>h", default_opts)

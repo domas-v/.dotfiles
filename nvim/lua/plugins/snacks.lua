@@ -37,7 +37,6 @@ return {
                         { icon = " ", key = "r", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
                         { icon = "󰊢 ", key = "g", desc = "Git", action = ":Neogit" },
                         { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-                        { icon = " ", key = "P", desc = "Projects", action = ":lua Snacks.picker.projects()" },
                         { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
                         { icon = "󱙣 ", key = "H", desc = "Check health", action = ":checkhealth" },
                         { icon = " ", key = "q", desc = "Quit", action = ":qa" },
@@ -107,7 +106,6 @@ return {
         --- PICKERS ---
         { "<leader>N",     function() Snacks.picker.notifications() end,                     desc = "Notifications" },
         { "<leader><TAB>", function() Snacks.explorer() end,                                 desc = "Side explorer" },
-        { "<leader>P",     function() Snacks.picker.projects() end,                          desc = "Projects" },
         { "<leader>C",     function() Snacks.picker.qflist() end,                            desc = "Quickfix list" },
 
         -- help
