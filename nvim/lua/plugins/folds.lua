@@ -2,6 +2,7 @@ return {
     {
         "chrisgrieser/nvim-origami",
         event = "VeryLazy",
+        version = "1.9",
         opts = { setupFoldKeymaps = false, },
     },
     {

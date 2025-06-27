@@ -53,7 +53,7 @@ vim.keymap.set("n", "<leader>Q", "<cmd>qa<cr>", default_opts)
 vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", default_opts)
 
 -- toggle word wrap
-vim.keymap.set("n", "<leader><leader>w", "<cmd>set wrap!<cr>", { noremap = true })
+vim.api.nvim_create_user_command('Wrap', 'set wrap!', {})
 
 -- undo/redo
 vim.keymap.set("n", "U", "<C-r>", { noremap = true })
