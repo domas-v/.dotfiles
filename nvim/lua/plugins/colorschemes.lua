@@ -6,7 +6,7 @@ return {
         name = "catppuccin",
         config = function()
             require("catppuccin").setup({
-                transparent_background = false,
+                transparent_background = true,
                 styles = {
                     comments = { "italic" },
                     conditionals = { "italic" },
@@ -40,5 +40,12 @@ return {
         opts = {
             colors = { theme = { all = { ui = { bg_gutter = "none" } } } }
         },
+    },
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        lazy = false,
+        priority = 1000,
+        opts = { styles = { transparency = true } }
     }
 }

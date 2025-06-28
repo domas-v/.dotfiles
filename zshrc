@@ -109,20 +109,29 @@ else
 fi
 export VISUAL="nvim"
 
-# aliases
+# quick dirs
 alias dot="cd ~/.dotfiles/"
 alias pr="cd ~/Projects/"
 alias 10speed="cd ~/Projects/tenspeed-lambda/"
 alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/"
 
+# git
 alias gp="git pull"
 alias gP="git push"
 
+# vim
 alias v="nvim"
 alias src="source ~/.zshrc"
 alias zrc="cd ~/.dotfiles && v zshrc"
 alias vrc="cd ~/.dotfiles/nvim/ && v"
 
+# tmux
+alias trc="tmux source-file ~/.dotfiles/tmux.conf"
+(( $+TMUX )) && unset zle_bracketed_paste
+source "$HOME/.dotfiles/tmux-sessions.zsh"
+
+
+# terminal-notifier
 alias tn="terminal-notifier -message \"DONE\" -sound default"
 
 # file listings
