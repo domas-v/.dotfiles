@@ -157,8 +157,8 @@ return {
             { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>",                                                                            desc = "Step out" },
             { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>",                                                                desc = "Test python method" },
             { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>",                                                                                   desc = "DAP Virtual text" },
-            { "<leader>df", "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>",                                       desc = "DAP hover variable" },
-            { "<leader>dF", "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes, { border = 'rounded' })<cr>", desc = "DAP scopes" },
+            { "<leader>da", "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>",                                       desc = "DAP hover variable" },
+            { "<leader>dw", "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes, { border = 'rounded' })<cr>", desc = "DAP scopes" },
         }
     },
     {
