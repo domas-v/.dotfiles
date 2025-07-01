@@ -38,7 +38,8 @@ return {
             })
         end,
         opts = {
-            colors = { theme = { all = { ui = { bg_gutter = "none" } } } }
+            colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
+            transparent = true
         },
     },
     {
@@ -47,5 +48,9 @@ return {
         lazy = false,
         priority = 1000,
         opts = { styles = { transparency = true } }
+    },
+    {
+        "f-person/auto-dark-mode.nvim",
+        opts = {}
     }
 }

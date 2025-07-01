@@ -2,8 +2,7 @@
 font-family = "JetBrains Mono"
 
 # color theme
-# theme = "catppuccin-mocha"
-theme = "rose-pine"
+theme = dark:catppuccin-mocha,light:catppuccin-latte
 background-opacity = 0.8
 background-blur = true
 
