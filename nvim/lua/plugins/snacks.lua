@@ -18,7 +18,6 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    enabled = false,
     init = function() _G.Snacks = require("snacks") end,
     config = function()
         require("snacks").setup({
@@ -58,7 +57,7 @@ return {
                 enabled = true,
                 layout = {
                     cycle = true,
-                    preset = "vscode"
+                    preset = "vertical"
                 },
                 matcher = {
                     fuzzy = true,

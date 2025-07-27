@@ -27,10 +27,6 @@ return {
         }
     },
     {
-        '2kabhishek/nerdy.nvim',
-        cmd = { "Icons" },
-    },
-    {
         'MeanderingProgrammer/render-markdown.nvim',
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
         opts = {
