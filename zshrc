@@ -128,7 +128,6 @@ alias vrc="cd ~/.dotfiles/nvim/ && v"
 # tmux
 alias trc="tmux source-file ~/.dotfiles/tmux.conf"
 (( $+TMUX )) && unset zle_bracketed_paste
-source "$HOME/.dotfiles/tmux-sessions.zsh"
 
 
 # terminal-notifier
