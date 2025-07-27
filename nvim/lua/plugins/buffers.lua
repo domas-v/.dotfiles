@@ -5,7 +5,7 @@ return {
         version = "*",
         dependencies = 'nvim-tree/nvim-web-devicons',
         config = function()
-            local bufferline = require('bufferline')
+            local bufferline = require('nvim.lua.plugins.buffers')
             bufferline.setup({
                 options = {
                     style_preset = bufferline.style_preset.minimal,
