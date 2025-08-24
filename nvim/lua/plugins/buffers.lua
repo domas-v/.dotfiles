@@ -1,19 +1,38 @@
 return {
     {
+        'sindrets/winshift.nvim',
+        config = function() require('winshift').setup() end,
+        cmd = { "WinShift" },
+        keys = {
+            { "<leader>wm", "<cmd>WinShift<cr>",       desc = "WinShift mode" },
+            { "<leader>wh", "<cmd>WinShift left<cr>",  desc = "Winshift left" },
+            { "<leader>wk", "<cmd>WinShift up<cr>",    desc = "WinShift up" },
+            { "<leader>wj", "<cmd>WinShift down<cr>",  desc = "WinShift down" },
+            { "<leader>wl", "<cmd>WinShift right<cr>", desc = "WinShift right" },
+        }
+    },
+    {
+        "kevinhwang91/nvim-bqf",
+        ft = 'qf',
+        dependencies = {
+            'junegunn/fzf',
+            config = function() vim.fn['fzf#install']() end
+        }
+    },
+    {
         'akinsho/bufferline.nvim',
         lazy = false,
         version = "*",
         dependencies = 'nvim-tree/nvim-web-devicons',
         config = function()
-            local bufferline = require('nvim.lua.plugins.buffers')
+            local bufferline = require('bufferline')
             bufferline.setup({
                 options = {
                     style_preset = bufferline.style_preset.minimal,
-                    numbers = "none",
+                    -- numbers = "none",
                     themable = false,
                 }
-            }
-            )
+            })
         end,
         keys = {
             { "<leader>1", "<cmd>BufferLineGoToBuffer 1<cr>" },
@@ -50,32 +69,4 @@ return {
             { "<C-t>",     "<cmd>BufferLinePick<cr>" },
         }
     },
-    {
-        'sindrets/winshift.nvim',
-        config = function() require('winshift').setup() end,
-        cmd = { "WinShift" },
-        keys = {
-            { "<leader>wm", "<cmd>WinShift<cr>",       desc = "WinShift mode" },
-            { "<leader>wh", "<cmd>WinShift left<cr>",  desc = "Winshift left" },
-            { "<leader>wk", "<cmd>WinShift up<cr>",    desc = "WinShift up" },
-            { "<leader>wj", "<cmd>WinShift down<cr>",  desc = "WinShift down" },
-            { "<leader>wl", "<cmd>WinShift right<cr>", desc = "WinShift right" },
-        }
-    },
-    {
-        "kevinhwang91/nvim-bqf",
-        ft = 'qf',
-        dependencies = {
-            'junegunn/fzf',
-            config = function() vim.fn['fzf#install']() end
-        }
-    },
-    {
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {},
-        keys = {
-            { "<leader>T", "<cmd>TodoQuickFix<cr>", desc = "TodoQuickfix" },
-        }
-    }
 }

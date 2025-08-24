@@ -21,14 +21,5 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {},
-    },
-    {
-        "hedyhli/outline.nvim",
-        lazy = true,
-        cmd = { "Outline", "OutlineOpen" },
-        keys = {
-            { "<leader>>", "<cmd>Outline<CR>", desc = "Toggle outline" },
-        },
-        opts = {},
-    },
+    }
 }

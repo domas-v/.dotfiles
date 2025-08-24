@@ -94,12 +94,6 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function() vim.keymap.set("n", "q", "<cmd>cclose<cr>", { buffer = true, silent = true }) end
 })
 
--- help
--- vim.api.nvim_create_autocmd("FileType", {
---     pattern = "help",
---     callback = function() vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true, silent = true }) end
--- })
-
 -- windows
 -- vim.keymap.set("n", "<C-h>", "<C-w>h", default_opts)
 -- vim.keymap.set("n", "<C-j>", "<C-w>j", default_opts)
