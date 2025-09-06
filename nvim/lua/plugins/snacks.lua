@@ -28,21 +28,6 @@ return {
             },
             -- plugins
             input = { enabled = true, },
-            dashboard = {
-                enabled = true,
-                preset = {
-                    keys = {
-                        { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.smart()" },
-                        { icon = " ", key = "e", desc = "Explorer", action = ":lua Snacks.picker.explorer({ layout = { preset = 'vertical' } })" },
-                        { icon = " ", key = "r", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-                        { icon = "󰊢 ", key = "g", desc = "Git", action = ":Neogit" },
-                        { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-                        { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-                        { icon = "󱙣 ", key = "H", desc = "Check health", action = ":checkhealth" },
-                        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-                    },
-                },
-            },
             image = { enabled = true, },
             indent = {
                 enabled = true,
@@ -92,43 +77,32 @@ return {
             },
 
         })
-
-        vim.cmd('command Dash lua Snacks.dashboard()')
     end,
     keys = {
-        --- ACTIONS ---
-        { "<leader>x",     function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
-        { "<C-x>",         function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
-        { "<leader>Z",     function() Snacks.zen.zoom() end,                                 desc = "Zoom" },
-        { "<leader>go",    function() Snacks.gitbrowse() end,                                desc = "Git browse" },
-        --- END ACTIONS ---
-
-        --- PICKERS ---
-        { "<leader>N",     function() Snacks.picker.notifications() end,                     desc = "Notifications" },
-        { "<leader><TAB>", function() Snacks.explorer() end,                                 desc = "Side explorer" },
-        { "<leader>C",     function() Snacks.picker.qflist() end,                            desc = "Quickfix list" },
+        { "<C-x>",  function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
+        { "<leader>x",  function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
+        { "<leader>go", function() Snacks.gitbrowse() end,                                desc = "Git browse" },
+        { "<leader>C",  function() Snacks.picker.qflist() end,                            desc = "Quickfix list" },
 
         -- help
-        { "<leader>?",     function() Snacks.picker() end,                                   desc = "All pickers" },
-        { "<leader>K",     function() Snacks.picker.keymaps() end,                           desc = "Keymaps" },
-        { "<leader>H",     function() Snacks.picker.help() end,                              desc = "Help" },
-        { "<leader>.",     function() Snacks.picker.resume() end,                            desc = "Resume last picker" },
+        { "<leader>?",  function() Snacks.picker() end,                                   desc = "All pickers" },
+        { "<leader>K",  function() Snacks.picker.keymaps() end,                           desc = "Keymaps" },
+        { "<leader>H",  function() Snacks.picker.help() end,                              desc = "Help" },
 
         -- buffers
-        { "<leader>e",     function() Snacks.picker.explorer(centered_explorer_options) end, desc = "Center explorer" },
-        { "<leader>,",     function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
-        { "<leader>/",     function() Snacks.picker.lines() end,                             desc = "Search in buffer" },
+        { "<leader>e",  function() Snacks.picker.explorer(centered_explorer_options) end, desc = "Center explorer" },
+        { "<leader>,",  function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
+        { "<leader>/",  function() Snacks.picker.lines() end,                             desc = "Search in buffer" },
 
         -- search
-        { "<leader>f",     function() Snacks.picker.smart() end,                             desc = "Find files" },
-        { "<leader>r",     function() Snacks.picker.grep() end,                              desc = "Grep" },
-        { "<leader>R",     function() Snacks.picker.grep_word() end,                         desc = "Grep current word" },
+        { "<leader>f",  function() Snacks.picker.smart() end,                             desc = "Find files" },
+        { "<leader>r",  function() Snacks.picker.grep() end,                              desc = "Grep" },
+        { "<leader>R",  function() Snacks.picker.grep_word() end,                         desc = "Grep current word" },
 
         -- lsp
-        { "<leader>s",     function() Snacks.picker.lsp_symbols() end,                       desc = "LSP symbols" },
-        { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end,             desc = "LSP workspace symbols" },
-        { "<leader>D",     function() Snacks.picker.diagnostics() end,                       desc = "Diagnostics" },
-
+        { "<leader>s",  function() Snacks.picker.lsp_symbols() end,                       desc = "LSP symbols" },
+        { "<leader>S",  function() Snacks.picker.lsp_workspace_symbols() end,             desc = "LSP workspace symbols" },
+        { "<leader>D",  function() Snacks.picker.diagnostics() end,                       desc = "Diagnostics" },
         --- END PICKERS ---
     }
 }
