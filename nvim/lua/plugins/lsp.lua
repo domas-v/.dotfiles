@@ -2,14 +2,15 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig")
             local map = vim.keymap
             local lsp = vim.lsp
 
-            lspconfig.pyright.setup({})
-            lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { disable = { "missing-fields" } } } } })
-            lspconfig.clangd.setup({})
-            lspconfig.marksman.setup({})
+            lsp.enable("pyright")
+            lsp.enable("clangd")
+            lsp.enable("marksman")
+            lsp.enable("lua_ls")
+
+            -- lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { disable = { "missing-fields" } } } } })
 
             map.set('n', '<leader>dv', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
             map.set('n', '<leader>dk', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
