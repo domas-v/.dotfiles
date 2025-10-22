@@ -17,6 +17,7 @@ end
 return {
     "folke/snacks.nvim",
     priority = 1000,
+    enabled = true,
     lazy = false,
     init = function() _G.Snacks = require("snacks") end,
     config = function()
@@ -27,11 +28,11 @@ return {
                 notification = { wo = { wrap = true } },
             },
             -- plugins
-            input = { enabled = true, },
             image = { enabled = true, },
+            input = { enabled = true, },
             indent = {
                 enabled = true,
-                animate = { enabled = false }
+                animate = { enabled = true }
             },
             zen = { enabled = true, },
             bigfile = { enabled = true },
@@ -79,7 +80,7 @@ return {
         })
     end,
     keys = {
-        { "<C-x>",  function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
+        { "<C-x>",      function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
         { "<leader>x",  function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
         { "<leader>go", function() Snacks.gitbrowse() end,                                desc = "Git browse" },
         { "<leader>C",  function() Snacks.picker.qflist() end,                            desc = "Quickfix list" },
