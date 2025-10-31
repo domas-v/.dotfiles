@@ -1,6 +1,7 @@
 return {
     {
         "catppuccin/nvim",
+        enabled = false,
         lazy = false,
         priority = 1000,
         name = "catppuccin",
@@ -41,13 +42,6 @@ return {
             colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
             transparent = true
         },
-    },
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        lazy = false,
-        priority = 1000,
-        opts = { styles = { transparency = true } }
     },
     {
         "f-person/auto-dark-mode.nvim",

@@ -5,28 +5,6 @@ return {
         opts = {},
     },
     {
-        "folke/zen-mode.nvim",
-        opts = {
-            window = {
-                width = 100,
-                options = {
-                    number = false,         -- disable number column
-                    relativenumber = false, -- disable relative numbers
-                },
-            },
-            plugins = {
-                gitsigns = { enabled = true },
-                kitty = {
-                    enabled = true,
-                    font = "+4",
-                },
-            }
-        },
-        keys = {
-            { "<leader>|", "<cmd>ZenMode<cr>" },
-        }
-    },
-    {
         'MeanderingProgrammer/render-markdown.nvim',
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
         opts = {
