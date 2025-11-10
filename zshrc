@@ -82,7 +82,6 @@ plugins=(
     tmux
     direnv
     python
-    pyenv
     pip
     rust
     docker
@@ -168,11 +167,6 @@ alias py="python"
 alias ipy="ipython"
 alias pua="pip uninstall -y -r <(pip freeze)"
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-
 
 # The following lines were added by compinstall
 # zstyle ':completion:*' completer _complete _ignored
@@ -183,3 +177,5 @@ compinit
 # End of lines added by compinstall
 
 eval "$(starship init zsh)"
+
+. "$HOME/.local/bin/env"

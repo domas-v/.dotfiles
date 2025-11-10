@@ -133,7 +133,7 @@ return {
             -- c
             dap.adapters.codelldb = {
                 type = "executable",
-                command = "/Users/domas-v/.vscode/extensions/vadimcn.vscode-lldb-1.11.3/adapter/codelldb",
+                command = "/Users/domas-v/.vscode/extensions/vadimcn.vscode-lldb-1.11.5/adapter/codelldb",
             }
             dap.configurations.c = dap.configurations.cpp
             --- python
