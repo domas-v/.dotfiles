@@ -134,9 +134,9 @@ alias tn="terminal-notifier -message \"DONE\" -sound default"
 
 # file listings
 function preview_stuff() {
-    # If no arguments, fall back to real cat reading stdin
+    # If no arguments, fall back to list current dir
     if [ $# -eq 0 ]; then
-        command bat
+        eza -l --git -T -L 2
         return
     fi
 
@@ -155,7 +155,7 @@ function preview_stuff() {
     fi
 }
 
-alias vv="preview_stuff"
+alias L="preview_stuff"
 alias t="touch"
 alias l="eza -l --git"
 alias ll="eza -la --git"
