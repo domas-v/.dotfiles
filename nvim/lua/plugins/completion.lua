@@ -23,7 +23,7 @@ return {
                     ["<C-k>"] = { "select_prev" },
                     ["<C-n>"] = { "select_next" },
                     ["<C-p>"] = { "select_prev" },
-                    ["<TAB>"] = { "select_and_accept" }
+                    -- ["<TAB>"] = { "select_and_accept" }
                 },
                 completion = {
                     list = {
