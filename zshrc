@@ -109,10 +109,10 @@ fi
 export VISUAL="nvim"
 
 # quick dirs
-alias dot="cd ~/.dotfiles/"
+alias dot="cd ~/.dotfiles/ && nvim ."
+alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/ && nvim ."
 alias pr="cd ~/Projects/"
 alias 10speed="cd ~/Projects/tenspeed-lambda/"
-alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/"
 
 # git
 alias gp="git pull"
@@ -165,7 +165,6 @@ alias llt="eza -l --git -T -L"
 # python
 alias py="python"
 alias ipy="ipython"
-alias pua="pip uninstall -y -r <(pip freeze)"
 
 
 # The following lines were added by compinstall

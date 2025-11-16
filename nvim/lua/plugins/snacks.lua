@@ -80,30 +80,33 @@ return {
         })
     end,
     keys = {
-        { "<C-x>",      function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
-        { "<leader>x",  function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
-        { "<leader>go", function() Snacks.gitbrowse() end,                                desc = "Git browse" },
-        { "<leader>C",  function() Snacks.picker.qflist() end,                            desc = "Quickfix list" },
+        { "<C-x>",         function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
+        { "<leader>x",     function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
+        { "<leader>go",    function() Snacks.gitbrowse() end,                                desc = "Git browse" },
+        { "<leader>C",     function() Snacks.picker.qflist() end,                            desc = "Quickfix list" },
 
         -- help
-        { "<leader>?",  function() Snacks.picker() end,                                   desc = "All pickers" },
-        { "<leader>K",  function() Snacks.picker.keymaps() end,                           desc = "Keymaps" },
-        { "<leader>H",  function() Snacks.picker.help() end,                              desc = "Help" },
+        { "<leader>?",     function() Snacks.picker() end,                                   desc = "All pickers" },
+        { "<leader>K",     function() Snacks.picker.keymaps() end,                           desc = "Keymaps" },
+        { "<leader>H",     function() Snacks.picker.help() end,                              desc = "Help" },
+        { "<leader>N",     function() Snacks.picker.notifications() end,                     desc = "Help" },
 
         -- buffers
-        { "<leader>e",  function() Snacks.picker.explorer(centered_explorer_options) end, desc = "Center explorer" },
-        { "<leader>,",  function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
-        { "<leader>/",  function() Snacks.picker.lines() end,                             desc = "Search in buffer" },
+        { "<C-,>",         function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
+        { "<leader>,",     function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
+        { "<leader>e",     function() Snacks.picker.explorer(centered_explorer_options) end, desc = "Center explorer" },
+        { "<leader><tab>", function() Snacks.picker.explorer() end,                          desc = "Center explorer" },
+        { "<leader>/",     function() Snacks.picker.lines() end,                             desc = "Search in buffer" },
 
         -- search
-        { "<leader>f",  function() Snacks.picker.smart() end,                             desc = "Find files" },
-        { "<leader>r",  function() Snacks.picker.grep() end,                              desc = "Grep" },
-        { "<leader>R",  function() Snacks.picker.grep_word() end,                         desc = "Grep current word" },
+        { "<leader>f",     function() Snacks.picker.smart() end,                             desc = "Find files" },
+        { "<leader>r",     function() Snacks.picker.grep() end,                              desc = "Grep" },
+        { "<leader>R",     function() Snacks.picker.grep_word() end,                         desc = "Grep current word" },
 
         -- lsp
-        { "<leader>s",  function() Snacks.picker.lsp_symbols() end,                       desc = "LSP symbols" },
-        { "<leader>S",  function() Snacks.picker.lsp_workspace_symbols() end,             desc = "LSP workspace symbols" },
-        { "<leader>D",  function() Snacks.picker.diagnostics() end,                       desc = "Diagnostics" },
+        { "<leader>s",     function() Snacks.picker.lsp_symbols() end,                       desc = "LSP symbols" },
+        { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end,             desc = "LSP workspace symbols" },
+        { "<leader>D",     function() Snacks.picker.diagnostics() end,                       desc = "Diagnostics" },
         --- END PICKERS ---
     }
 }

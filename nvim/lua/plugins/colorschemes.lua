@@ -28,6 +28,7 @@ return {
     },
     {
         "rebelot/kanagawa.nvim",
+        enabled = false,
         lazy = false,
         priority = 1000,
         init = function()
@@ -42,6 +43,11 @@ return {
             colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
             transparent = true
         },
+    },
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        lazy = false,
     },
     {
         "f-person/auto-dark-mode.nvim",

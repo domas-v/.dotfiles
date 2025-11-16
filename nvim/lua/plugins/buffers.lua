@@ -30,6 +30,7 @@ return {
                 options = {
                     style_preset = bufferline.style_preset.minimal,
                     -- numbers = "none",
+                    sort_by = "insert_after_current",
                     themable = false,
                 }
             })
