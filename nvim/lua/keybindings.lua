@@ -105,10 +105,10 @@ vim.keymap.set("n", "<leader>wv", "<C-w>v", default_opts)
 vim.keymap.set("n", "<leader>ws", "<C-w>s", default_opts)
 
 -- resize splits
-vim.keymap.set("n", "<C-,>", "<C-w>10<", default_opts)
-vim.keymap.set("n", "<C-.>", "<C-w>10>", default_opts)
-vim.keymap.set("n", "<C-;>", "5<C-W>+", default_opts)
-vim.keymap.set("n", "<C-'>", "5<C-W>-", default_opts)
+vim.keymap.set("n", "<C-->", "<C-w>10<", default_opts)
+vim.keymap.set("n", "<C-=>", "<C-w>10>", default_opts)
+vim.keymap.set("n", "<C-S-=>", "5<C-W>+", default_opts)
+vim.keymap.set("n", "<C-S-->", "5<C-W>-", default_opts)
 
 
 -- misc
