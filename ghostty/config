@@ -3,8 +3,8 @@ font-family = "JetBrains Mono"
 
 # color theme
 theme = dark:Rose Pine Moon,light:Rose Pine Dawn
-background-opacity = 0.8
-background-blur = true
+# background-opacity = 0.8
+# background-blur = true
 
 # cursor
 shell-integration-features = no-cursor
