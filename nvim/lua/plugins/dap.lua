@@ -129,6 +129,7 @@ return {
         },
         config = function()
             local dap = require('dap')
+            dap.defaults.fallback.terminal_win_cmd = 'tabnew'
 
             -- c
             dap.adapters.codelldb = {

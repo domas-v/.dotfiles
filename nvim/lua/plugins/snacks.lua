@@ -99,7 +99,7 @@ return {
         { "<leader>/",     function() Snacks.picker.lines() end,                             desc = "Search in buffer" },
 
         -- search
-        { "<leader>f",     function() Snacks.picker.smart() end,                             desc = "Find files" },
+        { "<leader>f",     function() Snacks.picker.files() end,                             desc = "Find files" },
         { "<leader>r",     function() Snacks.picker.grep() end,                              desc = "Grep" },
         { "<leader>R",     function() Snacks.picker.grep_word() end,                         desc = "Grep current word" },
 
