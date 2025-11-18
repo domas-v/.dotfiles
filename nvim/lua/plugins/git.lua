@@ -11,7 +11,8 @@ return {
                     kind = "split",
                     show_staged_diff = false,
                 },
-                disable_commit_confirmation = true
+                disable_commit_confirmation = true,
+                auto_close_console = false,
             })
         end,
         cmd = { "Neogit" },
@@ -19,8 +20,6 @@ return {
             { "<leader>gg", "<cmd>Neogit<cr>",        desc = "Open Neogit" },
             { "<leader>gp", "<cmd>Neogit pull<cr>",   desc = "Neogit pull" },
             { "<leader>gP", "<cmd>Neogit push<cr>",   desc = "Neogit push" },
-            { "<leader>gm", "<cmd>Neogit merge<cr>",  desc = "Neogit merge" },
-            { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Neogit commit" },
             { "<leader>gz", "<cmd>Neogit stash<cr>",  desc = "Neogit stash" },
             { "<leader>gb", "<cmd>Neogit branch<cr>", desc = "Neogit branch" },
         }
@@ -42,8 +41,8 @@ return {
             -- toggles
             { "<leader>gl", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Git blame current line" },
             { "<leader>gL", "<cmd>Gitsigns blame<cr>",                     desc = "Git blame file" },
-            { "<leader>gW", "<cmd>Gitsigns toggle_word_diff<cr>",          desc = "Git diff words" },
-            { "<leader>gD", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
+            { "<leader>gw", "<cmd>Gitsigns toggle_word_diff<cr>",          desc = "Git diff words" },
+            { "<leader>gd", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
         }
     },
 }
