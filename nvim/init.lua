@@ -6,6 +6,7 @@ vim.cmd("colorscheme rose-pine-moon")
 
 -- HACK: http filetype is not detected somehow. this is a fix
 vim.filetype.add({ extension = { http = "http" } })
+vim.filetype.add({ extension = { http = "dbout" } })
 
 -- HACK: Enable completion for DAP-REPL filetypes for blink.cmp
 vim.api.nvim_create_autocmd("FileType", {

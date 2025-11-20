@@ -14,6 +14,9 @@ shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = false
 
+# command palette
+keybind = cmd+shift+;=toggle_command_palette
+
 # quick terminal
 quick-terminal-animation-duration = 0.1
 keybind = global:cmd+§=toggle_quick_terminal

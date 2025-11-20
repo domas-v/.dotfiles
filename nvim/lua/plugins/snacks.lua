@@ -73,10 +73,10 @@ return {
             gitbrowse = { enabled = true },
             bufdelete = { enabled = true },
             notifier = {
-                enabled = true,
+                enabled = false,
                 timeout = 3000,
             },
-
+            notifications = { enabled = false },
         })
     end,
     keys = {
