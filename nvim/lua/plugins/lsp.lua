@@ -10,8 +10,6 @@ return {
             lsp.enable("marksman")
             lsp.enable("lua_ls")
 
-            -- lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { disable = { "missing-fields" } } } } })
-
             map.set('n', '<leader>dv', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
             map.set('n', '<leader>dk', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
             map.set('n', '<leader>dj', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
