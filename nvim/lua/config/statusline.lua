@@ -67,6 +67,7 @@ local buf_type_map = {
 }
 local special_file_map = {
     ["snacks_picker_input"] = icons.misc.prompt,
+    ["snacks_picker_list"] = icons.misc.prompt,
     ["help"] = icons.misc.help,
 }
 
