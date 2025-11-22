@@ -1,6 +1,12 @@
+-- TOOD:
+-- statusline
+-- custom bufferline
+-- https://github.com/f-person/auto-dark-mode.nvim
+
 require("settings")
 require("keybindings")
 require("config.lazy")
+require("config.statusline")
 
 vim.cmd("colorscheme rose-pine-moon")
 
