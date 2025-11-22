@@ -50,7 +50,7 @@ vim.keymap.set("v", "<leader><leader>e", ":lua<cr>")
 -- saving and closing
 vim.keymap.set("n", "<leader>q", "<cmd>close<cr>", default_opts)
 vim.keymap.set("n", "<leader>Q", "<cmd>qa<cr>", default_opts)
-vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", default_opts)
+vim.keymap.set("n", "<leader>W", "<cmd>w<cr>", default_opts)
 
 -- toggle word wrap
 vim.api.nvim_create_user_command('Wrap', 'set wrap!', {})
