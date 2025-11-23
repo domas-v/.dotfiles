@@ -5,10 +5,11 @@
 require("settings")
 require("keybindings")
 require("config.lazy")
-require("config.statusline")
-require("config.misc")
 
 vim.cmd("colorscheme rose-pine-moon")
+
+require("config.statusline")
+require("config.misc")
 
 -- HACK: http filetype is not detected somehow. this is a fix
 vim.filetype.add({ extension = { http = "http" } })
