@@ -53,7 +53,7 @@ local mode_map = {
     ["EX"] = "COMMAND",
 
     ["PROMPT"] = "PROMPT",
-    ["CONFIRM"] = "PROMPT",
+    ["CONFIRM"] = "CONFIRM",
 
     ["MORE"] = "MORE",
     ["SHELL"] = "SHELL",
