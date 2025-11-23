@@ -104,6 +104,9 @@ vim.keymap.set("n", "<leader>wo", "<C-w>o", default_opts)
 vim.keymap.set("n", "<leader>wv", "<C-w>v", default_opts)
 vim.keymap.set("n", "<leader>ws", "<C-w>s", default_opts)
 
+-- terminal
+vim.keymap.set("n", "<leader>T", ":terminal<CR>", default_opts)
+
 -- resize splits
 vim.keymap.set("n", "<C-->", "<C-w>10<", default_opts)
 vim.keymap.set("n", "<C-=>", "<C-w>10>", default_opts)

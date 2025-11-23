@@ -79,29 +79,22 @@ local function table_get(table, key, alterantive)
     return val
 end
 
-local function highlight_mode(mode)
+local function highlight(mode, group)
     local mode_name = table_get(mode_map, mode, mode)
-    local hl_name = highlights.groups[mode_name].MODE.group
-    return hl_name
-end
 
-local function highlight_mode_separator(mode)
-    local mode_name = table_get(mode_map, mode, mode)
-    local hl_name = highlights.groups[mode_name].MODE_SEP.group
-    return hl_name
-end
+    local mode_group = highlights.groups[mode_name]
+    if mode_group == nil then
+        print("No group for mode " .. mode)
+    end
 
-local function highlight_git(mode)
-    local mode_name = table_get(mode_map, mode, mode)
-    local hl_name = highlights.groups[mode_name].GIT.group
-    return hl_name
+    return highlights.groups[mode_name][group].name
 end
 
 function M.mode_component(mode)
-    local separator_highlight_name = highlight_mode_separator(mode)
+    local separator_highlight_name = highlight(mode, "MODE_SEP")
     local left_separator_component = "%#" .. separator_highlight_name .. "#" .. icons.arrows.left_solid
     local right_separator_component = "%#" .. separator_highlight_name .. "#" .. icons.arrows.right_solid
-    local mode_component = "%#" .. highlight_mode(mode) .. "#" .. mode
+    local mode_component = "%#" .. highlight(mode, "MODE") .. "#" .. mode
 
     local result = "%(" .. left_separator_component .. mode_component .. right_separator_component .. "%)"
     return result
@@ -118,13 +111,12 @@ function M.git_component(mode)
             end
         end
         head = CACHED_HEAD
-
     else
         CACHED_HEAD = head
     end
 
     local branch = " " .. icons.misc.git .. " " .. CACHED_HEAD
-    local git_component = "%#" .. highlight_git(mode) .. "#" .. branch
+    local git_component = "%#" .. highlight(mode, "GIT") .. "#" .. branch
 
     local result = "%(" .. git_component .. " %)"
     return result

@@ -18,15 +18,15 @@ M.colors = {
 
 M.normal_mode_group = {
     MODE = {
-        group = "status_line_normal",
+        name = "status_line_normal",
         hl = { bg = M.colors.normal, fg = M.colors.default_fg, bold = true }
     },
     MODE_SEP = {
-        group = "status_line_mode_separator_normal",
+        name = "status_line_mode_separator_normal",
         hl = { bg = M.colors.default_fg, fg = M.colors.normal, bold = true }
     },
     GIT = {
-        group = "status_line_git_normal",
+        name = "status_line_git_normal",
         hl = { bg = M.colors.default_bg, fg = M.colors.normal }
     },
     GIT_SEP = {},
@@ -35,15 +35,15 @@ M.normal_mode_group = {
 
 M.insert_mode_group = {
     MODE = {
-        group = "status_line_insert",
+        name = "status_line_insert",
         hl = { bg = M.colors.insert, fg = M.colors.default_fg, bold = true }
     },
     MODE_SEP = {
-        group = "status_line_mode_separator_insert",
+        name = "status_line_mode_separator_insert",
         hl = { bg = M.colors.default_fg, fg = M.colors.insert, bold = true }
     },
     GIT = {
-        group = "status_line_git_insert",
+        name = "status_line_git_insert",
         hl = { bg = M.colors.default_bg, fg = M.colors.insert }
     },
     GIT_SEP = {},
@@ -52,15 +52,15 @@ M.insert_mode_group = {
 
 M.visual_mode_group = {
     MODE = {
-        group = "status_line_visual",
+        name = "status_line_visual",
         hl = { bg = M.colors.visual, fg = M.colors.default_fg, bold = true }
     },
     MODE_SEP = {
-        group = "status_line_mode_separator_visual",
+        name = "status_line_mode_separator_visual",
         hl = { bg = M.colors.default_fg, fg = M.colors.visual, bold = true }
     },
     GIT = {
-        group = "status_line_git_visual",
+        name = "status_line_git_visual",
         hl = { bg = M.colors.default_bg, fg = M.colors.visual }
     },
     GIT_SEP = {},
@@ -69,15 +69,15 @@ M.visual_mode_group = {
 
 M.replace_mode_group = {
     MODE = {
-        group = "status_line_replace",
+        name = "status_line_replace",
         hl = { bg = M.colors.replace, fg = M.colors.default_fg, bold = true }
     },
     MODE_SEP = {
-        group = "status_line_mode_separator_replace",
+        name = "status_line_mode_separator_replace",
         hl = { bg = M.colors.default_fg, fg = M.colors.replace, bold = true }
     },
     GIT = {
-        group = "status_line_git_replace",
+        name = "status_line_git_replace",
         hl = { bg = M.colors.default_bg, fg = M.colors.replace }
     },
     GIT_SEP = {},
@@ -86,15 +86,15 @@ M.replace_mode_group = {
 
 M.command_mode_group = {
     MODE = {
-        group = "status_line_command",
+        name = "status_line_command",
         hl = { bg = M.colors.command, fg = M.colors.default_fg, bold = true }
     },
     MODE_SEP = {
-        group = "status_line_mode_separator_command",
+        name = "status_line_mode_separator_command",
         hl = { bg = M.colors.default_fg, fg = M.colors.command, bold = true }
     },
     GIT = {
-        group = "status_line_git_command",
+        name = "status_line_git_command",
         hl = { bg = M.colors.default_bg, fg = M.colors.command }
     },
     GIT_SEP = {},
@@ -104,6 +104,7 @@ M.command_mode_group = {
 M.groups = {
     NORMAL = M.normal_mode_group,
     INSERT = M.insert_mode_group,
+    TERMINAL = M.insert_mode_group,
     VISUAL = M.visual_mode_group,
     REPLACE = M.replace_mode_group,
     COMMAND = M.command_mode_group,
@@ -113,8 +114,8 @@ M.groups = {
 
 for _, mode_hl in pairs(M.groups) do
     for _, hl_def in pairs(mode_hl) do
-        if hl_def.group then
-            vim.api.nvim_set_hl(0, hl_def.group, hl_def.hl)
+        if hl_def.name then
+            vim.api.nvim_set_hl(0, hl_def.name, hl_def.hl)
         end
     end
 end
