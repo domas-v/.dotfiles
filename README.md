@@ -3,6 +3,7 @@
 - Editor
     - Neovim
 - Terminal
+    - ghostty
     - kitty
     - wezterm
 - Window manager
