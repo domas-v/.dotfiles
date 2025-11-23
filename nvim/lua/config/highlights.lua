@@ -4,6 +4,14 @@ M.colors = {
     status_line_bg = "#2A273F",
 }
 
+M.command_mode_group = {
+    MODE = { group = "status_line_command", hl = { bg = "#EB6F92", bold = true, fg = "#232136", nocombine = true } },
+    MODE_SEP = { group = "status_line_mode_separator_command", hl = { bg = "#232136", bold = true, fg = "#EB6F92", nocombine = true } },
+    GIT = { group = "status_line_git_command", hl = { bg = M.colors.status_line_bg, fg = "#EB6F92", nocombine = true } },
+    GIT_SEP = {},
+    FILE = {},
+}
+
 M.groups = {
     NORMAL = {
         MODE = { group = "status_line_normal", hl = { bg = "#EA9A97", bold = true, fg = "#232136", nocombine = true } },
@@ -26,13 +34,6 @@ M.groups = {
         GIT_SEP = {},
         FILE = {},
     },
-    COMMAND = {
-        MODE = { group = "status_line_command", hl = { bg = "#EB6F92", bold = true, fg = "#232136", nocombine = true } },
-        MODE_SEP = { group = "status_line_mode_separator_command", hl = { bg = "#232136", bold = true, fg = "#EB6F92", nocombine = true } },
-        GIT = { group = "status_line_git_command", hl = { bg = M.colors.status_line_bg, fg = "#EB6F92", nocombine = true } },
-        GIT_SEP = {},
-        FILE = {},
-    },
     REPLACE = {
         MODE = { group = "status_line_replace", hl = { bg = "#3E8FB0", bold = true, fg = "#232136", nocombine = true } },
         MODE_SEP = { group = "status_line_mode_separator_replace", hl = { bg = "#232136", bold = true, fg = "#3E8FB0", nocombine = true } },
@@ -40,6 +41,9 @@ M.groups = {
         GIT_SEP = {},
         FILE = {},
     },
+    COMMAND = M.command_mode_group,
+    PROMPT = M.command_mode_group,
+    CONFIRM = M.command_mode_group,
 }
 
 for _, mode_hl in pairs(M.groups) do
