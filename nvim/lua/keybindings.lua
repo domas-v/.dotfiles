@@ -95,10 +95,10 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- windows
--- vim.keymap.set("n", "<C-h>", "<C-w>h", default_opts)
--- vim.keymap.set("n", "<C-j>", "<C-w>j", default_opts)
--- vim.keymap.set("n", "<C-k>", "<C-w>k", default_opts)
--- vim.keymap.set("n", "<C-l>", "<C-w>l", default_opts)
+vim.keymap.set("n", "<C-h>", "<C-w>h", default_opts)
+vim.keymap.set("n", "<C-j>", "<C-w>j", default_opts)
+vim.keymap.set("n", "<C-k>", "<C-w>k", default_opts)
+vim.keymap.set("n", "<C-l>", "<C-w>l", default_opts)
 
 vim.keymap.set("n", "<leader>wo", "<C-w>o", default_opts)
 vim.keymap.set("n", "<leader>wv", "<C-w>v", default_opts)
