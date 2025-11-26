@@ -82,12 +82,6 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function() vim.keymap.set("n", "q", "<cmd>cclose<cr>", { buffer = true, silent = true }) end
 })
 
--- windows
-vim.keymap.set("n", "<C-h>", "<C-w>h", default_opts)
-vim.keymap.set("n", "<C-j>", "<C-w>j", default_opts)
-vim.keymap.set("n", "<C-k>", "<C-w>k", default_opts)
-vim.keymap.set("n", "<C-l>", "<C-w>l", default_opts)
-
 vim.keymap.set("n", "<leader>wo", "<C-w>o", default_opts)
 vim.keymap.set("n", "<leader>wv", "<C-w>v", default_opts)
 vim.keymap.set("n", "<leader>ws", "<C-w>s", default_opts)
@@ -100,7 +94,6 @@ vim.keymap.set("n", "<C-->", "<C-w>10<", default_opts)
 vim.keymap.set("n", "<C-=>", "<C-w>10>", default_opts)
 vim.keymap.set("n", "<C-S-=>", "5<C-W>+", default_opts)
 vim.keymap.set("n", "<C-_>", "5<C-W>-", default_opts)
-
 
 -- misc
 vim.keymap.set("n", "<leader><leader>w", ":set wrap!<CR>", default_opts)
