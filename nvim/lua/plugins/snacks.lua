@@ -21,7 +21,7 @@ return {
     lazy = false,
     init = function() _G.Snacks = require("snacks") end,
     config = function()
-        require("snacks").setup({
+        _G.Snacks.setup({
             -- settings
             styles = {
                 input = { relative = "cursor" },
@@ -78,18 +78,13 @@ return {
             },
             notifications = { enabled = false },
         })
+        vim.api.nvim_create_user_command("X", function() Snacks.bufdelete() end, {})
     end,
     keys = {
         { "<C-x>",         function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
-        { "<leader>x",     function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
+        { "<leader>xx",    function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
         { "<leader>go",    function() Snacks.gitbrowse() end,                                desc = "Git browse" },
-        { "<leader>C",     function() Snacks.picker.qflist() end,                            desc = "Quickfix list" },
-
-        -- help
         { "<leader>?",     function() Snacks.picker() end,                                   desc = "All pickers" },
-        { "<leader>K",     function() Snacks.picker.keymaps() end,                           desc = "Keymaps" },
-        { "<leader>H",     function() Snacks.picker.help() end,                              desc = "Help" },
-        { "<leader>N",     function() Snacks.picker.notifications() end,                     desc = "Help" },
 
         -- buffers
         { "<C-,>",         function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
@@ -99,7 +94,7 @@ return {
         { "<leader>/",     function() Snacks.picker.lines() end,                             desc = "Search in buffer" },
 
         -- search
-        { "<leader>f",     function() Snacks.picker.files() end,                             desc = "Find files" },
+        { "<leader>f",     function() Snacks.picker.smart() end,                             desc = "Find files" },
         { "<leader>r",     function() Snacks.picker.grep() end,                              desc = "Grep" },
         { "<leader>R",     function() Snacks.picker.grep_word() end,                         desc = "Grep current word" },
 
