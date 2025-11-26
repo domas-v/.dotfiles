@@ -30,16 +30,35 @@ return {
         end
     },
     {
-        "brenton-leighton/multiple-cursors.nvim",
-        version = "*",
-        opts = {},
-        keys = {
-            { "<c-s-j>",       "<cmd>MultipleCursorsAddDown<cr>",          mode = { "n", "x" }, desc = "add cursor and move down" },
-            { "<c-s-k>",       "<cmd>MultipleCursorsAddUp<cr>",            mode = { "n", "x" }, desc = "add cursor and move up" },
-            { "<c-leftmouse>", "<cmd>MultipleCursorsMouseAddDelete<cr>",   mode = { "n", "i" }, desc = "add or remove cursor" },
-            { "<leader>m",     "<cmd>MultipleCursorsAddJumpNextMatch<cr>", mode = { "n", "x" }, desc = "add cursor and jump to next cword" },
-            { "<leader>M",     "<cmd>MultipleCursorsAddMatches<cr>",       mode = { "n", "x" }, desc = "add cursors to cword" },
-            { "<leader>L",     "<cmd>MultipleCursorsLock<cr>",             mode = { "n", "x" }, desc = "lock virtual cursors" },
-        },
+        "chrisgrieser/nvim-origami",
+        event = "VeryLazy",
+        version = "1.9",
+        opts = { setupFoldKeymaps = false, },
+    },
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = { "kevinhwang91/promise-async" },
+        config = function()
+            vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+            vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+            require('ufo').setup({
+                provider_selector = function(_, _, _)
+                    return { 'treesitter', 'indent' }
+                end,
+                enable_get_fold_virt_text = true,
+                open_fold_hl_timeout = 150,
+                preview = {
+                    win_config = {
+                        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+                        winhighlight = "Normal:Folded",
+                        winblend = 0,
+                    },
+                    mappings = {
+                        jumpTop = "[",
+                        jumpBot = "]",
+                    },
+                },
+            })
+        end
     },
 }
