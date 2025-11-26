@@ -135,9 +135,12 @@ function M.lsp_component()
         return ''
     end
 
-    local lsp_name = clients[1].name
-    if #clients > 1 then
-        lsp_name = lsp_name .. ' (+' .. (#clients - 1) .. ')'
+    local lsp_name = ''
+    for _, client in ipairs(clients) do
+        if string.match(client.name, "copilot") then
+            lsp_name = lsp_name .. ' ' .. icons.misc.copilot .. ' '
+            break
+        end
     end
 
     local filetype = vim.bo.filetype

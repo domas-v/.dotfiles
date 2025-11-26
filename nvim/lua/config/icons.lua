@@ -63,6 +63,7 @@ M.misc = {
     vertical_bar = '│',
     prompt = "",
     help = '',
+    copilot = '',
 }
 
 return M
