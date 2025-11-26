@@ -32,9 +32,9 @@ return {
             input = { enabled = true, },
             indent = {
                 enabled = true,
-                animate = { enabled = true }
+                animate = { enabled = false }
             },
-            zen = { enabled = true, },
+            zen = { enabled = false, },
             bigfile = { enabled = true },
             quickfile = { enabled = true },
             explorer = { enabled = true },
@@ -82,7 +82,7 @@ return {
     end,
     keys = {
         { "<C-x>",         function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
-        { "<leader>xx",    function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
+        { "<leader>x",     function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
         { "<leader>go",    function() Snacks.gitbrowse() end,                                desc = "Git browse" },
         { "<leader>?",     function() Snacks.picker() end,                                   desc = "All pickers" },
 
