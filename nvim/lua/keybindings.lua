@@ -33,8 +33,6 @@ vim.keymap.set("n", "j", "gj", default_opts)
 -- move to first/last characters
 vim.keymap.set("n", "L", "g$", default_opts)
 vim.keymap.set("n", "H", "_", default_opts)
-vim.keymap.set("n", "gl", "$", default_opts)
-vim.keymap.set("n", "gh", "|", default_opts)
 
 -- scrolling
 vim.keymap.set("n", "<C-d>", "<C-d>zz", default_opts)
@@ -42,18 +40,10 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", default_opts)
 vim.keymap.set("n", "<C-S-l>", "zL", default_opts)
 vim.keymap.set("n", "<C-S-h>", "zH", default_opts)
 
--- lua execution
-vim.keymap.set("n", "<leader><leader>E", "<cmd>source %<cr>")
-vim.keymap.set("n", "<leader><leader>e", ":.lua<cr>")
-vim.keymap.set("v", "<leader><leader>e", ":lua<cr>")
-
 -- saving and closing
 vim.keymap.set("n", "<leader>q", "<cmd>close<cr>", default_opts)
 vim.keymap.set("n", "<leader>Q", "<cmd>qa<cr>", default_opts)
 vim.keymap.set("n", "<leader>W", "<cmd>w<cr>", default_opts)
-
--- toggle word wrap
-vim.api.nvim_create_user_command('Wrap', 'set wrap!', {})
 
 -- undo/redo
 vim.keymap.set("n", "U", "<C-r>", { noremap = true })
@@ -81,8 +71,6 @@ vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>X", "<cmd>bd<cr>", default_opts)
 
 -- quickfix list
-vim.keymap.set("n", "<leader>cj", "<cmd>cnext<cr>", { noremap = true, })
-vim.keymap.set("n", "<leader>ck", "<cmd>cprevious<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>cc", "<cmd>copen<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>ca", "<cmd>caddexpr expand('%') . ':' . line('.') . ':' . getline('.')<cr>",
     { noremap = true, silent = true, desc = "Add current line to quickfix list" })
