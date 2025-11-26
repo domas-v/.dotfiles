@@ -116,6 +116,11 @@ local function toggle_dap_repl()
     require('dap').repl.toggle({ height = math.floor(vim.o.lines / 3) })
 end
 
+local function list_breakpoints()
+    require('dap').list_breakpoints()
+    vim.cmd("copen")
+end
+
 return {
     {
         "mfussenegger/nvim-dap",
@@ -149,8 +154,13 @@ return {
             vim.keymap.set('v', '<leader>de', "<cmd>DapEval<cr>", default_opts)
             vim.api.nvim_create_user_command("DapReplToggle", toggle_dap_repl, {})
             vim.keymap.set('n', '<leader>dr', "<cmd>DapReplToggle<cr>", default_opts)
+            vim.api.nvim_create_user_command("DapListBreakpoints", list_breakpoints, {})
         end,
         keys = {
+            { "<leader>dd", "<cmd>lua require'dap'.toggle_breakpoint()<cr>",                                                                   desc = "Start DAP", },
+            { "<leader>dC", "<cmd>lua require'dap'.clear_breakpoints()<cr>",                                                                   desc = "Start DAP", },
+            { "<leader>dl", "<cmd>DapListBreakpoints<cr>",                                                                                     desc = "Start DAP", },
+            { "<leader>df", "<cmd>lua require'dap'.run_to_cursor()<cr>",                                                                   desc = "Start DAP", },
             { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",                                                                            desc = "Start DAP" },
             { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>",                                                                           desc = "Stop DAP" },
             { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>",                                                                           desc = "Step over" },
@@ -162,16 +172,4 @@ return {
             { "<leader>dw", "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes, { border = 'rounded' })<cr>", desc = "DAP scopes" },
         }
     },
-    {
-        "Weissle/persistent-breakpoints.nvim",
-        config = function()
-            require('persistent-breakpoints').setup({ load_breakpoints_event = { "BufReadPost" } })
-
-            vim.keymap.set("n", "<leader>dd", "<cmd>lua require('persistent-breakpoints.api').toggle_breakpoint()<cr>",
-                { noremap = true, silent = true, desc = "Toggle breakpoint" })
-            vim.keymap.set("n", "<leader>dC",
-                "<cmd>lua require('persistent-breakpoints.api').clear_all_breakpoints()<cr>",
-                { noremap = true, silent = true, desc = "Clear all breakpoints" })
-        end,
-    }
 }
