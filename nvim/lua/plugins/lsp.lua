@@ -9,10 +9,11 @@ return {
             lsp.enable("clangd")
             lsp.enable("marksman")
             lsp.enable("lua_ls")
+            lsp.enable("copilot")
 
-            map.set('n', '<leader>dv', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
-            map.set('n', '<leader>dk', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-            map.set('n', '<leader>dj', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+            map.set('n', 'gD', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+            map.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+            map.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('UserLspConfig', {}),
                 callback = function(ev)
