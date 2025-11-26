@@ -31,21 +31,6 @@ return {
         end
     },
     {
-        "mfussenegger/nvim-lint",
-        config = function()
-            local linting = require("lint")
-            linting.linters_by_ft = {
-                python = { 'flake8' },
-            }
-
-            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-                callback = function()
-                    linting.try_lint()
-                end,
-            })
-        end
-    },
-    {
         "folke/lazydev.nvim",
         ft = "lua",
         opts = { library = { { path = "luvit-meta/library", words = { "vim%.uv" } } } },
