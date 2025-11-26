@@ -41,7 +41,24 @@ return {
         config = function()
             require("conform").setup({
                 formatters_by_ft = {
-                    python = { "black", "isort" },
+                    python = function(bufnr)
+                        local get_info = require("conform").get_formatter_info
+                        local formatters = {}
+                        if get_info("ruff_fix", bufnr).available then
+                            table.insert(formatters, "ruff_fix")
+                        end
+                        if get_info("ruff_format", bufnr).available then
+                            table.insert(formatters, "ruff_format")
+                        elseif get_info("black", bufnr).available then
+                            table.insert(formatters, "black")
+                        end
+                        if get_info("isort", bufnr).available then
+                            table.insert(formatters, "isort")
+                        elseif get_info("ruff_organize_imports", bufnr).available then
+                            table.insert(formatters, "ruff_organize_imports")
+                        end
+                        return formatters
+                    end,
                     c = { "clang-format" },
                     json = { "jq" }
                 },
