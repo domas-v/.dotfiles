@@ -86,6 +86,7 @@ plugins=(
     rust
     docker
     gh
+    uv
 )
 
 source $ZSH/oh-my-zsh.sh
