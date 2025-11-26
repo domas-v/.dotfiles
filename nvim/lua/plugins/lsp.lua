@@ -18,9 +18,6 @@ return {
                 callback = function(ev)
                     local opts = { buffer = ev.buf }
                     map.set('n', 'gd', lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
-                    map.set('n', 'gD', lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to declaration" }))
-                    map.set('n', 'gi', lsp.buf.implementation,
-                        vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
                     map.set('n', 'K', lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Show hover information" }))
                     map.set('n', 'gn', lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
                     map.set('n', 'ga', lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code action" }))
