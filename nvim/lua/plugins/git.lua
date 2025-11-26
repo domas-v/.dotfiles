@@ -31,18 +31,18 @@ return {
             require('gitsigns').setup({ current_line_blame_opts = { delay = 100 } })
         end,
         keys = {
-            { "<leader>gj", "<cmd>Gitsigns next_hunk<cr>",                 desc = "Gitsigns next" },
-            { "<leader>gk", "<cmd>Gitsigns prev_hunk<cr>",                 desc = "Gitsigns prev" },
-            { "<leader>gv", "<cmd>Gitsigns preview_hunk<cr>",              desc = "Gitsigns preview" },
-            { "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>",                desc = "Gitsigns stage",        mode = { 'n', 'v' } },
-            { "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "Gitsigns undo stage" },
-            { "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
+            { "]g", "<cmd>Gitsigns next_hunk<cr>",                 desc = "gitsigns next" },
+            { "[g", "<cmd>Gitsigns prev_hunk<cr>",                 desc = "gitsigns prev" },
+            { "gv", "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
+            { "gs", "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
+            { "gu", "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "gitsigns undo stage" },
+            { "gU", "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
 
             -- toggles
-            { "<leader>gl", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Git blame current line" },
-            { "<leader>gL", "<cmd>Gitsigns blame<cr>",                     desc = "Git blame file" },
-            { "<leader>gw", "<cmd>Gitsigns toggle_word_diff<cr>",          desc = "Git diff words" },
-            { "<leader>gd", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
+            { "gl", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Git blame current line" },
+            { "gL", "<cmd>Gitsigns blame<cr>",                     desc = "Git blame file" },
+            { "gW", "<cmd>Gitsigns toggle_word_diff<cr>",          desc = "Git diff words" },
+            { "gT", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
         }
     },
 }
