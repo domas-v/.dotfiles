@@ -1,4 +1,5 @@
 local centered_explorer_options = {
+    focus = "list",
     layout = { preset = "vertical" },
     auto_close = true,
 }
@@ -59,7 +60,8 @@ return {
                         history_bonus = true,
                     },
                     sources = {
-                        explorer = { layout = { layout = { width = side_explorer_width } } },
+                        smart =  { layout = { preset = "vscode" } } ,
+                        explorer =  { layout = { width = side_explorer_width } },
                         commands = { layout = { preview = false, preset = "vertical" } },
                         keymaps = { layout = { preview = false, preset = "vertical" } },
                         help = { layout = { preview = false, preset = "vertical" } },
@@ -89,16 +91,16 @@ return {
             { "<leader>?",     function() Snacks.picker() end,                                   desc = "All pickers" },
 
             -- buffers
+            { ",",             function() Snacks.picker.buffers({ focus = "list" }) end,         desc = "Show buffers" },
             { "<C-,>",         function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
-            { ",",             function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
             { "<leader>,",     function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
             { "<leader>e",     function() Snacks.picker.explorer(centered_explorer_options) end, desc = "Center explorer" },
-            { "<leader><tab>", function() Snacks.picker.explorer() end,                          desc = "Center explorer" },
+            { "<leader><tab>", function() Snacks.picker.explorer({ focus = "list" }) end,        desc = "Center explorer" },
             { "<leader>/",     function() Snacks.picker.lines() end,                             desc = "Search in buffer" },
 
             -- search
-            { "<",             function() Snacks.picker.smart() end,                             desc = "Find files" },
-            { "<leader>f",     function() Snacks.picker.smart() end,                             desc = "Find files" },
+            { "<",             function() Snacks.picker.smart({ focus = "input" }) end,          desc = "Find files" },
+            { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end,          desc = "Find files" },
             { "<leader>r",     function() Snacks.picker.grep() end,                              desc = "Grep" },
             { "<leader>R",     function() Snacks.picker.grep_word() end,                         desc = "Grep current word" },
 
