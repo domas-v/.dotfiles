@@ -9,7 +9,7 @@ require("config.lazy")
 vim.cmd("colorscheme rose-pine-moon")
 
 require("config.statusline")
-require("config.auto-commands")
+require("config.commands")
 
 -- HACK: http filetype is not detected somehow. this is a fix
 vim.filetype.add({ extension = { http = "http" } })

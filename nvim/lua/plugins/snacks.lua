@@ -60,8 +60,8 @@ return {
                         history_bonus = true,
                     },
                     sources = {
-                        smart =  { layout = { preset = "vscode" } } ,
-                        explorer =  { layout = { width = side_explorer_width } },
+                        smart = { layout = { preset = "vscode" } },
+                        explorer = { layout = { width = side_explorer_width } },
                         commands = { layout = { preview = false, preset = "vertical" } },
                         keymaps = { layout = { preview = false, preset = "vertical" } },
                         help = { layout = { preview = false, preset = "vertical" } },
@@ -102,7 +102,7 @@ return {
             { "<",             function() Snacks.picker.smart({ focus = "input" }) end,          desc = "Find files" },
             { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end,          desc = "Find files" },
             { "<leader>r",     function() Snacks.picker.grep() end,                              desc = "Grep" },
-            { "<leader>R",     function() Snacks.picker.grep_word() end,                         desc = "Grep current word" },
+            { "<leader>R",     function() Snacks.picker.grep_word() end,                         desc = "Grep current word",    mode = { "n", "v" } },
 
             -- lsp
             { "<leader>s",     function() Snacks.picker.lsp_symbols() end,                       desc = "LSP symbols" },
