@@ -69,15 +69,12 @@ vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { noremap = true })
 
 -- buffers
 vim.keymap.set("n", "<leader>X", "<cmd>bd<cr>", default_opts)
+vim.keymap.set("n", ">", "<C-6>", default_opts)
 
 -- quickfix list
 vim.keymap.set("n", "<leader>cc", "<cmd>copen<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>ca", "<cmd>caddexpr expand('%') . ':' . line('.') . ':' . getline('.')<cr>",
     { noremap = true, silent = true, desc = "Add current line to quickfix list" })
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "qf", -- in quickfix list
-    callback = function() vim.keymap.set("n", "q", "<cmd>cclose<cr>", { buffer = true, silent = true }) end
-})
 
 vim.keymap.set("n", "<leader>wo", "<C-w>o", default_opts)
 vim.keymap.set("n", "<leader>wv", "<C-w>v", default_opts)

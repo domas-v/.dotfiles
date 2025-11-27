@@ -18,7 +18,6 @@ local function _set_autocmd(eval_buf)
 end
 
 local function _create_eval_buf()
-    -- make it an unlisted buffer
     local eval_buf = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_buf_set_name(eval_buf, "dap-eval://" .. vim.bo.filetype)
     vim.bo[eval_buf].swapfile = false
