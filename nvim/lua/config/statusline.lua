@@ -6,59 +6,10 @@ local M = {}
 
 local highlights = require("config.highlights")
 local icons = require("config.icons")
-local mode_to_str = {
-    ["n"] = "NORMAL",
-    ["no"] = "N·OPER",
+local maps = require("config.maps")
+local mode_to_str = maps.mode_to_str
+local mode_map = maps.mode_map
 
-    ["v"] = "VISUAL",
-    ["V"] = "V·LINE",
-    ['\22'] = 'V·BLOCK',
-    ["s"] = "SELECT",
-    ["S"] = "S·LINE",
-
-    ["i"] = "INSERT",
-    ["ic"] = "INSERT",
-
-    ["R"] = "REPLACE",
-    ["Rv"] = "V·REPLACE",
-
-    ["c"] = "COMMAND",
-    ["cv"] = "EX",
-    ["ce"] = "EX",
-
-    ["r?"] = "CONFIRM",
-    ["r"] = "PROMPT",
-
-    ["rm"] = "MORE",
-
-    ["!"] = "SHELL",
-    ["t"] = "TERMINAL",
-}
-local mode_map = {
-    ["NORMAL"] = "NORMAL",
-    ["N·OPER"] = "NORMAL",
-
-    ["VISUAL"] = "VISUAL",
-    ["V·LINE"] = "VISUAL",
-    ["V·BLOCK"] = "VISUAL",
-    ["SELECT"] = "VISUAL",
-    ["S·LINE"] = "VISUAL",
-
-    ["INSERT"] = "INSERT",
-
-    ["REPLACE"] = "REPLACE",
-    ["V·REPLACE"] = "REPLACE",
-
-    ["COMMAND"] = "COMMAND",
-    ["EX"] = "COMMAND",
-
-    ["PROMPT"] = "PROMPT",
-    ["CONFIRM"] = "CONFIRM",
-
-    ["MORE"] = "MORE",
-    ["SHELL"] = "SHELL",
-    ["TERMINAL"] = "TERMINAL",
-}
 local buf_type_map = {
     ["help"] = icons.misc.help,
     ["quickfix"] = icons.misc.search,
