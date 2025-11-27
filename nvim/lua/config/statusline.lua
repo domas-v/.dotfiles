@@ -122,6 +122,13 @@ function M.git_component(mode)
     return result
 end
 
+function M.modified_component(mode)
+    if vim.bo.modified then
+        return "%#" .. highlight(mode, "GIT") .. "#" .. icons.misc.modified
+    end
+    return ""
+end
+
 function M.dap_component()
     if not package.loaded['dap'] or require('dap').status() == '' then
         return nil
@@ -199,6 +206,7 @@ function M.render()
     local left_components = {
         M.mode_component(mode_str),
         M.git_component(mode_str),
+        M.modified_component(mode_str),
         "%=",
         M.dap_component(),
     }

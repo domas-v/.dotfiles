@@ -64,6 +64,7 @@ M.misc = {
     prompt = "",
     help = '',
     copilot = '',
+    modified = '',
 }
 
 return M
