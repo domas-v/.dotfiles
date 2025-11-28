@@ -83,4 +83,13 @@ return {
             { "W", mode = { "n", "x", "o" }, function() require("flash").jump({ pattern = vim.fn.expand("<cword>") }) end, desc = "Flash Treesitter" },
         },
     },
+    {
+        "chrisgrieser/nvim-origami",
+        event = "VeryLazy",
+        opts = {},
+        init = function()
+            vim.opt.foldlevel = 99
+            vim.opt.foldlevelstart = 99
+        end,
+    },
 }
