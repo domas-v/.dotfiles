@@ -1,19 +1,11 @@
-local centered_explorer_options = {
-    focus = "list",
-    layout = { preset = "vertical" },
-    auto_close = true,
-}
-
 local MAC_SCREEN_SIZE = 190
 
 local function side_explorer_width()
     if vim.o.columns <= MAC_SCREEN_SIZE then
         return 0.15
     end
-
     return 30
 end
-
 
 return {
     {},
@@ -33,11 +25,7 @@ return {
                 -- plugins
                 image = { enabled = true, },
                 input = { enabled = true, },
-                indent = {
-                    enabled = true,
-                    animate = { enabled = false }
-                },
-                zen = { enabled = false, },
+                indent = { enabled = true, animate = { enabled = false } },
                 bigfile = { enabled = true },
                 quickfile = { enabled = true },
                 explorer = { enabled = true },
@@ -60,13 +48,11 @@ return {
                         history_bonus = true,
                     },
                     sources = {
-                        smart = { layout = { preset = "vscode" } },
                         explorer = { layout = { width = side_explorer_width } },
-                        commands = { layout = { preview = false, preset = "vertical" } },
-                        keymaps = { layout = { preview = false, preset = "vertical" } },
-                        help = { layout = { preview = false, preset = "vertical" } },
-                        notifications = { layout = { preview = false, preset = "vertical" } },
-                        qflist = { layout = { preview = true, preset = "vertical" } },
+                        commands = { layout = { preview = false } },
+                        keymaps = { layout = { preview = false } },
+                        help = { layout = { preview = false } },
+                        notifications = { layout = { preview = false } },
                         grep = { layout = { preset = "ivy" } },
                         grep_word = { layout = { preset = "ivy" } },
                         git_status = { layout = { preset = "ivy" } },
@@ -76,39 +62,43 @@ return {
                 },
                 gitbrowse = { enabled = true },
                 bufdelete = { enabled = true },
-                notifier = {
-                    enabled = false,
-                    timeout = 3000,
-                },
-                notifications = { enabled = false },
+                -- notifier = {
+                --     enabled = false,
+                --     timeout = 3000,
+                -- },
+                -- notifications = { enabled = false },
             })
             vim.api.nvim_create_user_command("X", function() Snacks.bufdelete() end, {})
         end,
         keys = {
-            { "<C-x>",         function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
-            { "<leader>x",     function() Snacks.bufdelete() end,                                desc = "Delete buffer" },
-            { "<leader>go",    function() Snacks.gitbrowse() end,                                desc = "Git browse" },
-            { "<leader>?",     function() Snacks.picker() end,                                   desc = "All pickers" },
+            { "<C-x>",      function() Snacks.bufdelete() end },
+            { "<leader>x",  function() Snacks.bufdelete() end },
+            { "<leader>go", function() Snacks.gitbrowse() end },
+            { "<leader>?",  function() Snacks.picker() end },
 
             -- buffers
-            { ",",             function() Snacks.picker.buffers({ focus = "list" }) end,         desc = "Show buffers" },
-            { "<C-,>",         function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
-            { "<leader>,",     function() Snacks.picker.buffers() end,                           desc = "Show buffers" },
-            { "<leader>e",     function() Snacks.picker.explorer(centered_explorer_options) end, desc = "Center explorer" },
-            { "<leader><tab>", function() Snacks.picker.explorer({ focus = "list" }) end,        desc = "Center explorer" },
-            { "<leader>/",     function() Snacks.picker.lines() end,                             desc = "Search in buffer" },
+            { ",",          function() Snacks.picker.buffers({ focus = "list" }) end },
+            { "<C-,>",      function() Snacks.picker.buffers() end },
+            { "<leader>,",  function() Snacks.picker.buffers() end },
+            {
+                "<leader>e",
+                function()
+                    Snacks.picker.explorer({ focus = "input", layout = { preset = "vertical" }, auto_close = true, })
+                end
+            },
+            { "<leader><tab>", function() Snacks.picker.explorer({ focus = "list" }) end },
+            { "<leader>/",     function() Snacks.picker.lines() end },
 
             -- search
-            { "<",             function() Snacks.picker.smart({ focus = "input" }) end,          desc = "Find files" },
-            { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end,          desc = "Find files" },
-            { "<leader>r",     function() Snacks.picker.grep() end,                              desc = "Grep" },
-            { "<leader>R",     function() Snacks.picker.grep_word() end,                         desc = "Grep current word",    mode = { "n", "v" } },
+            { "<",             function() Snacks.picker.smart({ focus = "input" }) end },
+            { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
+            { "<leader>r",     function() Snacks.picker.grep() end },
+            { "<leader>R",     function() Snacks.picker.grep_word() end,                 mode = { "n", "v" } },
 
             -- lsp
-            { "<leader>s",     function() Snacks.picker.lsp_symbols() end,                       desc = "LSP symbols" },
-            { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end,             desc = "LSP workspace symbols" },
-            { "<leader>D",     function() Snacks.picker.diagnostics() end,                       desc = "Diagnostics" },
-            --- END PICKERS ---
+            { "<leader>s",     function() Snacks.picker.lsp_symbols() end },
+            { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end },
+            { "<leader>D",     function() Snacks.picker.diagnostics() end },
         }
     },
 }
