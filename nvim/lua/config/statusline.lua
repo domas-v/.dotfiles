@@ -124,14 +124,14 @@ function M.file_type_component()
         type_ = filetype
         icon = special_file_map[filetype]
         if icon == nil then
-            icon = "[NO ICON]"
+            icon = ""
         end
     else
         type_ = filetype
         local webdev_icons = require("nvim-web-devicons")
         icon, icon_color = webdev_icons.get_icon_by_filetype(filetype)
         if icon == nil then
-            icon = "[NO ICON]"
+            icon = ""
         end
         if icon_color == nil then
             icon_color = "StatusLine"
