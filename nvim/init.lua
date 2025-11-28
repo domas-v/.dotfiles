@@ -14,7 +14,13 @@ require("config.commands")
 
 -- HACK: http filetype is not detected somehow. this is a fix
 vim.filetype.add({ extension = { http = "http" } })
-vim.filetype.add({ extension = { http = "dbout" } })
+vim.filetype.add({ extension = { dbout = "dbout" } })
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'mysql',
+    callback = function()
+        vim.bo.commentstring = "-- %s"
+    end
+})
 
 -- HACK: Enable completion for DAP-REPL filetypes for blink.cmp
 vim.api.nvim_create_autocmd("FileType", {
