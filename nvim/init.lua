@@ -1,7 +1,3 @@
--- TOOD:
--- custom bufferline
--- trouble.nvim
-
 require("settings")
 require("keybindings")
 require("config.lazy")
