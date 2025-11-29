@@ -18,20 +18,14 @@ return {
             end
 
             _G.Snacks.setup({
-                -- settings
-                styles = {
-                    input = { relative = "cursor" },
-                    notification = { wo = { wrap = true } },
-                },
                 -- plugins
                 bigfile = { enabled = true },
-                dim = { enabled = true, },
-                explorer = { enabled = true },
                 image = { enabled = true, },
                 indent = { enabled = true, animate = { enabled = false } },
                 quickfile = { enabled = true },
                 gitbrowse = { enabled = true },
                 bufdelete = { enabled = true },
+                explorer = { enabled = false },
                 picker = {
                     enabled = true,
                     layout = {
