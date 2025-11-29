@@ -1,30 +1,11 @@
 return {
-    { "tpope/vim-fugitive" },
     {
-        "NeogitOrg/neogit",
-        enabled = false,
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
+        "tpope/vim-fugitive",
         config = function()
-            require("neogit").setup({
-                kind = "vsplit",
-                commit_editor = {
-                    kind = "split",
-                    show_staged_diff = false,
-                },
-                disable_commit_confirmation = true,
-                auto_close_console = false,
-            })
-        end,
-        cmd = { "Neogit" },
-        keys = {
-            { "<leader>gg", "<cmd>Neogit<cr>",        desc = "Open Neogit" },
-            { "<leader>gp", "<cmd>Neogit pull<cr>",   desc = "Neogit pull" },
-            { "<leader>gP", "<cmd>Neogit push<cr>",   desc = "Neogit push" },
-            { "<leader>gz", "<cmd>Neogit stash<cr>",  desc = "Neogit stash" },
-            { "<leader>gb", "<cmd>Neogit branch<cr>", desc = "Neogit branch" },
-        }
+            vim.api.nvim_create_user_command("G", function()
+                vim.cmd [[vert Git]]
+            end, { desc = "Vert fugitive" })
+        end
     },
     {
         "lewis6991/gitsigns.nvim",
@@ -35,8 +16,8 @@ return {
         keys = {
             { "]g", "<cmd>Gitsigns next_hunk<cr>",                 desc = "gitsigns next" },
             { "[g", "<cmd>Gitsigns prev_hunk<cr>",                 desc = "gitsigns prev" },
-            { "=", "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
-            { "-", "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
+            { "=",  "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
+            { "-",  "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
             { "gu", "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
             { "gU", "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "gitsigns undo stage" },
 
