@@ -47,27 +47,39 @@ function M.mode_component(mode)
     local right_separator_component = "%#" .. separator_highlight_name .. "#" .. icons.arrows.right_solid
     local mode_component = "%#" .. highlight(mode, "MODE") .. "#" .. mode
 
-    local result = "%(" .. left_separator_component .. mode_component .. right_separator_component .. "%)"
-    return result
+    return left_separator_component .. mode_component .. right_separator_component
 end
 
-local CACHED_HEAD = ""
+local cached_head = ""
+local git_initialized = true
 function M.git_component(mode)
-    local head = vim.b.gitsigns_head
-    if not head or head == "" then
-        if CACHED_HEAD == "" then
-            local result = vim.fn.system("git rev-parse --abbrev-ref HEAD 2>/dev/null")
-            if result and result ~= "" then
-                CACHED_HEAD = vim.fn.trim(result)
-            end
-        end
-        head = CACHED_HEAD
-    else
-        CACHED_HEAD = head
+    -- if gitsigns_head is not available, try to get it via git command
+    -- this is useful for buffers that are not tracked by gitsigns
+    -- we should also take into consideration that git might not be initialized
+    if not git_initialized then
+        -- Reset background to StatusLine when git is not initialized
+        return "%#StatusLine# "
     end
 
-    local branch = " " .. icons.misc.git .. " " .. CACHED_HEAD
-    local git_component = "%#" .. highlight(mode, "GIT") .. "#" .. branch
+    local head = vim.b.gitsigns_head
+    if not head or head == "" then
+        if cached_head == "" then
+            local result = vim.fn.system("git rev-parse --abbrev-ref HEAD 2>/dev/null")
+            if result and result ~= "" then
+                cached_head = vim.fn.trim(result)
+            else
+                git_initialized = false
+                -- Reset background to StatusLine when git is not initialized
+                return "%#StatusLine# "
+            end
+        end
+        head = cached_head
+    else
+        cached_head = head
+    end
+
+    local branch = " " .. icons.misc.git .. " " .. cached_head
+    local git_component = "%#" .. highlight(mode, "GIT") .. "#" .. branch .. "%*"
 
     local result = "%(" .. git_component .. " %)"
     return result
