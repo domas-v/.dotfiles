@@ -41,7 +41,9 @@ vim.keymap.set("n", "<C-S-l>", "zL", default_opts)
 vim.keymap.set("n", "<C-S-h>", "zH", default_opts)
 
 -- saving and closing
-vim.keymap.set("n", "<leader>W", "<cmd>w<cr>", default_opts)
+vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", default_opts)
+vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", default_opts)
+vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", default_opts)
 
 -- undo/redo
 vim.keymap.set("n", "U", "<C-r>", { noremap = true })
@@ -66,16 +68,14 @@ vim.keymap.set("n", "<leader>to", "<cmd>tabonly<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { noremap = true })
 
 -- buffers
-vim.keymap.set("n", "<leader>X", "<cmd>bd<cr>", default_opts)
+vim.keymap.set("n", "<C-x>", "<cmd>bd<cr>", default_opts)
 vim.keymap.set("n", ">", "<C-6>", default_opts)
 
--- quickfix list
+-- quickfix & locations list
 vim.keymap.set("n", "<leader>C", "<cmd>copen<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>L", "<cmd>lopen<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>ca", "<cmd>caddexpr expand('%') . ':' . line('.') . ':' . getline('.')<cr>",
     { noremap = true, silent = true, desc = "Add current line to quickfix list" })
-
--- terminal
-vim.keymap.set("n", "<leader>T", ":terminal<CR>", default_opts)
 
 -- resize splits
 vim.keymap.set("n", "<C-->", "<C-w>10<", default_opts)
