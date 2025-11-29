@@ -14,11 +14,7 @@ return {
         config = function() require('winshift').setup() end,
         cmd = { "WinShift" },
         keys = {
-            { "<leader>wm", "<cmd>WinShift<cr>",       desc = "WinShift mode" },
-            { "<leader>wh", "<cmd>WinShift left<cr>",  desc = "Winshift left" },
-            { "<leader>wk", "<cmd>WinShift up<cr>",    desc = "WinShift up" },
-            { "<leader>wj", "<cmd>WinShift down<cr>",  desc = "WinShift down" },
-            { "<leader>wl", "<cmd>WinShift right<cr>", desc = "WinShift right" },
+            { "<leader>m", "<cmd>WinShift<cr>", desc = "WinShift mode" },
         }
     },
     {
@@ -74,14 +70,13 @@ return {
         config = function() require("Comment").setup() end
     },
     {
-        "folke/flash.nvim",
+        -- sneak
+        "ggandor/leap.nvim",
         event = "VeryLazy",
-        opts = { modes = { search = { enabled = false } } },
-        keys = {
-            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,                                       desc = "Flash" },
-            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,                                 desc = "Flash Treesitter" },
-            { "W", mode = { "n", "x", "o" }, function() require("flash").jump({ pattern = vim.fn.expand("<cword>") }) end, desc = "Flash Treesitter" },
-        },
+        config = function()
+            vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
+            vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
+        end,
     },
     {
 
