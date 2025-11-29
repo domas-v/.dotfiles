@@ -83,7 +83,7 @@ return {
             {
                 "<leader>e",
                 function()
-                    Snacks.picker.explorer({ focus = "input", layout = { preset = "vertical" }, auto_close = true, })
+                    Snacks.picker.explorer({ focus = "list", layout = { preset = "vertical" }, auto_close = true, })
                 end
             },
             { "<leader><tab>", function() Snacks.picker.explorer({ focus = "list" }) end },
