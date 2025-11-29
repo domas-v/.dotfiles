@@ -1,13 +1,6 @@
-local MAC_SCREEN_SIZE = 190
-
-local function side_explorer_width()
-    if vim.o.columns <= MAC_SCREEN_SIZE then
-        return 0.15
-    end
-    return 30
-end
-
 return {
+    -- telescope
+    {},
     {
         "folke/snacks.nvim",
         priority = 1000,
@@ -15,6 +8,15 @@ return {
         lazy = false,
         init = function() _G.Snacks = require("snacks") end,
         config = function()
+            local MAC_SCREEN_SIZE = 190
+
+            local function side_explorer_width()
+                if vim.o.columns <= MAC_SCREEN_SIZE then
+                    return 0.15
+                end
+                return 30
+            end
+
             _G.Snacks.setup({
                 -- settings
                 styles = {
@@ -22,13 +24,14 @@ return {
                     notification = { wo = { wrap = true } },
                 },
                 -- plugins
-                image = { enabled = true, },
-                input = { enabled = true, },
-                indent = { enabled = true, animate = { enabled = false } },
                 bigfile = { enabled = true },
-                quickfile = { enabled = true },
+                dim = { enabled = true, },
                 explorer = { enabled = true },
-                words = { enabled = true },
+                image = { enabled = true, },
+                indent = { enabled = true, animate = { enabled = false } },
+                quickfile = { enabled = true },
+                gitbrowse = { enabled = true },
+                bufdelete = { enabled = true },
                 picker = {
                     enabled = true,
                     layout = {
@@ -59,8 +62,6 @@ return {
                         lsp_workspace_symbols = { layout = { preset = "ivy" } },
                     }
                 },
-                gitbrowse = { enabled = true },
-                bufdelete = { enabled = true },
             })
         end,
         keys = {
