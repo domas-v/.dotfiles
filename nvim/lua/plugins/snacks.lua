@@ -8,7 +8,6 @@ local function side_explorer_width()
 end
 
 return {
-    {},
     {
         "folke/snacks.nvim",
         priority = 1000,
@@ -62,13 +61,7 @@ return {
                 },
                 gitbrowse = { enabled = true },
                 bufdelete = { enabled = true },
-                -- notifier = {
-                --     enabled = false,
-                --     timeout = 3000,
-                -- },
-                -- notifications = { enabled = false },
             })
-            vim.api.nvim_create_user_command("X", function() Snacks.bufdelete() end, {})
         end,
         keys = {
             { "<C-x>",      function() Snacks.bufdelete() end },
