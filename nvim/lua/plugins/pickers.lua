@@ -80,22 +80,15 @@ return {
                 }
             }
 
-            map("n", "<leader>h", function() builtin.help_tags({ previewer = false }) end)
+            -- buffers
+            map("n", "<leader>,", function() builtin.buffers(small_prev) end)
             map('n', '<leader>/', function() builtin.current_buffer_fuzzy_find(ivy) end)
-            map('n', '<leader>f', function() telescope.extensions['recent-files'].recent_files(small_prev) end)
             map('n', '<leader>r', function() builtin.live_grep(ivy) end)
-            vim.keymap.set("n", "<leader>e", function()
-                require("telescope").extensions.file_browser.file_browser(
-                    {
-                        layout_strategy = "horizontal",
-                        layout_config = {
-                            width = config.width,
-                            height = config.height,
-                            preview_width = 0.7,
-                        }
-                    }
-                )
-            end)
+            map('n', '<leader>f', function() telescope.extensions['recent-files'].recent_files(small_prev) end)
+            map("n", "<leader>e", function() telescope.extensions.file_browser.file_browser() end)
+
+            map("n", "<leader>?", function() builtin.builtin({ previewer = false }) end)
+            map("n", "<leader>h", function() builtin.help_tags({ previewer = false }) end)
             -- git
             map("n", "<leader>gg", "<cmd>Telescope git_status<cr>")
             map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")
@@ -169,8 +162,6 @@ return {
             { "<leader>?",  function() Snacks.picker() end },
 
             -- buffers
-            { ",",          function() Snacks.picker.buffers({ focus = "list" }) end },
-            { "<C-,>",      function() Snacks.picker.buffers() end },
             { "<leader>,",  function() Snacks.picker.buffers() end },
             {
                 "<leader>e",
@@ -178,19 +169,18 @@ return {
                     Snacks.picker.explorer({ focus = "list", layout = { preset = "vertical" }, auto_close = true, })
                 end
             },
-            { "<leader><tab>", function() Snacks.picker.explorer({ focus = "list" }) end },
-            { "<leader>/",     function() Snacks.picker.lines() end },
+            { "<leader>/", function() Snacks.picker.lines() end },
 
             -- search
-            { "<",             function() Snacks.picker.smart({ focus = "input" }) end },
-            { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
-            { "<leader>r",     function() Snacks.picker.grep() end },
-            { "<leader>R",     function() Snacks.picker.grep_word() end,                 mode = { "n", "v" } },
+            { "<",         function() Snacks.picker.smart({ focus = "input" }) end },
+            { "<leader>f", function() Snacks.picker.smart({ focus = "input" }) end },
+            { "<leader>r", function() Snacks.picker.grep() end },
+            { "<leader>R", function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
 
             -- lsp
-            { "<leader>s",     function() Snacks.picker.lsp_symbols() end },
-            { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end },
-            { "<leader>D",     function() Snacks.picker.diagnostics() end },
+            { "<leader>s", function() Snacks.picker.lsp_symbols() end },
+            { "<leader>S", function() Snacks.picker.lsp_workspace_symbols() end },
+            { "<leader>D", function() Snacks.picker.diagnostics() end },
         }
     },
 }

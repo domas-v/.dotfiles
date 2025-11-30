@@ -16,8 +16,8 @@ return {
         keys = {
             { "]g", "<cmd>Gitsigns next_hunk<cr>",                 desc = "gitsigns next" },
             { "[g", "<cmd>Gitsigns prev_hunk<cr>",                 desc = "gitsigns prev" },
-            { "=",  "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
-            { "-",  "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
+            { "+",  "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
+            { "_",  "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
             { "gu", "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
             { "gU", "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "gitsigns undo stage" },
 
