@@ -5,6 +5,17 @@ return {
             "nvim-lua/plenary.nvim",
             "sindrets/diffview.nvim",
         },
+        config = function()
+            require("neogit").setup({
+                kind = "vsplit",
+                commit_editor = {
+                    kind = "split",
+                    show_staged_diff = false,
+                },
+                disable_commit_confirmation = true,
+                auto_close_console = false,
+            })
+        end,
         cmd = "Neogit",
         keys = {
             { "<leader>gg", function() require('neogit').open({ kind = "vsplit" }) end },
