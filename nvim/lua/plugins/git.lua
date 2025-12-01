@@ -1,11 +1,14 @@
 return {
     {
-        "tpope/vim-fugitive",
-        config = function()
-            vim.api.nvim_create_user_command("G", function()
-                vim.cmd [[vert Git]]
-            end, { desc = "Vert fugitive" })
-        end
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "sindrets/diffview.nvim",
+        },
+        cmd = "Neogit",
+        keys = {
+            { "<leader>gg", function() require('neogit').open({ kind = "vsplit" }) end },
+        }
     },
     {
         "lewis6991/gitsigns.nvim",
@@ -16,15 +19,14 @@ return {
         keys = {
             { "]g", "<cmd>Gitsigns next_hunk<cr>",                 desc = "gitsigns next" },
             { "[g", "<cmd>Gitsigns prev_hunk<cr>",                 desc = "gitsigns prev" },
-            { "+",  "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
-            { "_",  "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
+            { "gv", "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
+            { "gs", "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
             { "gu", "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
             { "gU", "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "gitsigns undo stage" },
 
             -- toggles
             { "gl", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Git blame current line" },
             { "gL", "<cmd>Gitsigns blame<cr>",                     desc = "Git blame file" },
-            { "gW", "<cmd>Gitsigns toggle_word_diff<cr>",          desc = "Git diff words" },
             { "gT", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
         }
     },

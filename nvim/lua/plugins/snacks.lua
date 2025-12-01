@@ -81,13 +81,10 @@ return {
         { "<leader>D", function() Snacks.picker.diagnostics() end },
 
         -- git
-        { "<leader>gg", function() Snacks.picker.git_status() end },
         { "<leader>gb", function() Snacks.picker.git_branches() end },
         { "<leader>gl", function() Snacks.picker.git_log() end },
         { "<leader>gf", function() Snacks.picker.git_log_file() end },
         { "<leader>gz", function() Snacks.picker.git_stash() end },
         { "<leader>go", function() Snacks.gitbrowse() end },
-        -- { "<leader>go", function() Snacks.picker.() end },
-
     }
 }
