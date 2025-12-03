@@ -54,37 +54,38 @@ return {
         })
     end,
     keys = {
-        { "<C-x>",      function() Snacks.bufdelete() end },
-        { "<leader>x",  function() Snacks.bufdelete() end },
-        { "<leader>?",  function() Snacks.picker() end },
+        { "<C-x>",     function() Snacks.bufdelete() end },
+        { "<leader>x", function() Snacks.bufdelete() end },
+        { "<leader>?", function() Snacks.picker() end },
 
         -- buffers
-        { "<leader>,",  function() Snacks.picker.buffers() end },
+        { "<leader>,", function() Snacks.picker.buffers() end },
         {
             "<leader>e",
             function()
                 Snacks.picker.explorer({ focus = "list", layout = { preset = "vertical" }, auto_close = true, })
             end
         },
-        { "<leader>/", function() Snacks.picker.lines() end },
+        { "<leader><TAB>", function() Snacks.picker.explorer() end },
+        { "<leader>/",     function() Snacks.picker.lines() end },
 
         -- search
-        { "<",         function() Snacks.picker.smart({ focus = "input" }) end },
-        { "<leader>f", function() Snacks.picker.smart({ focus = "input" }) end },
-        { "<leader>r", function() Snacks.picker.grep() end },
-        { "<leader>R", function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
+        { "<",             function() Snacks.picker.smart({ focus = "input" }) end },
+        { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
+        { "<leader>r",     function() Snacks.picker.grep() end },
+        { "<leader>R",     function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
 
         -- lsp
-        { "<leader>s", function() Snacks.picker.lsp_symbols() end },
-        { "<leader>S", function() Snacks.picker.lsp_workspace_symbols() end },
-        { "<leader>d,", function() Snacks.picker.diagnostics_buffer() end },
-        { "<leader>D", function() Snacks.picker.diagnostics() end },
+        { "<leader>s",     function() Snacks.picker.lsp_symbols() end },
+        { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end },
+        { "<leader>d,",    function() Snacks.picker.diagnostics_buffer() end },
+        { "<leader>D",     function() Snacks.picker.diagnostics() end },
 
         -- git
-        { "<leader>gb", function() Snacks.picker.git_branches() end },
-        { "<leader>gl", function() Snacks.picker.git_log() end },
-        { "<leader>gf", function() Snacks.picker.git_log_file() end },
-        { "<leader>gz", function() Snacks.picker.git_stash() end },
-        { "<leader>go", function() Snacks.gitbrowse() end },
+        { "<leader>gb",    function() Snacks.picker.git_branches() end },
+        { "<leader>gl",    function() Snacks.picker.git_log() end },
+        { "<leader>gf",    function() Snacks.picker.git_log_file() end },
+        { "<leader>gz",    function() Snacks.picker.git_stash() end },
+        { "<leader>go",    function() Snacks.gitbrowse() end },
     }
 }

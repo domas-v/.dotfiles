@@ -14,11 +14,18 @@ return {
                 },
                 disable_commit_confirmation = true,
                 auto_close_console = false,
+                integrations = {
+                    diffview = true,
+                    snacks = true
+                }
             })
         end,
         cmd = "Neogit",
         keys = {
             { "<leader>gg", function() require('neogit').open({ kind = "vsplit" }) end },
+            { "<leader>gp", "<cmd>Neogit pull<cr>" },
+            { "<leader>gP", "<cmd>Neogit push<cr>" },
+            { "<leader>gc", "<cmd>Neogit commit<cr>" },
         }
     },
     {
@@ -30,7 +37,7 @@ return {
         keys = {
             { "]g", "<cmd>Gitsigns next_hunk<cr>",                 desc = "gitsigns next" },
             { "[g", "<cmd>Gitsigns prev_hunk<cr>",                 desc = "gitsigns prev" },
-            { "gv", "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
+            { "gp", "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
             { "gs", "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
             { "gu", "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
             { "gU", "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "gitsigns undo stage" },
