@@ -52,33 +52,39 @@ end
 
 local cached_head = ""
 local git_initialized = true
+
+local function get_head_from_cache()
+    if cached_head == "" then
+        local result = vim.fn.system("git rev-parse --abbrev-ref HEAD 2>/dev/null")
+        if result and result ~= "" then
+            cached_head = vim.fn.trim(result)
+        end
+    end
+
+    return cached_head
+end
+
 function M.git_component(mode)
     -- if gitsigns_head is not available, try to get it via git command
     -- this is useful for buffers that are not tracked by gitsigns
     -- we should also take into consideration that git might not be initialized
     if not git_initialized then
-        -- Reset background to StatusLine when git is not initialized
         return "%#StatusLine# "
     end
 
     local head = vim.b.gitsigns_head
     if not head or head == "" then
+        cached_head = get_head_from_cache()
         if cached_head == "" then
-            local result = vim.fn.system("git rev-parse --abbrev-ref HEAD 2>/dev/null")
-            if result and result ~= "" then
-                cached_head = vim.fn.trim(result)
-            else
-                git_initialized = false
-                -- Reset background to StatusLine when git is not initialized
-                return "%#StatusLine# "
-            end
+            git_initialized = false
+            -- return "%#StatusLine# "
         end
         head = cached_head
     else
         cached_head = head
     end
 
-    local branch = " " .. icons.misc.git .. " " .. cached_head
+    local branch = " " .. icons.misc.git .. " " .. head
     local git_component = "%#" .. highlight(mode, "GIT") .. "#" .. branch .. "%*"
 
     local result = "%(" .. git_component .. " %)"
