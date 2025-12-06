@@ -11,4 +11,5 @@
     - skhd
 - Tools
     - bat
+    - crap
     - spaceship.zsh
