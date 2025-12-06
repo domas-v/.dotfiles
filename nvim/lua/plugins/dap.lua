@@ -158,7 +158,7 @@ return {
         keys = {
             { "<leader>dd", "<cmd>lua require'dap'.toggle_breakpoint()<cr>",                                                                   desc = "Start DAP", },
             { "<leader>dC", "<cmd>lua require'dap'.clear_breakpoints()<cr>",                                                                   desc = "Start DAP", },
-            { "<leader>dl", "<cmd>DapListBreakpoints<cr>",                                                                                     desc = "Start DAP", },
+            { "<leader>db", "<cmd>DapListBreakpoints<cr>",                                                                                     desc = "Start DAP", },
             { "<leader>df", "<cmd>lua require'dap'.run_to_cursor()<cr>",                                                                   desc = "Start DAP", },
             { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",                                                                            desc = "Start DAP" },
             { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>",                                                                           desc = "Stop DAP" },

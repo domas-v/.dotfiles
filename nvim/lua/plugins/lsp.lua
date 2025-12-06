@@ -14,17 +14,7 @@ return {
             map.set('n', 'gD', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
             map.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
             map.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
-            vim.api.nvim_create_autocmd('LspAttach', {
-                group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-                callback = function(ev)
-                    local opts = { buffer = ev.buf }
-                    map.set('n', 'gd', lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
-                    map.set('n', 'K', lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Show hover information" }))
-                    map.set('n', 'gn', lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
-                    map.set('n', 'ga', lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code action" }))
-                    map.set('n', 'gr', lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Find references" }))
-                end,
-            })
+            map.set('n', '<leader>D', "<cmd>lua vim.diagnostic.setqflist()<cr>")
         end
     },
     {
