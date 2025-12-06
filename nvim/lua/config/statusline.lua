@@ -182,7 +182,7 @@ function M.render()
 
     local right_components = {
         "%=",
-        M.lsp_component(),
+        -- M.lsp_component(),
         M.file_type_component(),
         M.position_component(),
     }
