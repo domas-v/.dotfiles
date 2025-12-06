@@ -50,7 +50,7 @@ vim.keymap.set("n", "U", "<C-r>", { noremap = true })
 
 -- yanking & pasting
 vim.keymap.set("n", "Y", "y$", { noremap = true })
-vim.keymap.set("x", "p", [["_dP]]) -- paste over visual selection (if doesn't work as expected, rebind to leader-p)
+vim.keymap.set("x", "p", [["_dP]])
 
 -- pop up movement
 vim.keymap.set('i', '<-j>', 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true })
@@ -82,8 +82,8 @@ vim.keymap.set("n", "<leader>ca", "<cmd>caddexpr expand('%') . ':' . line('.') .
 -- resize splits
 vim.keymap.set("n", "<C-->", "<C-w>10<", default_opts)
 vim.keymap.set("n", "<C-=>", "<C-w>10>", default_opts)
-vim.keymap.set("n", "<C-S-=>", "5<C-W>+", default_opts)
-vim.keymap.set("n", "<C-_>", "5<C-W>-", default_opts)
+vim.keymap.set("n", "<C-]>", "5<C-W>+", default_opts)
+vim.keymap.set("n", "<C-[>", "5<C-W>-", default_opts)
 
 -- misc
 vim.keymap.set("n", "<leader><leader>w", ":set wrap!<CR>", default_opts)
