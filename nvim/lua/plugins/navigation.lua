@@ -76,6 +76,17 @@ return {
         config = function()
             vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
             vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
+            vim.keymap.set({ 'x', 'o' }, 'R', function()
+                require('leap.treesitter').select {
+                    opts = require('leap.user').with_traversal_keys('R', 'r')
+                }
+            end)
+            vim.keymap.set({'n', 'o'}, 'gs', function ()
+                require('leap.remote').action {
+                    -- Automatically enter Visual mode when coming from Normal.
+                    input = vim.fn.mode(true):match('o') and '' or 'v'
+                }
+            end)
         end,
     },
     {
