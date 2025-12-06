@@ -5,7 +5,8 @@ macos-option-as-alt = true
 font-family = "JetBrains Mono"
 
 # color theme
-theme = dark:Rose Pine Moon,light:Rose Pine Dawn
+theme = Rose Pine Moon
+
 # background-opacity = 0.8
 # background-blur = true
 
@@ -13,6 +14,15 @@ theme = dark:Rose Pine Moon,light:Rose Pine Dawn
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = false
+#
+# title bar
+macos-titlebar-style = "transparent"
+window-new-tab-position = end
+#
+# tmux config
+config-file = tmux.config
+
+# --- KEYBINDS --- 
 
 # command palette
 keybind = cmd+shift+;=toggle_command_palette
@@ -21,12 +31,8 @@ keybind = cmd+shift+;=toggle_command_palette
 quick-terminal-animation-duration = 0.1
 keybind = global:cmd+§=toggle_quick_terminal
 
-# title bar
-macos-titlebar-style = "transparent"
-window-new-tab-position = end
+# windows
+keybind = cmd+shift+n=new_window
 
-# tmux config
-config-file = tmux.config
-
-# keybindings
+# if no tmux
 # config-file = keybindings.config
