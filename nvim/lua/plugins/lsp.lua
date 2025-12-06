@@ -10,11 +10,12 @@ return {
             lsp.enable("marksman")
             lsp.enable("lua_ls")
             lsp.enable("copilot")
-
-            map.set('n', 'gD', vim.diagnostic.open_float, { desc = "Open diagnostic float" })
-            map.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-            map.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+            map.set("n", "gd", vim.lsp.buf.definition)
+            map.set('n', 'gD', vim.diagnostic.open_float)
+            map.set('n', '[d', vim.diagnostic.goto_prev)
+            map.set('n', ']d', vim.diagnostic.goto_next)
             map.set('n', '<leader>D', "<cmd>lua vim.diagnostic.setqflist()<cr>")
+            map.set('n', '<leader><leader>d', "<cmd>lua vim.diagnostic.setloclist()<cr>")
         end
     },
     {

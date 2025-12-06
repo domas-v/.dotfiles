@@ -66,7 +66,8 @@ vim.keymap.set("n", "<leader>tt", "<cmd>tab split<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>T", "<cmd>tab split<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>to", "<cmd>tabonly<cr>", { noremap = true })
-vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnext<cr>", { noremap = true })
+vim.keymap.set("n", "<leader>tp", "<cmd>tabprevious<cr>", { noremap = true })
 
 -- buffers
 vim.keymap.set("n", "<C-x>", "<cmd>bd<cr>", default_opts)

@@ -70,8 +70,7 @@ return {
         { "<leader>/",     function() Snacks.picker.lines() end },
 
         -- search
-        { "<",             function() Snacks.picker.smart({ focus = "input" }) end },
-        { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
+        { "<leader>f",     function() Snacks.picker.files({ focus = "input" }) end },
         { "<leader>r",     function() Snacks.picker.grep() end },
         { "<leader>R",     function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
 
