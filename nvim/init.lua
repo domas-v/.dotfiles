@@ -8,7 +8,7 @@ require("config.statusline")
 require("config.tabline")
 require("config.commands")
 
--- filetypes
+-- filetype fixes
 vim.filetype.add({ extension = { http = "http" } })
 vim.filetype.add({ extension = { dbout = "dbout" } })
 vim.api.nvim_create_autocmd('FileType', {
