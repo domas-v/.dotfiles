@@ -3,6 +3,9 @@ return {
         "HakonHarnes/img-clip.nvim",
         event = "VeryLazy",
         opts = {},
+        keys = {
+            { "<leader>p", "<cmd>PasteImage<cr>" }
+        }
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
