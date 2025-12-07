@@ -1,3 +1,13 @@
+local normalize_list = function(t)
+    local normalized = {}
+    for _, v in pairs(t) do
+        if v ~= nil then
+            table.insert(normalized, v)
+        end
+    end
+    return normalized
+end
+
 return {
     "folke/snacks.nvim",
     priority = 1000,
@@ -52,6 +62,36 @@ return {
                 }
             },
         })
+
+        local harpoon = require("harpoon")
+        vim.keymap.set("n", "<leader>,", function()
+            Snacks.picker({
+                finder = function()
+                    local file_paths = {}
+                    local list = normalize_list(harpoon:list().items)
+                    for _, item in ipairs(list) do
+                        table.insert(file_paths, { text = item.value, file = item.value })
+                    end
+                    return file_paths
+                end,
+                win = {
+                    input = {
+                        keys = { ["dd"] = { "harpoon_delete", mode = { "n", "x" } } },
+                    },
+                    list = {
+                        keys = { ["dd"] = { "harpoon_delete", mode = { "n", "x" } } },
+                    },
+                },
+                actions = {
+                    harpoon_delete = function(picker, item)
+                        local to_remove = item or picker:selected()
+                        harpoon:list():remove({ value = to_remove.text })
+                        harpoon:list().items = normalize_list(harpoon:list().items)
+                        picker:find({ refresh = true })
+                    end,
+                },
+            })
+        end)
     end,
     keys = {
         { "<C-x>",     function() Snacks.bufdelete() end },
@@ -59,7 +99,7 @@ return {
         { "<leader>?", function() Snacks.picker() end },
 
         -- buffers
-        { "<leader>.", function() Snacks.picker.buffers() end },
+        { "<leader><", function() Snacks.picker.buffers() end },
         {
             "<leader>e",
             function()
