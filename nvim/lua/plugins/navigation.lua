@@ -1,5 +1,4 @@
 return {
-
     -- WINDOW NAVIGATION
     {
         "kevinhwang91/nvim-bqf",
@@ -14,7 +13,7 @@ return {
         config = function() require('winshift').setup() end,
         cmd = { "WinShift" },
         keys = {
-            { "<leader>m", "<cmd>WinShift<cr>", desc = "WinShift mode" },
+            { "<leader>M", "<cmd>WinShift<cr>", desc = "WinShift mode" },
         }
     },
     {
@@ -81,7 +80,7 @@ return {
                     opts = require('leap.user').with_traversal_keys('R', 'r')
                 }
             end)
-            vim.keymap.set({'n', 'o'}, 'gs', function ()
+            vim.keymap.set({ 'n', 'o' }, 'gs', function()
                 require('leap.remote').action {
                     -- Automatically enter Visual mode when coming from Normal.
                     input = vim.fn.mode(true):match('o') and '' or 'v'

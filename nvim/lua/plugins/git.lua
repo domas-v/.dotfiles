@@ -47,8 +47,8 @@ return {
             { "ga", "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
             { "gu", "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
             { "gU", "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "gitsigns undo stage" },
-            { "gt", "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
-            { "gT", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
+            { "gp", "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
+            { "gt", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
             { "gl", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Git blame current line" },
         }
     },

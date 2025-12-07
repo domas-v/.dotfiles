@@ -59,7 +59,7 @@ return {
         { "<leader>?", function() Snacks.picker() end },
 
         -- buffers
-        { "<leader>,", function() Snacks.picker.buffers() end },
+        { "<leader>.", function() Snacks.picker.buffers() end },
         {
             "<leader>e",
             function()

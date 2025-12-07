@@ -11,7 +11,7 @@ return {
             lsp.enable("lua_ls")
             lsp.enable("copilot")
             map.set("n", "gd", vim.lsp.buf.definition)
-            map.set('n', 'gD', vim.diagnostic.open_float)
+            -- map.set('n', 'gD', vim.diagnostic.open_float)
             map.set('n', '[d', vim.diagnostic.goto_prev)
             map.set('n', ']d', vim.diagnostic.goto_next)
             map.set('n', '<leader>D', "<cmd>lua vim.diagnostic.setqflist()<cr>")

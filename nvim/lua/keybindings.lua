@@ -70,7 +70,6 @@ vim.keymap.set("n", "<leader>tn", "<cmd>tabnext<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>tp", "<cmd>tabprevious<cr>", { noremap = true })
 
 -- buffers
-vim.keymap.set("n", "<C-x>", "<cmd>bd<cr>", default_opts)
 vim.keymap.set("n", "<C-,>", "<C-6>", default_opts)
 
 -- quickfix & locations list
