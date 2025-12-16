@@ -5,10 +5,5 @@
 - Terminal
     - ghostty
     - kitty
-    - wezterm
 - Window manager
-    - yabai
-    - skhd
-- Tools
-    - bat
-    - spaceship.zsh
+    - aerospace
