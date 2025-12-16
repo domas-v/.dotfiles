@@ -2,7 +2,8 @@
 macos-option-as-alt = true
 
 # font
-font-family = "JetBrains Mono"
+font-family = "Hack"
+font-size = 16
 
 # color theme
 theme = Rose Pine Moon
@@ -21,6 +22,8 @@ window-new-tab-position = end
 #
 # tmux config
 config-file = tmux.config
+# if no tmux
+# config-file = keybindings.config
 
 # --- KEYBINDS --- 
 
@@ -33,6 +36,3 @@ keybind = global:cmd+§=toggle_quick_terminal
 
 # windows
 keybind = cmd+shift+n=new_window
-
-# if no tmux
-# config-file = keybindings.config
