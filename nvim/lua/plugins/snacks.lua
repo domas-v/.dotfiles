@@ -76,10 +76,16 @@ return {
                 end,
                 win = {
                     input = {
-                        keys = { ["dd"] = { "harpoon_delete", mode = { "n", "x" } } },
+                        keys = {
+                            ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
+                            ["<C-x>"] = { "harpoon_delete", mode = { "n", "i" } },
+                        },
                     },
                     list = {
-                        keys = { ["dd"] = { "harpoon_delete", mode = { "n", "x" } } },
+                        keys = {
+                            ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
+                            ["<C-x>"] = { "harpoon_delete", mode = { "n", "i" } },
+                        },
                     },
                 },
                 actions = {
