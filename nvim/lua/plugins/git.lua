@@ -1,8 +1,9 @@
 return {
-    { "tpope/vim-fugitive",
+    {
+        "tpope/vim-fugitive",
         keys = {
-            {"<leader>G", "<cmd>G<cr>" },
-            {"gL", "<cmd>Git blame<cr>" },
+            { "<leader>G", "<cmd>G<cr>" },
+            { "gL",        "<cmd>Git blame<cr>" },
         }
     },
     {
@@ -42,14 +43,15 @@ return {
             require('gitsigns').setup({ current_line_blame_opts = { delay = 100 } })
         end,
         keys = {
-            { "]g", "<cmd>Gitsigns next_hunk<cr>",                 desc = "gitsigns next" },
-            { "[g", "<cmd>Gitsigns prev_hunk<cr>",                 desc = "gitsigns prev" },
-            { "ga", "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
-            { "gu", "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
-            { "gU", "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "gitsigns undo stage" },
-            { "gp", "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
-            { "gt", "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
-            { "gl", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Git blame current line" },
+            { "<C-w><C-g>", "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
+            { "<C-w>g",     "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
+            { "]g",         "<cmd>Gitsigns next_hunk<cr>",                 desc = "gitsigns next" },
+            { "[g",         "<cmd>Gitsigns prev_hunk<cr>",                 desc = "gitsigns prev" },
+            { "ga",         "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
+            { "gu",         "<cmd>Gitsigns reset_hunk<cr>",                desc = "Gitsigns reset" },
+            { "gU",         "<cmd>Gitsigns undo_stage_hunk<cr>",           desc = "gitsigns undo stage" },
+            { "gt",         "<cmd>Gitsigns toggle_deleted<cr>",            desc = "Git show deleted" },
+            { "gl",         "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Git blame current line" },
         }
     },
 }
