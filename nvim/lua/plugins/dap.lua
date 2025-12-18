@@ -156,6 +156,10 @@ return {
             vim.api.nvim_create_user_command("DapListBreakpoints", list_breakpoints, {})
         end,
         keys = {
+            { "<C-w>e", "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>",                                       desc = "DAP hover variable" },
+            { "<C-w>r", "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes, { border = 'rounded' })<cr>", desc = "DAP scopes" },
+            { "<C-w><C-e>", "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>",                                       desc = "DAP hover variable" },
+            { "<C-w><C-r>", "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes, { border = 'rounded' })<cr>", desc = "DAP scopes" },
             { "<leader>dd", "<cmd>lua require'dap'.toggle_breakpoint()<cr>",                                                                   desc = "Start DAP", },
             { "<leader>dC", "<cmd>lua require'dap'.clear_breakpoints()<cr>",                                                                   desc = "Start DAP", },
             { "<leader>db", "<cmd>DapListBreakpoints<cr>",                                                                                     desc = "Start DAP", },
@@ -167,8 +171,6 @@ return {
             { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>",                                                                            desc = "Step out" },
             { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>",                                                                desc = "Test python method" },
             { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>",                                                                                   desc = "DAP Virtual text" },
-            { "<leader>da", "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>",                                       desc = "DAP hover variable" },
-            { "<leader>dw", "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes, { border = 'rounded' })<cr>", desc = "DAP scopes" },
         }
     },
 }
