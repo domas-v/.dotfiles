@@ -1,11 +1,14 @@
 return {
     {
         "tpope/vim-fugitive",
-        cmd = { "Git", "G", "Gswitch", "Gpull", "Gpush", "Gp", "GP" },
+        cmd = { "Git", "G", "Gswitch", "Gpull", "Gpush", "Gp", "Gl", "GP" },
         keys = {
             { "<leader>G",  "<cmd>vert Git<cr>" },
             { "<leader>gg", "<cmd>vert Git<cr>" },
             { "gL",         "<cmd>Git blame<cr>" },
+            { "<leader>gp", "<cmd>Git pull<cr>" },
+            { "<leader>gl", "<cmd>Git pull<cr>" },
+            { "<leader>gP", "<cmd>Git push<cr>" },
         },
         config = function()
             vim.api.nvim_create_user_command("Gswitch",
@@ -29,6 +32,12 @@ return {
                     vim.cmd("Git pull " .. opts.args)
                 end,
                 { nargs = "*" })
+            vim.api.nvim_create_user_command("Gl",
+                function(opts)
+                    vim.cmd("Git pull " .. opts.args)
+                end,
+                { nargs = "*" })
+
             vim.api.nvim_create_user_command("Gpush",
                 function(opts)
                     vim.cmd("Git push " .. opts.args)

@@ -114,6 +114,7 @@ return {
         },
         { "<leader><TAB>", function() Snacks.picker.explorer() end },
         { "<leader>/",     function() Snacks.picker.lines() end },
+        { "<leader>m",     function() Snacks.picker.marks() end },
 
         -- search
         { "<leader>f",     function() Snacks.picker.files({ focus = "input" }) end },
@@ -124,7 +125,6 @@ return {
         { "<leader>s",     function() Snacks.picker.lsp_symbols() end },
         { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end },
         { "<leader>d,",    function() Snacks.picker.diagnostics_buffer() end },
-        -- { "<leader>D",     function() Snacks.picker.diagnostics() end },
 
         -- git
         { "<leader>gb",    function() Snacks.picker.git_branches() end },
