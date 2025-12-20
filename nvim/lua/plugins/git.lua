@@ -1,7 +1,18 @@
 return {
     {
         "tpope/vim-fugitive",
-        cmd = { "Git", "G", "Gswitch", "Gpull", "Gpush", "Gp", "Gl", "GP" },
+        cmd = {
+            "Git",
+            "G",
+            "Gswitch",
+            "Gpull",
+            "Gpush",
+            "Gp",
+            "Gl",
+            "GP",
+            "Gsw",
+            "Gst",
+        },
         keys = {
             { "<leader>G",  "<cmd>vert Git<cr>" },
             { "<leader>gg", "<cmd>vert Git<cr>" },
@@ -19,6 +30,29 @@ return {
                     nargs = "*",
                     complete = function(arglead, cmdline, _)
                         return vim.fn.getcompletion("Git switch " .. arglead, "cmdline")
+                    end,
+                })
+
+            vim.api.nvim_create_user_command("Gsw",
+                function(opts)
+                    vim.cmd("Git switch " .. opts.args)
+                end,
+                {
+                    nargs = "*",
+                    complete = function(arglead, cmdline, _)
+                        return vim.fn.getcompletion("Git switch " .. arglead, "cmdline")
+                    end,
+                })
+
+
+            vim.api.nvim_create_user_command("Gst",
+                function(opts)
+                    vim.cmd("Git status " .. opts.args)
+                end,
+                {
+                    nargs = "*",
+                    complete = function(arglead, cmdline, _)
+                        return vim.fn.getcompletion("Git status " .. arglead, "cmdline")
                     end,
                 })
 
