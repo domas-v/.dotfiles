@@ -64,40 +64,42 @@ return {
         })
 
         local harpoon = require("harpoon")
-        vim.keymap.set("n", "<leader>,", function()
-            Snacks.picker({
-                finder = function()
-                    local file_paths = {}
-                    local list = normalize_list(harpoon:list().items)
-                    for _, item in ipairs(list) do
-                        table.insert(file_paths, { text = item.value, file = item.value })
-                    end
-                    return file_paths
-                end,
-                win = {
-                    input = {
-                        keys = {
-                            ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
-                            ["<C-x>"] = { "harpoon_delete", mode = { "n", "i" } },
-                        },
-                    },
-                    list = {
-                        keys = {
-                            ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
-                            ["<C-x>"] = { "harpoon_delete", mode = { "n", "i" } },
-                        },
-                    },
-                },
-                actions = {
-                    harpoon_delete = function(picker, item)
-                        local to_remove = item or picker:selected()
-                        harpoon:list():remove({ value = to_remove.text })
-                        harpoon:list().items = normalize_list(harpoon:list().items)
-                        picker:find({ refresh = true })
+        if harpoon then
+            vim.keymap.set("n", "<leader>,", function()
+                Snacks.picker({
+                    finder = function()
+                        local file_paths = {}
+                        local list = normalize_list(harpoon:list().items)
+                        for _, item in ipairs(list) do
+                            table.insert(file_paths, { text = item.value, file = item.value })
+                        end
+                        return file_paths
                     end,
-                },
-            })
-        end)
+                    win = {
+                        input = {
+                            keys = {
+                                ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
+                                ["<C-x>"] = { "harpoon_delete", mode = { "n", "i" } },
+                            },
+                        },
+                        list = {
+                            keys = {
+                                ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
+                                ["<C-x>"] = { "harpoon_delete", mode = { "n", "i" } },
+                            },
+                        },
+                    },
+                    actions = {
+                        harpoon_delete = function(picker, item)
+                            local to_remove = item or picker:selected()
+                            harpoon:list():remove({ value = to_remove.text })
+                            harpoon:list().items = normalize_list(harpoon:list().items)
+                            picker:find({ refresh = true })
+                        end,
+                    },
+                })
+            end)
+        end
     end,
     keys = {
         { "<C-x>",     function() Snacks.bufdelete() end },
