@@ -26,7 +26,7 @@ return {
         _G.Snacks.setup({
             -- plugins
             bigfile = { enabled = true },
-            image = { enabled = true, },
+            image = { enabled = true, math = { enabled = false } },
             indent = { enabled = true, animate = { enabled = false } },
             quickfile = { enabled = true },
             gitbrowse = { enabled = true },

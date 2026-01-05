@@ -15,5 +15,14 @@ return {
             latex = { enabled = false },
             code = { sign = false },
         }
-    }
+    },
+    {
+        'Thiago4532/mdmath.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        opts = {
+            anticonceal = true,
+            dynamic = true,
+            hide_on_insert = false,
+        }
+    },
 }
