@@ -22,23 +22,17 @@ local special_file_map = {
     ["help"] = icons.misc.help,
 }
 
-local function table_get(table, key, alterantive)
+local function table_get(table, key, alt)
     local val = table[key]
     if val == nil then
-        return alterantive
+        return alt
     end
     return val
+
 end
-
 local function highlight(mode, group)
-    local mode_name = table_get(mode_map, mode, mode)
-
-    local mode_group = highlights.groups[mode_name]
-    if mode_group == nil then
-        print("No group for mode " .. mode)
-    end
-
-    return highlights.groups[mode_name][group].name
+    local result = highlights.groups.NORMAL
+    return result[group].name
 end
 
 function M.mode_component(mode)

@@ -9,7 +9,7 @@ M.colors = {
     default_bg = M.get_highlight_by_name("StatusLine").bg, -- 2762559 | #2A273F
     default_fg = M.get_highlight_by_name("NormalNC").bg,   -- 2302262 | #232136
 
-    normal = M.get_highlight_by_name("Function").fg,       -- 15374999 | #EA9A97
+    normal = M.get_highlight_by_name("Comment").fg,       -- 15374999 | #EA9A97
     insert = M.get_highlight_by_name("Special").fg,        -- 10276824 | #9CCFD8
     visual = M.get_highlight_by_name("Define").fg,         -- 12888039 | #C4A7E7
     replace = M.get_highlight_by_name("Keyword").fg,       --  4100016 | #3E8FB0
