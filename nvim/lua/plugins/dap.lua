@@ -156,14 +156,14 @@ return {
             vim.api.nvim_create_user_command("DapListBreakpoints", list_breakpoints, {})
         end,
         keys = {
-            { "<C-w>e", "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>",                                       desc = "DAP hover variable" },
-            { "<C-w>r", "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes, { border = 'rounded' })<cr>", desc = "DAP scopes" },
+            { "<C-w>e",     "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>",                                       desc = "DAP hover variable" },
+            { "<C-w>r",     "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes, { border = 'rounded' })<cr>", desc = "DAP scopes" },
             { "<C-w><C-e>", "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>",                                       desc = "DAP hover variable" },
             { "<C-w><C-r>", "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes, { border = 'rounded' })<cr>", desc = "DAP scopes" },
             { "<leader>dd", "<cmd>lua require'dap'.toggle_breakpoint()<cr>",                                                                   desc = "Start DAP", },
             { "<leader>dC", "<cmd>lua require'dap'.clear_breakpoints()<cr>",                                                                   desc = "Start DAP", },
             { "<leader>db", "<cmd>DapListBreakpoints<cr>",                                                                                     desc = "Start DAP", },
-            { "<leader>df", "<cmd>lua require'dap'.run_to_cursor()<cr>",                                                                   desc = "Start DAP", },
+            { "<leader>df", "<cmd>lua require'dap'.run_to_cursor()<cr>",                                                                       desc = "Start DAP", },
             { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>",                                                                            desc = "Start DAP" },
             { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>",                                                                           desc = "Stop DAP" },
             { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>",                                                                           desc = "Step over" },
