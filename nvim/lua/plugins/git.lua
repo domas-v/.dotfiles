@@ -16,7 +16,7 @@ return {
         keys = {
             { "<leader>G",  "<cmd>vert Git<cr>" },
             { "<leader>gg", "<cmd>vert Git<cr>" },
-            { "<leader>gL",         "<cmd>Git blame<cr>" },
+            { "<leader>gL", "<cmd>Git blame<cr>" },
         },
         config = function()
             vim.api.nvim_create_user_command("Gswitch",

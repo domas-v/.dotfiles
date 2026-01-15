@@ -1,5 +1,6 @@
 return {
     "rose-pine/neovim",
+    enabled = false,
     name = "rose-pine",
     lazy = false,
     opts = {
@@ -51,7 +52,6 @@ return {
     },
     {
         "shortcuts/no-neck-pain.nvim",
-        enabled = true,
         version = "*",
         cmd = { "NoNeckPain" },
         keys = { { "<leader>|", "<cmd>NoNeckPain<cr>" } }

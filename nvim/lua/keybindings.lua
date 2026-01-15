@@ -81,8 +81,8 @@ vim.keymap.set("n", "<leader>ca", "<cmd>caddexpr expand('%') . ':' . line('.') .
 -- resize splits
 vim.keymap.set("n", "<C-->", "<C-w>10<", default_opts)
 vim.keymap.set("n", "<C-=>", "<C-w>10>", default_opts)
-vim.keymap.set("n", "<C-]>", "5<C-W>+", default_opts)
-vim.keymap.set("n", "<C-[>", "5<C-W>-", default_opts)
+vim.keymap.set("n", "<C-S-=>", "5<C-W>+", default_opts)
+vim.keymap.set("n", "<C-S-->", "5<C-W>-", default_opts)
 
 -- misc
 vim.keymap.set("n", "<leader><leader>w", ":set wrap!<CR>", default_opts)
