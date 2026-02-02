@@ -87,24 +87,16 @@ return {
         config = function() require("Comment").setup() end
     },
     {
-        -- sneak
-        "ggandor/leap.nvim",
+        "folke/flash.nvim",
         event = "VeryLazy",
-        config = function()
-            vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
-            vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
-            vim.keymap.set({ 'x', 'o' }, 'R', function()
-                require('leap.treesitter').select {
-                    opts = require('leap.user').with_traversal_keys('R', 'r')
-                }
-            end)
-            vim.keymap.set({ 'n', 'o' }, 'gs', function()
-                require('leap.remote').action {
-                    -- Automatically enter Visual mode when coming from Normal.
-                    input = vim.fn.mode(true):match('o') and '' or 'v'
-                }
-            end)
-        end,
+        opts = {},
+        keys = {
+            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+            { "r", mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+            { "R", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            -- { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+        },
     },
     {
 
