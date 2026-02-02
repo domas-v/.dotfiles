@@ -112,7 +112,7 @@ export VISUAL="nvim"
 
 # quick dirs
 alias dot="cd ~/.dotfiles/ && nvim ."
-alias nt="cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes/ && nvim ."
+alias nt="cd ~/Desktop/Notes/ && nvim ."
 alias pr="cd ~/Projects/"
 alias 10speed="cd ~/Projects/tenspeed-lambda/"
 
