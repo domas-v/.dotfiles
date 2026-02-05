@@ -7,7 +7,7 @@ return {
 
             lsp.enable("pyright")
             lsp.enable("clangd")
-            lsp.enable("marksman")
+            lsp.enable("markdown_oxide")
             lsp.enable("lua_ls")
             map.set("n", "gd", vim.lsp.buf.definition)
             -- map.set('n', 'gD', vim.diagnostic.open_float)
