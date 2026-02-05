@@ -2,11 +2,11 @@
 macos-option-as-alt = true
 
 # font
-font-family = "Hack"
+font-family = "JetBrains Mono"
 font-size = 16
 
 # color theme
-theme = Rose Pine Moon
+theme = Kanagawa Wave
 
 # background-opacity = 0.8
 # background-blur = true
