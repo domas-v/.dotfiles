@@ -73,4 +73,15 @@ return {
             { "<leader>F", ":Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
         }
     },
+    {
+        'stevearc/aerial.nvim',
+        opts = {},
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
+        keys = {
+            { "<leader>A", "<cmd>AerialToggle<cr>", silent = true },
+        }
+    }
 }
