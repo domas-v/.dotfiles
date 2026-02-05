@@ -5,7 +5,7 @@ require("config.lazy")
 vim.cmd("colorscheme kanagawa")
 
 require("config.statusline")
-require("config.tabline")
+require("config.bufferline")
 require("config.commands")
 
 -- filetype fixes
