@@ -1,6 +1,5 @@
 return {
     "rose-pine/neovim",
-    enabled = false,
     name = "rose-pine",
     lazy = false,
     opts = {
@@ -8,7 +7,6 @@ return {
     },
     {
         "catppuccin/nvim",
-        enabled = false,
         lazy = false,
         priority = 1000,
         name = "catppuccin",
