@@ -9,6 +9,7 @@ return {
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
+        ft = "markdown",
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
         opts = {
             heading = { sign = false },
@@ -18,6 +19,7 @@ return {
     },
     {
         'Thiago4532/mdmath.nvim',
+        ft = "markdown",
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
         opts = {
             anticonceal = true,

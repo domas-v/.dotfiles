@@ -47,7 +47,18 @@ return {
         config = function()
             local harpoon = require("harpoon")
             harpoon:setup()
-            vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+            vim.keymap.set("n", "<leader>a", function()
+                harpoon:list():add()
+                vim.schedule(function()
+                    vim.cmd("redrawtabline")
+                end)
+            end)
+            -- vim.keymap.set("n", "<leader>x", function()
+            --     harpoon:list():remove()
+            --     vim.schedule(function()
+            --         vim.cmd("redrawtabline")
+            --     end)
+            -- end)
             vim.keymap.set("n", "<leader>,", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
             vim.keymap.set("n", "<C-p>", function() harpoon:list():prev() end)
             vim.keymap.set("n", "<C-n>", function() harpoon:list():next() end)
@@ -55,11 +66,16 @@ return {
             vim.keymap.set("n", "<C-a>", function() harpoon:list():select(1) end)
             vim.keymap.set("n", "<C-s>", function() harpoon:list():select(2) end)
             vim.keymap.set("n", "<C-r>", function() harpoon:list():select(3) end)
-            vim.keymap.set("n", "<C-t>", function() harpoon:list():select(4) end)
+            vim.keymap.set("n", "<C-t>", function() harpoon:list():select(3) end)
+
+            vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
+            vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
+            vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
+            vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+            vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
+            vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end)
         end,
     },
-
-    -- WINDOW DECORATIONS
     {
         "utilyre/barbecue.nvim",
         name = "barbecue",
@@ -98,6 +114,8 @@ return {
             -- { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
         },
     },
+
+    -- FOLDS
     {
 
         "chrisgrieser/nvim-origami",

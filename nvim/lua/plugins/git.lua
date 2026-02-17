@@ -19,66 +19,66 @@ return {
             { "<leader>gL", "<cmd>Git blame<cr>" },
         },
         config = function()
-            vim.api.nvim_create_user_command("Gswitch",
-                function(opts)
-                    vim.cmd("Git switch " .. opts.args)
-                end,
-                {
-                    nargs = "*",
-                    complete = function(arglead, cmdline, _)
-                        return vim.fn.getcompletion("Git switch " .. arglead, "cmdline")
-                    end,
-                })
-
-            vim.api.nvim_create_user_command("Gsw",
-                function(opts)
-                    vim.cmd("Git switch " .. opts.args)
-                end,
-                {
-                    nargs = "*",
-                    complete = function(arglead, cmdline, _)
-                        return vim.fn.getcompletion("Git switch " .. arglead, "cmdline")
-                    end,
-                })
-
-
-            vim.api.nvim_create_user_command("Gst",
-                function(opts)
-                    vim.cmd("Git status " .. opts.args)
-                end,
-                {
-                    nargs = "*",
-                    complete = function(arglead, cmdline, _)
-                        return vim.fn.getcompletion("Git status " .. arglead, "cmdline")
-                    end,
-                })
-
-            vim.api.nvim_create_user_command("Gpull",
-                function(opts)
-                    vim.cmd("Git pull " .. opts.args)
-                end,
-                { nargs = "*" })
-            vim.api.nvim_create_user_command("Gp",
-                function(opts)
-                    vim.cmd("Git pull " .. opts.args)
-                end,
-                { nargs = "*" })
-            vim.api.nvim_create_user_command("Gl",
-                function(opts)
-                    vim.cmd("Git pull " .. opts.args)
-                end,
-                { nargs = "*" })
-
-            vim.api.nvim_create_user_command("Gpush",
-                function(opts)
-                    vim.cmd("Git push " .. opts.args)
-                end,
-                { nargs = "*" })
-            vim.api.nvim_create_user_command("GP",
-                function(opts)
-                    vim.cmd("Git push " .. opts.args)
-                end,
-                { nargs = "*" })
+            -- vim.api.nvim_create_user_command("Gswitch",
+            --     function(opts)
+            --         vim.cmd("Git switch " .. opts.args)
+            --     end,
+            --     {
+            --         nargs = "*",
+            --         complete = function(arglead, cmdline, _)
+            --             return vim.fn.getcompletion("Git switch " .. arglead, "cmdline")
+            --         end,
+            --     })
+            --
+            -- vim.api.nvim_create_user_command("Gsw",
+            --     function(opts)
+            --         vim.cmd("Git switch " .. opts.args)
+            --     end,
+            --     {
+            --         nargs = "*",
+            --         complete = function(arglead, cmdline, _)
+            --             return vim.fn.getcompletion("Git switch " .. arglead, "cmdline")
+            --         end,
+            --     })
+            --
+            --
+            -- vim.api.nvim_create_user_command("Gst",
+            --     function(opts)
+            --         vim.cmd("Git status " .. opts.args)
+            --     end,
+            --     {
+            --         nargs = "*",
+            --         complete = function(arglead, cmdline, _)
+            --             return vim.fn.getcompletion("Git status " .. arglead, "cmdline")
+            --         end,
+            --     })
+            --
+            -- vim.api.nvim_create_user_command("Gpull",
+            --     function(opts)
+            --         vim.cmd("Git pull " .. opts.args)
+            --     end,
+            --     { nargs = "*" })
+            -- vim.api.nvim_create_user_command("Gp",
+            --     function(opts)
+            --         vim.cmd("Git pull " .. opts.args)
+            --     end,
+            --     { nargs = "*" })
+            -- vim.api.nvim_create_user_command("Gl",
+            --     function(opts)
+            --         vim.cmd("Git pull " .. opts.args)
+            --     end,
+            --     { nargs = "*" })
+            --
+            -- vim.api.nvim_create_user_command("Gpush",
+            --     function(opts)
+            --         vim.cmd("Git push " .. opts.args)
+            --     end,
+            --     { nargs = "*" })
+            -- vim.api.nvim_create_user_command("GP",
+            --     function(opts)
+            --         vim.cmd("Git push " .. opts.args)
+            --     end,
+            --     { nargs = "*" })
         end
     },
     {

@@ -4,9 +4,10 @@ require("config.lazy")
 
 vim.cmd("colorscheme kanagawa")
 
-require("config.statusline")
-require("config.bufferline")
 require("config.commands")
+require("config.statusline")
+-- require("config.pinned")
+require("config.bufferline")
 
 -- filetype fixes
 vim.filetype.add({ extension = { http = "http" } })

@@ -2,22 +2,18 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local map = vim.keymap
-            local lsp = vim.lsp
+            -- TODO: basedpyright instead
+            vim.lsp.enable("pyright")
+            vim.lsp.enable("clangd")
+            vim.lsp.enable("markdown_oxide")
+            vim.lsp.enable("lua_ls")
 
-            lsp.enable("pyright")
-            lsp.enable("clangd")
-            lsp.enable("markdown_oxide")
-            lsp.enable("lua_ls")
-            map.set("n", "gd", vim.lsp.buf.definition)
-            -- map.set('n', 'gD', vim.diagnostic.open_float)
-            map.set('n', '[d', vim.diagnostic.goto_prev)
-            map.set('n', ']d', vim.diagnostic.goto_next)
-            map.set('n', '<leader><leader>d', "<cmd>lua vim.diagnostic.setqflist()<cr>")
-            map.set('n', '<leader>D', "<cmd>lua vim.diagnostic.setloclist()<cr>")
+            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+            vim.keymap().set('n', ']d', vim.diagnostic.goto_next)
         end
     },
     {
+        -- TODO: doesn't always work
         "folke/lazydev.nvim",
         ft = "lua",
         opts = { library = { { path = "luvit-meta/library", words = { "vim%.uv" } } } },
@@ -69,19 +65,8 @@ return {
             end, { range = true })
         end,
         keys = {
-            { "<leader>F", ":Format<CR>", desc = "Format the current buffer", silent = true },
-            { "<leader>F", ":Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
-        }
-    },
-    {
-        'stevearc/aerial.nvim',
-        opts = {},
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons"
-        },
-        keys = {
-            { "<leader>A", "<cmd>AerialToggle<cr>", silent = true },
+            { "<leader>F", "<cmd>Format<CR>", desc = "Format the current buffer", silent = true },
+            { "<leader>F", "<cmd>Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
         }
     }
 }

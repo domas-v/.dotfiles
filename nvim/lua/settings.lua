@@ -3,8 +3,8 @@ local wo                 = vim.wo -- window local options
 local g                  = vim.g  -- global variables
 
 -- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw       = 1
-vim.g.loaded_netrwPlugin = 1
+g.loaded_netrw       = 1
+g.loaded_netrwPlugin = 1
 
 -- use system clipboard
 o.clipboard              = "unnamedplus"
@@ -48,7 +48,6 @@ vim.o.foldcolumn         = '0'
 vim.o.foldlevel          = 99
 vim.o.foldlevelstart     = 99
 vim.o.foldenable         = true
-
 
 -- search
 o.ignorecase           = true

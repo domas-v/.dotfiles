@@ -51,6 +51,11 @@ return {
                 providers = {
                     dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
                     dap = { name = "dap", module = "blink.compat.source" },
+                    buffer = {
+                        score_offset = -3,
+                        min_keyword_length = 4,
+                        max_items = 5,
+                    }
                 },
             },
             completion = {

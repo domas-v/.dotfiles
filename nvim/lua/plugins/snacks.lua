@@ -23,6 +23,37 @@ return {
             return 30
         end
 
+        local function yank_path(picker, item)
+            vim.fn.setreg("+", item.file)
+            vim.notify("Copied path: " .. item.file)
+        end
+
+        local harpoon = require("harpoon")
+        local function harpoon_add(picker, item)
+            local relative_path = vim.fn.fnamemodify(item.file, ":~:.")
+            harpoon:list():add({
+                value = relative_path,
+                context = {
+                    row = item.pos and item.pos[1] or 1,
+                    col = item.pos and item.pos[2] or 0,
+                }
+            })
+            vim.schedule(function()
+                vim.cmd("redrawtabline")
+            end)
+            vim.notify("Added to harpoon " .. relative_path)
+        end
+
+        local function harpoon_delete(picker, item)
+            local to_remove = item or picker:selected()
+            harpoon:list():remove({ value = to_remove.text })
+            harpoon:list().items = normalize_list(harpoon:list().items)
+            vim.schedule(function()
+                vim.cmd("redrawtabline")
+            end)
+            picker:find({ refresh = true })
+        end
+
         _G.Snacks.setup({
             -- plugins
             bigfile = { enabled = true },
@@ -59,55 +90,80 @@ return {
                     grep_word = { layout = { preset = "ivy" } },
                     lsp_symbols = { layout = { preset = "ivy" } },
                     lsp_workspace_symbols = { layout = { preset = "ivy" } },
-                }
+                },
+                actions = {
+                    yank_path = yank_path,
+                    harpoon_add = harpoon_add,
+                    harpoon_delete = harpoon_delete
+                },
+                win = {
+                    input = {
+                        keys = {
+                            ["<C-y>"] = { "yank_path", mode = { "n", "i" } },
+                            ["y"] = { "yank_path", mode = { "n" } },
+                            [","] = { "harpoon_add", mode = { "n" } },
+                            ["<"] = { "harpoon_delete", mode = { "n" } },
+                        },
+                    },
+                    list = {
+                        keys = {
+                            ["<C-y>"] = { "yank_path", mode = { "n", "i" } },
+                            ["y"] = { "yank_path", mode = { "n" } },
+                            [","] = { "harpoon_add", mode = { "n" } },
+                            ["<"] = { "harpoon_delete", mode = { "n" } },
+                        }
+                    }
+                },
             },
         })
 
-        -- local harpoon = require("harpoon")
-        -- if harpoon then
-        --     vim.keymap.set("n", "<leader>,", function()
-        --         Snacks.picker({
-        --             finder = function()
-        --                 local file_paths = {}
-        --                 local list = normalize_list(harpoon:list().items)
-        --                 for _, item in ipairs(list) do
-        --                     table.insert(file_paths, { text = item.value, file = item.value })
-        --                 end
-        --                 return file_paths
-        --             end,
-        --             win = {
-        --                 input = {
-        --                     keys = {
-        --                         ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
-        --                         ["<C-x>"] = { "harpoon_delete", mode = { "n", "i" } },
-        --                     },
-        --                 },
-        --                 list = {
-        --                     keys = {
-        --                         ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
-        --                         ["<C-x>"] = { "harpoon_delete", mode = { "n", "i" } },
-        --                     },
-        --                 },
-        --             },
-        --             actions = {
-        --                 harpoon_delete = function(picker, item)
-        --                     local to_remove = item or picker:selected()
-        --                     harpoon:list():remove({ value = to_remove.text })
-        --                     harpoon:list().items = normalize_list(harpoon:list().items)
-        --                     picker:find({ refresh = true })
-        --                 end,
-        --             },
-        --         })
-        --     end)
-        -- end
+        if harpoon then
+            vim.keymap.set("n", "<leader>;", function()
+                Snacks.picker({
+                    finder = function()
+                        local file_paths = {}
+                        local list = normalize_list(harpoon:list().items)
+                        for _, item in ipairs(list) do
+                            table.insert(file_paths, { text = item.value, file = item.value })
+                        end
+                        return file_paths
+                    end,
+                    win = {
+                        input = {
+                            keys = {
+                                ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
+                                ["<C-x>"] = { "harpoon_delete", mode = { "n", "i" } },
+                                ["<"] = { "harpoon_delete", mode = { "n", } },
+                            },
+                        },
+                        list = {
+                            keys = {
+                                ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
+                                ["<"] = { "harpoon_delete", mode = { "n", } },
+                            },
+                        },
+                    },
+                    actions = {
+                        harpoon_delete = function(picker, item)
+                            local to_remove = item or picker:selected()
+                            harpoon:list():remove({ value = to_remove.text })
+                            harpoon:list().items = normalize_list(harpoon:list().items)
+                            vim.schedule(function()
+                                vim.cmd("redrawtabline")
+                            end)
+                            picker:find({ refresh = true })
+                        end,
+                    },
+                })
+            end)
+        end
     end,
     keys = {
         { "<C-x>",     function() Snacks.bufdelete() end },
-        { "<leader>x", function() Snacks.bufdelete() end },
         { "<leader>?", function() Snacks.picker() end },
 
         -- buffers
-        { "<leader><", function() Snacks.picker.buffers() end },
+        { "<leader>b", function() Snacks.picker.buffers() end },
         {
             "<leader>e",
             function()
@@ -121,18 +177,16 @@ return {
         -- search
         { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
         { "<leader>r",     function() Snacks.picker.grep() end },
-        { "<leader>R",     function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
+        { "<leader>R",     function() Snacks.picker.grep_word() end,                                           mode = { "n", "v" } },
 
         -- lsp
-        { "<leader>s",     function() Snacks.picker.lsp_symbols() end },
-        { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end },
-        { "<leader>d,",    function() Snacks.picker.diagnostics_buffer() end },
+        { "gd",            function() Snacks.picker.lsp_definitions({ layout = { preset = "ivy" } }) end,      mode = "n" },
+        { "grr",           function() Snacks.picker.lsp_references({ layout = { preset = "ivy" } }) end,       mode = "n" },
+        { "<leader>s",     function() Snacks.picker.lsp_symbols({ layout = { preset = "ivy" } }) end },
+        { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols({ layout = { preset = "ivy" } }) end },
+        { "<leader>D",     function() Snacks.picker.diagnostics_buffer({ layout = { preset = "ivy" } }) end },
 
         -- git
-        { "<leader>gb",    function() Snacks.picker.git_branches() end },
-        { "<leader>gl",    function() Snacks.picker.git_log() end },
-        { "<leader>gf",    function() Snacks.picker.git_log_file() end },
-        { "<leader>gz",    function() Snacks.picker.git_stash() end },
         { "<leader>go",    function() Snacks.gitbrowse() end },
     }
 }

@@ -117,8 +117,8 @@ alias pr="cd ~/Projects/"
 alias 10speed="cd ~/Projects/tenspeed-lambda/"
 
 # git
-alias gp="git pull"
-alias gP="git push"
+# alias gp="git pull"
+# alias gP="git push"
 
 # vim
 alias v="nvim"
