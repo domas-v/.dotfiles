@@ -9,7 +9,7 @@ return {
             vim.lsp.enable("lua_ls")
 
             vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-            vim.keymap().set('n', ']d', vim.diagnostic.goto_next)
+            vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
         end
     },
     {
