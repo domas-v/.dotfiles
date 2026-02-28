@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -75,6 +76,7 @@ plugins=(
     macos
     brew
     git
+    gh
     zsh-autosuggestions
     zsh-interactive-cd
     aws
@@ -83,11 +85,11 @@ plugins=(
     direnv
     python
     pip
+    pyenv
+    uv
     rust
     docker
-    gh
-    uv
-    pyenv
+    npm
 )
 
 source $ZSH/oh-my-zsh.sh

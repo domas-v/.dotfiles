@@ -6,7 +6,7 @@ font-family = "JetBrains Mono"
 font-size = 16
 
 # color theme
-theme = Kanagawa Wave
+theme = Catppuccin Mocha
 
 # background-opacity = 0.8
 # background-blur = true
@@ -32,7 +32,7 @@ keybind = cmd+shift+;=toggle_command_palette
 
 # quick terminal
 quick-terminal-animation-duration = 0.1
-keybind = global:cmd+§=toggle_quick_terminal
+# keybind = global:cmd+§=toggle_quick_terminal
 
 # windows
 keybind = cmd+shift+n=new_window

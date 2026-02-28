@@ -2,7 +2,7 @@ require("settings")
 require("keybindings")
 require("config.lazy")
 
-vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme catppuccin")
 
 require("config.commands")
 require("config.statusline")
