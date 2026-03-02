@@ -15,15 +15,15 @@ theme = Catppuccin Mocha
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = false
-#
+
 # title bar
-macos-titlebar-style = "transparent"
+macos-titlebar-style = transparent
 window-new-tab-position = end
-#
+
 # tmux config
-config-file = tmux.config
+# config-file = tmux.config
 # if no tmux
-# config-file = keybindings.config
+config-file = keybindings.config
 
 # --- KEYBINDS --- 
 
@@ -32,7 +32,7 @@ keybind = cmd+shift+;=toggle_command_palette
 
 # quick terminal
 quick-terminal-animation-duration = 0.1
-# keybind = global:cmd+§=toggle_quick_terminal
+keybind = global:cmd+§=toggle_quick_terminal
 
 # windows
 keybind = cmd+shift+n=new_window
