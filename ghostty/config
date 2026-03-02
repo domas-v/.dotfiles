@@ -20,10 +20,10 @@ cursor-style-blink = false
 macos-titlebar-style = transparent
 window-new-tab-position = end
 
-# tmux config
-# config-file = tmux.config
+# --- TMUX --- 
+config-file = tmux.config
 # if no tmux
-config-file = keybindings.config
+# config-file = keybindings.config
 
 # --- KEYBINDS --- 
 
