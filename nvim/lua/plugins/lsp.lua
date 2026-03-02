@@ -2,7 +2,6 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            -- TODO: basedpyright instead
             vim.lsp.enable("basedpyright")
             vim.lsp.enable("clangd")
             vim.lsp.enable("markdown_oxide")

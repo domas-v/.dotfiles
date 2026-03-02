@@ -63,15 +63,13 @@ vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { noremap = true })
 
 -- tabs
 vim.keymap.set("n", "<leader>tt", "<cmd>tab split<cr>", { noremap = true })
-vim.keymap.set("n", "<leader>T", "<cmd>tab split<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnext<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>tp", "<cmd>tabprevious<cr>", { noremap = true })
-vim.keymap.set("n", "<leader>X", "<cmd>tabonly<cr>", { noremap = true })
-vim.keymap.set("n", "<leader>x", "<cmd>tabclose<cr>", { noremap = true })
 
 -- buffers
 vim.keymap.set("n", "<C-,>", "<C-6>", default_opts)
+vim.keymap.set("n", "<leader>x", "<cmd>bd<cr>", default_opts)
 
 -- quickfix & locations list
 vim.keymap.set("n", "<leader>C", "<cmd>copen<cr>", { noremap = true })
@@ -86,5 +84,5 @@ vim.keymap.set("n", "<C-S-=>", "5<C-W>+", default_opts)
 vim.keymap.set("n", "<C-S-->", "5<C-W>-", default_opts)
 
 -- misc
-vim.keymap.set("n", "<leader><leader>w", "<cmd>set wrap!<cr>", default_opts)
-vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<cr>", default_opts)
+vim.keymap.set("n", "<leader>\\", "<cmd>set wrap!<cr>", default_opts)
+-- vim.keymap.set("n", "<leader>x", "<cmd>source %<cr>", default_opts)

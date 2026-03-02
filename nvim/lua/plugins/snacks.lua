@@ -163,7 +163,7 @@ return {
         { "<leader>?", function() Snacks.picker() end },
 
         -- buffers
-        { "<leader>b", function() Snacks.picker.buffers() end },
+        { "<leader><leader>", function() Snacks.picker.buffers() end },
         {
             "<leader>e",
             function()
