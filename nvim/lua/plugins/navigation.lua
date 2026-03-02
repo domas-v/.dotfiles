@@ -18,6 +18,7 @@ return {
     },
     {
         "christoomey/vim-tmux-navigator",
+        lazy = false,
         cmd = {
             "TmuxNavigateLeft",
             "TmuxNavigateDown",
@@ -43,6 +44,7 @@ return {
     {
         "ThePrimeagen/harpoon",
         branch = "harpoon2",
+        enabled = false,
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             local harpoon = require("harpoon")
