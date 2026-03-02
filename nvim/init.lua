@@ -5,9 +5,9 @@ require("config.lazy")
 vim.cmd("colorscheme catppuccin")
 
 require("config.commands")
-require("config.statusline")
+-- require("config.statusline")
 -- require("config.pinned")
-require("config.bufferline")
+-- require("config.bufferline")
 
 -- filetype fixes
 vim.filetype.add({ extension = { http = "http" } })
