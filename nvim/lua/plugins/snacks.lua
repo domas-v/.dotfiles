@@ -28,32 +28,6 @@ return {
             vim.notify("Copied path: " .. item.file)
         end
 
-        local harpoon = require("harpoon")
-        local function harpoon_add(picker, item)
-            local relative_path = vim.fn.fnamemodify(item.file, ":~:.")
-            harpoon:list():add({
-                value = relative_path,
-                context = {
-                    row = item.pos and item.pos[1] or 1,
-                    col = item.pos and item.pos[2] or 0,
-                }
-            })
-            vim.schedule(function()
-                vim.cmd("redrawtabline")
-            end)
-            vim.notify("Added to harpoon " .. relative_path)
-        end
-
-        local function harpoon_delete(picker, item)
-            local to_remove = item or picker:selected()
-            harpoon:list():remove({ value = to_remove.text })
-            harpoon:list().items = normalize_list(harpoon:list().items)
-            vim.schedule(function()
-                vim.cmd("redrawtabline")
-            end)
-            picker:find({ refresh = true })
-        end
-
         _G.Snacks.setup({
             -- plugins
             bigfile = { enabled = true },
@@ -91,72 +65,23 @@ return {
                     lsp_symbols = { layout = { preset = "ivy" } },
                     lsp_workspace_symbols = { layout = { preset = "ivy" } },
                 },
-                actions = {
-                    yank_path = yank_path,
-                    harpoon_add = harpoon_add,
-                    harpoon_delete = harpoon_delete
-                },
+                actions = { yank_path = yank_path },
                 win = {
                     input = {
                         keys = {
                             ["<C-y>"] = { "yank_path", mode = { "n", "i" } },
                             ["y"] = { "yank_path", mode = { "n" } },
-                            [","] = { "harpoon_add", mode = { "n" } },
-                            ["<"] = { "harpoon_delete", mode = { "n" } },
                         },
                     },
                     list = {
                         keys = {
                             ["<C-y>"] = { "yank_path", mode = { "n", "i" } },
                             ["y"] = { "yank_path", mode = { "n" } },
-                            [","] = { "harpoon_add", mode = { "n" } },
-                            ["<"] = { "harpoon_delete", mode = { "n" } },
                         }
                     }
                 },
             },
         })
-
-        if harpoon then
-            vim.keymap.set("n", "<leader>;", function()
-                Snacks.picker({
-                    finder = function()
-                        local file_paths = {}
-                        local list = normalize_list(harpoon:list().items)
-                        for _, item in ipairs(list) do
-                            table.insert(file_paths, { text = item.value, file = item.value })
-                        end
-                        return file_paths
-                    end,
-                    win = {
-                        input = {
-                            keys = {
-                                ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
-                                ["<C-x>"] = { "harpoon_delete", mode = { "n", "i" } },
-                                ["<"] = { "harpoon_delete", mode = { "n", } },
-                            },
-                        },
-                        list = {
-                            keys = {
-                                ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
-                                ["<"] = { "harpoon_delete", mode = { "n", } },
-                            },
-                        },
-                    },
-                    actions = {
-                        harpoon_delete = function(picker, item)
-                            local to_remove = item or picker:selected()
-                            harpoon:list():remove({ value = to_remove.text })
-                            harpoon:list().items = normalize_list(harpoon:list().items)
-                            vim.schedule(function()
-                                vim.cmd("redrawtabline")
-                            end)
-                            picker:find({ refresh = true })
-                        end,
-                    },
-                })
-            end)
-        end
     end,
     keys = {
         { "<C-x>",     function() Snacks.bufdelete() end },
