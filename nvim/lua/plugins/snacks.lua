@@ -98,6 +98,7 @@ return {
         { "<leader><TAB>", function() Snacks.picker.explorer() end },
         { "<leader>/",     function() Snacks.picker.lines() end },
         { "<leader>M",     function() Snacks.picker.marks() end },
+        { "<leader>;",     function() Snacks.picker.recent() end },
 
         -- search
         { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
