@@ -28,6 +28,18 @@ return {
                     diffview = true,
                     nvim_surround = true,
                 },
+                lsp_styles = {
+                    underlines = {
+                        errors = { "undercurl" },
+                        hints = { "bold" },
+                        warnings = { "underline" },
+                        information = { "standout" },
+                        ok = { "reverse" },
+                    },
+                    inlay_hints = {
+                        background = true,
+                    },
+                },
             })
         end
     },
