@@ -41,7 +41,7 @@ return {
                 ["<C-k>"] = { "select_prev" },
             },
             sources = {
-                default = { "lsp", "path", "snippets", "buffer" },
+                default = { "lsp", "path", "snippets", "buffer", "notes_tags" },
                 per_filetype = {
                     sql = { "dadbod", "snippets", "buffer" },
                     mysql = { "dadbod", "snippets", "buffer" },
@@ -55,7 +55,14 @@ return {
                         score_offset = -3,
                         min_keyword_length = 4,
                         max_items = 5,
-                    }
+                    },
+                    notes_tags = {
+                        name = "Notes",
+                        module = "config.notes.blink_source",
+                        score_offset = 10,
+                        min_keyword_length = 0,
+                        should_show_items = true,
+                    },
                 },
             },
             completion = {
