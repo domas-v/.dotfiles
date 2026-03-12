@@ -7,7 +7,6 @@ vim.cmd("colorscheme catppuccin")
 require("config.commands")
 
 require("config.todos")
-require("config.notes")
 
 -- filetype fixes
 vim.filetype.add({ extension = { http = "http" } })
