@@ -174,7 +174,7 @@ return {
                     }
                 })
 
-            dap.defaults.fallback.terminal_win_cmd = 'tabnew'
+            dap.defaults.fallback.terminal_win_cmd = 'belowright new'
 
             -- c
             dap.adapters.codelldb = {
