@@ -84,8 +84,8 @@ return {
         })
     end,
     keys = {
-        { "<C-x>",     function() Snacks.bufdelete() end },
-        { "<leader>?", function() Snacks.picker() end },
+        { "<C-x>",            function() Snacks.bufdelete() end },
+        { "<leader>?",        function() Snacks.picker() end },
 
         -- buffers
         { "<leader><leader>", function() Snacks.picker.buffers() end },
@@ -113,6 +113,6 @@ return {
         { "<leader>D",     function() Snacks.picker.diagnostics_buffer({ layout = { preset = "ivy" } }) end },
 
         -- git
-        { "<leader>go",    function() Snacks.gitbrowse() end },
+        { "<leader>go",    function() Snacks.gitbrowse() end,                                                  mode = { "n", "v" } },
     }
 }
