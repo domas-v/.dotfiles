@@ -1,13 +1,3 @@
-local normalize_list = function(t)
-    local normalized = {}
-    for _, v in pairs(t) do
-        if v ~= nil then
-            table.insert(normalized, v)
-        end
-    end
-    return normalized
-end
-
 return {
     "folke/snacks.nvim",
     priority = 1000,

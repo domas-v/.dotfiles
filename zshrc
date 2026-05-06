@@ -2,7 +2,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
+# export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
 
 source "$HOME/.dotfiles/.api_keys.zsh"
 

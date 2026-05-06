@@ -15,6 +15,12 @@ return {
             { "<leader>gL", "<cmd>Git blame<cr>" },
         },
         config = function()
+            vim.api.nvim_create_user_command("Gtag",
+                function(opts)
+                    vim.cmd("Git describe --tags --abbrev=0")
+                end,
+                {})
+
             vim.api.nvim_create_user_command("Gsw",
                 function(opts)
                     vim.cmd("Git switch " .. opts.args)
