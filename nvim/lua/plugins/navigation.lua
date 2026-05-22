@@ -18,6 +18,7 @@ return {
     },
     {
         "christoomey/vim-tmux-navigator",
+        enabled = false,
         lazy = false,
         cmd = {
             "TmuxNavigateLeft",
@@ -68,16 +69,15 @@ return {
         config = function() require("Comment").setup() end
     },
     {
-        "folke/flash.nvim",
-        event = "VeryLazy",
-        opts = {},
-        keys = {
-            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-            { "r", mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-            { "R", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-            -- { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-        },
+        "justinmk/vim-sneak",
+        lazy = false,
+        init = function()
+            vim.g["sneak#label"] = 1
+            vim.g["sneak#s_next"] = 1
+        end,
+        config = function()
+            vim.api.nvim_set_hl(0, "Sneak", { link = "IncSearch" })
+        end
     },
 
     -- FOLDS
