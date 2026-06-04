@@ -8,7 +8,7 @@ font-size = 16
 # color theme
 theme = Catppuccin Mocha
 
-background-opacity = 0.8
+background-opacity = 0.70
 background-blur = true
 
 # cursor
