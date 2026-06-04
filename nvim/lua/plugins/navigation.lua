@@ -82,13 +82,6 @@ return {
 
     -- FOLDS
     {
-
-        "chrisgrieser/nvim-origami",
-        event = "VeryLazy",
-        version = "1.9",
-        opts = { setupFoldKeymaps = false, },
-    },
-    {
         "kevinhwang91/nvim-ufo",
         dependencies = { "kevinhwang91/promise-async" },
         config = function()
