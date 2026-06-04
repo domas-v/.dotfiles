@@ -117,6 +117,7 @@ alias dot="cd ~/.dotfiles/ && nvim ."
 alias nt="cd ~/Desktop/Notes/ && nvim ."
 alias pr="cd ~/Projects/"
 alias 10speed="cd ~/Projects/tenspeed-lambda/"
+alias books="cd ~/Desktop/Books/"
 
 # git
 alias gp="git pull"
