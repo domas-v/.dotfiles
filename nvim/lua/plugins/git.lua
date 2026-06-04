@@ -1,5 +1,6 @@
 return {
     {
+        enabled = false,
         "tpope/vim-fugitive",
         cmd = {
             "Git",
@@ -52,6 +53,20 @@ return {
                 end,
                 { nargs = "*" })
         end
+    },
+    {
+        "NeogitOrg/neogit",
+        lazy = true,
+        dependencies = { "esmuellert/codediff.nvim" },
+        cmd = "Neogit",
+        keys = {
+            { "<leader>gg", "<cmd>Neogit kind=auto<cr>" },
+            { "<leader>gv", "<cmd>Neogit kind=vsplit<cr>" },
+            { "<leader>G",  "<cmd>Neogit kind=tab<cr>" },
+            { "<leader>gp", "<cmd>Neogit pull" },
+            { "<leader>gP", "<cmd>Neogit push" },
+            { "<leader>gF", "<cmd>Neogit fetch" },
+        }
     },
     {
         "lewis6991/gitsigns.nvim",

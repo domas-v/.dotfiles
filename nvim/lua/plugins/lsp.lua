@@ -2,6 +2,16 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
+            vim.lsp.config("basedpyright", {
+                settings = {
+                    basedpyright = {
+                        analysis = {
+                            diagnosticMode = "workspace",
+                        },
+                    },
+                },
+            })
+
             vim.lsp.enable("basedpyright")
             vim.lsp.enable("clangd")
             vim.lsp.enable("markdown_oxide")
