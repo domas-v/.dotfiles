@@ -63,6 +63,7 @@ return {
             commit_editor = {
                 kind = "vsplit",
                 show_staged_diff = true,
+                spellcheck = false,
             },
         },
         keys = {
