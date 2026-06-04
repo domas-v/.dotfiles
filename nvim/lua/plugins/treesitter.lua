@@ -40,9 +40,9 @@ return {
             vim.keymap.set({ "x", "o" }, "af", function() select("@function.outer", "textobjects") end)
             vim.keymap.set({ "x", "o" }, "if", function() select("@function.inner", "textobjects") end)
             vim.keymap.set({ "n", "x", "o" }, "]f",
-                function() move.goto_next_start("@function.inner", "textobjects") end)
+                function() move.goto_next_start("@function.outer", "textobjects") end)
             vim.keymap.set({ "n", "x", "o" }, "[f",
-                function() move.goto_previous_start("@function.inner", "textobjects") end)
+                function() move.goto_previous_start("@function.outer", "textobjects") end)
             vim.keymap.set({ "n", "x", "o" }, "]F",
                 function() move.goto_next_start("@function.outer", "textobjects") end)
             vim.keymap.set({ "n", "x", "o" }, "[F",
