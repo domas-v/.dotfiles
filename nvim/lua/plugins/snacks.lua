@@ -50,10 +50,6 @@ return {
                     commands = { layout = { preview = false } },
                     keymaps = { layout = { preview = false } },
                     help = { layout = { preview = false } },
-                    grep = { layout = { preset = "ivy" } },
-                    grep_word = { layout = { preset = "ivy" } },
-                    lsp_symbols = { layout = { preset = "ivy" } },
-                    lsp_workspace_symbols = { layout = { preset = "ivy" } },
                 },
                 actions = { yank_path = yank_path },
                 win = {
@@ -86,9 +82,6 @@ return {
             end
         },
         { "<leader><TAB>", function() Snacks.picker.explorer() end },
-        { "<leader>/",     function() Snacks.picker.lines() end },
-        { "<leader>M",     function() Snacks.picker.marks() end },
-        { "<leader>;",     function() Snacks.picker.recent() end },
 
         -- search
         { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
@@ -96,11 +89,11 @@ return {
         { "<leader>R",     function() Snacks.picker.grep_word() end,                                           mode = { "n", "v" } },
 
         -- lsp
-        { "gd",            function() Snacks.picker.lsp_definitions({ layout = { preset = "ivy" } }) end,      mode = "n" },
-        { "grr",           function() Snacks.picker.lsp_references({ layout = { preset = "ivy" } }) end,       mode = "n" },
-        { "<leader>s",     function() Snacks.picker.lsp_symbols({ layout = { preset = "ivy" } }) end },
-        { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols({ layout = { preset = "ivy" } }) end },
-        { "<leader>D",     function() Snacks.picker.diagnostics_buffer({ layout = { preset = "ivy" } }) end },
+        { "gd",            function() Snacks.picker.lsp_definitions() end,      mode = "n" },
+        { "grr",           function() Snacks.picker.lsp_references() end,       mode = "n" },
+        { "<leader>s",     function() Snacks.picker.lsp_symbols() end },
+        { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end },
+        { "<leader>D",     function() Snacks.picker.diagnostics_buffer() end },
 
         -- git
         { "<leader>go",    function() Snacks.gitbrowse() end,                                                  mode = { "n", "v" } },
