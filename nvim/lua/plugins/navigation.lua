@@ -52,22 +52,6 @@ return {
         },
         opts = {},
     },
-
-    -- TEXT NAVIGATION
-    {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup() end,
-        event = "InsertEnter",
-    },
-    {
-        "kylechui/nvim-surround",
-        config = function() require("nvim-surround").setup({ move_cursor = false }) end,
-        event = "InsertEnter",
-    },
-    {
-        "numToStr/Comment.nvim",
-        config = function() require("Comment").setup() end
-    },
     {
         "justinmk/vim-sneak",
         lazy = false,
