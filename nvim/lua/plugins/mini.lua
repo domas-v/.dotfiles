@@ -25,6 +25,21 @@ return {
         version = false,
         opts = {},
     },
-    -- mini.pairs
-    -- mini.align (?)
+    {
+        'nvim-mini/mini.cursorword',
+        version = false,
+        opts = {},
+    },
+    {
+        'nvim-mini/mini.diff',
+        version = false,
+        opts = {
+            mappings = {
+                goto_first = '[G',
+                goto_prev = '[g',
+                goto_next = ']g',
+                goto_last = ']G',
+            }
+        }
+    },
 }
