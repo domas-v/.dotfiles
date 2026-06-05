@@ -122,6 +122,7 @@ alias books="cd ~/Desktop/Books/"
 # git
 alias gp="git pull"
 alias gP="git push"
+alias lg="lazygit"
 
 # vim
 alias v="nvim"
