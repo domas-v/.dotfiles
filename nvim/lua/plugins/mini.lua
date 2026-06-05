@@ -35,11 +35,19 @@ return {
         version = false,
         opts = {
             mappings = {
+                apply = 'ga',
+                reset = 'gA',
                 goto_first = '[G',
                 goto_prev = '[g',
                 goto_next = ']g',
                 goto_last = ']G',
             }
         }
+    },
+    {
+        'nvim-mini/mini-git',
+        version = false,
+        main = "mini.git",
+        opts = {},
     },
 }

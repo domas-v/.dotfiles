@@ -21,6 +21,7 @@
   "lualine.nvim": { "branch": "master", "commit": "221ce6b2d999187044529f49da6554a92f740a96" },
   "luvit-meta": { "branch": "main", "commit": "cc9b2d412d2fbd30b94a70cfc214c2a3be27a0a2" },
   "mdmath.nvim": { "branch": "main", "commit": "699acb27fd34bfdf92a43ce0abdd17f0c7a948fe" },
+  "mini-git": { "branch": "main", "commit": "7c81d173462042cd3a3571643bce03a6c255fd41" },
   "mini.comment": { "branch": "main", "commit": "fc87ba6554f182161d9a4bab5017c575571f000f" },
   "mini.cursorword": { "branch": "main", "commit": "a01471856e462144ea53972f22a67e790be68ee6" },
   "mini.diff": { "branch": "main", "commit": "5af2b6be4a4beb673f3196a414f6fd932bbedd48" },
