@@ -37,51 +37,58 @@ return {
             local select = require("nvim-treesitter-textobjects.select").select_textobject
             local move   = require("nvim-treesitter-textobjects.move")
 
+            ---------- FUNCTIONS ---------- 
             vim.keymap.set({ "x", "o" }, "af", function() select("@function.outer", "textobjects") end)
             vim.keymap.set({ "x", "o" }, "if", function() select("@function.inner", "textobjects") end)
+
             vim.keymap.set({ "n", "x", "o" }, "]f",
                 function() move.goto_next_start("@function.outer", "textobjects") end)
             vim.keymap.set({ "n", "x", "o" }, "[f",
                 function() move.goto_previous_start("@function.outer", "textobjects") end)
-            vim.keymap.set({ "n", "x", "o" }, "]F",
-                function() move.goto_next_start("@function.outer", "textobjects") end)
-            vim.keymap.set({ "n", "x", "o" }, "[F",
-                function() move.goto_previous_start("@function.outer", "textobjects") end)
 
+            vim.keymap.set({ "n", "x", "o" }, "]F",
+                function() move.goto_next_end("@function.outer", "textobjects") end)
+            vim.keymap.set({ "n", "x", "o" }, "[F",
+                function() move.goto_previous_end("@function.outer", "textobjects") end)
+
+            ---------- CLASSES ---------- 
             vim.keymap.set({ "x", "o" }, "ac", function() select("@class.outer", "textobjects") end)
             vim.keymap.set({ "x", "o" }, "ic", function() select("@class.inner", "textobjects") end)
+
             vim.keymap.set({ "n", "x", "o" }, "]c",
-                function() move.goto_next_start("@class.inner", "textobjects") end)
-            vim.keymap.set({ "n", "x", "o" }, "[c",
-                function() move.goto_previous_start("@class.inner", "textobjects") end)
-            vim.keymap.set({ "n", "x", "o" }, "]C",
                 function() move.goto_next_start("@class.outer", "textobjects") end)
-            vim.keymap.set({ "n", "x", "o" }, "[C",
+            vim.keymap.set({ "n", "x", "o" }, "[c",
                 function() move.goto_previous_start("@class.outer", "textobjects") end)
 
+            vim.keymap.set({ "n", "x", "o" }, "]C",
+                function() move.goto_next_end("@class.outer", "textobjects") end)
+            vim.keymap.set({ "n", "x", "o" }, "[C",
+                function() move.goto_previous_end("@class.outer", "textobjects") end)
+
+            ---------- CALLS ---------- 
             vim.keymap.set({ "x", "o" }, "ax", function() select("@call.outer", "textobjects") end)
             vim.keymap.set({ "x", "o" }, "ix", function() select("@call.inner", "textobjects") end)
-            vim.keymap.set({ "n", "x", "o" }, "]x", function() move.goto_next_start("@call.inner", "textobjects") end)
-            vim.keymap.set({ "n", "x", "o" }, "[x", function() move.goto_previous_start("@call.inner", "textobjects") end)
-            vim.keymap.set({ "n", "x", "o" }, "]X", function() move.goto_next_start("@call.outer", "textobjects") end)
-            vim.keymap.set({ "n", "x", "o" }, "[X", function() move.goto_previous_start("@call.outer", "textobjects") end)
 
+            vim.keymap.set({ "n", "x", "o" }, "]x", function() move.goto_next_start("@call.outer", "textobjects") end)
+            vim.keymap.set({ "n", "x", "o" }, "[x", function() move.goto_previous_start("@call.outer", "textobjects") end)
+
+            vim.keymap.set({ "n", "x", "o" }, "]X", function() move.goto_next_end("@call.outer", "textobjects") end)
+            vim.keymap.set({ "n", "x", "o" }, "[X", function() move.goto_previous_end("@call.outer", "textobjects") end)
+
+            ---------- PARAMETERS ---------- 
             vim.keymap.set({ "x", "o" }, "aa", function() select("@parameter.outer", "textobjects") end)
             vim.keymap.set({ "x", "o" }, "ia", function() select("@parameter.inner", "textobjects") end)
+
             vim.keymap.set({ "n", "x", "o" }, "]a", function() move.goto_next_start("@parameter.inner", "textobjects") end)
             vim.keymap.set({ "n", "x", "o" }, "[a", function() move.goto_previous_start("@parameter.inner", "textobjects") end)
-            vim.keymap.set({ "n", "x", "o" }, "]A", function() move.goto_next_start("@parameter.outer", "textobjects") end)
-            vim.keymap.set({ "n", "x", "o" }, "[A", function() move.goto_previous_start("@parameter.outer", "textobjects") end)
 
+            ---------- OTHER MOVEMENTS ---------- 
             vim.keymap.set({ "x", "o" }, "al", function() select("@loop.outer", "textobjects") end)
             vim.keymap.set({ "x", "o" }, "il", function() select("@loop.inner", "textobjects") end)
             vim.keymap.set({ "x", "o" }, "ai", function() select("@conditional.outer", "textobjects") end)
             vim.keymap.set({ "x", "o" }, "ii", function() select("@conditional.inner", "textobjects") end)
 
 
-            -- local rep = require("nvim-treesitter-textobjects.repeatable_move")
-            -- vim.keymap.set({ "n", "x", "o" }, ";", rep.repeat_last_move_next)
-            -- vim.keymap.set({ "n", "x", "o" }, ",", rep.repeat_last_move_previous)
         end,
     },
 }
