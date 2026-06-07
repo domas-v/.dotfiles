@@ -23,14 +23,12 @@ return {
     },
     {
         "lewis6991/gitsigns.nvim",
-        enabled = false,
         lazy = false,
         config = function()
             require('gitsigns').setup({ current_line_blame_opts = { delay = 100 } })
         end,
         keys = {
-            { "<C-w><C-g>", "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
-            { "<C-w>g",     "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
+            { "gt", "<cmd>Gitsigns preview_hunk<cr>",              desc = "gitsigns preview" },
             { "]g",         "<cmd>Gitsigns next_hunk<cr>",                 desc = "gitsigns next" },
             { "[g",         "<cmd>Gitsigns prev_hunk<cr>",                 desc = "gitsigns prev" },
             { "ga",         "<cmd>Gitsigns stage_hunk<cr>",                desc = "gitsigns stage",        mode = { 'n', 'v' } },
