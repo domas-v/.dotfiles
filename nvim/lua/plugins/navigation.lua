@@ -18,7 +18,6 @@ return {
     },
     {
         "christoomey/vim-tmux-navigator",
-        enabled = false,
         lazy = false,
         cmd = {
             "TmuxNavigateLeft",
@@ -37,7 +36,7 @@ return {
         },
     },
     {
-        "vladdoster/remember.nvim", -- remembers where in file I was
+        "vladdoster/remember.nvim",
         config = function()
             require('remember')
         end
