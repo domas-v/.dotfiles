@@ -21,9 +21,9 @@ macos-titlebar-style = transparent
 window-new-tab-position = end
 
 # --- TMUX --- 
-# config-file = tmux.config
+config-file = tmux.config
 # if no tmux
-config-file = keybindings.config
+# config-file = keybindings.config
 
 # --- KEYBINDS --- 
 
