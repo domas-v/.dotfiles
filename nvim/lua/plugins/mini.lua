@@ -9,12 +9,12 @@ return {
         version = false,
         opts = {
             mappings = {
-                add = "cs",
-                delete = "cd",
-                find = "cf",
-                find_left = "cF",
-                highlight = "ch",
-                replace = "cr",
+                add = "za",
+                delete = "ds",
+                find = "zf",
+                find_left = "zF",
+                highlight = "zh",
+                replace = "zr",
                 suffix_last = "l",
                 suffix_next = "n",
             },
