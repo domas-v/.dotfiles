@@ -70,8 +70,8 @@ return {
         })
     end,
     keys = {
-        { "<C-x>",            function() Snacks.bufdelete() end },
-        { "<leader>?",        function() Snacks.picker() end },
+        { "<C-x>",     function() Snacks.bufdelete() end },
+        { "<leader>?", function() Snacks.picker() end },
 
         -- buffers
         { "<leader>,", function() Snacks.picker.buffers() end },
@@ -86,16 +86,16 @@ return {
         -- search
         { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
         { "<leader>r",     function() Snacks.picker.grep() end },
-        { "<leader>R",     function() Snacks.picker.grep_word() end,                                           mode = { "n", "v" } },
+        { "<leader>R",     function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
 
         -- lsp
-        { "gd",            function() Snacks.picker.lsp_definitions() end,      mode = "n" },
-        { "grr",           function() Snacks.picker.lsp_references() end,       mode = "n" },
+        { "gd",            function() Snacks.picker.lsp_definitions() end,         mode = "n" },
+        { "grr",           function() Snacks.picker.lsp_references() end,          mode = "n" },
         { "<leader>s",     function() Snacks.picker.lsp_symbols() end },
         { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end },
         { "<leader>D",     function() Snacks.picker.diagnostics_buffer() end },
 
         -- git
-        { "<leader>go",    function() Snacks.gitbrowse() end,                                                  mode = { "n", "v" } },
+        { "<leader>go",    function() Snacks.gitbrowse() end,                      mode = { "n", "v" } },
     }
 }
