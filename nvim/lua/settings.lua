@@ -1,53 +1,53 @@
-local o                  = vim.o  -- global options
-local wo                 = vim.wo -- window local options
-local g                  = vim.g  -- global variables
+local o              = vim.o      -- global options
+local wo             = vim.wo     -- window local options
+local g              = vim.g      -- global variables
 
 -- disable netrw at the very start of your init.lua
 g.loaded_netrw       = 1
 g.loaded_netrwPlugin = 1
 
 -- use system clipboard
-o.clipboard              = "unnamedplus"
+o.clipboard            = "unnamedplus"
 
 -- session
-o.sessionoptions         = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+o.sessionoptions       = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- line numbers
-wo.linebreak             = true
-o.nu                     = true
-o.relativenumber         = true
+wo.linebreak           = true
+o.nu                   = true
+o.relativenumber       = true
 
 -- tabs and spaces
-o.expandtab              = true
-o.smartindent            = true
-o.tabstop                = 4
-o.shiftwidth             = 4
-o.softtabstop            = 4
+o.expandtab            = true
+o.smartindent          = true
+o.tabstop              = 4
+o.shiftwidth           = 4
+o.softtabstop          = 4
 
 -- remove clutter
-o.swapfile               = false
-o.writebackup            = false
-o.backup                 = false
-o.shortmess              = o.shortmess .. 'c'
+o.swapfile             = false
+o.writebackup          = false
+o.backup               = false
+o.shortmess            = o.shortmess .. 'c'
 
 -- appearance
-o.splitbelow             = true
-o.splitright             = true
-o.shiftround             = true
-o.wrap                   = false
-o.cmdheight              = 1
-o.showmatch              = true -- show bracket macthing
-o.scrolloff              = 8
-o.signcolumn             = "yes"
-o.termguicolors          = true
-o.conceallevel           = 2
+o.splitbelow           = true
+o.splitright           = true
+o.shiftround           = true
+o.wrap                 = false
+o.cmdheight            = 1
+o.showmatch            = true   -- show bracket macthing
+o.scrolloff            = 8
+o.signcolumn           = "yes"
+o.termguicolors        = true
+o.conceallevel         = 2
 
 -- folds
-vim.o.fillchars          = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.o.foldcolumn         = '0'
-vim.o.foldlevel          = 99
-vim.o.foldlevelstart     = 99
-vim.o.foldenable         = true
+vim.o.fillchars        = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.o.foldcolumn       = '0'
+vim.o.foldlevel        = 99
+vim.o.foldlevelstart   = 99
+vim.o.foldenable       = true
 
 -- search
 o.ignorecase           = true
