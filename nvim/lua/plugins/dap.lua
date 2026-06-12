@@ -187,14 +187,13 @@ return {
             require("dap-python").test_runner = "pytest"
 
             vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+
             vim.api.nvim_create_user_command("DapUIToggle", toggle_dap_ui, {})
-            vim.keymap.set('n', '<leader>du', "<cmd>DapUIToggle<cr>", default_opts)
-            vim.keymap.set('n', '<leader>dr', "<cmd>DapUIToggle<cr>", default_opts)
             vim.keymap.set('n', '<C-w>r', "<cmd>DapUIToggle<cr>", default_opts)
             vim.keymap.set('n', '<C-w><C-r>', "<cmd>DapUIToggle<cr>", default_opts)
-            vim.api.nvim_create_user_command("DapReplToggle", toggle_dap_repl, {})
-            vim.keymap.set('n', '<leader>dr', "<cmd>DapReplToggle<cr>", default_opts)
+
             vim.api.nvim_create_user_command("DapListBreakpoints", list_breakpoints, {})
+            vim.keymap.set('n', '<leader>B', '<cmd>DapListBreakpoints<cr>', default_opts)
         end,
         keys = {
             { "<C-w>e",     "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>", },
@@ -210,7 +209,6 @@ return {
             { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", },
             { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>", },
             { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", },
-            { "<leader>dt", "<cmd>DapVirtualTextToggle<cr>", },
         }
     },
 }

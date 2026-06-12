@@ -28,7 +28,7 @@ return {
             require('gitsigns').setup({ current_line_blame_opts = { delay = 100 } })
         end,
         keys = {
-            { "gt", "<cmd>Gitsigns preview_hunk<cr>", },
+            { "gp", "<cmd>Gitsigns preview_hunk<cr>", },
             { "]g", "<cmd>Gitsigns next_hunk<cr>", },
             { "[g", "<cmd>Gitsigns prev_hunk<cr>", },
             { "ga", "<cmd>Gitsigns stage_hunk<cr>", },
