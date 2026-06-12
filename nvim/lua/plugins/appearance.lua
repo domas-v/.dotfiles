@@ -6,7 +6,7 @@ return {
         name = "catppuccin",
         config = function()
             require("catppuccin").setup({
-                transparent_background = true,
+                transparent_background = false,
                 styles = {
                     comments = { "italic" },
                     conditionals = { "italic" },
@@ -19,7 +19,6 @@ return {
                     gitsigns = true,
                     treesitter = true,
                     blink_cmp = true,
-                    diffview = true,
                     nvim_surround = true,
                 },
                 lsp_styles = {
