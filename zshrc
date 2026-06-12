@@ -130,6 +130,9 @@ alias src="source ~/.zshrc"
 alias zrc="cd ~/.dotfiles && v zshrc"
 alias vrc="cd ~/.dotfiles/nvim/ && v"
 
+# yazi
+alias y="yazi"
+
 # tmux
 alias trc="tmux source-file ~/.dotfiles/tmux.conf"
 (( $+TMUX )) && unset zle_bracketed_paste
@@ -191,3 +194,7 @@ eval "$(starship init zsh)"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
