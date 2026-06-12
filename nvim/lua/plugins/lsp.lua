@@ -77,5 +77,20 @@ return {
             { "<leader>F", "<cmd>Format<CR>", desc = "Format the current buffer", silent = true },
             { "<leader>F", "<cmd>Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
         }
+    },
+    {
+        'dnlhc/glance.nvim',
+        opts = {
+            border = {
+                enable = true,
+                top_char = '―',
+                bottom_char = '―',
+            },
+        },
+        cmd = 'Glance',
+        keys = {
+            { "gD", "<cmd>Glance definitions<cr>" },
+            { "gR", "<cmd>Glance references<cr>" },
+        }
     }
 }
