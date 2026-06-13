@@ -90,6 +90,7 @@ plugins=(
     rust
     docker
     npm
+    zoxide
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -115,8 +116,6 @@ export VISUAL="nvim"
 # quick dirs
 alias dot="cd ~/.dotfiles/ && nvim ."
 alias nt="cd ~/Desktop/Notes/ && nvim ."
-alias pr="cd ~/Projects/"
-alias 10speed="cd ~/Projects/tenspeed-lambda/"
 alias books="cd ~/Desktop/Books/"
 
 # git
@@ -198,3 +197,5 @@ eval "$(pyenv init - zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(zoxide init zsh)"
