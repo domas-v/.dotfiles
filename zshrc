@@ -113,11 +113,6 @@ else
 fi
 export VISUAL="nvim"
 
-# quick dirs
-alias dot="cd ~/.dotfiles/ && nvim ."
-alias nt="cd ~/Desktop/Notes/ && nvim ."
-alias books="cd ~/Desktop/Books/"
-
 # git
 alias gp="git pull"
 alias gP="git push"
@@ -131,6 +126,9 @@ alias vrc="cd ~/.dotfiles/nvim/ && v"
 
 # yazi
 alias y="yazi"
+
+# zoxide
+alias zz="zi"
 
 # tmux
 alias trc="tmux source-file ~/.dotfiles/tmux.conf"
