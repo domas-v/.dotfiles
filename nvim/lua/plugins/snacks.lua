@@ -84,6 +84,7 @@ return {
         { "<leader><TAB>", function() Snacks.picker.explorer() end },
 
         -- search
+        { "<leader>/",     function() Snacks.picker.lines() end },
         { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
         { "<leader>r",     function() Snacks.picker.grep() end },
         { "<leader>R",     function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
