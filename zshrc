@@ -87,7 +87,6 @@ plugins=(
     pip
     pyenv
     uv
-    rust
     docker
     npm
     zoxide
@@ -173,27 +172,19 @@ alias py="python"
 alias ipy="ipython"
 
 
-# The following lines were added by compinstall
-# zstyle ':completion:*' completer _complete _ignored
-# zstyle :compinstall filename '/Users/domas-v/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
 eval "$(starship init zsh)"
 
 . "$HOME/.local/bin/env"
 
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init - zsh)"
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-
+# lazy load nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm() {
+  unset -f nvm node npm npx
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  nvm "$@"
+}
 
-eval "$(zoxide init zsh)"
+node() { unset -f node; nvm; node "$@"; }
+npm()  { unset -f npm;  nvm; npm  "$@"; }
+npx()  { unset -f npx;  nvm; npx  "$@"; }
+
