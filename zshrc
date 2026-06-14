@@ -90,6 +90,7 @@ plugins=(
     docker
     npm
     zoxide
+    starship
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -171,8 +172,6 @@ alias llt="eza -l --git -T -L"
 alias py="python"
 alias ipy="ipython"
 
-
-eval "$(starship init zsh)"
 
 . "$HOME/.local/bin/env"
 
