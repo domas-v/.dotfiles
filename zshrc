@@ -81,6 +81,7 @@ plugins=(
     zsh-interactive-cd
     aws
     fzf
+    fzf-tab
     tmux
     direnv
     python
