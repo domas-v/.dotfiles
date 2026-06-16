@@ -57,10 +57,11 @@ vim.keymap.set('i', '<C-k>', 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = tr
 vim.keymap.set('c', '<C-j>', '<RIGHT>', { noremap = true })
 vim.keymap.set('c', '<C-k>', '<LEFT>', { noremap = true })
 
--- search highlighting
+-- search
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { noremap = true })
 vim.keymap.set("n", "S", "/", { noremap = true })
 vim.keymap.set("n", "<C-s>", "?", { noremap = true })
+vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
 
 -- tabs
 vim.keymap.set("n", "<leader>tt", "<cmd>tab split<cr>", { noremap = true })
