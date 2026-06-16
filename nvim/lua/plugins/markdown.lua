@@ -27,4 +27,9 @@ return {
             hide_on_insert = false,
         }
     },
+    {
+        "yousefhadder/markdown-plus.nvim",
+        ft = "markdown",
+        opts = {},
+    }
 }
