@@ -58,6 +58,24 @@ return {
             })
         end
     },
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        opts = {
+            styles = { italic = false, },
+            highlight_groups = {
+                Comment = { italic = true },
+                ["@comment"] = { italic = true },
+                Keyword = { italic = true },
+                ["@keyword"] = { italic = true },
+                ["@keyword.return"] = { italic = true },
+                ["@keyword.function"] = { italic = true },
+                ["@keyword.conditional"] = { italic = true },
+                ["@keyword.repeat"] = { italic = true },
+                ["@keyword.import"] = { italic = true },
+            }
+        }
+    },
     -- setup must be called before loading
     {
         "shortcuts/no-neck-pain.nvim",

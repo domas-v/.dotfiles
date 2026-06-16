@@ -6,7 +6,8 @@ font-family = "JetBrains Mono"
 font-size = 16
 
 # color theme
-theme = dark:Kanagawa Wave,light:Kanagawa Lotus
+# theme = dark:Kanagawa Wave,light:Kanagawa Lotus
+ theme = Rose Pine
 
 # background-opacity = 0.70
 # background-blur = true
