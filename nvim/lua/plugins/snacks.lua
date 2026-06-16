@@ -86,17 +86,17 @@ return {
         -- search
         { "<leader>/",     function() Snacks.picker.lines() end },
         { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
-        { "<leader>r",     function() Snacks.picker.grep() end },
-        { "<leader>R",     function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
+        { "<leader>g",     function() Snacks.picker.grep() end },
+        { "<leader>G",     function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
 
         -- lsp
         { "gd",            function() Snacks.picker.lsp_definitions() end,         mode = "n" },
-        { "grr",           function() Snacks.picker.lsp_references() end,          mode = "n" },
         { "<leader>s",     function() Snacks.picker.lsp_symbols() end },
         { "<leader>S",     function() Snacks.picker.lsp_workspace_symbols() end },
+        { "<leader>R",     function() Snacks.picker.lsp_references() end },
         { "<leader>D",     function() Snacks.picker.diagnostics_buffer() end },
 
         -- git
-        { "<leader>go",    function() Snacks.gitbrowse() end,                      mode = { "n", "v" } },
+        { "<leader>yg",    function() Snacks.gitbrowse() end,                      mode = { "n", "v" } },
     }
 }
