@@ -42,7 +42,6 @@ vim.keymap.set("n", "<C-S-h>", "zH", default_opts)
 
 -- saving and closing
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", default_opts)
-vim.keymap.set("n", "<leader>W", "<cmd>wa<cr>", default_opts)
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", default_opts)
 
 -- undo/redo
@@ -60,6 +59,8 @@ vim.keymap.set('c', '<C-k>', '<LEFT>', { noremap = true })
 
 -- search highlighting
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { noremap = true })
+vim.keymap.set("n", "S", "/", { noremap = true })
+vim.keymap.set("n", "<C-s>", "?", { noremap = true })
 
 -- tabs
 vim.keymap.set("n", "<leader>tt", "<cmd>tab split<cr>", { noremap = true })
