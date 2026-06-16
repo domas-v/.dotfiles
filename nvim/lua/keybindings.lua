@@ -77,12 +77,18 @@ vim.keymap.set("n", "<leader>L", "<cmd>lopen<cr>", { noremap = true })
 vim.keymap.set("n", "<leader>ca", "<cmd>caddexpr expand('%') . ':' . line('.') . ':' . getline('.')<cr>",
     { noremap = true, silent = true, desc = "Add current line to quickfix list" })
 
+-- -- resize splits
+-- vim.keymap.set("n", "<C-->", "<C-w>10<", default_opts)
+-- vim.keymap.set("n", "<C-=>", "<C-w>10>", default_opts)
+-- vim.keymap.set("n", "<C-S-->", "5<C-W>-", default_opts)
+-- vim.keymap.set("n", "<C-S-=>", "5<C-W>+", default_opts)
+
 -- resize splits
-vim.keymap.set("n", "<C-->", "<C-w>10<", default_opts)
-vim.keymap.set("n", "<C-=>", "<C-w>10>", default_opts)
-vim.keymap.set("n", "<C-S-=>", "5<C-W>+", default_opts)
-vim.keymap.set("n", "<C-S-->", "5<C-W>-", default_opts)
+vim.keymap.set("n", "+", "<cmd>vertical resize +10<cr>", default_opts)
+vim.keymap.set("n", "_", "<cmd>vertical resize -10<cr>", default_opts)
+vim.keymap.set("n", "=", "<cmd>resize +5<cr>", default_opts)
+vim.keymap.set("n", "-", "<cmd>resize -5<cr>", default_opts)
 
 -- misc
-vim.keymap.set("n", "<leader>\\", "<cmd>set wrap!<cr>", default_opts)
+vim.keymap.set("n", "<leader>\\", "<cmd>set wrap!<cr>", { noremap = true })
 -- vim.keymap.set("n", "<leader>x", "<cmd>source %<cr>", default_opts)
