@@ -1,6 +1,17 @@
 return {
     {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        opts = { labels = "qwertasdfgzxcvb", },
+        keys = {
+            { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+            -- { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+            { "<c-s>", mode = { "i" },           function() require("flash").jump() end, desc = "Flash (ins mode)" },
+        },
+    },
+    {
         "justinmk/vim-sneak",
+        enabled = false,
         lazy = false,
         init = function()
             vim.g["sneak#label"] = 1
