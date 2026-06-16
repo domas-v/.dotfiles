@@ -82,10 +82,6 @@ local function toggle_dap_ui()
     require("dap.repl").toggle(repl_winopts, "vsp")
 end
 
-local function toggle_dap_repl()
-    require('dap').repl.toggle({ height = math.floor(vim.o.lines / 3) })
-end
-
 local function list_breakpoints()
     require('dap').list_breakpoints()
     vim.cmd("copen")
@@ -98,7 +94,6 @@ return {
             "mfussenegger/nvim-dap-python",
             {
                 "theHamsta/nvim-dap-virtual-text",
-                -- config = function() require("nvim-dap-virtual-text").setup({ virt_text_win_col = 60 }) end
             },
             "nvim-neotest/nvim-nio",
             "rcarriga/nvim-dap-ui",
@@ -189,26 +184,34 @@ return {
             vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
 
             vim.api.nvim_create_user_command("DapUIToggle", toggle_dap_ui, {})
-            vim.keymap.set('n', '<C-w>r', "<cmd>DapUIToggle<cr>", default_opts)
             vim.keymap.set('n', '<C-w><C-r>', "<cmd>DapUIToggle<cr>", default_opts)
 
             vim.api.nvim_create_user_command("DapListBreakpoints", list_breakpoints, {})
             vim.keymap.set('n', '<leader>B', '<cmd>DapListBreakpoints<cr>', default_opts)
         end,
         keys = {
-            { "<C-w>e",     "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>", },
             { "<C-w><C-e>", "<cmd>lua require('dap.ui.widgets').hover(nil, { border = 'rounded' })<cr>", },
             { "<C-w><C-u>", "<cmd>lua require('dapui').toggle()<cr>", },
-            { "<leader>dd", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", },
-            { "<leader>dC", "<cmd>lua require'dap'.clear_breakpoints()<cr>", },
-            { "<leader>db", "<cmd>DapListBreakpoints<cr>", },
-            { "<leader>df", "<cmd>lua require'dap'.run_to_cursor()<cr>", },
-            { "<leader>ds", "<cmd>lua require'dap'.continue()<cr>", },
-            { "<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", },
-            { "<leader>dn", "<cmd>lua require'dap'.step_over()<cr>", },
-            { "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", },
-            { "<leader>do", "<cmd>lua require'dap'.step_out()<cr>", },
+
+            { "<leader>ds", "<cmd>lua require('dap').continue()<cr>", },
+            { "<leader>df", "<cmd>lua require('dap').run_to_cursor()<cr>", },
+            { "<leader>dx", "<cmd>lua require('dap').terminate()<cr>", },
+            { "<leader>dn", "<cmd>lua require('dap').step_over()<cr>", },
+            { "<leader>di", "<cmd>lua require('dap').step_into()<cr>", },
+            { "<leader>do", "<cmd>lua require('dap').step_out()<cr>", },
             { '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", },
         }
     },
+    {
+        "Carcuis/dap-breakpoints.nvim",
+        lazy = false,
+        dependencies = { "Weissle/persistent-breakpoints.nvim" },
+        opts = {},
+        keys = {
+            { "<leader>dd", "<cmd>DapBpToggle<cr>", },
+            { "<leader>b",  "<cmd>DapBpToggle<cr>", },
+            { "]b",         "<cmd>DapBpNext<cr>", },
+            { "[b",         "<cmd>DapBpPrev<cr>", },
+        }
+    }
 }
