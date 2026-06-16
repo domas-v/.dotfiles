@@ -19,6 +19,8 @@ return {
 
             vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
             vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+            vim.keymap.set('n', 'gn', vim.lsp.buf.rename)
+            vim.keymap.set('n', 'g.', vim.lsp.buf.code_action)
         end
     },
     {
@@ -88,9 +90,6 @@ return {
             },
         },
         cmd = 'Glance',
-        keys = {
-            { "gD", "<cmd>Glance definitions<cr>" },
-            { "gR", "<cmd>Glance references<cr>" },
-        }
+        keys = { { "grr", "<cmd>Glance references<cr>" } }
     }
 }
