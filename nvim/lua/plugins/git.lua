@@ -11,7 +11,7 @@ return {
                 spellcheck = false,
             },
         },
-        keys = { { "<leader><leader>g", "<cmd>Neogit kind=tab<cr>" } },
+        keys = { { "<leader>N", "<cmd>Neogit kind=replace<cr>" }, },
     },
     {
         "lewis6991/gitsigns.nvim",
