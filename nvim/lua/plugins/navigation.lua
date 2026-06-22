@@ -1,6 +1,12 @@
 return {
     -- WINDOW NAVIGATION
     {
+        "aurora0x27/bpm.nvim",
+        config = function()
+            require("bpm").setup()
+        end,
+    },
+    {
         "kevinhwang91/nvim-bqf",
         ft = 'qf',
         dependencies = {
