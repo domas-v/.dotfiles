@@ -31,8 +31,14 @@ return {
                 vim.lsp.enable(name)
             end
 
-            vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-            vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+            vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end)
+            vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end)
+            vim.keymap.set('n', '[e', function()
+                vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity.ERROR, })
+            end)
+            vim.keymap.set('n', ']e', function()
+                vim.diagnostic.jump({ count = 1, float = true, severity = vim.diagnostic.severity.ERROR, })
+            end)
             vim.keymap.set('n', 'gn', vim.lsp.buf.rename)
             vim.keymap.set('n', 'g.', vim.lsp.buf.code_action)
         end
