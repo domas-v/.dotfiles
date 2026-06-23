@@ -13,7 +13,7 @@ return {
             return 30
         end
 
-        local function yank_path(picker, item)
+        local function yank_path(_, item)
             vim.fn.setreg("+", item.file)
             vim.notify("Copied path: " .. item.file)
         end
