@@ -31,7 +31,7 @@ config-file = tmux.config
 keybind = cmd+shift+;=toggle_command_palette
 
 # quick terminal
-quick-terminal-animation-duration = 0.1
+quick-terminal-animation-duration = 0.0
 keybind = global:cmd+§=toggle_quick_terminal
 
 # windows
