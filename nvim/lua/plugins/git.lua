@@ -1,5 +1,6 @@
 return {
     {
+        enabled = false,
         "NeogitOrg/neogit",
         lazy = true,
         dependencies = { "esmuellert/codediff.nvim" },
@@ -12,6 +13,10 @@ return {
             },
         },
         keys = { { "<leader>N", "<cmd>Neogit kind=replace<cr>" }, },
+    },
+    {
+        "esmuellert/codediff.nvim",
+        cmd = "CodeDiff",
     },
     {
         "lewis6991/gitsigns.nvim",
