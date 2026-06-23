@@ -59,8 +59,6 @@ vim.keymap.set('c', '<C-k>', '<LEFT>', { noremap = true })
 
 -- search
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { noremap = true })
-vim.keymap.set("n", "S", "/", { noremap = true })
-vim.keymap.set("n", "<C-s>", "?", { noremap = true })
 vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
 
 -- tabs
@@ -93,4 +91,3 @@ vim.keymap.set("n", "-", "<cmd>resize -5<cr>", default_opts)
 
 -- misc
 vim.keymap.set("n", "<leader>\\", "<cmd>set wrap!<cr>", { noremap = true })
--- vim.keymap.set("n", "<leader>x", "<cmd>source %<cr>", default_opts)
