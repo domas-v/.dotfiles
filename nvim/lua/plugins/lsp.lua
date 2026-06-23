@@ -2,20 +2,34 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            vim.lsp.config("basedpyright", {
-                settings = {
-                    basedpyright = {
-                        analysis = {
-                            diagnosticMode = "workspace",
+            vim.lsp.log.set_level("WARN")
+
+            local servers = {
+                basedpyright = {
+                    settings = {
+                        basedpyright = {
+                            analysis = { diagnosticMode = "workspace" },
                         },
                     },
                 },
-            })
-
-            vim.lsp.enable("basedpyright")
-            vim.lsp.enable("clangd")
-            vim.lsp.enable("markdown_oxide")
-            vim.lsp.enable("lua_ls")
+                clangd = {},
+                lua_ls = {},
+                markdown_oxide = {
+                    root_markers = { ".obsidian", ".moxide.toml" },
+                    capabilities = vim.tbl_deep_extend("force",
+                        vim.lsp.protocol.make_client_capabilities(),
+                        {
+                            workspace = {
+                                didChangeWatchedFiles = { dynamicRegistration = true },
+                            },
+                        }
+                    ),
+                },
+            }
+            for name, cfg in pairs(servers) do
+                vim.lsp.config(name, cfg)
+                vim.lsp.enable(name)
+            end
 
             vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
             vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
