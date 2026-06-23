@@ -76,12 +76,4 @@ return {
             }
         }
     },
-    -- setup must be called before loading
-    {
-        "shortcuts/no-neck-pain.nvim",
-        version = "*",
-        config = function()
-            vim.keymap.set("n", "<Space>|", "<cmd>NoNeckPain<cr>")
-        end,
-    }
 }

@@ -47,4 +47,11 @@ return {
         version = false,
         opts = {},
     },
+    {
+        "shortcuts/no-neck-pain.nvim",
+        version = "*",
+        config = function()
+            vim.keymap.set("n", "<Space>|", "<cmd>NoNeckPain<cr>")
+        end,
+    },
 }
