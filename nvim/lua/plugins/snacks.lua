@@ -87,7 +87,7 @@ return {
         { "<leader>/",     function() Snacks.picker.lines() end },
         { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
         { "<leader>g",     function() Snacks.picker.grep() end },
-        { "<leader>G",     function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
+        { "<leader>W",     function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
 
         -- lsp
         { "gd",            function() Snacks.picker.lsp_definitions() end,         mode = "n" },
@@ -98,5 +98,6 @@ return {
 
         -- git
         { "<leader>yg",    function() Snacks.gitbrowse() end,                      mode = { "n", "v" } },
+        { "<leader>G",     function() Snacks.picker.git_diff() end,              mode = { "n", "v" } },
     }
 }
