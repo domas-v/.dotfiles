@@ -170,8 +170,6 @@ xnoremap p "_dP
 
 " search and replace
 nnoremap <RETURN> :nohlsearch<CR>
-nnoremap <C-s> /
-nnoremap <C-a> ?
 nnoremap <space>r :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 vnoremap <space>r :s/
 nnoremap <space>R :%s/
