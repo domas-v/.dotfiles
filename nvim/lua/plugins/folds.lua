@@ -29,7 +29,17 @@ return {
             }
             require("ufo").setup({
                 provider_selector = function(bufnr, filetype, buftype)
-                    return { "lsp", "treesitter" }
+                    if buftype ~= "" and buftype ~= "acwrite" then
+                        return ""
+                    end
+
+                    for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+                        if client.server_capabilities.foldingRangeProvider then
+                            return { "lsp", "indent" }
+                        end
+                    end
+
+                    return { "treesitter", "indent" }
                 end,
             })
 
