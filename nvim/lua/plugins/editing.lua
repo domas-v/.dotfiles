@@ -50,9 +50,26 @@ return {
         opts = {},
     },
     {
-        "nvim-mini/mini.cursorword",
-        version = false,
-        opts = {},
+        "ya2s/nvim-cursorline",
+        opts = {
+            disable_filetypes = {
+                "snacks_picker_input",
+                "snacks_picker_list",
+                "snacks_picker_preview",
+                "snacks_dashboard",
+            },
+            disable_buftypes = { "nofile", "prompt", "quickfix", "terminal" },
+            cursorline = {
+                enable = false,
+                timeout = 0,
+            },
+            cursorword = {
+                enable = true,
+                min_length = 3,
+                hl = { underline = true },
+            }
+
+        }
     },
     {
         "shortcuts/no-neck-pain.nvim",
