@@ -16,14 +16,6 @@ return {
                 lua_ls = {},
                 markdown_oxide = {
                     root_markers = { ".obsidian", ".moxide.toml" },
-                    capabilities = vim.tbl_deep_extend("force",
-                        vim.lsp.protocol.make_client_capabilities(),
-                        {
-                            workspace = {
-                                didChangeWatchedFiles = { dynamicRegistration = true },
-                            },
-                        }
-                    ),
                 },
             }
             for name, cfg in pairs(servers) do
