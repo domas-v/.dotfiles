@@ -23,6 +23,10 @@ return {
                     vim.wo.foldenable = false
                 end,
             })
+
+            vim.keymap.set({ "n", "x" }, "<CR>", function()
+                vim.treesitter.select("parent", vim.v.count1)
+            end, { desc = "Select parent Treesitter node" })
         end,
     },
     {
