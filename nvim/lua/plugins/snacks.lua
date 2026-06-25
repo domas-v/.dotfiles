@@ -73,10 +73,10 @@ return {
         { "<C-x>",     function() Snacks.bufdelete() end },
         { "<leader>?", function() Snacks.picker() end },
         { "<leader>K", function() Snacks.picker.keymaps() end },
-        { "<leader><", function() Snacks.picker.resume() end },
-
-        -- buffers
+        { "<leader>.", function() Snacks.picker.resume() end },
         { "<leader>,", function() Snacks.picker.buffers() end },
+
+        -- explorer
         {
             "<leader>e",
             function()
