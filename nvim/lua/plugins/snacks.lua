@@ -100,6 +100,6 @@ return {
 
         -- git
         { "<leader>yg",    function() Snacks.gitbrowse() end,                      mode = { "n", "v" } },
-        { "<leader>G",     function() Snacks.picker.git_diff() end,              mode = { "n", "v" } },
+        { "<leader>G",     function() Snacks.picker.git_diff() end,                mode = { "n", "v" } },
     }
 }
