@@ -82,6 +82,9 @@ return {
                 nmap("<A-h>", "<Plug>(MarkdownPlusTableMoveColumnLeft)", "Move table column left")
 
                 nmap("<A-S-t>", "<Plug>(MarkdownPlusTableFormat)", "Format table")
+
+                nmap("<A-CR>", "<Plug>(MarkdownPlusToggleCheckbox)", "Toggle checkbox")
+                imap("<A-CR>", "<Plug>(MarkdownPlusToggleCheckbox)", "Toggle checkbox")
             end
 
             vim.api.nvim_create_user_command("MarkdownCreateTable", function()
