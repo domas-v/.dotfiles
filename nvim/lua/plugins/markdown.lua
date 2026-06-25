@@ -53,21 +53,35 @@ return {
             })
 
             local function set_table_keymaps(bufnr)
-                local map = function(lhs, rhs, desc)
+                local nmap = function(lhs, rhs, desc)
                     vim.keymap.set("n", lhs, rhs, { buffer = bufnr, desc = desc })
                 end
+                local imap = function(lhs, rhs, desc)
+                    vim.keymap.set("i", lhs, function()
+                        vim.api.nvim_feedkeys(
+                            vim.api.nvim_replace_termcodes("<Esc>" .. rhs .. "i", true, false, true),
+                            "m",
+                            false
+                        )
+                    end, { buffer = bufnr, desc = desc })
+                end
 
-                map("<A-S-j>", "<Plug>(MarkdownPlusTableInsertRowBelow)", "Insert table row below")
-                map("<A-S-k>", "<Plug>(MarkdownPlusTableInsertRowAbove)", "Insert table row above")
-                map("<A-j>", "<Plug>(MarkdownPlusTableMoveRowDown)", "Move table row down")
-                map("<A-k>", "<Plug>(MarkdownPlusTableMoveRowUp)", "Move table row up")
+                nmap("<A-S-j>", "<Plug>(MarkdownPlusTableInsertRowBelow)", "Insert table row below")
+                nmap("<A-S-k>", "<Plug>(MarkdownPlusTableInsertRowAbove)", "Insert table row above")
+                nmap("<A-S-l>", "<Plug>(MarkdownPlusTableInsertColumnRight)", "Insert table column right")
+                nmap("<A-S-h>", "<Plug>(MarkdownPlusTableInsertColumnLeft)", "Insert table column left")
 
-                map("<A-S-l>", "<Plug>(MarkdownPlusTableInsertColumnRight)", "Insert table column right")
-                map("<A-S-h>", "<Plug>(MarkdownPlusTableInsertColumnLeft)", "Insert table column left")
-                map("<A-l>", "<Plug>(MarkdownPlusTableMoveColumnRight)", "Move table column right")
-                map("<A-h>", "<Plug>(MarkdownPlusTableMoveColumnLeft)", "Move table column left")
+                imap("<A-S-j>", "<Plug>(MarkdownPlusTableInsertRowBelow)", "Insert table row below")
+                imap("<A-S-k>", "<Plug>(MarkdownPlusTableInsertRowAbove)", "Insert table row above")
+                imap("<A-S-l>", "<Plug>(MarkdownPlusTableInsertColumnRight)", "Insert table column right")
+                imap("<A-S-h>", "<Plug>(MarkdownPlusTableInsertColumnLeft)", "Insert table column left")
 
-                map("<A-S-t>", "<Plug>(MarkdownPlusTableFormat)", "Format table")
+                nmap("<A-j>", "<Plug>(MarkdownPlusTableMoveRowDown)", "Move table row down")
+                nmap("<A-k>", "<Plug>(MarkdownPlusTableMoveRowUp)", "Move table row up")
+                nmap("<A-l>", "<Plug>(MarkdownPlusTableMoveColumnRight)", "Move table column right")
+                nmap("<A-h>", "<Plug>(MarkdownPlusTableMoveColumnLeft)", "Move table column left")
+
+                nmap("<A-S-t>", "<Plug>(MarkdownPlusTableFormat)", "Format table")
             end
 
             vim.api.nvim_create_user_command("MarkdownCreateTable", function()
