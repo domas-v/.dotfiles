@@ -5,9 +5,9 @@ return {
         event = "VeryLazy",
         opts = { labels = "qwertasdfgzxcvb", },
         keys = {
-            { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
-            { "<enter>",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-            { "<c-s>", mode = { "i" },           function() require("flash").jump() end,       desc = "Flash (ins mode)" },
+            { "s",       mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
+            { "<enter>", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+            { "<c-s>",   mode = { "i" },           function() require("flash").jump() end,       desc = "Flash (ins mode)" },
         },
     },
     {
@@ -16,6 +16,7 @@ return {
         init = function()
             vim.g["sneak#label"] = 0
             vim.g["sneak#use_ic_scs"] = 1
+            vim.g["sneak#s_next"] = 1
         end,
         config = function()
             vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>Sneak_s")
@@ -26,6 +27,10 @@ return {
 
             vim.keymap.set({ "n", "x", "o" }, "t", "<Plug>Sneak_t")
             vim.keymap.set({ "n", "x", "o" }, "T", "<Plug>Sneak_T")
+
+            vim.api.nvim_set_hl(0, "Sneak", { link = "IncSearch" })
+            vim.api.nvim_set_hl(0, "SneakCurrent", { link = "CurSearch" })
+            vim.api.nvim_set_hl(0, "SneakScope", { link = "Visual" })
         end,
 
     },
