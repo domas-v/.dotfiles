@@ -15,7 +15,7 @@ o.sessionoptions       = "blank,buffers,curdir,folds,help,tabpages,winsize,winpo
 -- line numbers
 wo.linebreak           = true
 o.nu                   = true
-o.relativenumber       = false
+o.relativenumber       = true
 
 -- tabs and spaces
 o.expandtab            = true
