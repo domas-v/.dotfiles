@@ -137,7 +137,19 @@ alias trc="tmux source-file ~/.dotfiles/tmux.conf"
 
 
 # terminal-notifier
-alias tn="terminal-notifier -message \"DONE\" -sound default"
+function tn {
+    local title="${1:-Terminal}"
+    local message="${2:-Done at $(date '+%H:%M:%S')}"
+    local sound="${3:-default}"
+
+    command terminal-notifier \
+        -title "$title" \
+        -subtitle "${PWD/#$HOME/~}" \
+        -message "$message" \
+        -sound "$sound" \
+        -group "ghostty" \
+        -activate "com.mitchellh.ghostty"
+}
 
 # file listings
 function preview_stuff() {
