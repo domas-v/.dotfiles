@@ -51,6 +51,41 @@ return {
                     remove_markdown_plus_gd(args.buf)
                 end,
             })
+
+            local function set_table_keymaps(bufnr)
+                local map = function(lhs, rhs, desc)
+                    vim.keymap.set("n", lhs, rhs, { buffer = bufnr, desc = desc })
+                end
+
+                map("<A-S-j>", "<Plug>(MarkdownPlusTableInsertRowBelow)", "Insert table row below")
+                map("<A-S-k>", "<Plug>(MarkdownPlusTableInsertRowAbove)", "Insert table row above")
+                map("<A-j>", "<Plug>(MarkdownPlusTableMoveRowDown)", "Move table row down")
+                map("<A-k>", "<Plug>(MarkdownPlusTableMoveRowUp)", "Move table row up")
+
+                map("<A-S-l>", "<Plug>(MarkdownPlusTableInsertColumnRight)", "Insert table column right")
+                map("<A-S-h>", "<Plug>(MarkdownPlusTableInsertColumnLeft)", "Insert table column left")
+                map("<A-l>", "<Plug>(MarkdownPlusTableMoveColumnRight)", "Move table column right")
+                map("<A-h>", "<Plug>(MarkdownPlusTableMoveColumnLeft)", "Move table column left")
+
+                map("<A-S-t>", "<Plug>(MarkdownPlusTableFormat)", "Format table")
+            end
+
+            vim.api.nvim_create_user_command("MarkdownCreateTable", function()
+                vim.api.nvim_feedkeys(
+                    vim.api.nvim_replace_termcodes("<Plug>(MarkdownPlusTableCreate)", true, false, true),
+                    "m",
+                    false
+                )
+            end, { desc = "Create markdown table" })
+
+            set_table_keymaps(vim.api.nvim_get_current_buf())
+
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = "markdown",
+                callback = function(args)
+                    set_table_keymaps(args.buf)
+                end,
+            })
         end,
     }
 }
