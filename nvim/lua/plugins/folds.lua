@@ -3,20 +3,16 @@ return {
         "chrisgrieser/nvim-origami",
         enabled = false,
         event = "VeryLazy",
-        opts = {}, -- required even when using default config
-
-        -- recommended: disable vim's auto-folding
+        opts = {},
         init = function()
             vim.opt.foldlevel = 99
             vim.opt.foldlevelstart = 99
         end,
     },
-    -- use Neovim nightly branch
     {
         "kevinhwang91/nvim-ufo",
         dependencies = { "kevinhwang91/promise-async" },
         config = function()
-            -- vim.o.foldcolumn = "0"
             vim.o.foldcolumn = "1"
             vim.o.foldlevel = 99
             vim.o.foldlevelstart = 99
@@ -33,7 +29,7 @@ return {
             }
             require("ufo").setup({
                 provider_selector = function(bufnr, filetype, buftype)
-                    return { "lsp", "indent" }
+                    return { "lsp", "treesitter" }
                 end,
             })
 
@@ -63,36 +59,9 @@ return {
             vim.keymap.set('n', 'zk', function()
                 local winid = require('ufo').peekFoldedLinesUnderCursor()
                 if not winid then
-                    vim.fn.CocActionAsync('definitionHover')
                     vim.lsp.buf.hover()
                 end
             end)
         end,
     },
-    -- {
-    --     "kevinhwang91/nvim-ufo",
-    --     dependencies = { "kevinhwang91/promise-async" },
-    --     config = function()
-    --         vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-    --         vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-    --         require('ufo').setup({
-    --             provider_selector = function(_, _, _)
-    --                 return { 'treesitter', 'indent' }
-    --             end,
-    --             enable_get_fold_virt_text = true,
-    --             open_fold_hl_timeout = 150,
-    --             preview = {
-    --                 win_config = {
-    --                     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    --                     winhighlight = "Normal:Folded",
-    --                     winblend = 0,
-    --                 },
-    --                 mappings = {
-    --                     jumpTop = "[",
-    --                     jumpBot = "]",
-    --                 },
-    --             },
-    --         })
-    --     end
-    -- }
 }
