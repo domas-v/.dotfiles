@@ -4,7 +4,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # export PATH="/opt/homebrew/opt/mysql-client@8.0/bin:$PATH"
 
-source "$HOME/.dotfiles/.api_keys.zsh"
+# source "$HOME/.dotfiles/.api_keys.zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -76,22 +76,22 @@ plugins=(
     macos
     brew
     git
-    gh
     zsh-autosuggestions
     zsh-interactive-cd
-    aws
     fzf
     fzf-tab
-    tmux
-    direnv
-    python
-    pip
-    pyenv
-    uv
     docker
-    npm
     zoxide
     starship
+    direnv
+    tmux
+    # gh
+    # aws
+    # python
+    # pip
+    # pyenv
+    # uv
+    # npm
 )
 
 source $ZSH/oh-my-zsh.sh

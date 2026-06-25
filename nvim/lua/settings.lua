@@ -15,7 +15,7 @@ o.sessionoptions       = "blank,buffers,curdir,folds,help,tabpages,winsize,winpo
 -- line numbers
 wo.linebreak           = true
 o.nu                   = true
-o.relativenumber       = true
+o.relativenumber       = false
 
 -- tabs and spaces
 o.expandtab            = true
@@ -43,11 +43,11 @@ o.termguicolors        = true
 o.conceallevel         = 2
 
 -- folds
-vim.o.fillchars        = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.o.foldcolumn       = '0'
-vim.o.foldlevel        = 99
-vim.o.foldlevelstart   = 99
-vim.o.foldenable       = true
+-- vim.o.fillchars        = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+-- vim.o.foldcolumn       = '0'
+-- vim.o.foldlevel        = 99
+-- vim.o.foldlevelstart   = 99
+-- vim.o.foldenable       = true
 
 -- search
 o.ignorecase           = true

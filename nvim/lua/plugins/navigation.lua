@@ -2,6 +2,7 @@ return {
     -- WINDOW NAVIGATION
     {
         -- buffers per tab
+        enabled = false,
         "aurora0x27/bpm.nvim",
         config = function()
             require("bpm").setup()
