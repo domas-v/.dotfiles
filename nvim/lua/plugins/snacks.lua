@@ -75,6 +75,7 @@ return {
         { "<leader>K", function() Snacks.picker.keymaps() end },
         { "<leader>.", function() Snacks.picker.resume() end },
         { "<leader>,", function() Snacks.picker.buffers() end },
+        { "<leader>M", function() Snacks.picker.marks() end },
 
         -- explorer
         {
