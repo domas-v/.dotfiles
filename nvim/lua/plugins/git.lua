@@ -1,6 +1,5 @@
 return {
     {
-        enabled = false,
         "NeogitOrg/neogit",
         lazy = true,
         dependencies = { "esmuellert/codediff.nvim" },
@@ -12,7 +11,7 @@ return {
                 spellcheck = false,
             },
         },
-        keys = { { "<leader>N", "<cmd>Neogit kind=replace<cr>" }, },
+        keys = { { "<leader>G", "<cmd>Neogit kind=replace<cr>" }, },
     },
     {
         "esmuellert/codediff.nvim",
@@ -26,14 +25,14 @@ return {
         end,
         keys = {
             { "<C-w><C-g>", "<cmd>Gitsigns preview_hunk<cr>", },
-            { "]g", "<cmd>Gitsigns next_hunk<cr>", },
-            { "[g", "<cmd>Gitsigns prev_hunk<cr>", },
-            { "ga", "<cmd>Gitsigns stage_hunk<cr>", },
-            { "gu", "<cmd>Gitsigns reset_hunk<cr>", },
-            { "gU", "<cmd>Gitsigns undo_stage_hunk<cr>", },
-            { "gl", "<cmd>Gitsigns toggle_current_line_blame<cr>", },
-            { "gb", "<cmd>Gitsigns blame_line<cr>", },
-            { "gB", "<cmd>Gitsigns blame<cr>", },
+            { "]g",         "<cmd>Gitsigns next_hunk<cr>", },
+            { "[g",         "<cmd>Gitsigns prev_hunk<cr>", },
+            { "ga",         "<cmd>Gitsigns stage_hunk<cr>", },
+            { "gu",         "<cmd>Gitsigns reset_hunk<cr>", },
+            { "gU",         "<cmd>Gitsigns undo_stage_hunk<cr>", },
+            { "gl",         "<cmd>Gitsigns toggle_current_line_blame<cr>", },
+            { "gb",         "<cmd>Gitsigns blame_line<cr>", },
+            { "gB",         "<cmd>Gitsigns blame<cr>", },
         }
     },
 }
