@@ -206,7 +206,27 @@ return {
         "Carcuis/dap-breakpoints.nvim",
         lazy = false,
         dependencies = { "Weissle/persistent-breakpoints.nvim" },
-        opts = {},
+        config = function()
+            require("persistent-breakpoints").setup()
+            require("dap-breakpoints").setup()
+
+            vim.api.nvim_clear_autocmds({
+                group = "dap-breakpoints",
+                event = { "BufWritePost", "QuitPre" },
+            })
+
+            vim.api.nvim_create_autocmd({ "BufWritePost", "QuitPre" }, {
+                group = "dap-breakpoints",
+                callback = function(args)
+                    local buf = args.buf
+                    if vim.bo[buf].buftype ~= "" or vim.api.nvim_buf_get_name(buf) == "" then
+                        return
+                    end
+
+                    pcall(require("dap-breakpoints.api").save_breakpoints)
+                end,
+            })
+        end,
         keys = {
             { "<leader>dd", "<cmd>DapBpToggle<cr>", },
             { "<leader>b",  "<cmd>DapBpToggle<cr>", },
