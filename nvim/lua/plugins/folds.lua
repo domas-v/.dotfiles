@@ -1,15 +1,5 @@
 return {
     {
-        "chrisgrieser/nvim-origami",
-        enabled = false,
-        event = "VeryLazy",
-        opts = {},
-        init = function()
-            vim.opt.foldlevel = 99
-            vim.opt.foldlevelstart = 99
-        end,
-    },
-    {
         "kevinhwang91/nvim-ufo",
         dependencies = { "kevinhwang91/promise-async" },
         config = function()
