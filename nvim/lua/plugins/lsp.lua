@@ -14,9 +14,6 @@ return {
                 },
                 clangd = {},
                 lua_ls = {},
-                markdown_oxide = {
-                    root_markers = { ".obsidian", ".moxide.toml" },
-                },
             }
             for name, cfg in pairs(servers) do
                 vim.lsp.config(name, cfg)

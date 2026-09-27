@@ -10,6 +10,7 @@ return {
     {
         'MeanderingProgrammer/render-markdown.nvim',
         ft = "markdown",
+        enabled = false,
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
         opts = {
             heading = { sign = false },
