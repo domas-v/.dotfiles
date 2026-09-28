@@ -194,6 +194,36 @@ local function append_task_block(buf, block, source_link)
     vim.api.nvim_buf_set_lines(buf, insert_at, insert_at, false, inserted)
 end
 
+local function shortest_alias(path)
+    local lines = vim.fn.readfile(path)
+    if lines[1] ~= "---" then
+        return nil
+    end
+
+    local in_aliases = false
+    local shortest
+
+    for i = 2, #lines do
+        local line = lines[i]
+        if line == "---" then
+            break
+        elseif line:match("^aliases:%s*$") then
+            in_aliases = true
+        elseif in_aliases then
+            local alias = line:match("^%s+%-%s*(.-)%s*$")
+            if alias and alias ~= "" then
+                if not shortest or vim.fn.strchars(alias) < vim.fn.strchars(shortest) then
+                    shortest = alias
+                end
+            elseif not line:match("^%s") then
+                in_aliases = false
+            end
+        end
+    end
+
+    return shortest
+end
+
 local function move_task(opts, offset)
     local source_buf = vim.api.nvim_get_current_buf()
     local source_path = vim.api.nvim_buf_get_name(source_buf)
@@ -220,6 +250,12 @@ local function move_task(opts, offset)
     end
 
     local source_link = relative:gsub("\\", "/"):gsub("%.md$", "")
+    local alias = shortest_alias(source_path)
+    local note_name = vim.fn.fnamemodify(source_path, ":t:r")
+
+    if alias and alias ~= note_name then
+        source_link = source_link .. "|" .. alias
+    end
     append_task_block(daily_buf, block, source_link)
     local daily_ok = vim.api.nvim_buf_call(daily_buf, function()
         return pcall(vim.cmd, "write")

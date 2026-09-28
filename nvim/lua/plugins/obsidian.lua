@@ -25,7 +25,7 @@ return {
                 workdays_only = false,
             },
             checkbox = {
-                order = { " ", "/", "x" },
+                order = { " ", ">", "x" },
             },
             note_id_func = function(title)
                 return title
@@ -51,12 +51,12 @@ return {
                 desc = "Open notes inbox",
             },
             {
-                "<leader>oh",
+                "<leader>oI",
                 function()
                     vim.cmd.edit(vim.fn.expand(
-                        "/Users/domas-v/Library/Mobile Documents/iCloud~md~obsidian/Documents/in obs/home.md"))
+                        "/Users/domas-v/Library/Mobile Documents/iCloud~md~obsidian/Documents/in obs/index.md"))
                 end,
-                desc = "Open notes home",
+                desc = "Open notes index",
             },
             { "<leader>od",   "<cmd>Obsidian today<cr>",           desc = "Open today's note" },
             { "<leader>ot",   "<cmd>Obsidian tomorrow<cr>",        desc = "Open tomorrow's note" },
