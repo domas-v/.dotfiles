@@ -1,10 +1,13 @@
 local M = {}
 
 local agenda_ns = vim.api.nvim_create_namespace("notes-agenda-entries")
+local project_ns = vim.api.nvim_create_namespace("notes-agenda-project-labels")
 local agendas = {}
+local label_watchers = {}
 local calendar_buf
 local calendar_win
 local calendar_state
+local open_date_picker
 
 local function notify(message, level)
     vim.notify(message, level or vim.log.levels.INFO, { title = "Notes" })
@@ -113,13 +116,122 @@ local function lines_for_path(path)
     return vim.fn.readfile(path)
 end
 
+local function area_key(target)
+    target = target:match("^([^|#]+)") or target
+    target = target:gsub("\\", "/"):gsub("%.md$", "")
+    target = target:match("([^/]+)$") or target
+    return target:lower()
+end
+
+local function area_index(opts, paths)
+    local by_path, by_project = {}, {}
+    for _, path in ipairs(paths) do
+        local relative = vim.fs.relpath(opts.vault, path):gsub("\\", "/")
+        if relative:match("^areas/") then
+            local area_lines = lines_for_path(path)
+            local name = vim.fn.fnamemodify(path, ":t:r")
+            for _, line in ipairs(area_lines) do
+                local title = line:match("^#%s+(.+)$")
+                if title then
+                    name = trim(title)
+                    break
+                end
+            end
+            local area = { name = name, path = path }
+            by_path[path] = area
+            local in_projects = false
+            for _, line in ipairs(area_lines) do
+                local heading = line:match("^#+%s+(.+)$")
+                if heading then
+                    in_projects = heading:lower():find("project", 1, true) ~= nil
+                elseif in_projects then
+                    for target in line:gmatch("%[%[([^%]]+)%]%]") do
+                        by_project[area_key(target)] = area
+                    end
+                end
+            end
+        end
+    end
+
+    return function(path)
+        if by_path[path] then
+            return by_path[path]
+        end
+        local relative = vim.fs.relpath(opts.vault, path):gsub("\\", "/")
+        if relative == "inbox.md" then
+            return { name = "Inbox", path = path }
+        end
+        local key = vim.fn.fnamemodify(path, ":t:r"):lower()
+        if by_project[key] then
+            return by_project[key]
+        elseif relative:match("^projects/") then
+            return { name = "Projects", path = path }
+        elseif relative:match("^daily/") then
+            return { name = "Daily", path = path }
+        end
+        return { name = "Other", path = path }
+    end
+end
+
+local function project_label(opts, path, lines)
+    local relative = vim.fs.relpath(opts.vault, path):gsub("\\", "/")
+    if not relative:match("^projects/") then
+        return nil
+    end
+
+    local fallback = vim.fn.fnamemodify(path, ":t:r")
+    if lines[1] ~= "---" then
+        return fallback
+    end
+    local frontmatter = {}
+    local closed = false
+    for i = 2, #lines do
+        if lines[i]:match("^%-%-%-%s*$") or lines[i]:match("^%.%.%.%s*$") then
+            closed = true
+            break
+        end
+        frontmatter[#frontmatter + 1] = lines[i]
+    end
+    if not closed then
+        return fallback
+    end
+
+    local ok, metadata = pcall(function()
+        return require("obsidian.yaml").loads(frontmatter)
+    end)
+    if not ok or type(metadata) ~= "table" then
+        return fallback
+    end
+    local aliases = metadata.aliases
+    if type(aliases) == "string" then
+        aliases = { aliases }
+    elseif type(aliases) ~= "table" then
+        return fallback
+    end
+
+    local shortest
+    for _, alias in ipairs(aliases) do
+        if type(alias) == "string" then
+            alias = trim(alias):gsub("%s+", " ")
+            if alias ~= "" and (not shortest or vim.fn.strchars(alias) < vim.fn.strchars(shortest)) then
+                shortest = alias
+            end
+        end
+    end
+    return shortest or fallback
+end
+
 local function collect_tasks(opts, date)
     local results = { agenda = {}, overdue = {}, done = {} }
     local today = os.date("%Y-%m-%d")
+    local paths = markdown_paths(opts.vault)
+    local area_for_path = area_index(opts, paths)
 
-    for _, path in ipairs(markdown_paths(opts.vault)) do
+    for _, path in ipairs(paths) do
         local lines = lines_for_path(path)
         local filename = vim.fn.fnamemodify(path, ":t:r")
+        local area = area_for_path(path)
+        local label = project_label(opts, path, lines)
         for lnum, line in ipairs(lines) do
             local task = parse_task(line)
             if task then
@@ -139,6 +251,9 @@ local function collect_tasks(opts, date)
                         path = path,
                         lnum = lnum,
                         filename = filename,
+                        area = area.name,
+                        area_path = area.path,
+                        project_label = label,
                         source_line = line,
                         source_state = task.state,
                         line = line,
@@ -150,19 +265,46 @@ local function collect_tasks(opts, date)
 
     for _, tasks in pairs(results) do
         table.sort(tasks, function(a, b)
-            if a.filename == b.filename then
-                if a.path == b.path then
+            if a.area == b.area then
+                if a.filename == b.filename and a.path == b.path then
                     return a.lnum < b.lnum
+                end
+                if a.filename == b.filename then
+                    return a.path < b.path
                 end
                 return a.path < b.path
             end
-            return a.filename:lower() < b.filename:lower()
+            if a.area == "Inbox" then
+                return true
+            elseif b.area == "Inbox" then
+                return false
+            end
+            return a.area:lower() < b.area:lower()
         end)
     end
     return results
 end
 
-local function append_section(lines, entries, title)
+local function area_title(name)
+    local icons = {
+        inbox = "📥",
+        home = "🏠",
+        learning = "📚",
+        work = "💼",
+        health = "🩺",
+        projects = "📁",
+        daily = "📝",
+        other = "📂",
+    }
+    return (icons[name:lower()] or "📂") .. " " .. name
+end
+
+local function append_section(lines, entries, title, opts)
+    opts = opts or {}
+    local concealed_dates = {}
+    if #entries == 0 and not opts.keep_empty then
+        return concealed_dates
+    end
     if #lines > 0 and lines[#lines] ~= "" then
         lines[#lines + 1] = ""
     end
@@ -170,33 +312,71 @@ local function append_section(lines, entries, title)
     lines[#lines + 1] = ""
     if #entries == 0 then
         lines[#lines + 1] = "_No tasks._"
-        return
+        return concealed_dates
     end
 
     local current_file
     for _, entry in ipairs(entries) do
-        if entry.filename ~= current_file then
+        if entry.area ~= current_file then
             if #lines > 0 and lines[#lines] ~= "" then
                 lines[#lines + 1] = ""
             end
-            current_file = entry.filename
-            lines[#lines + 1] = "### " .. current_file
+            current_file = entry.area
+            lines[#lines + 1] = "### " .. area_title(current_file)
             lines[#lines + 1] = ""
         end
         entry.agenda_row = #lines + 1
         lines[#lines + 1] = entry.line
+        if opts.hide_schedule then
+            local start_col, end_col = entry.line:find("⏳%s*%d%d%d%d%-%d%d%-%d%d")
+            if start_col then
+                concealed_dates[#concealed_dates + 1] = {
+                    row = entry.agenda_row - 1,
+                    start_col = start_col - 1,
+                    end_col = end_col,
+                }
+            end
+        end
+    end
+    return concealed_dates
+end
+
+local function refresh_project_labels(buf)
+    vim.api.nvim_buf_clear_namespace(buf, project_ns, 0, -1)
+    local state = agendas[buf]
+    if not state or vim.api.nvim_buf_line_count(buf) ~= state.line_count then
+        return
+    end
+    for _, entry in ipairs(state.entries) do
+        if entry.project_label then
+            vim.api.nvim_buf_set_extmark(buf, project_ns, entry.agenda_row - 1, 0, {
+                virt_text = { { "  [" .. entry.project_label .. "]", "Comment" } },
+                virt_text_pos = "eol",
+            })
+        end
     end
 end
 
 local function refresh_agenda(buf, opts, date)
     local matches = collect_tasks(opts, date)
     local lines = { "" }
-    append_section(lines, matches.agenda, "📅 Agenda")
-    append_section(lines, matches.overdue, "⏰ Overdue")
-    append_section(lines, matches.done, "✅ Completed")
+    local concealed_dates = append_section(lines, matches.agenda, "📅 Agenda - " .. date, {
+        keep_empty = true,
+        hide_schedule = true,
+    })
+    vim.list_extend(concealed_dates, append_section(lines, matches.overdue, "⏰ Overdue"))
+    vim.list_extend(concealed_dates, append_section(lines, matches.done, "✅ Completed"))
 
     vim.api.nvim_buf_clear_namespace(buf, agenda_ns, 0, -1)
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+    for _, range in ipairs(concealed_dates) do
+        vim.api.nvim_buf_set_extmark(buf, agenda_ns, range.row, range.start_col, {
+            end_row = range.row,
+            end_col = range.end_col,
+            conceal = "",
+            priority = 200,
+        })
+    end
 
     local entries = {}
     local task_rows = {}
@@ -214,6 +394,21 @@ local function refresh_agenda(buf, opts, date)
         end
     end
     agendas[buf] = { date = date, opts = opts, entries = entries, line_count = #lines, fixed_lines = fixed_lines }
+    if not label_watchers[buf] then
+        -- Rebuild from task rows: replacing a whole line can move its extmarks.
+        label_watchers[buf] = vim.api.nvim_buf_attach(buf, false, {
+            on_lines = function(_, changed_buf)
+                refresh_project_labels(changed_buf)
+            end,
+            on_reload = function(_, reloaded_buf)
+                refresh_project_labels(reloaded_buf)
+            end,
+            on_detach = function(_, detached_buf)
+                label_watchers[detached_buf] = nil
+            end,
+        })
+    end
+    refresh_project_labels(buf)
     vim.bo[buf].modified = false
 end
 
@@ -243,11 +438,11 @@ local function jump_to_source_task()
 
     local row = vim.api.nvim_win_get_cursor(0)[1] - 1
     local current_line = vim.api.nvim_buf_get_lines(agenda_buf, row, row + 1, false)[1] or ""
-    local filename_heading = current_line:match("^###%s+(.+)$")
+    local area_heading = current_line:match("^###%s+(.+)$")
     local entry
     for _, candidate in ipairs(state.entries) do
-        if (filename_heading and candidate.filename == filename_heading)
-            or (not filename_heading and candidate.agenda_row - 1 == row)
+        if (area_heading and area_title(candidate.area) == area_heading)
+            or (not area_heading and candidate.agenda_row - 1 == row)
         then
             entry = candidate
             break
@@ -257,10 +452,11 @@ local function jump_to_source_task()
         return notify("Place the cursor on a task or file heading in the agenda.", vim.log.levels.WARN)
     end
 
-    local source_buf = get_buffer_for_path(entry.path)
+    local target_path = area_heading and entry.area_path or entry.path
+    local source_buf = get_buffer_for_path(target_path)
     local source_lines = vim.api.nvim_buf_get_lines(source_buf, 0, -1, false)
-    local target_lnum = entry.lnum
-    if source_lines[target_lnum] ~= entry.source_line then
+    local target_lnum = target_path == entry.path and entry.lnum or 1
+    if target_path == entry.path and source_lines[target_lnum] ~= entry.source_line then
         local nearest_lnum
         local nearest_distance
         for lnum, line in ipairs(source_lines) do
@@ -494,9 +690,12 @@ local function schedule_task(date_arg)
             return
         end
         input = trim(input)
+        if not vim.api.nvim_buf_is_valid(buf) or not vim.api.nvim_buf_is_loaded(buf) then
+            return notify("The task buffer was closed before scheduling.", vim.log.levels.WARN)
+        end
         local fresh = vim.api.nvim_buf_get_lines(buf, row, row + 1, false)[1]
-        local parsed = parse_task(fresh)
-        if not parsed then
+        local parsed = parse_task(fresh or "")
+        if not parsed or fresh ~= line then
             return notify("The task line changed before scheduling.", vim.log.levels.ERROR)
         end
         local body
@@ -517,7 +716,13 @@ local function schedule_task(date_arg)
         apply_schedule(date_arg)
     else
         local default_date = scheduled or (state and state.date) or os.date("%Y-%m-%d")
-        vim.ui.input({ prompt = "Schedule for (YYYY-MM-DD): ", default = default_date }, apply_schedule)
+        open_date_picker({
+            date = default_date,
+            title = "Schedule task",
+            action = "schedule",
+            on_select = apply_schedule,
+            on_clear = function() apply_schedule("") end,
+        })
     end
 end
 
@@ -537,10 +742,14 @@ local function calendar_render()
     local sunday_zero = tonumber(os.date("%w", first))
     local offset = (sunday_zero + 6) % 7
     local month_names = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }
+    local actions = "Enter " .. calendar_state.action
+    if calendar_state.on_clear then
+        actions = actions .. "  d clear"
+    end
     local lines = {
         string.format("%s %d", month_names[month], year),
-        "h/l day   j/k week",
-        "[/] month   Enter open   q close",
+        "h/l day   j/k week   [/] month",
+        actions .. "  q/Esc cancel",
         "Mo Tu We Th Fr Sa Su",
     }
     local highlights = {}
@@ -575,27 +784,38 @@ local function calendar_render()
         local row = 4 + math.floor((day + offset - 1) / 7)
         local col = ((day + offset - 1) % 7) * 3
         vim.api.nvim_win_set_cursor(calendar_win, { row + 1, col })
-        vim.api.nvim_win_set_config(calendar_win, { title = "Calendar", title_pos = "center" })
+        vim.api.nvim_win_set_config(calendar_win, { title = calendar_state.title, title_pos = "center" })
     end
 end
 
-local function open_agenda_from_calendar(opts, date)
+local function close_calendar()
+    local origin_win = calendar_state and calendar_state.origin_win
     if calendar_win and vim.api.nvim_win_is_valid(calendar_win) then
         vim.api.nvim_win_close(calendar_win, true)
     end
     calendar_win = nil
     calendar_buf = nil
-    agenda_command(opts, date)
+    calendar_state = nil
+    if origin_win and vim.api.nvim_win_is_valid(origin_win) then
+        vim.api.nvim_set_current_win(origin_win)
+    end
 end
 
-local function open_calendar(opts)
-    calendar_state = { selected = os.date("%Y-%m-%d") }
+open_date_picker = function(opts)
+    close_calendar()
+    calendar_state = {
+        selected = valid_date(opts.date) and opts.date or os.date("%Y-%m-%d"),
+        title = opts.title or "Calendar",
+        action = opts.action or "open",
+        on_clear = opts.on_clear,
+        origin_win = vim.api.nvim_get_current_win(),
+    }
     calendar_buf = vim.api.nvim_create_buf(false, true)
     vim.bo[calendar_buf].buftype = "nofile"
     vim.bo[calendar_buf].bufhidden = "wipe"
     vim.bo[calendar_buf].modifiable = false
     vim.bo[calendar_buf].filetype = "calendar"
-    local width, height = 34, 10
+    local width, height = 44, 10
     calendar_win = vim.api.nvim_open_win(calendar_buf, true, {
         relative = "editor",
         width = width,
@@ -604,7 +824,7 @@ local function open_calendar(opts)
         col = math.max(0, math.floor((vim.o.columns - width) / 2)),
         style = "minimal",
         border = "rounded",
-        title = "Calendar",
+        title = calendar_state.title,
         title_pos = "center",
     })
     calendar_render()
@@ -632,16 +852,33 @@ local function open_calendar(opts)
         j = function() shift_day(7) end,
         ["["] = function() shift_month(-1) end,
         ["]"] = function() shift_month(1) end,
-        ["<CR>"] = function() open_agenda_from_calendar(opts, calendar_state.selected) end,
-        q = function()
-            if calendar_win and vim.api.nvim_win_is_valid(calendar_win) then
-                vim.api.nvim_win_close(calendar_win, true)
-            end
+        ["<CR>"] = function()
+            local date = calendar_state.selected
+            close_calendar()
+            opts.on_select(date)
         end,
+        q = close_calendar,
+        ["<Esc>"] = close_calendar,
     }
+    mappings["<Left>"] = mappings.h
+    mappings["<Right>"] = mappings.l
+    mappings["<Up>"] = mappings.k
+    mappings["<Down>"] = mappings.j
+    if opts.on_clear then
+        mappings.d = function()
+            close_calendar()
+            opts.on_clear()
+        end
+    end
     for key, callback in pairs(mappings) do
         vim.keymap.set("n", key, callback, { buffer = calendar_buf, silent = true })
     end
+end
+
+local function open_calendar(opts)
+    open_date_picker({
+        on_select = function(date) agenda_command(opts, date) end,
+    })
 end
 
 function M.setup(opts)

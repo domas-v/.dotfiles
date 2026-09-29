@@ -62,8 +62,9 @@ return {
             { "<leader>ot",   "<cmd>Obsidian tomorrow<cr>",     desc = "Open tomorrow's note" },
             { "<leader>ob",   "<cmd>Obsidian backlinks<cr>",    desc = "Show note backlinks" },
 
-            { "<leader>oa",   "<cmd>Agenda<cr>",                desc = "Toggle task checkbox" },
-            { "<leader>oc",   "<cmd>Calendar<cr>",              desc = "Toggle task checkbox" },
+            { "<leader>oa",   "<cmd>Agenda<cr>",                desc = "Open today's agenda" },
+            { "<leader>oA",   "<cmd>Agenda +1<cr>",             desc = "Open tomorrow's agenda" },
+            { "<leader>oc",   "<cmd>Calendar<cr>",              desc = "Open agenda calendar" },
             { "<leader>os",   "<cmd>NotesScheduleTask<cr>",     desc = "Schedule task under cursor" },
             { "<leader>om",   "<cmd>NotesMoveTaskToday<cr>",    desc = "Move task to today's note" },
             { "<leader>oM",   "<cmd>NotesMoveTaskTomorrow<cr>", desc = "Move task to tomorrow's note" },
