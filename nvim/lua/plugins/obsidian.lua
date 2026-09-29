@@ -25,7 +25,7 @@ return {
                 workdays_only = false,
             },
             checkbox = {
-                order = { " ", ">", "x" },
+                order = { " ", "x" },
             },
             note_id_func = function(title)
                 return title
@@ -58,14 +58,17 @@ return {
                 end,
                 desc = "Open notes index",
             },
-            { "<leader>od",   "<cmd>Obsidian today<cr>",           desc = "Open today's note" },
-            { "<leader>ot",   "<cmd>Obsidian tomorrow<cr>",        desc = "Open tomorrow's note" },
-            { "<leader>os",   "<cmd>Obsidian search<cr>",          desc = "Search notes" },
-            { "<leader>ob",   "<cmd>Obsidian backlinks<cr>",       desc = "Show note backlinks" },
-            { "<leader>om",   "<cmd>NotesMoveTaskToday<cr>",       desc = "Move task to today's note" },
-            { "<leader>oM",   "<cmd>NotesMoveTaskTomorrow<cr>",    desc = "Move task to tomorrow's note" },
-            { "<leader>ox",   "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle task checkbox" },
-            { "<leader><cr>", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle task checkbox" },
+            { "<leader>od",   "<cmd>Obsidian today<cr>",        desc = "Open today's note" },
+            { "<leader>ot",   "<cmd>Obsidian tomorrow<cr>",     desc = "Open tomorrow's note" },
+            { "<leader>ob",   "<cmd>Obsidian backlinks<cr>",    desc = "Show note backlinks" },
+
+            { "<leader>oa",   "<cmd>Agenda<cr>",                desc = "Toggle task checkbox" },
+            { "<leader>oc",   "<cmd>Calendar<cr>",              desc = "Toggle task checkbox" },
+            { "<leader>os",   "<cmd>NotesScheduleTask<cr>",     desc = "Schedule task under cursor" },
+            { "<leader>om",   "<cmd>NotesMoveTaskToday<cr>",    desc = "Move task to today's note" },
+            { "<leader>oM",   "<cmd>NotesMoveTaskTomorrow<cr>", desc = "Move task to tomorrow's note" },
+            { "<leader>ox",   "<cmd>NotesCompleteTask<cr>",     desc = "Toggle task completion and date" },
+            { "<leader><cr>", "<cmd>NotesCompleteTask<cr>",     desc = "Toggle task checkbox" },
         },
         config = function(_, opts)
             require("obsidian").setup(opts)
