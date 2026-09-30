@@ -112,7 +112,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
-export VISUAL="nvim"
+export VISUAL="$EDITOR"
 
 # git
 alias gp="git pull"
@@ -190,13 +190,16 @@ alias ipy="ipython"
 
 # lazy load nvm
 export NVM_DIR="$HOME/.nvm"
-nvm() {
+_load_nvm() {
+  if [[ ! -s "$NVM_DIR/nvm.sh" ]]; then
+    print -u2 -- "NVM is not installed at $NVM_DIR/nvm.sh"
+    return 127
+  fi
   unset -f nvm node npm npx
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  nvm "$@"
+  source "$NVM_DIR/nvm.sh"
 }
 
-node() { unset -f node; nvm; node "$@"; }
-npm()  { unset -f npm;  nvm; npm  "$@"; }
-npx()  { unset -f npx;  nvm; npx  "$@"; }
-
+nvm()  { _load_nvm && nvm  "$@"; }
+node() { _load_nvm && node "$@"; }
+npm()  { _load_nvm && npm  "$@"; }
+npx()  { _load_nvm && npx  "$@"; }
