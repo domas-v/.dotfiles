@@ -1,19 +1,5 @@
 return {
     {
-        "NeogitOrg/neogit",
-        lazy = true,
-        dependencies = { "esmuellert/codediff.nvim" },
-        cmd = "Neogit",
-        opts = {
-            commit_editor = {
-                kind = "vsplit",
-                show_staged_diff = true,
-                spellcheck = false,
-            },
-        },
-        keys = { { "<leader>G", "<cmd>Neogit kind=replace<cr>" }, },
-    },
-    {
         "esmuellert/codediff.nvim",
         cmd = "CodeDiff",
     },
