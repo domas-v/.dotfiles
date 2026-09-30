@@ -6,11 +6,7 @@ vim.cmd("colorscheme kanagawa")
 
 require("config.commands")
 
-require("notes_agenda").setup({
-    vault = "/Users/domas-v/Library/Mobile Documents/iCloud~md~obsidian/Documents/in obs",
-    daily_folder = "daily",
-    template = "/Users/domas-v/Library/Mobile Documents/iCloud~md~obsidian/Documents/in obs/templates/daily-note-nvim.md",
-})
+require("notes_agenda").setup(require("config.notes"))
 
 -- filetype fixes
 vim.filetype.add({ extension = { http = "http" } })

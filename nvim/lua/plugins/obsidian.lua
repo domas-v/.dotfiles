@@ -1,3 +1,5 @@
+local notes = require("config.notes")
+
 local function pick_notes(folder, title)
     return Snacks.picker.files({
         title = title,
@@ -17,14 +19,14 @@ return {
             workspaces = {
                 {
                     name = "in obs",
-                    path = "/Users/domas-v/Library/Mobile Documents/iCloud~md~obsidian/Documents/in obs",
+                    path = notes.vault,
                 },
             },
             picker = {
                 name = "snacks.picker",
             },
             templates = {
-                folder = "/Users/domas-v/Library/Mobile Documents/iCloud~md~obsidian/Documents/in obs/templates",
+                folder = notes.templates,
             },
             daily_notes = {
                 folder = "daily",
@@ -53,16 +55,14 @@ return {
             {
                 "<leader>oi",
                 function()
-                    vim.cmd.edit(vim.fn.expand(
-                        "/Users/domas-v/Library/Mobile Documents/iCloud~md~obsidian/Documents/in obs/inbox.md"))
+                    vim.cmd.edit(notes.inbox)
                 end,
                 desc = "Open notes inbox",
             },
             {
                 "<leader>oI",
                 function()
-                    vim.cmd.edit(vim.fn.expand(
-                        "/Users/domas-v/Library/Mobile Documents/iCloud~md~obsidian/Documents/in obs/index.md"))
+                    vim.cmd.edit(notes.index)
                 end,
                 desc = "Open notes index",
             },
@@ -83,13 +83,7 @@ return {
             -- Set the visual for this state after setup: the plugin emits a
             -- misleading legacy warning whenever ui.checkboxes is supplied.
             Obsidian.opts.ui.checkboxes["/"] = { char = "◐", hl_group = "DiagnosticInfo" }
-            require("notes_tasks").setup({
-                vault = "/Users/domas-v/Library/Mobile Documents/iCloud~md~obsidian/Documents/in obs",
-                daily_folder = "daily",
-                template =
-                "/Users/domas-v/Library/Mobile Documents/iCloud~md~obsidian/Documents/in obs/templates/daily-note-nvim.md",
-
-            })
+            require("notes_tasks").setup(notes)
         end,
     },
 }
