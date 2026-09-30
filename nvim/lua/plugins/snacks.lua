@@ -25,6 +25,14 @@ return {
             indent = { enabled = true, animate = { enabled = false } },
             quickfile = { enabled = true },
             gitbrowse = { enabled = true },
+            lazygit = {
+                config = {
+                    os = {
+                        edit = [[nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}}]],
+                        editAtLine = [[nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>"]],
+                    },
+                },
+            },
             bufdelete = { enabled = true },
             explorer = { enabled = true },
             input = { enabled = true },
@@ -100,6 +108,7 @@ return {
         { "<leader>D",     function() Snacks.picker.diagnostics_buffer() end },
 
         -- git
+        { "<leader>G",     function() Snacks.lazygit() end,                        desc = "LazyGit" },
         { "<leader>yg",    function() Snacks.gitbrowse() end,                      mode = { "n", "v" } },
         -- {
         --     "<leader>G",
