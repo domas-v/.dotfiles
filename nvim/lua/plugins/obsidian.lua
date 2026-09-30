@@ -1,3 +1,11 @@
+local function pick_notes(folder, title)
+    return Snacks.picker.files({
+        title = title,
+        cwd = vim.fs.joinpath(tostring(Obsidian.dir), folder),
+        ft = "md",
+    })
+end
+
 return {
     {
         "obsidian-nvim/obsidian.nvim",
@@ -58,12 +66,11 @@ return {
                 end,
                 desc = "Open notes index",
             },
-            { "<leader>od",   "<cmd>Obsidian today<cr>",        desc = "Open today's note" },
-            { "<leader>ot",   "<cmd>Obsidian tomorrow<cr>",     desc = "Open tomorrow's note" },
+            { "<leader>od",   "<cmd>Agenda<cr>",                desc = "Open today's agenda" },
             { "<leader>ob",   "<cmd>Obsidian backlinks<cr>",    desc = "Show note backlinks" },
 
-            { "<leader>oa",   "<cmd>Agenda<cr>",                desc = "Open today's agenda" },
-            { "<leader>oA",   "<cmd>Agenda +1<cr>",             desc = "Open tomorrow's agenda" },
+            { "<leader>op",   function() return pick_notes("projects", "Projects") end, desc = "Pick a project" },
+            { "<leader>oa",   function() return pick_notes("areas", "Areas") end,       desc = "Pick an area" },
             { "<leader>oc",   "<cmd>Calendar<cr>",              desc = "Open agenda calendar" },
             { "<leader>os",   "<cmd>NotesScheduleTask<cr>",     desc = "Schedule task under cursor" },
             { "<leader>om",   "<cmd>NotesMoveTaskToday<cr>",    desc = "Move task to today's note" },

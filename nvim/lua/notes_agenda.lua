@@ -4,6 +4,7 @@ local agenda_ns = vim.api.nvim_create_namespace("notes-agenda-entries")
 local project_ns = vim.api.nvim_create_namespace("notes-agenda-project-labels")
 local agendas = {}
 local label_watchers = {}
+local saving_agenda_sources = false
 local calendar_buf
 local calendar_win
 local calendar_state
@@ -357,7 +358,55 @@ local function refresh_project_labels(buf)
     end
 end
 
+local function agenda_fold_state(buf)
+    local windows = {}
+    local state = agendas[buf]
+    if not state then
+        return windows
+    end
+    for _, win in ipairs(vim.fn.win_findbuf(buf)) do
+        windows[win] = vim.api.nvim_win_call(win, function()
+            local closed = {}
+            for _, heading in ipairs(state.fold_headings or {}) do
+                closed[heading.key] = vim.fn.foldclosed(heading.row) == heading.row
+            end
+            return closed
+        end)
+    end
+    return windows
+end
+
+local function set_agenda_folds(buf, windows, target_win)
+    local state = agendas[buf]
+    if not state then
+        return
+    end
+    for _, win in ipairs(target_win and { target_win } or vim.fn.win_findbuf(buf)) do
+        vim.api.nvim_win_call(win, function()
+            local view = vim.fn.winsaveview()
+            local closed = windows and windows[win] or {}
+            vim.wo.foldexpr = "getline(v:lnum)=~'^## '?'>1':getline(v:lnum)=~'^### '?'>2':'='"
+            vim.wo.foldmethod = "expr"
+            vim.wo.foldenable = true
+            vim.wo.foldlevel = 99
+            vim.wo.foldtext = "getline(v:foldstart)"
+            vim.cmd.normal({ args = { "zX" }, bang = true })
+            for _, heading in ipairs(state.fold_headings) do
+                local should_close = closed[heading.key]
+                if should_close == nil then
+                    should_close = heading.completed
+                end
+                if should_close then
+                    vim.cmd.foldclose({ range = { heading.row } })
+                end
+            end
+            vim.fn.winrestview(view)
+        end)
+    end
+end
+
 local function refresh_agenda(buf, opts, date)
+    local fold_state = agenda_fold_state(buf)
     local matches = collect_tasks(opts, date)
     local lines = { "" }
     local concealed_dates = append_section(lines, matches.agenda, "📅 Agenda - " .. date, {
@@ -388,12 +437,24 @@ local function refresh_agenda(buf, opts, date)
         end
     end
     local fixed_lines = {}
+    local fold_headings = {}
+    local section = ""
     for row, line in ipairs(lines) do
         if not task_rows[row - 1] then
             fixed_lines[row - 1] = line
         end
+        if line:match("^## ") then
+            section = line
+        end
+        if line:match("^##+ ") then
+            fold_headings[#fold_headings + 1] = {
+                row = row,
+                key = section .. "\n" .. line,
+                completed = line == "## ✅ Completed",
+            }
+        end
     end
-    agendas[buf] = { date = date, opts = opts, entries = entries, line_count = #lines, fixed_lines = fixed_lines }
+    agendas[buf] = { date = date, opts = opts, entries = entries, line_count = #lines, fixed_lines = fixed_lines, fold_headings = fold_headings }
     if not label_watchers[buf] then
         -- Rebuild from task rows: replacing a whole line can move its extmarks.
         label_watchers[buf] = vim.api.nvim_buf_attach(buf, false, {
@@ -409,7 +470,24 @@ local function refresh_agenda(buf, opts, date)
         })
     end
     refresh_project_labels(buf)
+    set_agenda_folds(buf, fold_state)
     vim.bo[buf].modified = false
+end
+
+local function refresh_current_agenda()
+    local buf = vim.api.nvim_get_current_buf()
+    local state = agendas[buf]
+    if not state then
+        return notify("Run this from an Agenda buffer.", vim.log.levels.WARN)
+    end
+    if vim.bo[buf].modified then
+        return notify("Agenda has unsaved edits; save them before refreshing.", vim.log.levels.WARN)
+    end
+
+    local view = vim.fn.winsaveview()
+    refresh_agenda(buf, state.opts, state.date)
+    vim.fn.winrestview(view)
+    notify("Agenda refreshed (" .. state.date .. ").")
 end
 
 local function refresh_open_agendas(current_buf)
@@ -555,9 +633,11 @@ local function apply_source_edits(buf, state)
 
     local written = 0
     for source_buf in pairs(changed_buffers) do
+        saving_agenda_sources = true
         local ok, err = pcall(vim.api.nvim_buf_call, source_buf, function()
             vim.cmd.write()
         end)
+        saving_agenda_sources = false
         if not ok then
             notify("Could not save a source note: " .. tostring(err), vim.log.levels.ERROR)
             return false
@@ -607,6 +687,7 @@ local function agenda_command(opts, date)
 
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf, silent = true, desc = "Close agenda" })
     vim.keymap.set("n", "gd", jump_to_source_task, { buffer = buf, silent = true, desc = "Go to task source" })
+    vim.keymap.set("n", "R", refresh_current_agenda, { buffer = buf, silent = true, desc = "Refresh current agenda" })
     vim.api.nvim_set_current_buf(buf)
 end
 
@@ -748,7 +829,7 @@ local function calendar_render()
     end
     local lines = {
         string.format("%s %d", month_names[month], year),
-        "h/l day   j/k week   [/] month",
+        "h/l day   j/k week   [/] month   t today",
         actions .. "  q/Esc cancel",
         "Mo Tu We Th Fr Sa Su",
     }
@@ -850,6 +931,10 @@ open_date_picker = function(opts)
         l = function() shift_day(1) end,
         k = function() shift_day(-7) end,
         j = function() shift_day(7) end,
+        t = function()
+            calendar_state.selected = os.date("%Y-%m-%d")
+            calendar_render()
+        end,
         ["["] = function() shift_month(-1) end,
         ["]"] = function() shift_month(1) end,
         ["<CR>"] = function()
@@ -883,6 +968,36 @@ end
 
 function M.setup(opts)
     local agenda_group = vim.api.nvim_create_augroup("NotesAgendaBuffers", { clear = true })
+    vim.api.nvim_create_autocmd("BufWinEnter", {
+        group = agenda_group,
+        pattern = "NotesAgenda://*",
+        desc = "Fold Completed by default in agenda views",
+        callback = function(event)
+            set_agenda_folds(event.buf, nil, vim.api.nvim_get_current_win())
+        end,
+    })
+    vim.api.nvim_create_autocmd("BufWritePost", {
+        group = agenda_group,
+        pattern = "*.md",
+        desc = "Refresh open agendas after saving a vault note",
+        callback = function(event)
+            -- Agenda saves refresh all views after every source write finishes.
+            if saving_agenda_sources then
+                return
+            end
+            local vault = vim.fs.normalize(vim.fn.expand(opts.vault))
+            vault = (vim.uv.fs_realpath(vault) or vault):gsub("/+$", "")
+            local path = vim.api.nvim_buf_get_name(event.buf)
+            path = vim.uv.fs_realpath(path) or vim.fs.normalize(path)
+            if path:sub(1, #vault + 1) ~= vault .. "/" or path_is_hidden(path, vault) then
+                return
+            end
+            local skipped = refresh_open_agendas()
+            if skipped > 0 then
+                notify(string.format("Skipped refreshing %d Agenda buffer%s with unsaved edits.", skipped, skipped == 1 and "" or "s"), vim.log.levels.WARN)
+            end
+        end,
+    })
     vim.api.nvim_create_autocmd("BufWriteCmd", {
         group = agenda_group,
         pattern = "NotesAgenda://*",
@@ -915,6 +1030,7 @@ function M.setup(opts)
         end
         agenda_command(opts, date)
     end, { nargs = "?", complete = function() return {} end, desc = "Open an editable agenda" })
+    vim.api.nvim_create_user_command("AgendaRefresh", refresh_current_agenda, { desc = "Refresh the current agenda date" })
     vim.api.nvim_create_user_command("AgendaCompleteTask", complete_task, { desc = "Complete the agenda task under the cursor" })
     vim.api.nvim_create_user_command("NotesCompleteTask", complete_current_task, { desc = "Toggle task completion and date" })
     vim.api.nvim_create_user_command("AgendaScheduleTask", function(command)
