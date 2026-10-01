@@ -76,10 +76,10 @@ plugins=(
     macos
     brew
     git
-    zsh-autosuggestions
     zsh-interactive-cd
     fzf
     fzf-tab
+    zsh-autosuggestions
     docker
     zoxide
     starship
