@@ -43,13 +43,9 @@ return {
             sources = {
                 default = { "lsp", "path", "snippets", "buffer", },
                 per_filetype = {
-                    sql = { "dadbod", "snippets", "buffer" },
-                    mysql = { "dadbod", "snippets", "buffer" },
                     ["dap-repl"] = { "dap", "snippets", "buffer" },
-                    codecompanion = { "codecompanion" },
                 },
                 providers = {
-                    dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
                     dap = { name = "dap", module = "blink.compat.source" },
                     buffer = {
                         score_offset = -3,
