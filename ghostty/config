@@ -28,6 +28,13 @@ config-file = tmux.config
 
 # --- KEYBINDS --- 
 
+# global dropdown terminal
+keybind = global:cmd+backquote=toggle_quick_terminal
+quick-terminal-animation-duration = 0
+
+# terminal search
+keybind = cmd+f=start_search
+
 # command palette
 keybind = cmd+shift+;=toggle_command_palette
 
