@@ -17,10 +17,6 @@ return {
                     if not pcall(vim.treesitter.start, bufnr) then return end
 
                     vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-
-                    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-                    vim.wo.foldmethod = "expr"
-                    vim.wo.foldenable = false
                 end,
             })
 
