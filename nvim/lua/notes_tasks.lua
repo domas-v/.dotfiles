@@ -277,6 +277,150 @@ local function move_task(opts, offset)
     notify("Moved task to " .. date .. " and linked it back to [[" .. source_link .. "]].")
 end
 
+local function task_state(line)
+    local indent, state = line:match("^(%s*)[-+*]%s+%[([^%]])%]")
+    return indent and #indent, state
+end
+
+local function sort_tasks(opts)
+    local buf = vim.api.nvim_get_current_buf()
+    local path = vim.api.nvim_buf_get_name(buf)
+    local relative = path ~= "" and is_within(path, opts.vault) and vim.fs.relpath(opts.vault, path)
+    if not relative or not relative:match("%.md$") then
+        return notify("Open a Markdown note inside your Obsidian vault to sort tasks.", vim.log.levels.WARN)
+    end
+
+    local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+    local cursor_row, cursor_col = unpack(vim.api.nvim_win_get_cursor(0))
+    local heading = 0
+    for row = cursor_row, 1, -1 do
+        if lines[row]:match("^#+%s+") then
+            heading = row
+            break
+        end
+    end
+    if heading == 0 then
+        return notify("Place the cursor under a Markdown heading first.", vim.log.levels.WARN)
+    end
+
+    local section_end = #lines + 1
+    for row = heading + 1, #lines do
+        if lines[row]:match("^#+%s+") then
+            section_end = row
+            break
+        end
+    end
+
+    local selected = cursor_row
+    if cursor_row == heading then
+        selected = nil
+        for row = heading + 1, section_end - 1 do
+            if task_state(lines[row]) then
+                selected = row
+                break
+            end
+        end
+    elseif not task_state(lines[cursor_row]) then
+        local indent = #(lines[cursor_row]:match("^(%s*)") or "")
+        selected = nil
+        for row = cursor_row - 1, heading + 1, -1 do
+            local task_indent = task_state(lines[row])
+            if task_indent and task_indent < indent then
+                selected = row
+                break
+            end
+            if lines[row] ~= "" and #(lines[row]:match("^(%s*)") or "") < indent then
+                break
+            end
+        end
+    end
+    if not selected then
+        return notify("No task list at the cursor under this heading.", vim.log.levels.WARN)
+    end
+
+    local base_indent = task_state(lines[selected])
+    local first = selected
+    for row = selected - 1, heading + 1, -1 do
+        local line = lines[row]
+        if line ~= "" then
+            local indent = #(line:match("^(%s*)") or "")
+            if indent <= base_indent then
+                if indent == base_indent and task_state(line) == base_indent then
+                    first = row
+                else
+                    break
+                end
+            end
+        end
+    end
+
+    local roots = { first }
+    local last_content = first
+    for row = first + 1, section_end - 1 do
+        local line = lines[row]
+        if line ~= "" then
+            local indent = #(line:match("^(%s*)") or "")
+            if indent <= base_indent then
+                if indent == base_indent and task_state(line) == base_indent then
+                    roots[#roots + 1] = row
+                else
+                    break
+                end
+            end
+            last_content = row
+        end
+    end
+    if #roots < 2 then
+        return notify("This task list has fewer than two tasks.")
+    end
+
+    local tasks, separators = {}, {}
+    for index, root in ipairs(roots) do
+        local next_root = roots[index + 1] or (last_content + 1)
+        local content_end = next_root - 1
+        while content_end > root and lines[content_end]:match("^%s*$") do
+            content_end = content_end - 1
+        end
+        tasks[index] = {
+            original = index,
+            root = root,
+            lines = vim.list_slice(lines, root, content_end),
+            done = lines[root]:match("^%s*[-+*]%s+%[[xX]%]") ~= nil,
+            scheduled = lines[root]:match("⏳%s*(%d%d%d%d%-%d%d%-%d%d)"),
+            completed = lines[root]:match("✅%s*(%d%d%d%d%-%d%d%-%d%d)"),
+        }
+        if index < #roots then
+            separators[index] = vim.list_slice(lines, content_end + 1, next_root - 1)
+        end
+    end
+
+    table.sort(tasks, function(a, b)
+        if a.done ~= b.done then return not a.done end
+        local a_date = a.done and a.completed or (not a.done and a.scheduled)
+        local b_date = b.done and b.completed or (not b.done and b.scheduled)
+        if a_date ~= b_date then
+            if not a_date then return false end
+            if not b_date then return true end
+            return a_date < b_date
+        end
+        return a.original < b.original
+    end)
+
+    local sorted, selected_row
+    sorted = {}
+    for index, task in ipairs(tasks) do
+        local new_row = first + #sorted
+        if task.root == selected then selected_row = new_row end
+        vim.list_extend(sorted, task.lines)
+        if separators[index] then vim.list_extend(sorted, separators[index]) end
+    end
+    vim.api.nvim_buf_set_lines(buf, first - 1, last_content, false, sorted)
+    if selected_row and cursor_row ~= heading then
+        vim.api.nvim_win_set_cursor(0, { selected_row, math.min(cursor_col, #lines[selected]) })
+    end
+    notify("Sorted " .. #tasks .. " tasks; save the note to keep the order.")
+end
+
 function M.setup(opts)
     vim.api.nvim_create_user_command("NotesMoveTaskToday", function()
         move_task(opts, 0)
@@ -285,6 +429,10 @@ function M.setup(opts)
     vim.api.nvim_create_user_command("NotesMoveTaskTomorrow", function()
         move_task(opts, 1)
     end, { desc = "Move task under cursor to tomorrow's daily note" })
+
+    vim.api.nvim_create_user_command("NotesSortTasks", function()
+        sort_tasks(opts)
+    end, { desc = "Sort the current task list by schedule and completion dates" })
 end
 
 return M
