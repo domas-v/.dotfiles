@@ -7,6 +7,7 @@ vim.cmd("colorscheme kanagawa")
 require("config.commands")
 
 require("notes_agenda").setup(require("config.notes"))
+require("notes_tasks").setup(require("config.notes"))
 
 -- filetype fixes
 vim.filetype.add({ extension = { http = "http" } })

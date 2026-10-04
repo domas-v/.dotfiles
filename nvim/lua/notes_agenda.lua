@@ -435,13 +435,13 @@ local function refresh_agenda(buf, opts, date, mode)
         })
         groups = { matches.unscheduled }
     else
-        concealed_dates = append_section(lines, matches.agenda, "📅 Agenda - " .. date, {
+        concealed_dates = append_section(lines, matches.overdue, "⏰ Overdue")
+        vim.list_extend(concealed_dates, append_section(lines, matches.agenda, "📅 Agenda - " .. date, {
             keep_empty = true,
             hide_schedule = true,
-        })
-        vim.list_extend(concealed_dates, append_section(lines, matches.overdue, "⏰ Overdue"))
+        }))
         vim.list_extend(concealed_dates, append_section(lines, matches.done, "✅ Completed"))
-        groups = { matches.agenda, matches.overdue, matches.done }
+        groups = { matches.overdue, matches.agenda, matches.done }
     end
 
     vim.api.nvim_buf_clear_namespace(buf, agenda_ns, 0, -1)
@@ -482,7 +482,8 @@ local function refresh_agenda(buf, opts, date, mode)
             }
         end
     end
-    agendas[buf] = { date = date, mode = mode, opts = opts, entries = entries, line_count = #lines, fixed_lines = fixed_lines, fold_headings = fold_headings }
+    agendas[buf] = { date = date, mode = mode, opts = opts, entries = entries, line_count = #lines, fixed_lines =
+    fixed_lines, fold_headings = fold_headings }
     if not label_watchers[buf] then
         -- Rebuild from task rows: replacing a whole line can move its extmarks.
         label_watchers[buf] = vim.api.nvim_buf_attach(buf, false, {
@@ -600,7 +601,8 @@ local function apply_source_edits(buf, state)
         end
     end
     if #conflicts > 0 then
-        notify("Agenda not saved; resolve these conflicts first:\n" .. table.concat(conflicts, "\n"), vim.log.levels.ERROR)
+        notify("Agenda not saved; resolve these conflicts first:\n" .. table.concat(conflicts, "\n"),
+            vim.log.levels.ERROR)
         return false
     end
 
@@ -618,7 +620,8 @@ local function apply_source_edits(buf, state)
                 local source_buf = get_buffer_for_path(entry.path)
                 local source_line = vim.api.nvim_buf_get_lines(source_buf, entry.lnum - 1, entry.lnum, false)[1]
                 if source_line ~= entry.source_line then
-                    conflicts[#conflicts + 1] = string.format("%s:%d changed since the agenda was opened", entry.path, entry.lnum)
+                    conflicts[#conflicts + 1] = string.format("%s:%d changed since the agenda was opened", entry.path,
+                        entry.lnum)
                 else
                     local source_task = parse_task(entry.source_line)
                     local body = task.body
@@ -645,7 +648,8 @@ local function apply_source_edits(buf, state)
     end
 
     if #conflicts > 0 then
-        notify("Agenda not saved; resolve these conflicts first:\n" .. table.concat(conflicts, "\n"), vim.log.levels.ERROR)
+        notify("Agenda not saved; resolve these conflicts first:\n" .. table.concat(conflicts, "\n"),
+            vim.log.levels.ERROR)
         return false
     end
 
@@ -676,7 +680,9 @@ local function apply_source_edits(buf, state)
     local skipped = refresh_open_agendas(buf)
     notify(string.format("Agenda saved (%d source note%s updated).", written, written == 1 and "" or "s"))
     if skipped > 0 then
-        notify(string.format("Skipped refreshing %d other Agenda buffer%s with unsaved edits.", skipped, skipped == 1 and "" or "s"), vim.log.levels.WARN)
+        notify(
+        string.format("Skipped refreshing %d other Agenda buffer%s with unsaved edits.", skipped,
+            skipped == 1 and "" or "s"), vim.log.levels.WARN)
     end
     return true
 end
@@ -853,7 +859,8 @@ local function calendar_render()
     local first = os.time({ year = year, month = month, day = 1, hour = 12 })
     local sunday_zero = tonumber(os.date("%w", first))
     local offset = (sunday_zero + 6) % 7
-    local month_names = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }
+    local month_names = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
+        "October", "November", "December" }
     local actions = "Enter " .. calendar_state.action
     if calendar_state.on_clear then
         actions = actions .. "  d clear"
@@ -987,7 +994,8 @@ open_date_picker = function(opts)
         end
     end
     for key, callback in pairs(mappings) do
-        vim.keymap.set("n", key, callback, { buffer = calendar_buf, silent = true })
+        -- Picker keys should win immediately over longer global mappings.
+        vim.keymap.set("n", key, callback, { buffer = calendar_buf, silent = true, nowait = true })
     end
 end
 
@@ -1025,7 +1033,9 @@ function M.setup(opts)
             end
             local skipped = refresh_open_agendas()
             if skipped > 0 then
-                notify(string.format("Skipped refreshing %d Agenda buffer%s with unsaved edits.", skipped, skipped == 1 and "" or "s"), vim.log.levels.WARN)
+                notify(
+                string.format("Skipped refreshing %d Agenda buffer%s with unsaved edits.", skipped,
+                    skipped == 1 and "" or "s"), vim.log.levels.WARN)
             end
         end,
     })
@@ -1064,9 +1074,12 @@ function M.setup(opts)
     vim.api.nvim_create_user_command("Unscheduled", function()
         agenda_command(opts, nil, "unscheduled")
     end, { desc = "Open editable unscheduled tasks across the vault" })
-    vim.api.nvim_create_user_command("AgendaRefresh", refresh_current_agenda, { desc = "Refresh the current agenda date" })
-    vim.api.nvim_create_user_command("AgendaCompleteTask", complete_task, { desc = "Complete the agenda task under the cursor" })
-    vim.api.nvim_create_user_command("NotesCompleteTask", complete_current_task, { desc = "Toggle task completion and date" })
+    vim.api.nvim_create_user_command("AgendaRefresh", refresh_current_agenda,
+        { desc = "Refresh the current agenda date" })
+    vim.api.nvim_create_user_command("AgendaCompleteTask", complete_task,
+        { desc = "Complete the agenda task under the cursor" })
+    vim.api.nvim_create_user_command("NotesCompleteTask", complete_current_task,
+        { desc = "Toggle task completion and date" })
     vim.api.nvim_create_user_command("AgendaScheduleTask", function(command)
         schedule_task(command.args)
     end, { nargs = "?", desc = "Schedule the agenda task under the cursor" })
