@@ -1,10 +1,11 @@
 local notes = require("config.notes")
 
-local function pick_notes(folder, title)
+local function pick_notes(folder, title, exclude)
     return Snacks.picker.files({
         title = title,
         cwd = vim.fs.joinpath(tostring(Obsidian.dir), folder),
         ft = "md",
+        exclude = exclude,
     })
 end
 
@@ -40,16 +41,6 @@ return {
             note_id_func = function(title)
                 return title
             end,
-            -- link = {
-            --     format = "absolute",
-            --     style = function(opts)
-            --         local name = vim.fs.basename(tostring(opts.path or ""))
-            --             :gsub("%.md$", "")
-            --         opts.label = name
-            --         return require("obsidian.builtin").wiki_link(opts)
-            --     end,
-            -- },
-
         },
         keys = {
             {
@@ -66,19 +57,21 @@ return {
                 end,
                 desc = "Open notes index",
             },
-            { "<leader>od",   "<cmd>Agenda<cr>",                desc = "Open today's agenda" },
-            { "<leader>ou",   "<cmd>Unscheduled<cr>",           desc = "Open unscheduled tasks" },
-            { "<leader>ob",   "<cmd>Obsidian backlinks<cr>",    desc = "Show note backlinks" },
+            -- agenda & calendar
+            { "<leader>od",   "<cmd>Agenda<cr>",                                                          desc = "Open today's agenda" },
+            { "<leader>oc",   "<cmd>Calendar<cr>",                                                        desc = "Open agenda calendar" },
+            { "<leader>ou",   "<cmd>Unscheduled<cr>",                                                     desc = "Open unscheduled tasks" },
 
-            { "<leader>op",   function() return pick_notes("projects", "Projects") end, desc = "Pick a project" },
-            { "<leader>oa",   function() return pick_notes("areas", "Areas") end,       desc = "Pick an area" },
-            { "<leader>oc",   "<cmd>Calendar<cr>",              desc = "Open agenda calendar" },
-            { "<leader>os",   "<cmd>NotesScheduleTask<cr>",     desc = "Schedule task under cursor" },
-            { "<leader>oS",   "<cmd>NotesSortTasks<cr>",        desc = "Sort tasks in the current list" },
-            { "<leader>om",   "<cmd>NotesMoveTaskToday<cr>",    desc = "Move task to today's note" },
-            { "<leader>oM",   "<cmd>NotesMoveTaskTomorrow<cr>", desc = "Move task to tomorrow's note" },
-            { "<leader>ox",   "<cmd>NotesCompleteTask<cr>",     desc = "Toggle task completion and date" },
-            { "<leader><cr>", "<cmd>NotesCompleteTask<cr>",     desc = "Toggle task checkbox" },
+            -- notes
+            { "<leader>ob",   "<cmd>Obsidian backlinks<cr>",                                              desc = "Show note backlinks" },
+            { "<leader>op",   function() return pick_notes("projects", "Projects", { "archive/**" }) end, desc = "Pick a project" },
+            { "<leader>oa",   function() return pick_notes("areas", "Areas") end,                         desc = "Pick an area" },
+            { "<leader>os",   "<cmd>NotesScheduleTask<cr>",                                               desc = "Schedule task under cursor" },
+            { "<leader>oS",   "<cmd>NotesSortTasks<cr>",                                                  desc = "Sort tasks in the current list" },
+            { "<leader>om",   "<cmd>NotesMoveTaskToday<cr>",                                              desc = "Move task to today's note" },
+            { "<leader>oM",   "<cmd>NotesMoveTaskTomorrow<cr>",                                           desc = "Move task to tomorrow's note" },
+            { "<leader>ox",   "<cmd>NotesCompleteTask<cr>",                                               desc = "Toggle task completion and date" },
+            { "<leader><cr>", "<cmd>NotesCompleteTask<cr>",                                               desc = "Toggle task checkbox" },
         },
         config = function(_, opts)
             require("obsidian").setup(opts)
