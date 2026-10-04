@@ -73,12 +73,5 @@ return {
             { "<leader>ox",   "<cmd>NotesCompleteTask<cr>",                                               desc = "Toggle task completion and date" },
             { "<leader><cr>", "<cmd>NotesCompleteTask<cr>",                                               desc = "Toggle task checkbox" },
         },
-        config = function(_, opts)
-            require("obsidian").setup(opts)
-            -- Set the visual for this state after setup: the plugin emits a
-            -- misleading legacy warning whenever ui.checkboxes is supplied.
-            Obsidian.opts.ui.checkboxes["/"] = { char = "◐", hl_group = "DiagnosticInfo" }
-            require("notes_tasks").setup(notes)
-        end,
     },
 }
