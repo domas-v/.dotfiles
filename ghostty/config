@@ -29,7 +29,7 @@ config-file = tmux.config
 # --- KEYBINDS --- 
 
 # global dropdown terminal
-keybind = global:cmd+backquote=toggle_quick_terminal
+keybind = global:cmd+shift+backquote=toggle_quick_terminal
 quick-terminal-animation-duration = 0
 
 # terminal search

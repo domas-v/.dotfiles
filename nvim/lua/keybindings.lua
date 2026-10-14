@@ -76,10 +76,14 @@ vim.keymap.set("n", "<leader>ca", "<cmd>caddexpr expand('%') . ':' . line('.') .
     { noremap = true, silent = true, desc = "Add current line to quickfix list" })
 
 -- resize splits
-vim.keymap.set("n", "+", "<cmd>vertical resize +10<cr>", default_opts)
-vim.keymap.set("n", "_", "<cmd>vertical resize -10<cr>", default_opts)
-vim.keymap.set("n", "=", "<cmd>resize +5<cr>", default_opts)
-vim.keymap.set("n", "-", "<cmd>resize -5<cr>", default_opts)
+-- + ==> =
+-- = ==> +
+-- _ ==> -
+-- - ==> _
+vim.keymap.set("n", "=", "<cmd>vertical resize +10<cr>", default_opts)
+vim.keymap.set("n", "-", "<cmd>vertical resize -10<cr>", default_opts)
+vim.keymap.set("n", "+", "<cmd>resize +5<cr>", default_opts)
+vim.keymap.set("n", "_", "<cmd>resize -5<cr>", default_opts)
 
 -- misc
 vim.keymap.set("n", "<leader>\\", "<cmd>set wrap!<cr>", { noremap = true })
