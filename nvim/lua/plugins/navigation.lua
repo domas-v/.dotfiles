@@ -33,12 +33,6 @@ return {
         },
     },
     {
-        "vladdoster/remember.nvim",
-        config = function()
-            require('remember')
-        end
-    },
-    {
         -- breadcrumbs
         "utilyre/barbecue.nvim",
         name = "barbecue",
