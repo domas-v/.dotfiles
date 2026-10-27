@@ -95,9 +95,8 @@ return {
         { "<leader><TAB>", function() Snacks.picker.explorer() end },
 
         -- search
-        { "<leader>/",     function() Snacks.picker.lines() end },
         { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
-        { "<leader>g",     function() Snacks.picker.grep() end },
+        { "<leader>/",     function() Snacks.picker.grep() end },
         { "<leader>W",     function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
 
         -- lsp
