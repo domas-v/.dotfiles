@@ -1,43 +1,5 @@
 return {
     {
-        enabled = false,
-        "catppuccin/nvim",
-        lazy = false,
-        priority = 1000,
-        name = "catppuccin",
-        config = function()
-            require("catppuccin").setup({
-                transparent_background = false,
-                styles = {
-                    comments = { "italic" },
-                    conditionals = { "italic" },
-                    loops = { "italic" },
-                    functions = { "italic" },
-                    keywords = { "bold" },
-                },
-                default_integrations = true,
-                integrations = {
-                    gitsigns = true,
-                    treesitter = true,
-                    blink_cmp = true,
-                    nvim_surround = true,
-                },
-                lsp_styles = {
-                    underlines = {
-                        errors = { "undercurl" },
-                        hints = { "bold" },
-                        warnings = { "underline" },
-                        information = { "standout" },
-                        ok = { "reverse" },
-                    },
-                    inlay_hints = {
-                        background = true,
-                    },
-                },
-            })
-        end
-    },
-    {
         "rebelot/kanagawa.nvim",
         lazy = false,
         priority = 1000,
