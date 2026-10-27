@@ -6,14 +6,6 @@ return {
         dependencies = { 'junegunn/fzf' }
     },
     {
-        'sindrets/winshift.nvim',
-        config = function() require('winshift').setup() end,
-        cmd = { "WinShift" },
-        keys = {
-            { "<leader>m", "<cmd>WinShift<cr>", desc = "WinShift mode" },
-        }
-    },
-    {
         "christoomey/vim-tmux-navigator",
         lazy = false,
         cmd = {
