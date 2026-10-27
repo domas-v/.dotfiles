@@ -67,25 +67,41 @@ return {
                     end, { buffer = bufnr, desc = desc })
                 end
 
-                nmap("<A-S-j>", "<Plug>(MarkdownPlusTableInsertRowBelow)", "Insert table row below")
-                nmap("<A-S-k>", "<Plug>(MarkdownPlusTableInsertRowAbove)", "Insert table row above")
-                nmap("<A-S-l>", "<Plug>(MarkdownPlusTableInsertColumnRight)", "Insert table column right")
-                nmap("<A-S-h>", "<Plug>(MarkdownPlusTableInsertColumnLeft)", "Insert table column left")
+                nmap("<A-C-j>", "<Plug>(MarkdownPlusTableInsertRowBelow)", "Insert table row below")
+                nmap("<A-C-k>", "<Plug>(MarkdownPlusTableInsertRowAbove)", "Insert table row above")
+                nmap("<A-C-l>", "<Plug>(MarkdownPlusTableInsertColumnRight)", "Insert table column right")
+                nmap("<A-C-h>", "<Plug>(MarkdownPlusTableInsertColumnLeft)", "Insert table column left")
 
-                imap("<A-S-j>", "<Plug>(MarkdownPlusTableInsertRowBelow)", "Insert table row below")
-                imap("<A-S-k>", "<Plug>(MarkdownPlusTableInsertRowAbove)", "Insert table row above")
-                imap("<A-S-l>", "<Plug>(MarkdownPlusTableInsertColumnRight)", "Insert table column right")
-                imap("<A-S-h>", "<Plug>(MarkdownPlusTableInsertColumnLeft)", "Insert table column left")
+                local moves = {
+                    { "<A-S-j>", "TableMoveRowDown", "Move table row down" },
+                    { "<A-S-k>", "TableMoveRowUp", "Move table row up" },
+                    { "<A-S-l>", "TableMoveColumnRight", "Move table column right" },
+                    { "<A-S-h>", "TableMoveColumnLeft", "Move table column left" },
+                }
+                for _, move in ipairs(moves) do
+                    local lhs, plug, desc = unpack(move)
+                    nmap(lhs, "<Plug>(MarkdownPlus" .. plug .. ")", desc)
+                    imap(lhs, "<Plug>(MarkdownPlus" .. plug .. ")", desc)
+                end
 
-                nmap("<A-j>", "<Plug>(MarkdownPlusTableMoveRowDown)", "Move table row down")
-                nmap("<A-k>", "<Plug>(MarkdownPlusTableMoveRowUp)", "Move table row up")
-                nmap("<A-l>", "<Plug>(MarkdownPlusTableMoveColumnRight)", "Move table column right")
-                nmap("<A-h>", "<Plug>(MarkdownPlusTableMoveColumnLeft)", "Move table column left")
+                local navs = {
+                    { "<A-h>", "left", "h", "TableNavLeft" },
+                    { "<A-j>", "down", "j", "TableNavDown" },
+                    { "<A-k>", "up", "k", "TableNavUp" },
+                    { "<A-l>", "right", "l", "TableNavRight" },
+                }
+                for _, nav in ipairs(navs) do
+                    local lhs, direction, fallback, plug = unpack(nav)
+                    nmap(lhs, function()
+                        if not require("markdown-plus.table.navigation")["move_" .. direction]() then
+                            vim.cmd.normal({ args = { vim.v.count1 .. fallback }, bang = true })
+                        end
+                    end, "Navigate to table cell " .. direction)
+                    vim.keymap.set("i", lhs, "<Plug>(MarkdownPlus" .. plug .. ")",
+                        { buffer = bufnr, desc = "Navigate to table cell " .. direction })
+                end
 
                 nmap("<A-S-t>", "<Plug>(MarkdownPlusTableFormat)", "Format table")
-
-                nmap("<A-CR>", "<Plug>(MarkdownPlusToggleCheckbox)", "Toggle checkbox")
-                imap("<A-CR>", "<Plug>(MarkdownPlusToggleCheckbox)", "Toggle checkbox")
             end
 
             vim.api.nvim_create_user_command("MarkdownCreateTable", function()
