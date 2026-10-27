@@ -34,11 +34,6 @@ return {
         opts = {},
     },
     {
-        "nvim-mini/mini.comment",
-        version = false,
-        opts = {},
-    },
-    {
         "ya2s/nvim-cursorline",
         opts = {
             disable_filetypes = {
