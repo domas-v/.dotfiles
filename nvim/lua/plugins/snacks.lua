@@ -109,34 +109,5 @@ return {
         -- git
         { "<leader>G",     function() Snacks.lazygit() end,                        desc = "LazyGit" },
         { "<leader>yg",    function() Snacks.gitbrowse() end,                      mode = { "n", "v" } },
-        -- {
-        --     "<leader>G",
-        --     function()
-        --         Snacks.picker.git_diff({
-        --             layout = {
-        --                 fullscreen = true,
-        --                 layout = {
-        --                     box = "horizontal",
-        --                     width = 0,
-        --                     height = 0,
-        --                     {
-        --                         box = "vertical",
-        --                         border = true,
-        --                         title = "{title} {live} {flags}",
-        --                         { win = "input", height = 1,     border = "bottom" },
-        --                         { win = "list",  border = "none" },
-        --                     },
-        --                     {
-        --                         win = "preview",
-        --                         title = "{preview}",
-        --                         border = true,
-        --                         width = 0.65,
-        --                     },
-        --                 },
-        --             },
-        --         })
-        --     end,
-        --     mode = { "n", "v" }
-        -- },
     }
 }
