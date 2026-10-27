@@ -89,16 +89,4 @@ return {
             { "<leader>F", "<cmd>Format<CR>", desc = "Format selection",          silent = true, mode = "v", }
         }
     },
-    {
-        'dnlhc/glance.nvim',
-        opts = {
-            border = {
-                enable = true,
-                top_char = '―',
-                bottom_char = '―',
-            },
-        },
-        cmd = 'Glance',
-        keys = { { "grr", "<cmd>Glance references<cr>" } }
-    }
 }
