@@ -19,10 +19,6 @@ return {
             }
             require("ufo").setup({
                 provider_selector = function(bufnr, filetype, buftype)
-                    -- Agenda owns its heading folds and their initial state.
-                    if vim.api.nvim_buf_get_name(bufnr):match("^NotesAgenda://") then
-                        return ""
-                    end
                     if buftype ~= "" and buftype ~= "acwrite" then
                         return ""
                     end

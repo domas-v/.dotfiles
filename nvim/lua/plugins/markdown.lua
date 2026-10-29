@@ -16,6 +16,9 @@ return {
             heading = { sign = false },
             latex = { enabled = false },
             code = { sign = false },
+            checkbox = {
+                checked = { scope_highlight = "@markup.strikethrough" },
+            },
         }
     },
     {
