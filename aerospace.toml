@@ -3,8 +3,7 @@
 
 config-version = 2
 
-# Workspaces that stay alive even when empty. Version 1 guessed this list from
-# the keybindings (alt-1..9); version 2 needs it spelled out.
+# Workspaces that stay alive even when empty (pinned to monitors at the bottom)
 persistent-workspaces = ["1", "2", "3", "4"]
 
 # You can use it to add commands that run after login to macOS user session.
@@ -116,23 +115,20 @@ alt-shift-comma = 'layout accordion'
 alt-shift-t     = 'layout floating tiling'
 alt-shift-f     = 'fullscreen'
 
-# Switch to a workspace
+# Switch to a workspace (shown on the monitor it's pinned to)
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
 
 # Send the focused window to a workspace (focus stays where you are)
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
 alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
 
-# Jump back to the previous workspace; move the whole workspace to the other monitor
-ctrl-alt-tab       = 'workspace-back-and-forth'
-ctrl-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+# Jump back to the previous workspace
+ctrl-alt-tab = 'workspace-back-and-forth'
 
 # Enter service mode (reload config, reset layout, ...)
 ctrl-alt-semicolon = 'mode service'
@@ -144,9 +140,11 @@ r         = ['flatten-workspace-tree', 'mode main'] # reset the layout
 f         = ['layout floating tiling', 'mode main'] # toggle floating
 backspace = ['close-all-windows-but-current', 'mode main']
 
-# [workspace-to-monitor-force-assignment]
-# 1 = 'main'
-# 2 = 'main'
-# 8 = 'secondary'
-# 9 = 'secondary'
+# Pin each workspace to a monitor (patterns match the monitor name):
+# 1 and 3 on the laptop screen, 2 and 4 on the external monitor
+[workspace-to-monitor-force-assignment]
+1 = 'built-in'
+3 = 'built-in'
+2 = '^(?!.*built-in)'
+4 = '^(?!.*built-in)'
 
