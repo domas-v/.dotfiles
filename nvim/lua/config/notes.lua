@@ -8,5 +8,4 @@ return {
     vault = vault,
     templates = vim.fs.joinpath(vault, "templates"),
     inbox = vim.fs.joinpath(vault, "inbox.md"),
-    index = vim.fs.joinpath(vault, "index.md"),
 }
