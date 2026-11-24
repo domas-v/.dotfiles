@@ -1,6 +1,12 @@
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
 
+config-version = 2
+
+# Workspaces that stay alive even when empty. Version 1 guessed this list from
+# the keybindings (alt-1..9); version 2 needs it spelled out.
+persistent-workspaces = ["1", "2", "3", "4"]
+
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
@@ -21,8 +27,7 @@ start-at-login = true
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
-
-accordion-padding = 0
+accordion-padding = 10
 
 default-root-container-layout = 'tiles'
 
@@ -77,6 +82,67 @@ preset = 'qwerty'
 #                   keypadMinus, keypadMultiply, keypadPlus
 # - Arrows.         left, down, up, right
 # All possible modifiers: cmd, alt, ctrl, shift
+
+# Focus the previous / next monitor (mouse follows, see on-focused-monitor-changed)
+alt-leftSquareBracket  = 'focus-monitor --wrap-around prev'
+alt-rightSquareBracket = 'focus-monitor --wrap-around next'
+
+# Send the focused window to the previous / next monitor, and follow it
+alt-shift-leftSquareBracket  = 'move-node-to-monitor --wrap-around --focus-follows-window prev'
+alt-shift-rightSquareBracket = 'move-node-to-monitor --wrap-around --focus-follows-window next'
+
+# Focus a window in a direction (vim keys)
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+alt-n = 'focus dfs-next --boundaries-action wrap-around-the-workspace'
+alt-p = 'focus dfs-prev --boundaries-action wrap-around-the-workspace'
+
+# Move the focused window in a direction
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Resize the focused window
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
+
+# Layouts: side-by-side tiles, stacked accordion, floating, fullscreen
+alt-shift-slash = 'layout horizontal vertical'
+alt-shift-comma = 'layout accordion'
+alt-shift-t     = 'layout floating tiling'
+alt-shift-f     = 'fullscreen'
+
+# Switch to a workspace
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+
+# Send the focused window to a workspace (focus stays where you are)
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+
+# Jump back to the previous workspace; move the whole workspace to the other monitor
+ctrl-alt-tab       = 'workspace-back-and-forth'
+ctrl-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+# Enter service mode (reload config, reset layout, ...)
+ctrl-alt-semicolon = 'mode service'
+
+# Service mode: press one key, then you're back in the main mode
+[mode.service.binding]
+esc       = ['reload-config', 'mode main']
+r         = ['flatten-workspace-tree', 'mode main'] # reset the layout
+f         = ['layout floating tiling', 'mode main'] # toggle floating
+backspace = ['close-all-windows-but-current', 'mode main']
 
 # [workspace-to-monitor-force-assignment]
 # 1 = 'main'
