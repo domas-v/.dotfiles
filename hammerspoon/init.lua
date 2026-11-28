@@ -26,6 +26,7 @@ end)
 
 -- Inbox capture from anywhere --------------------------------------------
 -- ctrl-opt-q opens a prompt; Enter files the text as a TODO in inbox.org.
+-- Text selected in the front app when the key is pressed is filled in.
 -- With Emacs running it goes through the "I" capture template
 -- (~/.emacs.d/config/dom-org.el), which also saves the file for beorg.
 -- Without Emacs, the entry is appended to the file directly.
@@ -50,6 +51,8 @@ local function appendToInbox(text)
   return true
 end
 
+local inboxChooser -- created below; the prompt
+
 local function captureToInbox(text)
   local elisp = string.format(
     '(progn (org-capture-string %s "I")' ..
@@ -60,15 +63,68 @@ local function captureToInbox(text)
   end, {"-e", elisp}):start()
 end
 
-local inboxChooser = hs.chooser.new(function(choice)
+local function setInboxChoices(q)
+  inboxChooser:choices(q:match("%S") and {{text = q}} or {})
+end
+
+inboxChooser = hs.chooser.new(function(choice)
   if choice then captureToInbox(choice.text) end
 end)
 inboxChooser:placeholderText("Inbox…")
-inboxChooser:queryChangedCallback(function(q)
-  inboxChooser:choices(q:match("%S") and {{text = q}} or {})
-end)
+inboxChooser:queryChangedCallback(setInboxChoices)
+
+-- The focused app's selected text, asked for through Accessibility. Native
+-- apps answer; browsers, Electron apps and terminals usually don't.
+local function selectedTextAX()
+  local ok, text = pcall(function()
+    local system = hs.axuielement.systemWideElement()
+    system:setTimeout(0.2)
+    local focused = system:attributeValue("AXFocusedUIElement")
+    return focused and focused:attributeValue("AXSelectedText")
+  end)
+  if ok and type(text) == "string" and text:match("%S") then return text end
+end
+
+-- Fallback: press cmd-c and see whether the clipboard changes. The old
+-- clipboard (every format on it) is put back afterwards.
+local copyTimer -- kept here so it isn't garbage-collected mid-wait
+local function selectedTextViaCopy(callback)
+  local saved = hs.pasteboard.readAllData()
+  local before = hs.pasteboard.changeCount()
+  hs.eventtap.keyStroke({"cmd"}, "c", 0)
+  local tries = 0
+  copyTimer = hs.timer.doEvery(0.03, function()
+    tries = tries + 1
+    local changed = hs.pasteboard.changeCount() ~= before
+    if not changed and tries < 10 then return end
+    copyTimer:stop()
+    copyTimer = nil
+    local text = changed and hs.pasteboard.getContents() or nil
+    if changed then
+      if saved and next(saved) then
+        hs.pasteboard.writeAllData(saved)
+      else
+        hs.pasteboard.clearContents()
+      end
+    end
+    callback(text)
+  end)
+end
+
+local function showInboxPrompt(text)
+  -- One-line prompt and the note becomes a heading: flatten line breaks.
+  local q = text and text:gsub("%s+", " "):match("^%s*(.-)%s*$") or ""
+  inboxChooser:query(q)
+  setInboxChoices(q)
+  inboxChooser:show()
+end
 
 hs.hotkey.bind({"ctrl", "alt"}, "q", function()
-  inboxChooser:query("")
-  inboxChooser:show()
+  if inboxChooser:isVisible() then return end
+  local text = selectedTextAX()
+  if text then
+    showInboxPrompt(text)
+  else
+    selectedTextViaCopy(showInboxPrompt)
+  end
 end)
