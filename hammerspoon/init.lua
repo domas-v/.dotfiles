@@ -25,50 +25,63 @@ hs.hotkey.bind({"alt"}, "]", function()
 end)
 
 -- Inbox capture from anywhere --------------------------------------------
--- ctrl-opt-q opens a prompt; Enter files the text as a TODO in inbox.org.
--- Text selected in the front app when the key is pressed is filled in, and
--- where it came from (the browser page, the Mail message, the open file)
--- goes below the heading as a link. The prompt's second row files it
--- without the link. URLs in the text become org links named after the page.
--- With Emacs running it goes through `dom/org-capture-from-hammerspoon'
--- (~/.emacs.d/config/dom-org.el), which also saves the file for beorg.
--- Without Emacs, the entry is appended to the file directly.
+-- ctrl-opt-q opens a prompt; Enter files the text as a task, `- [ ] text`,
+-- at the end of the notes vault's inbox.md (the one Neovim's <leader>ni and
+-- :Agenda read, see nvim/lua/config/notes.lua). Text selected in the front
+-- app when the key is pressed is filled in, and where it came from (the
+-- browser page, the Mail message, the open file) goes on an indented line
+-- below the task as a link. The prompt's second row files it without the
+-- link. URLs in the text become markdown links named after the page.
 
-local emacsclient = "/opt/homebrew/bin/emacsclient"
-local inboxFile = os.getenv("HOME") ..
-  "/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/inbox.org"
-
-local function elispString(s)
-  if s == nil or s == "" then return "nil" end
-  return '"' .. (s:gsub('\\', '\\\\'):gsub('"', '\\"')) .. '"'
-end
-
-local function orgLink(source)
-  if not (source and source.url) then return nil end
-  local title = source.title and source.title:gsub("[%[%]]", {["["] = "(", ["]"] = ")"})
-  if title and title:match("%S") then
-    return string.format("[[%s][%s]]", source.url, title)
+local inboxFile = (function()
+  local vault = os.getenv("NOTES_VAULT")
+  if not vault or vault == "" then
+    vault = os.getenv("HOME") .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents/in obs"
   end
-  return string.format("[[%s]]", source.url)
+  return vault .. "/inbox.md"
+end)()
+
+-- A markdown link. Brackets in the title would end it early, so they become
+-- parens. A destination with spaces or unbalanced parens goes in <...>.
+local function mdLink(url, title)
+  title = title and title:gsub("[%[%]]", {["["] = "(", ["]"] = ")"})
+  if not (title and title:match("%S")) then return "<" .. url .. ">" end
+  local _, opens = url:gsub("%(", "")
+  local _, closes = url:gsub("%)", "")
+  if url:match("%s") or opens ~= closes then url = "<" .. url .. ">" end
+  return string.format("[%s](%s)", title, url)
 end
 
+-- The task goes right after the last line of the file, so it joins the list
+-- there; trailing blank lines are dropped.
 local function appendToInbox(text, source)
-  local f = io.open(inboxFile, "a")
-  if not f then
-    hs.alert.show("⚠️ Inbox capture failed: can't open inbox.org")
+  local f = io.open(inboxFile, "r")
+  local content = f and f:read("a") or ""
+  if f then f:close() end
+  content = content:gsub("%s+$", "")
+  local entry = "- [ ] " .. text .. "\n"
+  if source and source.url then
+    entry = entry .. "    - " .. mdLink(source.url, source.title) .. "\n"
+  end
+  content = (content == "" and "" or content .. "\n") .. entry
+
+  -- Written next to the file and moved over it, so a failed write can't
+  -- leave the inbox half written.
+  local tmp = inboxFile .. ".capture"
+  f = io.open(tmp, "w")
+  local ok = f and f:write(content) and f:close()
+  if not (ok and os.rename(tmp, inboxFile)) then
+    os.remove(tmp)
+    hs.alert.show("⚠️ Inbox capture failed: can't write inbox.md")
     return false
   end
-  local link = orgLink(source)
-  f:write(string.format("* TODO %s\n:PROPERTIES:\n:CREATED:  %s\n:END:\n%s",
-    text, os.date("[%Y-%m-%d %a %H:%M]"), link and (link .. "\n") or ""))
-  f:close()
   return true
 end
 
--- Bare URLs in the note become org links named after the page's <title>,
--- fetched when Enter is pressed. A page that hasn't answered within a few
--- seconds, or has no title, becomes [[url]]. Links already in org syntax
--- are left alone.
+-- Bare URLs in the note become markdown links named after the page's
+-- <title>, fetched when Enter is pressed. A page that hasn't answered within
+-- a few seconds, or has no title, becomes <url>. Links already in the text,
+-- [title](url), <url> or [[wikilink]], are left alone.
 
 local userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) " ..
   "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"
@@ -103,8 +116,10 @@ local function trimUrl(url)
 end
 
 local function linkifyText(text, source, done)
-  local protected = {} -- spans of existing [[...]] links
-  for a, b in text:gmatch("()%[%[.-%]%]()") do protected[#protected + 1] = {a, b - 1} end
+  local protected = {} -- spans of links already in the text
+  for _, pattern in ipairs({"()%[[^%]]*%]%b()()", "()<[^>%s]+>()", "()%[%[.-%]%]()"}) do
+    for a, b in text:gmatch(pattern) do protected[#protected + 1] = {a, b - 1} end
+  end
   local found, pos = {}, 1
   while true do
     local a, b = text:find("https?://[^%s<>\"%[%]]+", pos)
@@ -127,9 +142,7 @@ local function linkifyText(text, source, done)
     local out, last = {}, 1
     for _, f in ipairs(found) do
       out[#out + 1] = text:sub(last, f.a - 1)
-      local title = titles[f.url] and titles[f.url]:gsub("[%[%]]", {["["] = "(", ["]"] = ")"})
-      out[#out + 1] = title and string.format("[[%s][%s]]", f.url, title)
-        or string.format("[[%s]]", f.url)
+      out[#out + 1] = mdLink(f.url, titles[f.url])
       last = f.b + 1
     end
     out[#out + 1] = text:sub(last)
@@ -159,14 +172,10 @@ end
 
 local function captureToInbox(text, source)
   source = source or {}
-  linkifyText(text, source, function(heading)
-    local elisp = string.format("(dom/org-capture-from-hammerspoon %s %s %s)",
-      elispString(heading), elispString(source.url), elispString(source.title))
-    hs.task.new(emacsclient, function(code)
-      if code == 0 or appendToInbox(heading, source) then
-        hs.alert.show("📥 " .. text .. (source.url and "  🔗" or ""))
-      end
-    end, {"-e", elisp}):start()
+  linkifyText(text, source, function(task)
+    if appendToInbox(task, source) then
+      hs.alert.show("📥 " .. text .. (source.url and "  🔗" or ""))
+    end
   end)
 end
 
@@ -209,9 +218,8 @@ local function windowDocument(app)
   if not (ok and type(url) == "string" and url ~= "") then return nil end
   local path = url:match("^file://(.*)")
   if path then
-    path = urlDecode(path)
-    if hs.fs.attributes(path, "mode") ~= "file" then return nil end
-    return "file:" .. path, title
+    if hs.fs.attributes(urlDecode(path), "mode") ~= "file" then return nil end
+    return url, title -- still percent-encoded, so it works as a link target
   end
   return url
 end
@@ -302,7 +310,7 @@ local function selectedTextViaCopy(callback)
 end
 
 local function showInboxPrompt(text)
-  -- One-line prompt and the note becomes a heading: flatten line breaks.
+  -- One-line prompt and the note becomes a one-line task: flatten line breaks.
   local q = text and text:gsub("%s+", " "):match("^%s*(.-)%s*$") or ""
   inboxChooser:query(q)
   setInboxChoices(q)
