@@ -96,7 +96,7 @@ return {
 
         -- search
         { "<leader>f",     function() Snacks.picker.smart({ focus = "input" }) end },
-        { "<leader>/",     function() Snacks.picker.grep() end },
+        { "<leader>g",     function() Snacks.picker.grep() end },
         { "<leader>W",     function() Snacks.picker.grep_word() end,               mode = { "n", "v" } },
 
         -- lsp
