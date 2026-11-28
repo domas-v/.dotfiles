@@ -29,7 +29,7 @@ end)
 -- Text selected in the front app when the key is pressed is filled in, and
 -- where it came from (the browser page, the Mail message, the open file)
 -- goes below the heading as a link. The prompt's second row files it
--- without the link.
+-- without the link. URLs in the text become org links named after the page.
 -- With Emacs running it goes through `dom/org-capture-from-hammerspoon'
 -- (~/.emacs.d/config/dom-org.el), which also saves the file for beorg.
 -- Without Emacs, the entry is appended to the file directly.
@@ -65,15 +65,109 @@ local function appendToInbox(text, source)
   return true
 end
 
+-- Bare URLs in the note become org links named after the page's <title>,
+-- fetched when Enter is pressed. A page that hasn't answered within a few
+-- seconds, or has no title, becomes [[url]]. Links already in org syntax
+-- are left alone.
+
+local userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) " ..
+  "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15"
+local linkifyTimers = {} -- kept here so they aren't garbage-collected
+
+local function decodeEntities(s)
+  local named = {amp = "&", lt = "<", gt = ">", quot = '"', apos = "'", nbsp = " "}
+  local function char(n) return n and n <= 0x10FFFF and utf8.char(n) or nil end
+  s = s:gsub("&#[xX](%x+);", function(h) return char(tonumber(h, 16)) end)
+  s = s:gsub("&#(%d+);", function(d) return char(tonumber(d)) end)
+  return (s:gsub("&(%a+);", function(n) return named[n] end))
+end
+
+local function pageTitle(body)
+  local t = body and body:match("<[Tt][Ii][Tt][Ll][Ee][^>]*>(.-)</[Tt][Ii][Tt][Ll][Ee]>")
+  if not t then return nil end
+  t = decodeEntities(t):gsub("%s+", " "):match("^%s*(.-)%s*$")
+  return t ~= "" and t or nil
+end
+
+-- Trailing punctuation belongs to the sentence, not the URL; a closing
+-- paren only to the URL when it opened one, as in Wikipedia's Foo_(bar).
+local function trimUrl(url)
+  while true do
+    local t = url:gsub("[%.,;:!%?'\"]+$", "")
+    local _, opens = t:gsub("%(", "")
+    local _, closes = t:gsub("%)", "")
+    if closes > opens and t:sub(-1) == ")" then t = t:sub(1, -2) end
+    if t == url then return url end
+    url = t
+  end
+end
+
+local function linkifyText(text, source, done)
+  local protected = {} -- spans of existing [[...]] links
+  for a, b in text:gmatch("()%[%[.-%]%]()") do protected[#protected + 1] = {a, b - 1} end
+  local found, pos = {}, 1
+  while true do
+    local a, b = text:find("https?://[^%s<>\"%[%]]+", pos)
+    if not a then break end
+    local url = trimUrl(text:sub(a, b))
+    local inside = false
+    for _, r in ipairs(protected) do
+      if a >= r[1] and a <= r[2] then inside = true; break end
+    end
+    if not inside then found[#found + 1] = {a = a, b = a + #url - 1, url = url} end
+    pos = b + 1
+  end
+  if #found == 0 then return done(text) end
+
+  local titles, requested, pending, finished, timer = {}, {}, 0, false, nil
+  local function finish()
+    if finished then return end
+    finished = true
+    if timer then timer:stop(); linkifyTimers[timer] = nil end
+    local out, last = {}, 1
+    for _, f in ipairs(found) do
+      out[#out + 1] = text:sub(last, f.a - 1)
+      local title = titles[f.url] and titles[f.url]:gsub("[%[%]]", {["["] = "(", ["]"] = ")"})
+      out[#out + 1] = title and string.format("[[%s][%s]]", f.url, title)
+        or string.format("[[%s]]", f.url)
+      last = f.b + 1
+    end
+    out[#out + 1] = text:sub(last)
+    done(table.concat(out))
+  end
+
+  for _, f in ipairs(found) do
+    local url = f.url
+    if not requested[url] then
+      requested[url] = true
+      if source and source.url == url and source.title then
+        titles[url] = source.title -- the page it was captured from
+      else
+        pending = pending + 1
+        hs.http.asyncGet(url, {["User-Agent"] = userAgent}, function(status, body)
+          if status >= 200 and status < 300 then titles[url] = pageTitle(body) end
+          pending = pending - 1
+          if pending == 0 then finish() end
+        end)
+      end
+    end
+  end
+  if pending == 0 then return finish() end
+  timer = hs.timer.doAfter(5, finish)
+  linkifyTimers[timer] = true
+end
+
 local function captureToInbox(text, source)
   source = source or {}
-  local elisp = string.format("(dom/org-capture-from-hammerspoon %s %s %s)",
-    elispString(text), elispString(source.url), elispString(source.title))
-  hs.task.new(emacsclient, function(code)
-    if code == 0 or appendToInbox(text, source) then
-      hs.alert.show("📥 " .. text .. (source.url and "  🔗" or ""))
-    end
-  end, {"-e", elisp}):start()
+  linkifyText(text, source, function(heading)
+    local elisp = string.format("(dom/org-capture-from-hammerspoon %s %s %s)",
+      elispString(heading), elispString(source.url), elispString(source.title))
+    hs.task.new(emacsclient, function(code)
+      if code == 0 or appendToInbox(heading, source) then
+        hs.alert.show("📥 " .. text .. (source.url and "  🔗" or ""))
+      end
+    end, {"-e", elisp}):start()
+  end)
 end
 
 -- Where the capture comes from ---------------------------------------------
